@@ -1,0 +1,222 @@
+@property --value {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+@property --width-ratio {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+@property --scale {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+:root {
+  --width: 0.2vmin;
+  --duration: 7s;
+  --size: 23vmin;
+  --logo: url("../img/expertise-solution-blaze.svg");
+}
+@supports not (background: paint(foo)) {
+  :root {
+    --duration: 4s;
+  }
+}
+
+.rings {
+  width: var(--size);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  position: relative;
+  perspective: var(--size);
+  z-index: 9999;
+}
+.rings:before,
+.rings:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: red;
+  border-radius: 50%;
+  --width-ratio: 1;
+  border: calc(var(--width) * var(--width-ratio)) solid transparent;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  background: conic-gradient(
+      from calc(var(--value) * 3),
+      rgba(202, 70, 248, 0.51),
+      transparent,
+      rgba(255, 111, 3, 0.41),
+      #c6eaff,
+      #ff6f03,
+      transparent,
+      transparent,
+      rgba(165, 220, 255, 0.28),
+      transparent,
+      rgba(151, 71, 255, 0.21),
+      rgba(202, 70, 248, 0.51),
+      rgba(255, 111, 3, 0.41),
+      transparent,
+      transparent,
+      transparent
+    )
+    border-box;
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  --start: 180deg;
+  --value: var(--start);
+  --scale: 1;
+  transform: rotateY(var(--value)) rotateX(var(--value)) rotateZ(var(--value))
+    scale(var(--scale));
+}
+@supports (background: paint(foo)) {
+  .rings:before,
+  .rings:after {
+    -webkit-animation: ring var(--duration) ease-in-out infinite;
+    animation: ring var(--duration) ease-in-out infinite;
+  }
+}
+@supports not (background: paint(foo)) {
+  .rings:before,
+  .rings:after {
+    -webkit-animation: ring-legacy var(--duration) ease-in-out infinite;
+    animation: ring-legacy var(--duration) ease-in-out infinite;
+  }
+}
+.rings:before {
+  --start: 180deg;
+}
+.rings:after {
+  --start: 90deg;
+}
+.rings > .rings:before {
+  --start: 360deg;
+}
+.rings > .rings:after {
+  --start: 270deg;
+}
+
+@-webkit-keyframes ring {
+  from {
+    --value: var(--start);
+    --scale: 1;
+  }
+  50% {
+    --scale: 1.2;
+    --width-ratio: 1.5;
+  }
+  70% {
+    --scale: 1;
+    --value: calc(var(--start) + 180deg);
+    --width-ratio: 1;
+  }
+  80% {
+    --scale: 1.2;
+    --width-ratio: 1.5;
+  }
+  to {
+    --value: calc(var(--start) + 360deg);
+    --scale: 1;
+    --width-ratio: 1;
+  }
+}
+
+@keyframes ring {
+  from {
+    --value: var(--start);
+    --scale: 1;
+  }
+  50% {
+    --scale: 1.2;
+    --width-ratio: 1.5;
+  }
+  70% {
+    --scale: 1;
+    --value: calc(var(--start) + 180deg);
+    --width-ratio: 1;
+  }
+  80% {
+    --scale: 1.2;
+    --width-ratio: 1.5;
+  }
+  to {
+    --value: calc(var(--start) + 360deg);
+    --scale: 1;
+    --width-ratio: 1;
+  }
+}
+@-webkit-keyframes ring-legacy {
+  from {
+    --value: var(--start);
+    --scale: 1;
+    transform: rotateY(var(--value)) rotateX(var(--value)) rotateZ(var(--value))
+      scale(var(--scale));
+  }
+  70% {
+    --scale: 1.2;
+    --value: calc(var(--start) + 180deg);
+    transform: rotateY(var(--value)) rotateX(var(--value)) rotateZ(var(--value))
+      scale(var(--scale));
+  }
+  to {
+    --value: calc(var(--start) + 360deg);
+    --scale: 1;
+    transform: rotateY(var(--value)) rotateX(var(--value)) rotateZ(var(--value))
+      scale(var(--scale));
+  }
+}
+@keyframes ring-legacy {
+  from {
+    --value: var(--start);
+    --scale: 1;
+    transform: rotateY(var(--value)) rotateX(var(--value)) rotateZ(var(--value))
+      scale(var(--scale));
+  }
+  70% {
+    --scale: 1.2;
+    --value: calc(var(--start) + 180deg);
+    transform: rotateY(var(--value)) rotateX(var(--value)) rotateZ(var(--value))
+      scale(var(--scale));
+  }
+  to {
+    --value: calc(var(--start) + 360deg);
+    --scale: 1;
+    transform: rotateY(var(--value)) rotateX(var(--value)) rotateZ(var(--value))
+      scale(var(--scale));
+  }
+}
+.logo {
+  display: grid;
+  place-items: center;
+  position: absolute;
+  inset: 0;
+  filter: drop-shadow(0 0 1.5vmin rgba(138, 205, 240, 0.8));
+  display: grid;
+  place-items: center;
+  background: var(--logo) center center no-repeat;
+  background-size: calc(var(--size) / 3.1);
+}
+
+#loading-tab.demo {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  width: 100vw;
+  background: radial-gradient(at center, #ffffff, #ffffff);
+  z-index: 9999;
+  position: fixed;
+}
+
+#loading-tab.demo::after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: url("../img/About-BG.svg");
+}
