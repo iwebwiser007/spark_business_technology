@@ -379,7 +379,7 @@ body {
 .card .card-body .form-group {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 .card .card-body .form-group select,
 .card .card-body .form-group input {
@@ -1612,3 +1612,4 @@ body {
     padding: 0.3rem 0.5rem;
   }
 }
+

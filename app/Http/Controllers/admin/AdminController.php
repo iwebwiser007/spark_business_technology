@@ -4,32 +4,86 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Admin;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
+
+    public function registration(Request $req)
+    {
+        Admin::create([
+            'name' => 'admin',
+            'email' => 'admin@gmail.com',
+            'password' => Hash::make('123456')
+        ]);
+        return view('admin.login');
+    }
+
     public function dashboard()
     {
-        return view('admin.dashboard');
+        if (!Auth::check()) {
+            return view('admin.login');
+        } else {
+            return view('admin.dashboard');
+        }
     }
 
     public function index()
     {
+        // Check if the user is already logged in
+        if (Auth::check()) {
+            // If the user is already logged in, redirect to the dashboard
+            return redirect()->route('dashboard');
+        }
+    
         return view('admin.login');
     }
-
+    
     public function login(Request $request)
     {
-        
-
-        // Attempt to log the user in
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            // Authentication passed
-            return redirect()->route('dashboard'); // Redirect to the intended page
+        if ($request->isMethod('post')) {
+            // Collect login credentials
+            $data = [
+                'email' => $request->email,
+                'password' => $request->password,
+            ];
+    
+            // Attempt to authenticate
+            if (Auth::attempt($data)) {
+                $id = Auth::user()->id;
+                $request->session()->put('admin', $id);
+    
+                // If authenticated, redirect to dashboard
+                return redirect()->route('dashboard');
+            } else {
+                // If authentication fails, show error message
+                return redirect()->route('login')->with('error_message', 'Invalid email or password');
+            }
+        } else {
+            // If already authenticated, redirect to dashboard
+            if (Auth::check()) {
+                return redirect()->route('dashboard');
+            }
+    
+            return view('admin.login');
         }
-
-        // If authentication fails
-        return back()->withErrors(['email' => 'Invalid credentials.']);
     }
     
+
+    public function logout()
+    {
+
+        session()->flush();
+        Auth::logout();
+        
+        return redirect('/admin/login')->with('success_message', 'Successfully logged out');
+    }
 }
+
+
+
+

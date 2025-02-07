@@ -41,7 +41,7 @@
                 <div class="service-detail-card-img">
                   <div class="service-img">
                     <img loading="lazy"
-                      src="{{asset('public/web/img/graphic-service1.webp')}}"
+                      src="public/web/img/graphic-service1.webp"
                       alt="service-graphic"
                     />
                   </div>
@@ -92,6 +92,7 @@
                     audience.
                   </h4>
                 </div>
+
                 <!-- About Service Detail Content end here... -->
 
                 <!-- Service Detail Image start here... -->

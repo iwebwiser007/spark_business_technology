@@ -1,4 +1,11 @@
 @extends('components.admin.layouts')
+<script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+@section('styles')
+<style>
+    .cke_notification_warning {
+        display: none !important;
+    }
+</style>
 @section('content')
 <div class="main-right-container" id="main-right-container">
               <!-- main data start here  -->
@@ -58,7 +65,33 @@
                       <!-- card body start here  -->
                       <div class="card-body">
                         <!-- form start here  -->
-                        <form class="upload-form">
+                        <form class="upload-form" action="{{ url('admin/service-store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="row form-group mt-1 mt-md-2">
+                            <!--  title label start here  -->
+                            <div class="col-12 col-md-3">
+                              <label
+                                for="inputServiceTitle"
+                                class="col-form-label form-label d-flex justify-content-left justify-content-md-center"
+                                >Service Name
+                              </label>
+                            </div>
+                            <!-- title label end here  -->
+
+                            <!-- title input start here  -->
+                            <div class="col-12 col-md-8 mt-0">
+                              <input
+                                type="text"
+                                id="inputServiceTitle"
+                                name="name"
+                                class="form-control form-control-lg form-input"
+                                placeholder="Enter Service Name..."
+                                required
+                              />
+                            </div>
+                            <!-- title input end here  -->
+                            <div class="col-1"></div>
+                          </div>
                           <!-- title area start here  -->
                           <div class="row form-group mt-1 mt-md-2">
                             <!--  title label start here  -->
@@ -76,6 +109,7 @@
                               <input
                                 type="text"
                                 id="inputServiceTitle"
+                                name="title"
                                 class="form-control form-control-lg form-input"
                                 placeholder="Enter Service Title..."
                                 required
@@ -87,7 +121,7 @@
                           <!--title area end here  -->
 
                           <!-- description area start here  -->
-                          <div class="row form-group">
+                          {{--  <div class="row form-group">
                             <!-- description label start here  -->
                             <div class="col-12 col-md-3">
                               <label
@@ -103,18 +137,19 @@
                               <textarea
                                 class="form-control form-control-lg form-textbox"
                                 id="serviceDescription"
+                                name="description"
                                 rows="4"
                                 cols="30"
-                                placeholder="write your Service description here..."
+                                placeholder="Write your Service description here..."
                               ></textarea>
                             </div>
                             <!-- description textarea box end here  -->
                             <div class="col-1"></div>
-                          </div>
+                          </div> --}}
                           <!-- description area end here  -->
 
                           <!-- Sub Service area start here  -->
-                          <div class="row form-group">
+                         {{-- <div class="row form-group">
                             <!-- button link label start here  -->
                             <div class="col-12 col-md-3">
                               <label
@@ -137,7 +172,7 @@
                             </div>
                             <!-- button link input end here  -->
                             <div class="col-1"></div>
-                          </div>
+                          </div> --}}
                           <!-- Sub Service area end here  -->
 
                           <!-- button link area start here  -->
@@ -157,6 +192,7 @@
                               <input
                                 type="text"
                                 id="serviceLink"
+                                name="link"
                                 class="form-control form-control-lg form-input"
                                 placeholder="Enter Button Link..."
                                 required
@@ -168,7 +204,7 @@
                           <!-- button link area end here  -->
 
                           <!-- image upload area start here  -->
-                          <div class="row form-group">
+                          {{-- <div class="row form-group">
                             <!-- upload area start here -->
                             <div class="col-12 col-md-3">
                               <label
@@ -243,8 +279,44 @@
                             </div>
                             <!-- upload input area end here  -->
                             <div class="col-1"></div>
-                          </div>
+                          </div> --}}
                           <!-- image upload area end here  -->
+
+                          <div class="row form-group">
+    <div class="col-12 col-md-3">
+      <label for="html_content" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Service Content</label>
+    </div>
+    <div class="col-12 col-md-8 mt-0">
+      <textarea class="form-control ckeditor" id="html_content" name="html_content" rows="10"></textarea>
+    </div>
+    <div class="col-1"></div>
+  </div>
+
+
+  {{-- <div class="row form-group">
+    <div class="col-12 col-md-3">
+      <label for="inputBlogFile" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Upload Banner Image</label>
+    </div>
+    <div class="col-12 col-md-8 mt-0">
+      <div class="form-group mb-20 upload-input">
+        <label for="blogImg" class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4">
+          <div class="d-flex flex-column align-items-center gap-3">
+            <span>
+              <!-- SVG Icon or placeholder icon goes here -->
+            </span>
+            <p class="mb-0">Upload Image</p>
+          </div>
+        </label>
+        <input type="file" name="image" class="form-control form-control-lg d-none" id="blogImg" required onchange="previewImage(event)" />
+      </div>
+
+      <!-- Image Preview Area -->
+      <div id="imagePreview" class="mt-3">
+        <img id="previewImg" src="" alt="Image Preview" style="display: none; width: 100%; max-width: 200px; border-radius: 8px;" />
+      </div>
+    </div>
+  </div> --}}
+
 
                           <!-- save button start here  -->
                           <div class="row">
@@ -256,12 +328,7 @@
                                 class="btn form-cancel my-0"
                                 >cancel</a
                               >
-                              <a
-                                href="#"
-                                role="button"
-                                class="btn form-btn my-0"
-                                >save</a
-                              >
+                              <button type="submit" class="btn form-btn my-0">Save</button>
                             </div>
                           </div>
                           <!-- save button end here  -->
@@ -276,4 +343,18 @@
               </div>
               <!-- main data end here  -->
             </div>
+
+            <script>
+  function previewImage(event) {
+    var reader = new FileReader();
+    reader.onload = function() {
+      var previewImg = document.getElementById('previewImg');
+      previewImg.src = reader.result; // Set the image source to the selected file
+      previewImg.style.display = 'block'; // Show the image preview
+    }
+    reader.readAsDataURL(event.target.files[0]); // Read the selected file
+  }
+</script>
+
+
 @endsection

@@ -1,12 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title')</title>
-    <meta name="keywords" content="@yield('keywords')" />
-    <meta name="description" content="@yield('description')" />
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Title Handling -->
+@if(trim($__env->yieldContent('title')))
+    <title>@yield('title')</title> <!-- If title section is yielded, use it -->
+@else
+    <title>{{ $metaTags['title'] ?? 'Default Title' }}</title>  <!-- Else, use metaTags title or default title -->
+@endif
+
+<!-- Meta Tags Handling -->
+@hasSection('meta')  <!-- Check if the 'meta' section exists -->
+    @yield('meta')  <!-- Custom meta tags -->
+    @else
+    <meta name="keywords" content="@yield('keywords', 'default, keywords, here')" />
+    <meta name="description" content="@yield('description', 'Default description goes here.')" />
+@endif
+
+
+    
+  
     <!-- Other common meta tags go here -->
     <!-- Common CSS Links -->
     <!-- <link rel="stylesheet" href="{{ asset('public/common.css') }}"> -->
@@ -31,6 +47,7 @@
     <link rel="stylesheet" href="{{ asset('public/web/css/loader.css') }}">
     <link rel="stylesheet" href="{{ asset('public/web/css/Spark.css') }}">
     <link rel="stylesheet" href="{{ asset('public/web/css/Responsive.css') }}">
+    
     <!-- Page-specific CSS Links -->
  
 </head>

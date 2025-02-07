@@ -1,3 +1,7 @@
+<?php
+$admin = \App\Models\Admin::get()->first();
+?>
+
 <header class="header" id="header">
               <nav class="navbar navbar-expand-lg mt-2">
                 <div class="container-fluid">
@@ -357,8 +361,8 @@
                             </div>
 
                             <div class="d-xl-block d-none admin_details">
-                              <p class="mb-0 lh-1">Chitra Chauhan</p>
-                              <span class="d-block">Admin</span>
+                              <p class="mb-0 lh-1">{{$admin->name}}</p>
+                              <span class="d-block">{{$admin->email}}</span>
                             </div>
                           </div>
                         </a>
@@ -381,7 +385,7 @@
                             >
                           </li>
                           <li>
-                            <a class="dropdown-item" href="index.html">
+                            <a class="dropdown-item" href="{{ route('logout') }}">
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 height="20"

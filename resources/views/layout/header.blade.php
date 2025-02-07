@@ -1,3 +1,8 @@
+<?php
+
+$services = \App\Models\Service::all();
+?>
+
 <header>
   <!-- Header Navbar start here... -->
   <nav class="navbar navbar-expand-lg fixed-top" id="ScrollHeader">
@@ -56,21 +61,23 @@
               <!--SVG dropdown icon-->
             </a>
             <ul class="dropdown-nav">
+              @foreach ($services as $service)
               <li class="nav-item">
-              <a class="nav-link {{ request()->is('spark_business') ? 'active' : '' }}" href="{{ url('spark_business') }}">All Services</a>
-
+              <a class="nav-link {{ request()->is('spark_business') ? 'active' : '' }}" href="{{ route('service.show', $service->link) }}">{{$service->name}}</a>
               </li>
-              <li class="nav-item">
+              @endforeach
+
+              {{-- <li class="nav-item">
                 <a class="nav-link {{ request()->is('graphic_design_service') ? 'active' : '' }}" href="{{url('graphic_design_service')}}"
                   >Graphic Designing</a
                 >
               </li>
-              <li class="nav-item">
+               <li class="nav-item">
                 <a class="nav-link {{ request()->is('digital_marketing_services') ? 'active' : '' }}" href="{{url('digital_marketing_services')}}"
                   >Digital marketing</a
                 >
               </li>
-              <li class="nav-item">
+                <li class="nav-item">
                 <a
                   class="nav-link {{ request()->is('Mobile_app_development') ? 'active' : '' }}"
                   href="{{url('Mobile_app_development')}}"
@@ -96,11 +103,14 @@
                   href="{{url('digital_transformation')}}"
                   >Digital transformation
                 </a>
-              </li>
+              </li>  --}}
             </ul>
           </li>
           <li class="nav-item">
             <a class="nav-link {{ request()->is('portfolio') ? 'active' : '' }}" href="{{url ('portfolio')}}">Portfolio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {{ request()->is('blog') ? 'active' : '' }}" href="{{url ('blog')}}">Blog</a>
           </li>
         </ul>
         <form class="d-flex" role="search">
