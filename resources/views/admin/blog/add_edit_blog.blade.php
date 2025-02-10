@@ -1,13 +1,21 @@
 @extends('components.admin.layouts')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery first -->
 <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/parsleyjs@2.9.2/dist/parsley.css">
+<script src="https://cdn.jsdelivr.net/npm/parsleyjs@2.9.2/dist/parsley.min.js"></script>
+
 @section('styles')
 <style>
   .cke_notification_warning {
     display: none !important;
   }
+
+
+
+
 </style>
 @section('content')
-<div class="main-right-container" id="main-right-container">
+<div class="main-right-container" id="main-right-container">  
   <!-- main data start here  -->
   <div class="main-data">
     <div class="container-fluid">
@@ -16,7 +24,7 @@
         <!-- dashboard title start here  -->
         <div class="dash_title">
           <a
-            href="blog_list.html"
+            href="{{url()->previous()}}"
             role="button"
             class="btn link-btn">
             <svg
@@ -44,6 +52,19 @@
         </ol>
         <!-- add banner breadcrumb end here  -->
       </div>
+
+
+      @if (Session::has('error_message'))
+      <!-- Check vendorRegister() method in Front/VendorController.php -->
+      <div class="alert alert-danger alert-dismissible fade show mt-3 d-flex justify-content-between align-items-center"
+        role="alert">
+        <div>
+          <strong>Error:</strong> {{ Session::get('error_message') }}
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      @endif
+      
       <!-- dashboard-head end here... -->
       <div class="container-fluid">
         <!-- card start here  -->
@@ -68,7 +89,8 @@
                   <label for="inputBlogTitle" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Title</label>
                 </div>
                 <div class="col-12 col-md-8 mt-0">
-                  <input type="text" name="title" id="inputBlogTitle" class="form-control form-control-lg form-input" placeholder="Enter Blog Title..." required />
+                  <input type="text" name="title" id="inputBlogTitle" class="form-control form-control-lg form-input" placeholder="Enter Blog Title..." data-parsley-required="true" data-parsley-maxlength="255"
+                  />
                 </div>
                 <div class="col-1"></div>
               </div>
@@ -79,7 +101,7 @@
                   <label for="inputBlogDescription" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Description</label>
                 </div>
                 <div class="col-12 col-md-8 mt-0">
-                  <textarea class="form-control form-control-lg form-textbox" name="description" id="inputBlogDescription" rows="4" placeholder="Write your blog description here..." required></textarea>
+                  <textarea class="form-control form-control-lg form-textbox" name="description" id="inputBlogDescription" rows="4" placeholder="Write your blog description here..." data-parsley-required="true"></textarea>
                 </div>
                 <div class="col-1"></div>
               </div>
@@ -90,7 +112,7 @@
                   <label for="inputBlogLink" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Slug</label>
                 </div>
                 <div class="col-12 col-md-8 mt-0">
-                  <input type="text" name="link" id="inputBlogLink" class="form-control form-control-lg form-input" placeholder="Enter Slug..." required />
+                  <input type="text" name="link" id="inputBlogLink" class="form-control form-control-lg form-input" placeholder="Enter Slug..." data-parsley-required="true" data-parsley-maxlength="255" />
                 </div>
                 <div class="col-1"></div>
               </div>
@@ -100,7 +122,7 @@
                   <label for="metaTags" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Metas</label>
                 </div>
                 <div class="col-12 col-md-8">
-                  <textarea name="meta_tags" id="metaTags" class="form-control form-control-lg form-input" placeholder="Enter JSON formatted metas..." required rows="8" style="height: 150px;"></textarea>
+                  <textarea name="meta_tags" id="metaTags" class="form-control form-control-lg form-input" placeholder="Enter JSON formatted metas..."  rows="8" style="height: 150px;" data-parsley-required="true" ></textarea>
                 </div>
                 <div class="col-1"></div>
               </div>
@@ -115,6 +137,7 @@
                 </div>
                 <div class="col-1"></div>
               </div>
+
 
 
               <div class="row form-group">
@@ -132,8 +155,9 @@
                       </div>
                       <img id="previewThumbnailImg" src="" alt="Thumbnail Image Preview" style="display: none; width: 300px; height:300px; border-radius: 8px;" />
                     </label>
-                    <input type="file" name="thumbnail_image" class="form-control form-control-lg d-none" id="thumbnailImg" required onchange="previewThumbnailImage(event)" />
+                    <input type="file" name="thumbnail_image" class="form-control form-control-lg " id="thumbnailImg"  onchange="previewThumbnailImage(event)" data-parsley-required="true"  />
                   </div>
+                  <div id="thumbnailImg-error" ></div>
                 </div>
               </div>
 
@@ -153,8 +177,10 @@
                       </div>
                       <img id="previewBannerImg" src="" alt="Banner Image Preview" style="display: none; width: 300px; height:300px; border-radius: 8px;" />
                     </label>
-                    <input type="file" name="banner_image" class="form-control form-control-lg d-none" id="bannerImg" required onchange="previewBannerImage(event)" />
+                    <input type="file" name="banner_image" class="form-control form-control-lg " id="bannerImg" required onchange="previewBannerImage(event)" data-parsley-required="true"  />
                   </div>
+                  <div id="bannerImg-error" ></div>
+
                 </div>
               </div>
 
@@ -162,8 +188,8 @@
               <div class="row">
                 <div class="col-4 col-md-3"></div>
                 <div class="col-12 col-md-9 form-button">
-                  <a href="{{ route('blog.index') }}" role="button" class="btn form-cancel my-0">Cancel</a>
-                  <button type="submit" class="btn form-btn my-0">Save</button>
+                <a href="{{route('blog-list')}}" role="button" class="btn form-cancel my-0">cancel</a>
+                <button type="submit" class="btn form-btn my-0">Save</button>
                 </div>
               </div>
             </form>
@@ -213,5 +239,18 @@
     };
     reader.readAsDataURL(file);
   }
+
+  
+  $('#thumbnailImg').parsley({
+  errorsContainer: function(ParsleyField) {
+    return $('#thumbnailImg-error');
+  }
+});
+
+$('#bannerImg').parsley({
+  errorsContainer: function(ParsleyField) {
+    return $('#bannerImg-error');
+  }
+});
 </script>
 @endsection

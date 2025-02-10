@@ -1613,3 +1613,11 @@ body {
   }
 }
 
+ /* Custom Parsley error message color */
+ .parsley-errors-list {
+  color: rgb(210, 78, 76) !important;
+  list-style-type: none;
+
+
+  /* Change error text color to red */
+}

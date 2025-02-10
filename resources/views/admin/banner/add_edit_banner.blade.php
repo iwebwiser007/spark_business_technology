@@ -1,150 +1,159 @@
 @extends('components.admin.layouts')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery first -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/parsleyjs@2.9.2/dist/parsley.css">
+<script src="https://cdn.jsdelivr.net/npm/parsleyjs@2.9.2/dist/parsley.min.js"></script>
 @section('content')
 <div class="main-right-container" id="main-right-container">
-              <!-- main data start here  -->
-              <div class="main-data">
-                <div class="container-fluid">
-                  <!-- dashboard-head start here... -->
-                  <div class="dash-head">
-                    <!-- dashboard title start here  -->
-                    <div class="dash_title">
-                      <a
-                        href="banner_list.html"
-                        role="button"
-                        class="btn link-btn"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          height="20"
-                          viewBox="0 -960 960 960"
-                          width="20"
-                          fill="#FFFFFF"
-                        >
-                          <path
-                            d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z"
-                          />
-                        </svg>
-                      </a>
-                      <h2 class="main-title text-wrap">Add Banner</h2>
-                    </div>
-                    <!-- dashboard title end here  -->
+  <!-- main data start here  -->
+  <div class="main-data">
+    <div class="container-fluid">
+      <!-- dashboard-head start here... -->
+      <div class="dash-head">
+        <!-- dashboard title start here  -->
+        <div class="dash_title">
+          <a
+            href="banner_list.html"
+            role="button"
+            class="btn link-btn">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="20"
+              viewBox="0 -960 960 960"
+              width="20"
+              fill="#FFFFFF">
+              <path
+                d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z" />
+            </svg>
+          </a>
+          <h2 class="main-title text-wrap">Add Banner</h2>
+        </div>
+        <!-- dashboard title end here  -->
 
-                    <!-- breadcrumb start here  -->
-                    <ol class="breadcrumb text-nowrap">
-                      <li class="breadcrumb-item">
-                        <a href="#">Dashboard</a>
-                      </li>
-                      <li class="breadcrumb-item active" aria-current="page">
-                        Add Banner
-                      </li>
-                    </ol>
-                    <!-- add breadcrumb end here  -->
+        <!-- breadcrumb start here  -->
+        <ol class="breadcrumb text-nowrap">
+          <li class="breadcrumb-item">
+            <a href="#">Dashboard</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">
+            Add Banner
+          </li>
+        </ol>
+        <!-- add breadcrumb end here  -->
+      </div>
+
+      @if (Session::has('error_message'))
+      <!-- Check vendorRegister() method in Front/VendorController.php -->
+      <div class="alert alert-danger alert-dismissible fade show mt-3 d-flex justify-content-between align-items-center"
+        role="alert">
+        <div>
+          <strong>Error:</strong> {{ Session::get('error_message') }}
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      @endif
+      
+      <!-- dashboard-head end here  -->
+
+      <div class="container-fluid">
+        <!-- card start here  -->
+        <div class="card">
+          <!-- card header start here  -->
+          <div class="card-header">
+            <div
+              class="card-title d-flex justify-content-between align-items-center">
+              <h2>Add Banner</h2>
+            </div>
+          </div>
+          <!-- card header end here  -->
+
+          <!-- card body start here  -->
+          <div class="card-body">
+            <!-- form start here  -->
+            <form class="upload-form" action="{{ url('admin/banner-store') }}" method="POST" enctype="multipart/form-data" data-parsley-validate>
+              @csrf
+              <!-- title area start here  -->
+              <div class="row form-group mt-1 mt-md-2">
+                <!-- banner title start here  -->
+                <div class="col-12 col-md-3">
+                  <label
+                    for="inputBannerTitle"
+                    class="col-form-label form-label d-flex justify-content-start justify-content-md-center">Banner Title
+                  </label>
+                </div>
+                <!-- banner title end here  -->
+
+                <!-- banner search form start here  -->
+                <div class="col-12 col-md-8 mt-0">
+                  <input
+                    type="text"
+                    id="inputBannerTitle"
+                    name="title"
+                    class="form-control form-control-lg form-input"
+                    placeholder="Enter Banner Title..."
+                    data-parsley-required="true" />
+                </div>
+                <!-- banner search form end here  -->
+                <div class="col-1 d-none d-md-block"></div>
+              </div>
+              <!-- title area end here  -->
+
+              <!-- description area start here  -->
+              <div class="row form-group">
+                <!-- description label start here  -->
+                <div class="col-12 col-md-3">
+                  <label
+                    for="inputBannerDescription"
+                    class="col-form-label form-label d-flex justify-content-start justify-content-md-center">Banner Description</label>
+                </div>
+                <!-- banner description label end here  -->
+
+                <!-- banner description textarea box start here  -->
+                <div class="col-12 col-md-8 mt-0">
+                  <textarea
+                    class="form-control form-control-lg form-textbox"
+                    id="inputBannerDescription"
+                    name="description"
+                    rows="4"
+                    cols="30"
+                    placeholder="write your description here..."
+                    data-parsley-required="true"></textarea>
+                </div>
+                <!-- banner description textarea box end here  -->
+                <div class="col-1 d-none d-md-block"></div>
+              </div>
+              <!-- description area end here  -->
+
+              <!-- button link area start here  -->
+              <div class="row form-group">
+                <!-- button link label start here  -->
+                <div class="col-12 col-md-3">
+                  <label
+                    for="btnLink"
+                    class="col-form-label form-label d-flex justify-content-start justify-content-md-center">Button Link
+                  </label>
+                </div>
+                <!-- button link label end here  -->
+
+                <!-- button link input start here  -->
+                <div class="col-12 col-md-8 mt-0">
+                  <div>
+                    <input
+                      type="text"
+                      id="btnLink"
+                      name="link"
+                      class="form-control form-control-lg form-input"
+                      placeholder="Enter Button Link..."
+                      data-parsley-required="true" />
                   </div>
-                  <!-- dashboard-head end here  -->
+                </div>
+                <!-- button link input end here  -->
 
-                  <div class="container-fluid">
-                    <!-- card start here  -->
-                    <div class="card">
-                      <!-- card header start here  -->
-                      <div class="card-header">
-                        <div
-                          class="card-title d-flex justify-content-between align-items-center"
-                        >
-                          <h2>Add Banner</h2>
-                        </div>
-                      </div>
-                      <!-- card header end here  -->
+                <div class="col-1 d-none d-md-block"></div>
+              </div>
+              <!-- button link area end here  -->
 
-                      <!-- card body start here  -->
-                      <div class="card-body">
-                        <!-- form start here  -->
-                        <form class="upload-form">
-                          <!-- title area start here  -->
-                          <div class="row form-group mt-1 mt-md-2">
-                            <!-- banner title start here  -->
-                            <div class="col-12 col-md-3">
-                              <label
-                                for="inputBannerTitle"
-                                class="col-form-label form-label d-flex justify-content-start justify-content-md-center"
-                                >Banner Title
-                              </label>
-                            </div>
-                            <!-- banner title end here  -->
-
-                            <!-- banner search form start here  -->
-                            <div class="col-12 col-md-8 mt-0">
-                              <input
-                                type="text"
-                                id="inputBannerTitle"
-                                class="form-control form-control-lg form-input"
-                                placeholder="Enter Banner Title..."
-                                required
-                              />
-                            </div>
-                            <!-- banner search form end here  -->
-                            <div class="col-1 d-none d-md-block"></div>
-                          </div>
-                          <!-- title area end here  -->
-
-                          <!-- description area start here  -->
-                          <div class="row form-group">
-                            <!-- description label start here  -->
-                            <div class="col-12 col-md-3">
-                              <label
-                                for="inputBannerDescription"
-                                class="col-form-label form-label d-flex justify-content-start justify-content-md-center"
-                                >Banner Description</label
-                              >
-                            </div>
-                            <!-- banner description label end here  -->
-
-                            <!-- banner description textarea box start here  -->
-                            <div class="col-12 col-md-8 mt-0">
-                              <textarea
-                                class="form-control form-control-lg form-textbox"
-                                id="inputBannerDescription"
-                                rows="4"
-                                cols="30"
-                                placeholder="write your description here..."
-                              ></textarea>
-                            </div>
-                            <!-- banner description textarea box end here  -->
-                            <div class="col-1 d-none d-md-block"></div>
-                          </div>
-                          <!-- description area end here  -->
-
-                          <!-- button link area start here  -->
-                          <div class="row form-group">
-                            <!-- button link label start here  -->
-                            <div class="col-12 col-md-3">
-                              <label
-                                for="btnLink"
-                                class="col-form-label form-label d-flex justify-content-start justify-content-md-center"
-                                >Button Link
-                              </label>
-                            </div>
-                            <!-- button link label end here  -->
-
-                            <!-- button link input start here  -->
-                            <div class="col-12 col-md-8 mt-0">
-                              <div>
-                                <input
-                                  type="text"
-                                  id="btnLink"
-                                  class="form-control form-control-lg form-input"
-                                  placeholder="Enter Button Link..."
-                                  required
-                                />
-                              </div>
-                            </div>
-                            <!-- button link input end here  -->
-
-                            <div class="col-1 d-none d-md-block"></div>
-                          </div>
-                          <!-- button link area end here  -->
-
-                          <!-- banner image upload area start here  -->
-                          <div class="row form-group">
+              <!-- banner image upload area start here  -->
+              {{-- <div class="row form-group">
                             <!-- upload banner label area start here  -->
                             <div class="col-12 col-md-3">
                               <label
@@ -218,37 +227,75 @@
                             </div>
                             <!-- upload banner input area end here  -->
                             <div class="col-1 d-none d-md-block"></div>
-                          </div>
-                          <!-- banner image upload area end here  -->
+                          </div> --}}
 
-                          <!-- Save button start here  -->
-                          <div class="row">
-                            <div class="col-4 col-md-3"></div>
-                            <div class="col-12 col-md-9 form-button">
-                              <a
-                                href="banner_list.html"
-                                role="button"
-                                class="btn form-cancel my-0"
-                                >cancel</a
-                              >
-                              <a
-                                href="#"
-                                role="button"
-                                class="btn form-btn my-0"
-                                >save</a
-                              >
-                            </div>
-                          </div>
-                          <!-- Save button end here  -->
-                        </form>
-                        <!-- form end here  -->
+
+              <div class="row form-group">
+                <div class="col-12 col-md-3">
+                  <label for="inputBannerImage" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Banner Image</label>
+                </div>
+                <div class="col-12 col-md-8 mt-0">
+                  <div class="form-group mb-20 upload-input">
+                    <label for="bannerImg" class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4">
+                      <div class="d-flex flex-column align-items-center gap-3">
+                        <span id="bannerIcon">
+                          <!-- You can add an SVG icon here, if needed -->
+                        </span>
+                        <p id="bannerText" class="mb-0">Upload Banner Image</p>
                       </div>
-                      <!-- card body end here  -->
-                    </div>
-                    <!-- card end here  -->
+                      <img id="previewBannerImg" src="" alt="Banner Image Preview" style="display: none; width: 300px; height:300px; border-radius: 8px;" />
+                    </label>
+                    <input type="file" name="banner_image" class="form-control form-control-lg " id="bannerImg" required onchange="previewBannerImage(event)" data-parsley-required="true" />
                   </div>
+                  <div id="bannerImg-error"></div>
                 </div>
               </div>
-              <!-- main data end here  -->
-            </div>
+
+              <div class="row">
+                <div class="col-4 col-md-3"></div>
+                <div class="col-12 col-md-9 form-button">
+                  <a
+                    href="{{route('banner-list')}}"
+                    role="button"
+                    class="btn form-cancel my-0">cancel</a>
+                  <button type="submit" class="btn form-btn my-0">Save</button>
+
+                </div>
+              </div>
+              <!-- Save button end here  -->
+            </form>
+            <!-- form end here  -->
+          </div>
+          <!-- card body end here  -->
+        </div>
+        <!-- card end here  -->
+      </div>
+    </div>
+  </div>
+  <!-- main data end here  -->
+</div>
+
+<script>
+  function previewBannerImage(event) {
+    const preview = document.getElementById('previewBannerImg');
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function() {
+      preview.src = reader.result;
+      preview.style.display = 'block';
+
+      // Hide the placeholder text and icon, and display the image
+      document.getElementById('bannerText').style.display = 'none';
+      document.getElementById('bannerIcon').style.display = 'none';
+    };
+    reader.readAsDataURL(file);
+  }
+
+  $('#bannerImg').parsley({
+    errorsContainer: function(ParsleyField) {
+      return $('#bannerImg-error');
+    }
+  });
+</script>
 @endsection

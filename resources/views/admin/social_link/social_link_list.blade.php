@@ -23,6 +23,28 @@
                     </ol>
                     <!-- add banner breadcrumb end here  -->
                   </div>
+
+                  @if (Session::has('success_message'))
+      <!-- Check vendorRegister() method in Front/VendorController.php -->
+      <div class="alert alert-success alert-dismissible fade show mt-3 d-flex justify-content-between align-items-center"
+        role="alert">
+        <div>
+          <strong>Success:</strong> {{ Session::get('success_message') }}
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      @endif
+
+      @if (Session::has('error_message'))
+      <!-- Check vendorRegister() method in Front/VendorController.php -->
+      <div class="alert alert-danger alert-dismissible fade show mt-3 d-flex justify-content-between align-items-center"
+        role="alert">
+        <div>
+          <strong>Error:</strong> {{ Session::get('error_message') }}
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      @endif
                   <!-- dashboard-head end here... -->
 
                   <div class="container-fluid">
@@ -30,13 +52,12 @@
                     <div class="card">
                       <!-- card header start here  -->
                       <div class="card-header">
-                        <div
-                          class="card-title d-flex justify-content-between align-items-center"
-                        >
-                          <h2>Social List</h2>
-                          <!-- <a href="add_social.html" class="btn sub_btn">ADD</a> -->
-                        </div>
-                      </div>
+            <div
+              class="card-title d-flex justify-content-between align-items-center">
+              <h2>Header List</h2>
+              <!-- <a href="{{route('add-edit-social')}}" class="btn sub_btn">ADD</a> -->
+            </div>
+          </div>
                       <!-- card header end here  -->
 
                       <!-- card body start here  -->

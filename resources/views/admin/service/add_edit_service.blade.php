@@ -1,5 +1,8 @@
 @extends('components.admin.layouts')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery first -->
 <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/parsleyjs@2.9.2/dist/parsley.css">
+<script src="https://cdn.jsdelivr.net/npm/parsleyjs@2.9.2/dist/parsley.min.js"></script>
 @section('styles')
 <style>
     .cke_notification_warning {
@@ -65,7 +68,7 @@
                       <!-- card body start here  -->
                       <div class="card-body">
                         <!-- form start here  -->
-                        <form class="upload-form" action="{{ url('admin/service-store') }}" method="POST" enctype="multipart/form-data">
+                        <form class="upload-form" action="{{ url('admin/service-store') }}" method="POST" enctype="multipart/form-data" data-parsley-validate>
                         @csrf
                         <div class="row form-group mt-1 mt-md-2">
                             <!--  title label start here  -->
@@ -86,7 +89,7 @@
                                 name="name"
                                 class="form-control form-control-lg form-input"
                                 placeholder="Enter Service Name..."
-                                required
+                                data-parsley-required="true"
                               />
                             </div>
                             <!-- title input end here  -->
@@ -112,7 +115,7 @@
                                 name="title"
                                 class="form-control form-control-lg form-input"
                                 placeholder="Enter Service Title..."
-                                required
+                                data-parsley-required="true"
                               />
                             </div>
                             <!-- title input end here  -->
@@ -195,13 +198,24 @@
                                 name="link"
                                 class="form-control form-control-lg form-input"
                                 placeholder="Enter Button Link..."
-                                required
+                                data-parsley-required="true"
+
                               />
                             </div>
                             <!-- button link input end here  -->
                             <div class="col-1"></div>
                           </div>
                           <!-- button link area end here  -->
+
+                          <div class="row form-group">
+                <div class="col-12 col-md-3">
+                  <label for="metaTags" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Metas</label>
+                </div>
+                <div class="col-12 col-md-8">
+                  <textarea name="meta_tags" id="metaTags" class="form-control form-control-lg form-input" placeholder="Enter JSON formatted metas..."  rows="8" style="height: 150px;" data-parsley-required="true" ></textarea>
+                </div>
+                <div class="col-1"></div>
+              </div>
 
                           <!-- image upload area start here  -->
                           {{-- <div class="row form-group">
@@ -287,7 +301,7 @@
       <label for="html_content" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Service Content</label>
     </div>
     <div class="col-12 col-md-8 mt-0">
-      <textarea class="form-control ckeditor" id="html_content" name="html_content" rows="10"></textarea>
+      <textarea class="form-control ckeditor" id="html_content" name="html_content" rows="10" ></textarea>
     </div>
     <div class="col-1"></div>
   </div>
@@ -318,12 +332,16 @@
   </div> --}}
 
 
+  
+
+
+
                           <!-- save button start here  -->
                           <div class="row">
                             <div class="col-4 col-md-3"></div>
                             <div class="col-12 col-md-9 form-button">
                               <a
-                                href="services_list.html"
+                                href="{{route('service-list')}}"
                                 role="button"
                                 class="btn form-cancel my-0"
                                 >cancel</a

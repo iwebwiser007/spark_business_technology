@@ -2,10 +2,10 @@
 <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
 @section('styles')
 <style>
-    .cke_notification_warning {
-        display: none !important;
-    }
-    </style>
+  .cke_notification_warning {
+    display: none !important;
+  }
+</style>
 @section('content')
 <div class="main-right-container" id="main-right-container">
   <!-- main data start here  -->
@@ -163,7 +163,7 @@
                           </svg>
                         </a>
 
-                        
+
 
 
                         <!-- edit button end here  -->
@@ -193,9 +193,9 @@
 
                               <div class="modal-body">
                                 <div class="container">
-                                  <form class="upload-form" action="{{ route('service.update' , $service->id) }}" 
-                                  method="POST" >
-                                  @csrf
+                                  <form class="upload-form" action="{{ route('service.update' , $service->id) }}"
+                                    method="POST">
+                                    @csrf
                                     <!-- title  -->
                                     <div
                                       class="row form-group g-3 align-items-center">
@@ -217,7 +217,7 @@
                                             name="name"
                                             class="form-control form-control-lg form-input"
                                             placeholder="Enter Title..."
-                                             value="{{ old('name', $service->name ?? '') }}"
+                                            value="{{ old('name', $service->name ?? '') }}"
                                             required />
                                         </div>
                                       </div>
@@ -244,7 +244,7 @@
                                             name="title"
                                             class="form-control form-control-lg form-input"
                                             placeholder="Enter Title..."
-                                             value="{{ old('title', $service->title ?? '') }}"
+                                            value="{{ old('title', $service->title ?? '') }}"
                                             required />
                                         </div>
                                       </div>
@@ -274,15 +274,15 @@
                                             cols="30"
                                             placeholder="write your service description here..."
                                              required>{{ old('description', $service->description ?? '') }}</textarea>
-                                          
-                                        </div>
-                                      </div>
 
-                                      <!-- description textarea box end here  -->
-                                    </div> --}}
+                                </div>
+                              </div>
 
-                                    <!-- Sub title  -->
-                                   {{-- <div
+                              <!-- description textarea box end here  -->
+                            </div> --}}
+
+                            <!-- Sub title  -->
+                            {{-- <div
                                       class="row form-group g-3 align-items-center">
                                       <!-- title label start here  -->
                                       <div class="col-3">
@@ -307,38 +307,38 @@
                                       <!-- title input end here  -->
                                     </div> --}}
 
-                                    <!-- Social Link area start here  -->
-                                    <div
-                                      class="row form-group g-3 align-items-center">
-                                      <!-- Social Link label start here  -->
-                                      <div
-                                        class="col-3 d-flex justify-content-center align-items-center">
-                                        <label
-                                          for="inputTitle"
-                                          class="col-form-label form-label">Button Link
-                                        </label>
-                                      </div>
-                                      <!-- Social Link label end here  -->
+                            <!-- Social Link area start here  -->
+                            <div
+                              class="row form-group g-3 align-items-center">
+                              <!-- Social Link label start here  -->
+                              <div
+                                class="col-3 d-flex justify-content-center align-items-center">
+                                <label
+                                  for="inputTitle"
+                                  class="col-form-label form-label">Button Link
+                                </label>
+                              </div>
+                              <!-- Social Link label end here  -->
 
-                                      <!-- Social Link input start here  -->
-                                      <div class="col-9">
-                                        <div class="mb-3 mt-3">
-                                          <input
-                                            type="text"
-                                            id="inputTitle"
-                                            name="link"
-                                            class="form-control form-control-lg form-input"
-                                            placeholder="Enter Link..."
-                                            value="{{ old('link', $service->link ?? '') }}"
-                                            required />
-                                        </div>
-                                      </div>
-                                      <!-- Social Link input end here  -->
-                                    </div>
-                                    <!-- Sociall Link area end here  -->
+                              <!-- Social Link input start here  -->
+                              <div class="col-9">
+                                <div class="mb-3 mt-3">
+                                  <input
+                                    type="text"
+                                    id="inputTitle"
+                                    name="link"
+                                    class="form-control form-control-lg form-input"
+                                    placeholder="Enter Link..."
+                                    value="{{ old('link', $service->link ?? '') }}"
+                                    required />
+                                </div>
+                              </div>
+                              <!-- Social Link input end here  -->
+                            </div>
+                            <!-- Sociall Link area end here  -->
 
-                                    <!-- image  -->
-                                  {{--  <div
+                            <!-- image  -->
+                            {{-- <div
                                       class="row form-group g-3 align-items-center mt-3">
                                       <!-- upload banner input area start here  -->
                                       <div class="col-12">
@@ -365,23 +365,32 @@
                                     </div> --}}
 
 
-                                     <!-- Blog Content -->
-  <<!-- Blog Content -->
-<div class="row form-group">
-  <div class="col-12 col-md-3">
-    <label for="html_content" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Service Content</label>
-  </div>
-  <div class="col-12 col-md-8 mt-0">
-    <textarea class="form-control ckeditor" id="html_content" name="html_content" rows="10">
-      {{ old('html_content', $service->html_content ?? '') }}
-    </textarea>
-  </div>
-</div>
+                            <!-- Blog Content -->
+                            <div class="row form-group">
+                              <div class="col-12 col-md-3">
+                                <label for="metaTags" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Enter Metas (JSON Format)</label>
+                              </div>
+                              <div class="col-12 col-md-8">
+                                <textarea name="meta_tags" id="metaTags" class="form-control form-control-lg form-input" placeholder="Enter JSON formatted metas..." required rows="8" style="height: 250px;">{{ old('meta_tags', $service->meta_tags ?? '') }}</textarea>
+                              </div>
+                              <div class="col-1"></div>
+                            </div>
+
+                            <div class="row form-group">
+                              <div class="col-12 col-md-3">
+                                <label for="html_content" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Service Content</label>
+                              </div>
+                              <div class="col-12 col-md-8 mt-0">
+                                <textarea class="form-control ckeditor" id="html_content" name="html_content" rows="10">
+                                {{ old('html_content', $service->html_content ?? '') }}
+                                </textarea>
+                              </div>
+                            </div>
 
 
 
-  <!-- Image Upload -->
-  {{{-- <div class="row form-group">
+                            <!-- Image Upload -->
+                            {{-- <div class="row form-group">
     <div class="col-12 col-md-3">
       <label for="inputBlogFile" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Upload Banner Image</label>
     </div>
@@ -400,187 +409,186 @@
 
       <!-- Image Preview Area -->
       <div id="imagePreview" class="mt-3">
-      <img id="previewImg" src="{{ isset($service) ? asset('http://localhost/spark_technology/storage/app/public/images/' . $service->image) : '' }}" 
-             alt="Image Preview" style="display: {{ isset($service) ? 'block' : 'none' }}; width: 100%; max-width: 200px; border-radius: 8px;" />
-      </div>
-    </div>
-  </div> --}}}
-
-  
-
-   
-
-                                    <!-- cancel and submit button  -->
-                                    <div class="my-3">
-                                      <button
-                                        type="button"
-                                        class="btn btn-secondary cancel_modal"
-                                        data-bs-dismiss="modal">
-                                        Close
-                                      </button>
-                                      <button
-                                        type="submit"
-                                        class="btn add_modal">
-                                        Update
-                                      </button>
-                                    </div>
-                                  </form>
-                                </div>
-                              </div>
-                            </div>
+      <img id="previewImg" src="{{ isset($service) ? asset('http://localhost/spark_technology/storage/app/public/images/' . $service->image) : '' }}"
+                            alt="Image Preview" style="display: {{ isset($service) ? 'block' : 'none' }}; width: 100%; max-width: 200px; border-radius: 8px;" />
                           </div>
                         </div>
+                      </div> --}}
 
-                        <!-- Edit modal end here  -->
 
-                        <!-- delete button start here  -->
-                        <a
-                          href="#"
-                          role="button"
-                          class="btn text-decoration-none table_del bg-danger-subtle"
-                          data-bs-toggle="modal"
-                          data-bs-target="#deleteModal"
-                          title="delete">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            height="12"
-                            viewBox="0 -960 960 960"
-                            width="12"
-                            fill="#f70808">
-                            <path
-                              d="M312-144q-29.7 0-50.85-21.15Q240-186.3 240-216v-480h-48v-72h192v-48h192v48h192v72h-48v479.57Q720-186 698.85-165T648-144H312Zm336-552H312v480h336v-480ZM384-288h72v-336h-72v336Zm120 0h72v-336h-72v336ZM312-696v480-480Z" />
-                          </svg>
-                        </a>
-                        <!-- delete button end here  -->
 
-                        <!-- delete modal start here  -->
-                        <div
-                          class="modal fade"
-                          id="deleteModal"
-                          tabindex="-1"
-                          aria-labelledby="exampleModalLabel"
-                          aria-hidden="true">
-                          <div
-                            class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                              <!-- close button start here  -->
-                              <a
-                                href="#"
-                                role="button"
-                                data-bs-dismiss="modal"
-                                class="position-absolute end-0 p-2"
-                                arial-label="close">
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  height="24"
-                                  viewBox="0 -960 960 960"
-                                  width="24"
-                                  fill="#5d6d7e">
-                                  <path
-                                    d="m291-240-51-51 189-189-189-189 51-51 189 189 189-189 51 51-189 189 189 189-51 51-189-189-189 189Z" />
-                                </svg>
-                              </a>
-                              <!-- close button end here  -->
 
-                              <div class="modal-body my-3">
-                                <span class="m-4">
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    height="30"
-                                    viewBox="0 -960 960 960"
-                                    width="30"
-                                    fill="#dc3545">
-                                    <path
-                                      d="M312-144q-29.7 0-50.85-21.15Q240-186.3 240-216v-480h-48v-72h192v-48h192v48h192v72h-48v479.57Q720-186 698.85-165T648-144H312Zm336-552H312v480h336v-480ZM384-288h72v-336h-72v336Zm120 0h72v-336h-72v336ZM312-696v480-480Z" />
-                                  </svg>
-                                </span>
-                                <h1
-                                  class="modal-title mt-2"
-                                  id="exampleModalLabel">
-                                  Delete Service
-                                </h1>
-                                <p class="pb-4">
-                                  Are you sure you want to delete
-                                  this Service?
-                                </p>
 
-                                <!-- delete and cancel button start here  -->
-                                <div>
-                                  <button
-                                    type="button"
-                                    class="btn btn-secondary cancel_modal"
-                                    data-bs-dismiss="modal">
-                                    Cancel
-                                  </button>
-
-                                  <button
-                                    type="button"
-                                    class="btn btn-danger del_modal">
-                                    Delete
-                                  </button>
-                                </div>
-                                <!-- delete and cancel button end here  -->
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <!-- delete modal end here  -->
+                      <!-- cancel and submit button  -->
+                      <div class="my-3">
+                        <button
+                          type="button"
+                          class="btn btn-secondary cancel_modal"
+                          data-bs-dismiss="modal">
+                          Close
+                        </button>
+                        <button
+                          type="submit"
+                          class="btn add_modal">
+                          Update
+                        </button>
                       </div>
-                    </td>
-                    <!-- Service-1 edit and delete icon end here  -->
-                  </tr>
-                  @endforeach
-                  <!-- service-1 end here  -->
-
-
-                  <!-- service-3 end here  -->
-                </tbody>
-              </table>
-            </div>
-            <!-- table content end here  -->
-          </div>
-          <!-- card body end here  -->
-
-          <!-- card footer start here  -->
-          <div class="card-footer">
-            <p>Showing 1 to 10 of xyz entries</p>
-
-            <div class="pagination-div">
-              <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                  <li class="page-item">
-                    <a
-                      class="page-link"
-                      href="#"
-                      aria-label="Previous">
-                      <span aria-hidden="true">&laquo;</span>
-                    </a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">1</a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">2</a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">3</a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                      <span aria-hidden="true">&raquo;</span>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
+                      </form>
             </div>
           </div>
-          <!-- card footer end here  -->
         </div>
-        <!-- card end here  -->
       </div>
     </div>
+
+    <!-- Edit modal end here  -->
+
+    <!-- delete button start here  -->
+    <a
+      href="#"
+      role="button"
+      class="btn text-decoration-none table_del bg-danger-subtle"
+      data-bs-toggle="modal"
+      data-bs-target="#deleteModal-{{ $service->id }}"
+      title="delete">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="12"
+        viewBox="0 -960 960 960"
+        width="12"
+        fill="#f70808">
+        <path
+          d="M312-144q-29.7 0-50.85-21.15Q240-186.3 240-216v-480h-48v-72h192v-48h192v48h192v72h-48v479.57Q720-186 698.85-165T648-144H312Zm336-552H312v480h336v-480ZM384-288h72v-336h-72v336Zm120 0h72v-336h-72v336ZM312-696v480-480Z" />
+      </svg>
+    </a>
+    <!-- delete button end here  -->
+
+    <!-- delete modal start here  -->
+    <div
+      class="modal fade"
+      id="deleteModal-{{ $service->id }}"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div
+        class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <!-- close button start here  -->
+          <a
+            href="#"
+            role="button"
+            data-bs-dismiss="modal"
+            class="position-absolute end-0 p-2"
+            arial-label="close">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24"
+              viewBox="0 -960 960 960"
+              width="24"
+              fill="#5d6d7e">
+              <path
+                d="m291-240-51-51 189-189-189-189 51-51 189 189 189-189 51 51-189 189 189 189-51 51-189-189-189 189Z" />
+            </svg>
+          </a>
+          <!-- close button end here  -->
+
+          <div class="modal-body my-3">
+            <span class="m-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="30"
+                viewBox="0 -960 960 960"
+                width="30"
+                fill="#dc3545">
+                <path
+                  d="M312-144q-29.7 0-50.85-21.15Q240-186.3 240-216v-480h-48v-72h192v-48h192v48h192v72h-48v479.57Q720-186 698.85-165T648-144H312Zm336-552H312v480h336v-480ZM384-288h72v-336h-72v336Zm120 0h72v-336h-72v336ZM312-696v480-480Z" />
+              </svg>
+            </span>
+            <h1
+              class="modal-title mt-2"
+              id="exampleModalLabel">
+              Delete Service
+            </h1>
+            <p class="pb-4">
+              Are you sure you want to delete
+              this Service?
+            </p>
+
+            <!-- delete and cancel button start here  -->
+            <div>
+             <form action="{{ route('service.delete', $service->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE') <!-- This is important to use the DELETE HTTP method -->
+                    <button type="button" class="btn btn-secondary cancel_modal" data-bs-dismiss="modal">
+                        Cancel
+                    </button>
+
+                    <button type="submit" class="btn btn-danger del_modal">
+                        Delete
+                    </button>
+                </form>
+            </div>
+            <!-- delete and cancel button end here  -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- delete modal end here  -->
   </div>
-  <!-- main data end here  -->
+  </td>
+  <!-- Service-1 edit and delete icon end here  -->
+  </tr>
+  @endforeach
+  <!-- service-1 end here  -->
+
+
+  <!-- service-3 end here  -->
+  </tbody>
+  </table>
+</div>
+<!-- table content end here  -->
+</div>
+<!-- card body end here  -->
+
+<!-- card footer start here  -->
+<div class="card-footer">
+  <p>Showing 1 to 10 of xyz entries</p>
+
+  <div class="pagination-div">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item">
+          <a
+            class="page-link"
+            href="#"
+            aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">1</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">2</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">3</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+<!-- card footer end here  -->
+</div>
+<!-- card end here  -->
+</div>
+</div>
+</div>
+<!-- main data end here  -->
 </div>
 <script>
   // CKEditor initialization for the edit form

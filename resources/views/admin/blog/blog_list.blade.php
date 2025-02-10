@@ -2,10 +2,10 @@
 <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
 @section('styles')
 <style>
-    .cke_notification_warning {
-        display: none !important;
-    }
-    </style>
+  .cke_notification_warning {
+    display: none !important;
+  }
+</style>
 @section('content')
 <div class="main-right-container" id="main-right-container">
   <!-- main data start here  -->
@@ -34,15 +34,15 @@
         <!-- add banner breadcrumb end here  -->
       </div>
       @if (Session::has('success_message'))
-                            <!-- Check vendorRegister() method in Front/VendorController.php -->
-                            <div class="alert alert-success alert-dismissible fade show mt-3 d-flex justify-content-between align-items-center"
-                              role="alert">
-                              <div>
-                                <strong>Success:</strong> {{ Session::get('success_message') }}
-                              </div>
-                              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                            @endif
+      <!-- Check vendorRegister() method in Front/VendorController.php -->
+      <div class="alert alert-success alert-dismissible fade show mt-3 d-flex justify-content-between align-items-center"
+        role="alert">
+        <div>
+          <strong>Success:</strong> {{ Session::get('success_message') }}
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      @endif
       <!-- dashboard-head end here... -->
 
       <div class="container-fluid">
@@ -147,204 +147,204 @@
                         <!-- blog View button end here  -->
 
                         <!-- view Modal start here  -->
-                       <!-- view Modal start here -->
-<div class="modal fade" id="viewModal-{{$blog->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title" id="exampleModalLabel">View Blog</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
+                        <!-- view Modal start here -->
+                        <div class="modal fade" id="viewModal-{{$blog->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h1 class="modal-title" id="exampleModalLabel">View Blog</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
 
-      <!-- modal body start here -->
-      <div class="modal-body">
-        <span>
-          <img src="{{ asset('http://localhost/spark_technology/storage/app/public/images/thumbnails/' . $blog->thumbnail_image) }}" alt="image" class="img-fluid" />
-          <h1 class="fs-5 p-2 mt-4">{{ $blog->title }}</h1>
-          <p class="desc px-4">{{ $blog->description }}</p>
-        </span>
-        <button type="button" class="btn btn-secondary cancel_modal my-3" data-bs-dismiss="modal">Close</button>
-      </div>
-      <!-- modal body end here -->
-    </div>
-  </div>
-</div>
-<!-- view modal end here -->
+                              <!-- modal body start here -->
+                              <div class="modal-body">
+                                <span>
+                                  <img src="{{ asset('http://localhost/spark_technology/storage/app/public/images/thumbnails/' . $blog->thumbnail_image) }}" alt="image" class="img-fluid" />
+                                  <h1 class="fs-5 p-2 mt-4">{{ $blog->title }}</h1>
+                                  <p class="desc px-4">{{ $blog->description }}</p>
+                                </span>
+                                <button type="button" class="btn btn-secondary cancel_modal my-3" data-bs-dismiss="modal">Close</button>
+                              </div>
+                              <!-- modal body end here -->
+                            </div>
+                          </div>
+                        </div>
+                        <!-- view modal end here -->
 
                         <!-- view modal end here  -->
 
                         <!-- blog edit button start here  -->
-                       <!-- blog edit button start here -->
-<a
-  role="button"
-  href="#"
-  class="btn text-decoration-none table_edit bg-info-subtle"
-  data-bs-toggle="modal"
-  data-bs-target="#editModal-{{$blog->id}}"
-  title="Edit"><svg xmlns="http://www.w3.org/2000/svg" height="12" viewBox="0 -960 960 960" width="12" fill="rgb(25 135 84)">
-    <path d="M80 0v-160h800V0H80Zm160-320h56l312-311-29-29-28-28-311 312v56Zm-80 80v-170l448-447q11-11 25.5-17t30.5-6q16 0 31 6t27 18l55 56q12 11 17.5 26t5.5 31q0 15-5.5 29.5T777-687L330-240H160Zm560-504-56-56 56 56ZM608-631l-29-29-28-28 57 57Z"/>
-  </svg>
-</a>
-<!-- blog edit button end here -->
+                        <!-- blog edit button start here -->
+                        <a
+                          role="button"
+                          href="#"
+                          class="btn text-decoration-none table_edit bg-info-subtle"
+                          data-bs-toggle="modal"
+                          data-bs-target="#editModal-{{$blog->id}}"
+                          title="Edit"><svg xmlns="http://www.w3.org/2000/svg" height="12" viewBox="0 -960 960 960" width="12" fill="rgb(25 135 84)">
+                            <path d="M80 0v-160h800V0H80Zm160-320h56l312-311-29-29-28-28-311 312v56Zm-80 80v-170l448-447q11-11 25.5-17t30.5-6q16 0 31 6t27 18l55 56q12 11 17.5 26t5.5 31q0 15-5.5 29.5T777-687L330-240H160Zm560-504-56-56 56 56ZM608-631l-29-29-28-28 57 57Z" />
+                          </svg>
+                        </a>
+                        <!-- blog edit button end here -->
 
                         <!-- blog edit button end here  -->
 
                         <!-- Edit Modal start here  -->
                         <!-- Edit Modal start here -->
-<div class="modal fade" id="editModal-{{$blog->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title" id="exampleModalLabel">Edit Blog-{{$blog->id}}</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
+                        <div class="modal fade" id="editModal-{{$blog->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h1 class="modal-title" id="exampleModalLabel">Edit Blog-{{$blog->id}}</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
 
-      <div class="modal-body">
-        <div class="container">
-        <form class="upload-form" 
-      action="{{ isset($blog) ? route('blog.update', $blog->id) : route('blog.store') }}" 
-      method="POST" 
-      enctype="multipart/form-data">
-  
-  @csrf
-  @if(isset($blog))
-    @method('POST') <!-- for update -->
-  @endif
-  
-  <!-- Blog Title -->
-  <div class="row form-group mt-1 mt-md-2">
-    <div class="col-12 col-md-3">
-      <label for="inputBlogTitle" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Blog Title</label>
-    </div>
-    <div class="col-12 col-md-8 mt-0">
-      <input type="text" name="title" id="inputBlogTitle" class="form-control form-control-lg form-input" 
-             placeholder="Enter Blog Title..." 
-             value="{{ old('title', $blog->title ?? '') }}" required />
-    </div>
-    <div class="col-1"></div>
-  </div>
+                              <div class="modal-body">
+                                <div class="container">
+                                  <form class="upload-form"
+                                    action="{{ isset($blog) ? route('blog.update', $blog->id) : route('blog.store') }}"
+                                    method="POST"
+                                    enctype="multipart/form-data">
 
-  <!-- Blog Description -->
-  <div class="row form-group">
-    <div class="col-12 col-md-3">
-      <label for="inputBlogDescription" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Blog Description</label>
-    </div>
-    <div class="col-12 col-md-8 mt-0">
-      <textarea class="form-control form-control-lg form-textbox" name="description" id="inputBlogDescription" 
-                rows="4" placeholder="Write your blog description here..." required>{{ old('description', $blog->description ?? '') }}</textarea>
-    </div>
-    <div class="col-1"></div>
-  </div>
+                                    @csrf
+                                    @if(isset($blog))
+                                    @method('POST') <!-- for update -->
+                                    @endif
 
-  <!-- Blog Link -->
-  <div class="row form-group">
-    <div class="col-12 col-md-3">
-      <label for="inputBlogLink" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Blog Link</label>
-    </div>
-    <div class="col-12 col-md-8 mt-0">
-      <input type="text" name="slug" id="inputBlogLink" class="form-control form-control-lg form-input" 
-             placeholder="Enter Blog Link..." 
-             value="{{ old('slug', $blog->slug ?? '') }}" required />
-    </div>
-    <div class="col-1"></div>
-  </div>
+                                    <!-- Blog Title -->
+                                    <div class="row form-group mt-1 mt-md-2">
+                                      <div class="col-12 col-md-3">
+                                        <label for="inputBlogTitle" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Blog Title</label>
+                                      </div>
+                                      <div class="col-12 col-md-8 mt-0">
+                                        <input type="text" name="title" id="inputBlogTitle" class="form-control form-control-lg form-input"
+                                          placeholder="Enter Blog Title..."
+                                          value="{{ old('title', $blog->title ?? '') }}" required />
+                                      </div>
+                                      <div class="col-1"></div>
+                                    </div>
 
+                                    <!-- Blog Description -->
+                                    <div class="row form-group">
+                                      <div class="col-12 col-md-3">
+                                        <label for="inputBlogDescription" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Blog Description</label>
+                                      </div>
+                                      <div class="col-12 col-md-8 mt-0">
+                                        <textarea class="form-control form-control-lg form-textbox" name="description" id="inputBlogDescription"
+                                          rows="4" placeholder="Write your blog description here..." required>{{ old('description', $blog->description ?? '') }}</textarea>
+                                      </div>
+                                      <div class="col-1"></div>
+                                    </div>
 
-  <div class="row form-group">
-    <div class="col-12 col-md-3">
-        <label for="metaTags" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Enter Metas (JSON Format)</label>
-    </div>
-    <div class="col-12 col-md-8">
-        <textarea name="meta_tags" id="metaTags" class="form-control form-control-lg form-input" placeholder="Enter JSON formatted metas..." required rows="8" style="height: 250px;">{{ old('meta_tags', $blog->meta_tags ?? '') }}</textarea>
-    </div>
-    <div class="col-1"></div>
-</div>
+                                    <!-- Blog Link -->
+                                    <div class="row form-group">
+                                      <div class="col-12 col-md-3">
+                                        <label for="inputBlogLink" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Blog Link</label>
+                                      </div>
+                                      <div class="col-12 col-md-8 mt-0">
+                                        <input type="text" name="slug" id="inputBlogLink" class="form-control form-control-lg form-input"
+                                          placeholder="Enter Blog Link..."
+                                          value="{{ old('slug', $blog->slug ?? '') }}" required />
+                                      </div>
+                                      <div class="col-1"></div>
+                                    </div>
 
 
+                                    <div class="row form-group">
+                                      <div class="col-12 col-md-3">
+                                        <label for="metaTags" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Enter Metas (JSON Format)</label>
+                                      </div>
+                                      <div class="col-12 col-md-8">
+                                        <textarea name="meta_tags" id="metaTags" class="form-control form-control-lg form-input" placeholder="Enter JSON formatted metas..." required rows="8" style="height: 250px;">{{ old('meta_tags', $blog->meta_tags ?? '') }}</textarea>
+                                      </div>
+                                      <div class="col-1"></div>
+                                    </div>
 
 
-  <!-- Blog Content -->
-  <div class="row form-group">
-    <div class="col-12 col-md-3">
-      <label for="html_content" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Blog Content</label>
-    </div>
-    <div class="col-12 col-md-8 mt-0">
-      <textarea class="form-control ckeditor" id="html_content" name="html_content" rows="10">{{ old('html_content', $blog->html_content ?? '') }}</textarea>
-    </div>
-    <div class="col-1"></div>
-  </div>
 
 
-  
-
-<!-- Thumbnail Image Upload (Edit Form) -->
-<div class="row form-group">
-  <div class="col-12 col-md-3">
-    <label for="inputThumbnailImage" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Upload Thumbnail Image</label>
-  </div>
-  <div class="col-12 col-md-8 mt-0">
-    <div class="form-group mb-20 upload-input">
-      <label for="thumbnailImg" class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4">
-        <div class="d-flex flex-column align-items-center gap-3">
-          <span>
-            <!-- Optionally, an SVG icon or placeholder icon can go here -->
-          </span>
-          <p id="thumbnailText" class="mb-0">Upload Thumbnail</p>
-        </div>
-      </label>
-      <input type="file" name="thumbnail_image" class="form-control form-control-lg " id="thumbnailImg" onchange="previewThumbnailImage(event)" />
-    </div>
-
-    <!-- Thumbnail Image Preview -->
-    <div id="thumbnailPreview" class="mt-3">
-      <img id="previewThumbnailImg" src="{{ isset($blog) ? asset('http://localhost/spark_technology/storage/app/public/images/thumbnails/' . $blog->thumbnail_image) : '' }}" alt="Thumbnail Image Preview" style="display: {{ isset($blog) ? 'block' : 'none' }}; width: 100%; max-width: 200px; border-radius: 8px;" />
-    </div>
-  </div>
-</div>
-
-<!-- Banner Image Upload (Edit Form) -->
-<div class="row form-group">
-  <div class="col-12 col-md-3">
-    <label for="inputBannerImage" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Upload Banner Image</label>
-  </div>
-  <div class="col-12 col-md-8 mt-0">
-    <div class="form-group mb-20 upload-input">
-      <label for="bannerImg" class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4">
-        <div class="d-flex flex-column align-items-center gap-3">
-          <span>
-            <!-- Optionally, an SVG icon or placeholder icon can go here -->
-          </span>
-          <p id="bannerText" class="mb-0">Upload Banner</p>
-        </div>
-      </label>
-      <input type="file" name="banner_image" class="form-control form-control-lg " id="bannerImg" onchange="previewBannerImage(event)" />
-    </div>
-
-    <!-- Banner Image Preview -->
-    <div id="bannerPreview" class="mt-3">
-      <img id="previewBannerImg" src="{{ isset($blog) ? asset('http://localhost/spark_technology/storage/app/public/images/banners/' . $blog->banner_image) : '' }}" alt="Banner Image Preview" style="display: {{ isset($blog) ? 'block' : 'none' }}; width: 100%; max-width: 200px; border-radius: 8px;" />
-    </div>
-  </div>
-</div>
+                                    <!-- Blog Content -->
+                                    <div class="row form-group">
+                                      <div class="col-12 col-md-3">
+                                        <label for="html_content" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Blog Content</label>
+                                      </div>
+                                      <div class="col-12 col-md-8 mt-0">
+                                        <textarea class="form-control ckeditor" id="html_content" name="html_content" rows="10">{{ old('html_content', $blog->html_content ?? '') }}</textarea>
+                                      </div>
+                                      <div class="col-1"></div>
+                                    </div>
 
 
-  <!-- Save Button -->
-  <div class="row">
-    <div class="col-4 col-md-3"></div>
-    <div class="col-12 col-md-9 form-button">
-      <button type="button" class="btn btn-secondary cancel_modal my-3" data-bs-dismiss="modal">Cancel</button>
 
-      <button type="submit" class="btn form-btn my-0">Update</button>
-    </div>
-  </div>
-</form>
 
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Edit Modal end here -->
+                                    <!-- Thumbnail Image Upload (Edit Form) -->
+                                    <div class="row form-group">
+                                      <div class="col-12 col-md-3">
+                                        <label for="inputThumbnailImage" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Upload Thumbnail Image</label>
+                                      </div>
+                                      <div class="col-12 col-md-8 mt-0">
+                                        <div class="form-group mb-20 upload-input">
+                                          <label for="thumbnailImg" class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4">
+                                            <div class="d-flex flex-column align-items-center gap-3">
+                                              <span>
+                                                <!-- Optionally, an SVG icon or placeholder icon can go here -->
+                                              </span>
+                                              <p id="thumbnailText" class="mb-0">Upload Thumbnail</p>
+                                            </div>
+                                          </label>
+                                          <input type="file" name="thumbnail_image" class="form-control form-control-lg " id="thumbnailImg" onchange="previewThumbnailImage(event)" />
+                                        </div>
+
+                                        <!-- Thumbnail Image Preview -->
+                                        <div id="thumbnailPreview" class="mt-3">
+                                          <img id="previewThumbnailImg" src="{{ isset($blog) ? asset('http://localhost/spark_technology/storage/app/public/images/thumbnails/' . $blog->thumbnail_image) : '' }}" alt="Thumbnail Image Preview" style="display: {{ isset($blog) ? 'block' : 'none' }}; width: 100%; max-width: 200px; border-radius: 8px;" />
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <!-- Banner Image Upload (Edit Form) -->
+                                    <div class="row form-group">
+                                      <div class="col-12 col-md-3">
+                                        <label for="inputBannerImage" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Upload Banner Image</label>
+                                      </div>
+                                      <div class="col-12 col-md-8 mt-0">
+                                        <div class="form-group mb-20 upload-input">
+                                          <label for="bannerImg" class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4">
+                                            <div class="d-flex flex-column align-items-center gap-3">
+                                              <span>
+                                                <!-- Optionally, an SVG icon or placeholder icon can go here -->
+                                              </span>
+                                              <p id="bannerText" class="mb-0">Upload Banner</p>
+                                            </div>
+                                          </label>
+                                          <input type="file" name="banner_image" class="form-control form-control-lg " id="bannerImg" onchange="previewBannerImage(event)" />
+                                        </div>
+
+                                        <!-- Banner Image Preview -->
+                                        <div id="bannerPreview" class="mt-3">
+                                          <img id="previewBannerImg" src="{{ isset($blog) ? asset('http://localhost/spark_technology/storage/app/public/images/banners/' . $blog->banner_image) : '' }}" alt="Banner Image Preview" style="display: {{ isset($blog) ? 'block' : 'none' }}; width: 100%; max-width: 200px; border-radius: 8px;" />
+                                        </div>
+                                      </div>
+                                    </div>
+
+
+                                    <!-- Save Button -->
+                                    <div class="row">
+                                      <div class="col-4 col-md-3"></div>
+                                      <div class="col-12 col-md-9 form-button">
+                                        <button type="button" class="btn btn-secondary cancel_modal my-3" data-bs-dismiss="modal">Cancel</button>
+
+                                        <button type="submit" class="btn form-btn my-0">Update</button>
+                                      </div>
+                                    </div>
+                                  </form>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Edit Modal end here -->
 
                         <!-- Edit modal end here  -->
 
@@ -354,7 +354,7 @@
                           role="button"
                           class="btn text-decoration-none table_del bg-danger-subtle"
                           data-bs-toggle="modal"
-                          data-bs-target="#deleteModal"
+                          data-bs-target="#deleteModal-{{ $blog->id }}"
                           title="delete">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -371,7 +371,7 @@
                         <!-- delete modal start here  -->
                         <div
                           class="modal fade"
-                          id="deleteModal"
+                          id="deleteModal-{{ $blog->id }}"
                           tabindex="-1"
                           aria-labelledby="exampleModalLabel"
                           aria-hidden="true">
@@ -421,18 +421,18 @@
 
                                 <!-- delete and cancel button start here  -->
                                 <div>
-                                  <button
-                                    type="button"
-                                    class="btn btn-secondary cancel_modal"
-                                    data-bs-dismiss="modal">
-                                    Cancel
-                                  </button>
 
-                                  <button
-                                    type="button"
-                                    class="btn btn-danger del_modal">
-                                    Delete
-                                  </button>
+                                  <form action="{{ route('blog.delete' , $blog->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE') <!-- This is important to use the DELETE HTTP method -->
+                                    <button type="button" class="btn btn-secondary cancel_modal" data-bs-dismiss="modal">
+                                      Cancel
+                                    </button>
+
+                                    <button type="submit" class="btn btn-danger del_modal">
+                                      Delete
+                                    </button>
+                                  </form>
                                 </div>
                                 <!-- delete and cancel button end here  -->
                               </div>
@@ -443,6 +443,7 @@
                       </div>
                     </td>
                   </tr>
+
 
                   @endforeach
 
@@ -504,11 +505,11 @@
     const preview = document.getElementById('previewThumbnailImg');
     const file = event.target.files[0];
     const reader = new FileReader();
-    
+
     reader.onload = function() {
       preview.src = reader.result;
       preview.style.display = 'block';
-      
+
       // Hide the placeholder text and icon, and display the image
       document.getElementById('thumbnailText').style.display = 'none';
     };
@@ -520,11 +521,11 @@
     const preview = document.getElementById('previewBannerImg');
     const file = event.target.files[0];
     const reader = new FileReader();
-    
+
     reader.onload = function() {
       preview.src = reader.result;
       preview.style.display = 'block';
-      
+
       // Hide the placeholder text and icon, and display the image
       document.getElementById('bannerText').style.display = 'none';
     };

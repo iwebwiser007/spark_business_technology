@@ -21,80 +21,37 @@ class BlogController extends Controller
         return view('admin.blog.add_edit_blog');
     }
 
-//     public function blogStore(Request $request)
-// {
-
-//     // Validate incoming request
-//     $request->validate([
-//         'title' => 'required|string|max:255',
-//         'description' => 'required|string',
-//         'link' => 'required|string|max:255',
-//         'meta_description' => 'nullable|string',
-//         'meta_keywords' => 'nullable|string',
-//         'html_content' => 'required',
-//     ]);
-
-//     // Handle the image upload
-//     if ($request->hasFile('image')) {
-//         // Store the file in the 'public/images' directory and get the path
-//         $imagePath = $request->file('image')->store('public/images');
-//         // Generate the URL for the stored image
-//         $imageUrl = basename($imagePath);
-//     } else {
-//         $imageUrl = null; // Fallback if no image is uploaded
-//     }
-
-//     // Create a new blog post
-//     Blog::create([
-//         'title' => $request->title,
-//         'description' => $request->description,
-//         'slug' => $request->link,
-//         'image' => $imageUrl, 
-//         'meta_description' => $request->meta_description,
-//         'meta_keywords' => $request->meta_keywords,
-//         'html_content' => $request->html_content,
-
-//     ]);
-
-//     return redirect()->route('blog-list')->with('success_message', 'Blog created successfully!');
-// }
-
 
 
 
 public function blogStore(Request $request)
 {
-    // Validate incoming request
-    $request->validate([
-        'title' => 'required|string|max:255',
-        'description' => 'required|string',
-        'link' => 'required|string|max:255',
-        'meta_description' => 'nullable|string',
-        'meta_keywords' => 'nullable|string',
-        'html_content' => 'required',
-        'meta_tags' => 'required|string',
 
-        
-    ]);
-
-   
-
-
-    // Handle the thumbnail image upload and resize
     if ($request->hasFile('thumbnail_image')) {
         $thumbnail = $request->file('thumbnail_image');
-        $thumbnailImage = Image::make($thumbnail)->resize(360, 268);
-        $thumbnailPath =  time() . '_thumbnail.' . $thumbnail->getClientOriginalExtension();
+        
+        $thumbnailImage = Image::make($thumbnail);
+        if ($thumbnailImage->width() < 360 || $thumbnailImage->height() < 268) {
+            return back()->with(['error_message' => 'Thumbnail image must be at least 360x268 pixels.']);
+        }
+        
+        $thumbnailImage->resize(360, 268);
+        $thumbnailPath = time() . '_thumbnail.' . $thumbnail->getClientOriginalExtension();
         $thumbnailImage->save(storage_path('app/public/images/thumbnails/' . $thumbnailPath));
     } else {
         $thumbnailPath = null;
     }
 
-    // Handle the banner image upload and resize
     if ($request->hasFile('banner_image')) {
         $banner = $request->file('banner_image');
-        $bannerImage = Image::make($banner)->resize(1020, 496);
-        $bannerPath =  time() . '_banner.' . $banner->getClientOriginalExtension();
+        
+        $bannerImage = Image::make($banner);
+        if ($bannerImage->width() < 1020 || $bannerImage->height() < 496) {
+            return back()->with(['error_message' => 'Banner image must be at least 1020x496 pixels.']);
+        }
+
+        $bannerImage->resize(1020, 496);
+        $bannerPath = time() . '_banner.' . $banner->getClientOriginalExtension();
         $bannerImage->save(storage_path('app/public/images/banners/' . $bannerPath));
     } else {
         $bannerPath = null;
@@ -102,29 +59,18 @@ public function blogStore(Request $request)
 
     $metaTags = json_decode($request->meta_tags, true);
 
-  
-
-    // Create a new blog post
     Blog::create([
         'title' => $request->title,
         'description' => $request->description,
         'slug' => $request->link,
         'thumbnail_image' => $thumbnailPath,
         'banner_image' => $bannerPath,
-        'meta_description' => $request->meta_description,
-        'meta_keywords' => $request->meta_keywords,
         'html_content' => $request->html_content,
         'meta_tags' => json_encode($metaTags),
     ]);
 
     return redirect()->route('blog-list')->with('success_message', 'Blog created successfully!');
 }
-
-
-
-
-
-
 
 
 public function edit($id)
@@ -143,9 +89,6 @@ public function update(Request $request, $id)
         'title' => 'required|string|max:255',
         'description' => 'required|string',
         'slug' => 'required|string|unique:blogs,slug,' . $id,
-        'meta_description' => 'nullable|string|max:255',
-        'meta_keywords' => 'nullable|string|max:255',
-        'html_content' => 'required|string',
         'meta_tags' => 'required|string',
     ]);
     
@@ -187,16 +130,25 @@ public function update(Request $request, $id)
     $blog->title = $request->title;
     $blog->description = $request->description;
     $blog->slug = $request->slug;
-    $blog->meta_description = $request->meta_description;
-    $blog->meta_keywords = $request->meta_keywords;
     $blog->html_content = $request->html_content;
     $blog->meta_tags = json_encode($metaTags);
 
     // Save the updated blog post
     $blog->save();
 
-    return redirect()->route('blog-list')->with('success_message', 'Blog Updated successfully!');
+    return redirect()->route('blog-list')->with('success_message', 'Blog Updated Successfully!');
 }
+
+
+public function delete(string $id){
+ 
+    $blog = Blog::find($id);
+    $blog->delete();
+
+    return redirect()->route('blog-list')->with('success_message' , 'Blog Deleted Successfully!');
+
+}
+
 
 
 

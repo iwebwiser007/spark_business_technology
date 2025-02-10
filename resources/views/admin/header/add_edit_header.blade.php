@@ -1,4 +1,7 @@
 @extends('components.admin.layouts')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery first -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/parsleyjs@2.9.2/dist/parsley.css">
+<script src="https://cdn.jsdelivr.net/npm/parsleyjs@2.9.2/dist/parsley.min.js"></script>
 @section('content')
 <div class="main-right-container" id="main-right-container">
               <!-- main data start here  -->
@@ -58,7 +61,7 @@
                       <!-- card body start here  -->
                       <div class="card-body">
                         <!-- form start here  -->
-                        <form class="upload-form" action="{{ route('admin.header.store') }}" method="POST">
+                        <form class="upload-form" action="{{ route('admin.header.store') }}" method="POST" data-parsley-validate>
                             @csrf
                           <!-- header title/Link start here  -->
                           <div
@@ -76,14 +79,17 @@
 
                             <!-- Header title input start here  -->
                             <div class="col-12 col-md-9 mt-0">
-                              <div class="input-group mb-3 pb-4 position-relative">
+                              <div class="input-group mb-3 pb-4 position-relative gap-2">
+                                <div class="col-5">
                                 <input type="text"
                                   class="form-control"
                                   id="header-link"
                                   name="title"
                                   placeholder="Enter Header title..."
                                   aria-label="title"
-                                />
+                                  data-parsley-required="true"
+                                /></div>
+                                <div class="col-5">
                                 <input
                                   type="text"
                                   class="form-control rounded-end"
@@ -91,16 +97,22 @@
                                   name="link"
                                   placeholder="Enter Header link"
                                   aria-label="link"
+                                  data-parsley-required="true"
+
+
                                 />
-                                <span
+                                </div>
+                                <!-- <span
                                   class="text-danger position-absolute bottom-0 ms-1 d-none d-sm-block"
                                   >New Heading Title/Link added.</span
-                                >
-                                <div class="valid-feedback">Looks good!</div>
+                                > -->
                               </div>
+                              </div>
+                              </div>
+                              
 
                               <!-- Add Subheader button start here   -->
-                              <a
+                           {{--   <a
                                 href="#subHeaderTitle"
                                 role="button"
                                 class="btn btn-outline-secondary bg-white text-secondary btn-sm mb-2 px-2"
@@ -223,7 +235,7 @@
                           <!-- Sub-header title/Link end here  -->
 
                           <!-- add sub-sub-heading start here  -->
-                          <div id="subHeader"></div>
+                          <div id="subHeader"></div> --}}
                           <!-- add sub-sub-heading end here  -->
 
                           <!-- new header title input area start here  -->
@@ -238,7 +250,7 @@
                           <div class="row">
                             <div class="col-4 col-md-3"></div>
                             <div class="col-12 col-md-9 form-button">
-                              <a href="header_list.html" role="button" class="btn form-cancel my-0">cancel</a>
+                              <a href="{{route('header-list')}}" role="button" class="btn form-cancel my-0">cancel</a>
                               <button
                                 type="submit"
                                 

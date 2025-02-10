@@ -20,9 +20,13 @@ class ServiceController extends Controller
         $service->html_content = str_replace('{{', '', $service->html_content);
         $service->html_content = str_replace('\')}}', '', $service->html_content);
 
+        $metaTags = json_decode($service->meta_tags, true);
+
+
+
     
         // Return the view with the updated service data
-        return view('front.service.show', compact('service'));
+        return view('front.service.show', compact('service' , 'metaTags' ));
     }
     
     

@@ -387,7 +387,7 @@
                 <li class="sidebar-item" id="has-dropdown-blog">
                     <a
                         href="#"
-                        class="sidebar-link collapsed has-dropdown active"
+                        class="sidebar-link collapsed has-dropdown "
                         data-bs-toggle="collapse"
                         data-bs-target="#blog"
                         aria-expanded="true"
@@ -424,7 +424,7 @@
                         class="sidebar-dropdown list-unstyled collapse show"
                         data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="{{ route('add-edit-blog') }}" class="sidebar-link active">
+                            <a href="{{ route('add-edit-blog') }}" class="sidebar-link ">
                                 <span>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"

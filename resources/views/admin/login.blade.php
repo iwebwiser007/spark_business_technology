@@ -6,15 +6,7 @@
 
 <head>
 
-  <style>
-    /* Custom Parsley error message color */
-    .parsley-errors-list {
-      color: rgb(210, 78, 76) !important;
-      /* Change error text color to red */
-    }
-
-    /* Optional: Style the error list items as well */
-  </style>
+  
   <!-- Meta tags start here... -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />

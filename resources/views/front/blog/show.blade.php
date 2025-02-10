@@ -3,6 +3,7 @@
 @section('title', $metaTags['title'] ?? 'Default Title') <!-- Use title from metaTags or fallback to default title -->
 
 @section('meta')
+@if(isset($metaTags))
 @foreach ($metaTags as $key => $value)
 @if ($key === 'title')
 <!-- Title will be handled separately in the layout -->
@@ -15,6 +16,7 @@
 <meta name="{{ $key }}" content="{{ $value }}">
 @endif
 @endforeach
+@endif
 @endsection
 
 @section('content')

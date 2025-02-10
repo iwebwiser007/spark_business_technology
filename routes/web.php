@@ -57,14 +57,27 @@ Route::get('/admin/logout', [AdminController::class, 'logout'])->name('logout');
 Route::middleware(['admin.auth'])->prefix('admin')->namespace('App\Http\Controllers\admin')->group(function () {
     Route::get('dashboard', 'AdminController@dashboard')->name('dashboard');
     Route::get('header-list', 'HeaderController@index')->name('header-list');
-
     Route::match(['get', 'post'], 'add-edit-header', 'HeaderController@addEditHeader')->name('add-edit-header');
     Route::match(['get', 'post'], 'header-store', 'HeaderController@store')->name('admin.header.store');
+    Route::delete('/header-delete/{id}', 'HeaderController@delete')->name('header.delete');
+    Route::match(['get', 'post'], '/header-update/{id}', 'HeaderController@update')->name('header.update');
+
+
 
     Route::get('banner-list', 'BannerController@index')->name('banner-list');
     Route::match(['get', 'post'], 'add-edit-banner', 'BannerController@addEditBanner')->name('add-edit-banner');
+    Route::match(['get', 'post'], 'banner-store', 'BannerController@store')->name('banner.store');
+    Route::match(['get', 'post'], '/banner-update/{id}', 'BannerController@update')->name('banner.update');
+    Route::delete('/banner-delete/{id}', 'BannerController@delete')->name('banner.delete');
+    Route::match(['get', 'post'],'/update-banner-status/{id}', 'BannerController@updateStatus')->name('banner.update-status');
+
+
+
 
     Route::get('social-link-list', 'SocialLinkController@index')->name('social-link-list');
+    Route::get('add-edit-social', 'SocialLinkController@add')->name('add-edit-social');
+    Route::match(['get', 'post'], 'social-store', 'SocialLinkController@store')->name('admin.social.store');
+
 
     Route::get('feedback-list', 'FeedbackController@index')->name('feedback-list');
     Route::match(['get', 'post'], 'add-edit-feedback', 'FeedbackController@addEditFeedback')->name('add-edit-feedback');
@@ -77,6 +90,7 @@ Route::middleware(['admin.auth'])->prefix('admin')->namespace('App\Http\Controll
     Route::match(['get', 'post'], 'blog-store', 'BlogController@blogStore');
     Route::match(['get', 'post'], '/blog-edit/{id}', 'BlogController@edit')->name('blog.edit');
     Route::match(['get', 'post'], '/blog-update/{id}', 'BlogController@update')->name('blog.update');
+    Route::delete('/blog-delete/{id}', 'BlogController@delete')->name('blog.delete');
 
 
 
@@ -92,6 +106,7 @@ Route::middleware(['admin.auth'])->prefix('admin')->namespace('App\Http\Controll
     Route::match(['get', 'post'], 'add-edit-service', 'ServiceController@addEditService')->name('add-edit-service');
     Route::match(['get', 'post'], 'service-store', 'ServiceController@store');
     Route::match(['get', 'post'], '/service-update/{id}', 'ServiceController@update')->name('service.update');
+    Route::delete('/service-delete/{id}', 'ServiceController@delete')->name('service.delete');
 
 
 
