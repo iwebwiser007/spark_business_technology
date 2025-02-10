@@ -30,21 +30,25 @@
 
 <body>
 
-<div class="main-container">
-      <!-- wrapper start here  -->
-      <div class="wrapper">
-        <div class="">
-          <!-- wrapper-content start here... -->
-          <div class="wrapper-content">
-    @include('components.admin.nav')
-      @include('components.admin.header')
-        @yield('content')
-      @include('components.admin.footer')
-    <div class="sa-app__toasts toast-container bottom-0 end-0"></div>
+  <div class="main-container">
+    
+    <!-- wrapper start here  -->
+    <div class="wrapper">
+      <div class="">
+        <!-- wrapper-content start here... -->
+        <div class="wrapper-content">
+          @include('components.admin.nav')
+          @include('components.admin.header')
+          @yield('content')
+          @include('components.admin.footer')
+          <div class="sa-app__toasts toast-container bottom-0 end-0"></div>
+        </div>
+      </div>
+    </div>
   </div>
-  </div>
-  </div>
-  </div>
+
+
+  
 
   <!-- <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script> -->
   <script src="{{ asset('node_modules/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>

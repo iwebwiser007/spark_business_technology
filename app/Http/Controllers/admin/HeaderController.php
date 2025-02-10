@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Header;
 use App\Models\Heading;
 use App\Models\SubHeading;
 use Illuminate\Http\Request;
@@ -11,7 +12,8 @@ class HeaderController extends Controller
 {
     public function index()
     {
-        return view('admin.header.header_list');
+        $headers = Header::get();
+        return view('admin.header.header_list' , compact('headers'));
     }
 
 
@@ -22,38 +24,32 @@ class HeaderController extends Controller
 
     public function store(Request $request)
     {
-        return $request;
-        // Validation for the header title/link and sub-header title/link
-        $validated = $request->validate([
-            // Header Title and Link
-            'header_title' => 'required|string|max:255',
-            'header_link' => 'required|url|max:255',
-    
-            // Sub-header title and link (optional fields)
-            'sub_headers.*.title' => 'required|string|max:255',  // Validate all sub-header titles
-            'sub_headers.*.link' => 'required|url|max:255',  // Validate all sub-header links
+      
+        $header = Header::create([
+            'title' => $request->title,
+            'link' => $request->link,
         ]);
     
-        // Once validation passes, you can process the data
-        // For header
-        $header = Heading::create([
-            'title' => $validated['header_title'],
-            'link' => $validated['header_link'],
-        ]);
+        return redirect()->route('header-list')->with('success_message', 'Header saved successfully!');
+    }
+
+    public function delete(string $id){
+ 
+        $header = Header::find($id);
+        $header->delete();
     
-        // If sub-headers are provided
-        if (isset($validated['sub_headers'])) {
-            foreach ($validated['sub_headers'] as $subHeader) {
-                SubHeading::create([
-                    'heading_id' => $header->id,
-                    'title' => $subHeader['title'],
-                    'link' => $subHeader['link'],
-                ]);
-            }
-        }
+        return redirect()->route('header-list')->with('success_message' , 'Header Deleted Successfully!');
     
-        // Return a success message or redirect
-        return redirect()->route('admin.header.index')->with('success_message', 'Header saved successfully!');
+    }
+
+    public function update(Request $request , $id){
+
+        $header = Header::find($id);
+        $header->title = $request->title;
+        $header->link = $request->link;
+        $header->save();
+
+        return redirect()->route('header-list')->with('success_message' , 'Header Updated Successfully!');
     }
     
     

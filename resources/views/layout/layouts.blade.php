@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title')</title>
-    <meta name="keywords" content="@yield('keywords')" />
-    <meta name="description" content="@yield('description')" />
-    <!-- Other common meta tags go here -->
-    <!-- Common CSS Links -->
-    <!-- <link rel="stylesheet" href="{{ asset('public/common.css') }}"> -->
-    <!-- Favicon -->
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+@if(trim($__env->yieldContent('title')))
+    <title>@yield('title')</title> 
+@else
+    <title>{{ $metaTags['title'] ?? 'Default Title' }}</title>  
+@endif
+
+@hasSection('meta')  
+    @yield('meta')  
+    @elseif('service_meta')
+    @yield('service_meta')
+    @else
+    <meta name="keywords" content="@yield('keywords', 'default, keywords, here')" />
+    <meta name="description" content="@yield('description', 'Default description goes here.')" />
+@endif
+
     <link rel="icon" type="image/x-icon" href="{{ asset('public/web/favicon.ico') }}">
     <!-- Google Fonts CDN Link -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,6 +40,10 @@
     <link rel="stylesheet" href="{{ asset('public/web/css/loader.css') }}">
     <link rel="stylesheet" href="{{ asset('public/web/css/Spark.css') }}">
     <link rel="stylesheet" href="{{ asset('public/web/css/Responsive.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/parsleyjs/dist/parsley.css" />
+    
+
+    
     <!-- Page-specific CSS Links -->
  
 </head>
@@ -97,6 +110,11 @@ https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js')}}"></script>
     <!-- Project main js script -->
     <script src="{{ asset('public/web/js/Spark.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/parsleyjs/dist/parsley.min.js"></script> <!-- Then Parsley -->
+<script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+
+
+
     <script>
         // hide-logo.js
         document.addEventListener('DOMContentLoaded', function() {
@@ -110,6 +128,8 @@ https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js
                 logo.classList.add('d-none');
             }
         });
+
+        
     </script>
     <!-- All Js script end here... -->
   </body>

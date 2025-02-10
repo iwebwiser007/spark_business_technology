@@ -5,10 +5,13 @@
 *,
 ::after,
 ::before {
-  padding: 0rem;
+  padding: 0.2rem;
   margin: 0rem;
   box-sizing: border-box;
 }
+
+
+
 
 /* ================================================ */
 /* Universal css for page reset setting end */

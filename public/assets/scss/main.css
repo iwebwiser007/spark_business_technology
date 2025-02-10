@@ -379,7 +379,7 @@ body {
 .card .card-body .form-group {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 .card .card-body .form-group select,
 .card .card-body .form-group input {
@@ -1611,4 +1611,13 @@ body {
     font-weight: 400;
     padding: 0.3rem 0.5rem;
   }
+}
+
+ /* Custom Parsley error message color */
+ .parsley-errors-list {
+  color: rgb(210, 78, 76) !important;
+  list-style-type: none;
+
+
+  /* Change error text color to red */
 }

@@ -2285,6 +2285,77 @@
   }
 }
 
+
+/* Blog Banner Styling */
+
+
+.blog-banner .title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.blog-banner .description {
+  font-size: 1.2rem;
+  color: #555;
+  margin-top: 10px;
+}
+
+/* Blog Post Cards Styling */
+.blog-posts .blog-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.blog-posts .blog-img img {
+  width: 100%;
+  height: auto;
+}
+
+.blog-posts .card-content {
+  padding: 20px;
+}
+
+.blog-posts .card-content .title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.blog-posts .card-content .title a {
+  color: #333;
+  text-decoration: none;
+}
+
+.blog-posts .card-content .meta {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.blog-posts .card-content .description {
+  font-size: 1rem;
+  color: #555;
+  margin-top: 10px;
+}
+
+.blog-posts .read-more {
+  color: #007bff;
+  font-weight: bold;
+  margin-top: 15px;
+  display: inline-block;
+  text-decoration: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .blog-posts .col-md-6 {
+    margin-bottom: 20px;
+  }
+}
+
+
 /* ================================================ */
 /* Second Mobile Breakpoint from max-width= "360px" */
 /* ============================================== */
