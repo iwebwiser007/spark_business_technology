@@ -13,7 +13,7 @@
                         xmlns:xlink="http://www.w3.org/1999/xlink">
                         <rect
                             x="0.863281"
-                            y="0.100586"    
+                            y="0.100586"
                             width="73.0292"
                             height="46.6716"
                             fill="url(#pattern0)" />
@@ -48,7 +48,7 @@
                 </li>
                 <!-- dashboard  -->
                 <li class="sidebar-item">
-                    <a href="{{ route('dashboard') }}" class="sidebar-link">
+                    <a href="{{ route('dashboard') }}" class="sidebar-link {{request()->routeIs('dashboard') ? 'active' : ''}} ">
                         <span><svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 height="20"
@@ -63,69 +63,47 @@
                     </a>
                 </li>
                 <!-- heading start here -->
-                <li class="sidebar-item head_item" id="has-dropdown-header">
+                <li class="sidebar-item" id="has-dropdown-header">
                     <a
                         href="#"
-                        class="sidebar-link collapsed has-dropdown"
+                        class="sidebar-link collapsed has-dropdown {{ request()->routeIs('add-edit-header') || request()->routeIs('header-list') ? 'active' : '' }}"
                         data-bs-toggle="collapse"
                         data-bs-target="#head"
                         aria-expanded="true"
                         aria-controls="head">
                         <span>
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                height="20"
-                                viewBox="0 -960 960 960"
-                                width="20"
-                                fill="#5f6368">
-                                <path
-                                    d="M144-744v-72h672v72H144Zm600 72q33 0 52.5 19.5T816-600v384q0 33-19.5 52.5T744-144H216q-33 0-52.5-19.5T144-216v-384q0-33 19.5-52.5T216-672h528Zm0 72H216v384h528v-384Zm-528 0v384-384Z" />
+                            <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20" fill="#5f6368">
+                                <path d="M144-744v-72h672v72H144Zm600 72q33 0 52.5 19.5T816-600v384q0 33-19.5 52.5T744-144H216q-33 0-52.5-19.5T144-216v-384q0-33 19.5-52.5T216-672h528Zm0 72H216v384h528v-384Zm-528 0v384-384Z" />
                             </svg>
                         </span>
                         Header
                         <span class="arrow">
-                            <svg
-                                id="direction-header"
-                                xmlns="http://www.w3.org/2000/svg"
-                                height="20"
-                                viewBox="0 -960 960 960"
-                                width="20"
-                                fill="#5f6368">
-                                <path
-                                    d="M480-345 240-585l56-56 184 183 184-183 56 56-240 240Z" />
+                            <svg id="direction-header" xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20" fill="#5f6368">
+                                <path d="M480-345 240-585l56-56 184 183 184-183 56 56-240 240Z" />
                             </svg>
                         </span>
                     </a>
+
+
                     <ul
                         id="head"
-                        class="sidebar-dropdown list-unstyled collapse"
+                        class="sidebar-dropdown list-unstyled collapse {{ request()->routeIs('add-edit-header') || request()->routeIs('header-list') ? 'show' : '' }}"
                         data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="{{ route('add-edit-header') }}" class="sidebar-link">
-                                <span><svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        height="8"
-                                        viewBox="0 -960 960 960"
-                                        width="8"
-                                        fill="#5f6368">
-                                        <path
-                                            d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
+                            <a href="{{ route('add-edit-header') }}" class="sidebar-link {{ request()->routeIs('add-edit-header') ? 'active' : '' }}">
+                                <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="8" viewBox="0 -960 960 960" width="8" fill="#5f6368">
+                                        <path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
                                     </svg>
                                 </span>
                                 Add Heading
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="{{ route('header-list') }}" class="sidebar-link">
+                            <a href="{{ route('header-list') }}" class="sidebar-link {{ request()->routeIs('header-list') ? 'active' : '' }}">
                                 <span>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        height="8"
-                                        viewBox="0 -960 960 960"
-                                        width="8"
-                                        fill="#5f6368">
-                                        <path
-                                            d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="8" viewBox="0 -960 960 960" width="8" fill="#5f6368">
+                                        <path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
                                     </svg>
                                 </span>
                                 Heading List
@@ -133,77 +111,50 @@
                         </li>
                     </ul>
                 </li>
+
+
                 <!-- heading end here  -->
 
                 <!-- Banner start here-->
                 <li class="sidebar-item" id="has-dropdown-banner">
                     <a
                         href="#"
-                        class="sidebar-link collapsed has-dropdown"
+                        class="sidebar-link collapsed has-dropdown {{ request()->routeIs('add-edit-banner') || request()->routeIs('banner-list') ? 'active' : '' }}"
                         data-bs-toggle="collapse"
                         data-bs-target="#banner"
                         aria-expanded="true"
                         aria-controls="banner">
-                        <span><svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                height="20"
-                                viewBox="0 -960 960 960"
-                                width="20"
-                                fill="#5f6368">
-                                <path
-                                    d="M336-600v-72h288v72H336ZM264-48q-29.7 0-50.85-21.15Q192-90.3 192-120v-720q0-29.7 21.15-50.85Q234.3-912 264-912h432q29.7 0 50.85 21.15Q768-869.7 768-840v720q0 29.7-21.15 50.85Q725.7-48 696-48H264Zm0-120v48h432v-48H264Zm0-72h432v-480H264v480Zm0-552h432v-48H264v48Zm0 0v-48 48Zm0 624v48-48Z" />
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20" fill="#5f6368">
+                                <path d="M336-600v-72h288v72H336ZM264-48q-29.7 0-50.85-21.15Q192-90.3 192-120v-720q0-29.7 21.15-50.85Q234.3-912 264-912h432q29.7 0 50.85 21.15Q768-869.7 768-840v720q0 29.7-21.15 50.85Q725.7-48 696-48H264Zm0-120v48h432v-48H264Zm0-72h432v-480H264v480Zm0-552h432v-48H264v48Zm0 0v-48 48Zm0 624v48-48Z" />
                             </svg>
                         </span>
-
-                        <!-- sidebar item span start here  -->
                         Banner
-                        <!-- sidebar item span end here  -->
-
-                        <!-- caret down svg start here  -->
-                        <span class="arrow"><svg
-                                id="direction-banner"
-                                xmlns="http://www.w3.org/2000/svg"
-                                height="20"
-                                viewBox="0 -960 960 960"
-                                width="20"
-                                fill="#5f6368">
-                                <path
-                                    d="M480-345 240-585l56-56 184 183 184-183 56 56-240 240Z" />
+                        <span class="arrow">
+                            <svg id="direction-banner" xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20" fill="#5f6368">
+                                <path d="M480-345 240-585l56-56 184 183 184-183 56 56-240 240Z" />
                             </svg>
                         </span>
-                        <!-- caret down svg end here  -->
                     </a>
                     <ul
                         id="banner"
-                        class="sidebar-dropdown list-unstyled collapse"
+                        class="sidebar-dropdown list-unstyled collapse {{ request()->routeIs('add-edit-banner') || request()->routeIs('banner-list') ? 'show' : '' }}"
                         data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="{{ route('add-edit-banner') }}" class="sidebar-link">
+                            <a href="{{ route('add-edit-banner') }}" class="sidebar-link {{ request()->routeIs('add-edit-banner') ? 'active' : '' }}">
                                 <span>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        height="8"
-                                        viewBox="0 -960 960 960"
-                                        width="8"
-                                        fill="#5f6368">
-                                        <path
-                                            d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="8" viewBox="0 -960 960 960" width="8" fill="#5f6368">
+                                        <path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
                                     </svg>
                                 </span>
-                                Add Bannner
+                                Add Banner
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="{{ route('banner-list') }}" class="sidebar-link">
+                            <a href="{{ route('banner-list') }}" class="sidebar-link {{ request()->routeIs('banner-list') ? 'active' : '' }}">
                                 <span>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        height="8"
-                                        viewBox="0 -960 960 960"
-                                        width="8"
-                                        fill="#5f6368">
-                                        <path
-                                            d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="8" viewBox="0 -960 960 960" width="8" fill="#5f6368">
+                                        <path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
                                     </svg>
                                 </span>
                                 Banner List
@@ -211,11 +162,12 @@
                         </li>
                     </ul>
                 </li>
+
                 <!-- Banner end here  -->
 
                 <!-- social links start here  -->
                 <li class="sidebar-item">
-                    <a href="{{ route('social-link-list') }}" class="sidebar-link">
+                    <a href="{{ route('social-link-list') }}" class="sidebar-link {{request()->routeIs('social-link-list') ? 'active' : ''}}">
                         <span><svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 height="20"
@@ -235,7 +187,7 @@
                 <li class="sidebar-item" id="has-dropdown-feedback">
                     <a
                         href="#"
-                        class="sidebar-link collapsed has-dropdown"
+                        class="sidebar-link collapsed has-dropdown {{ request()->routeIs('add-edit-feedback') || request()->routeIs('feedback-list') ? 'active' : '' }}"
                         data-bs-toggle="collapse"
                         data-bs-target="#feedback"
                         aria-expanded="true"
@@ -269,10 +221,10 @@
                     </a>
                     <ul
                         id="feedback"
-                        class="sidebar-dropdown list-unstyled collapse"
+                        class="sidebar-dropdown list-unstyled collapse  {{ request()->routeIs('add-edit-feedback') || request()->routeIs('feedback-list') ? 'show' : '' }}"
                         data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="{{ route('add-edit-feedback') }}" class="sidebar-link">
+                            <a href="{{ route('add-edit-feedback') }}" class="sidebar-link {{ request()->routeIs('add-edit-feedback') ? 'active' : '' }}">
                                 <span>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -288,7 +240,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="{{ route('feedback-list') }}" class="sidebar-link">
+                            <a href="{{ route('feedback-list') }}" class="sidebar-link {{ request()->routeIs('feedback-list') ? 'active' : '' }}">
                                 <span>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -311,7 +263,7 @@
                 <li class="sidebar-item" id="has-dropdown-client">
                     <a
                         href="#"
-                        class="sidebar-link collapsed has-dropdown"
+                        class="sidebar-link collapsed has-dropdown {{ request()->routeIs('add-edit-client') || request()->routeIs('client-list') ? 'active' : '' }}"
                         data-bs-toggle="collapse"
                         data-bs-target="#client"
                         aria-expanded="true"
@@ -345,10 +297,10 @@
                     </a>
                     <ul
                         id="client"
-                        class="sidebar-dropdown list-unstyled collapse"
+                        class="sidebar-dropdown list-unstyled collapse {{ request()->routeIs('add-edit-client') || request()->routeIs('client-list') ? 'show' : '' }}"
                         data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="{{ route('add-edit-client') }}" class="sidebar-link">
+                            <a href="{{ route('add-edit-client') }}" class="sidebar-link {{request()->routeIs('add-edit-client') ? 'active' : '' }}">
                                 <span>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -364,7 +316,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="{{ route('client-list') }}" class="sidebar-link">
+                            <a href="{{ route('client-list') }}" class="sidebar-link {{request()->routeIs('client-list') ? 'active' : '' }}">
                                 <span>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -383,14 +335,13 @@
                 </li>
                 <!-- client end here  -->
 
-                <!-- blogs start here  -->
                 <li class="sidebar-item" id="has-dropdown-blog">
                     <a
                         href="#"
-                        class="sidebar-link collapsed has-dropdown "
+                        class="sidebar-link collapsed has-dropdown {{ request()->routeIs('add-edit-blog') || request()->routeIs('blog-list') ? 'active' : '' }}"
                         data-bs-toggle="collapse"
                         data-bs-target="#blog"
-                        aria-expanded="true"
+                        aria-expanded="{{ request()->routeIs('add-edit-blog') || request()->routeIs('blog-list') ? 'true' : 'false' }}"
                         aria-controls="blog">
                         <span><svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -402,7 +353,6 @@
                                     d="M192-396v-72h288v72H192Zm0-150v-72h432v72H192Zm0-150v-72h432v72H192Zm336 504v-113l210-209q7.26-7.41 16.13-10.71Q763-528 771.76-528q9.55 0 18.31 3.5Q798.83-521 806-514l44 45q6.59 7.26 10.29 16.13Q864-444 864-435.24t-3.29 17.92q-3.3 9.15-10.71 16.32L641-192H528Zm288-243-45-45 45 45ZM576-240h45l115-115-22-23-22-22-116 115v45Zm138-138-22-22 44 45-22-23Z" />
                             </svg>
                         </span>
-
                         Our Blogs
 
                         <!-- caret down svg start here  -->
@@ -421,10 +371,10 @@
                     </a>
                     <ul
                         id="blog"
-                        class="sidebar-dropdown list-unstyled collapse show"
+                        class="sidebar-dropdown list-unstyled collapse {{ request()->routeIs('add-edit-blog') || request()->routeIs('blog-list') ? 'show' : '' }}"
                         data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="{{ route('add-edit-blog') }}" class="sidebar-link ">
+                            <a href="{{ route('add-edit-blog') }}" class="sidebar-link {{ request()->routeIs('add-edit-blog') ? 'active' : '' }}">
                                 <span>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -440,7 +390,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="{{ route('blog-list') }}" class="sidebar-link">
+                            <a href="{{ route('blog-list') }}" class="sidebar-link {{ request()->routeIs('blog-list') ? 'active' : '' }}">
                                 <span>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -457,13 +407,13 @@
                         </li>
                     </ul>
                 </li>
-                <!-- blogs end here  -->
+
 
                 <!-- Stack and Technology area start here  -->
                 <li class="sidebar-item" id="has-dropdown-stack">
                     <a
                         href="#"
-                        class="sidebar-link collapsed has-dropdown"
+                        class="sidebar-link collapsed has-dropdown {{ request()->routeIs('add-edit-technology') || request()->routeIs('technology-list') ? 'active' : '' }}"
                         data-bs-toggle="collapse"
                         data-bs-target="#stack"
                         aria-expanded="true"
@@ -497,10 +447,10 @@
                     </a>
                     <ul
                         id="stack"
-                        class="sidebar-dropdown list-unstyled collapse"
+                        class="sidebar-dropdown list-unstyled collapse {{ request()->routeIs('add-edit-technology') || request()->routeIs('technology-list') ? 'show' : '' }}"
                         data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="{{ route('add-edit-technology') }}" class="sidebar-link">
+                            <a href="{{ route('add-edit-technology') }}" class="sidebar-link {{ request()->routeIs('add-edit-technology') ? 'active' : '' }}">
                                 <span>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -516,7 +466,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="{{ route('technology-list') }}" class="sidebar-link">
+                            <a href="{{ route('technology-list') }}" class="sidebar-link {{  request()->routeIs('technology-list') ? 'active' : '' }}">
                                 <span>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -539,7 +489,7 @@
                 <li class="sidebar-item" id="has-dropdown-branch">
                     <a
                         href="#"
-                        class="sidebar-link collapsed has-dropdown"
+                        class="sidebar-link collapsed has-dropdown {{ request()->routeIs('add-edit-branch') || request()->routeIs('branch-list') ? 'active' : '' }}"
                         data-bs-toggle="collapse"
                         data-bs-target="#branch"
                         aria-expanded="true"
@@ -573,10 +523,10 @@
                     </a>
                     <ul
                         id="branch"
-                        class="sidebar-dropdown list-unstyled collapse"
+                        class="sidebar-dropdown list-unstyled collapse {{ request()->routeIs('add-edit-branch') || request()->routeIs('branch-list') ? 'show' : '' }}"
                         data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="{{ route('add-edit-branch') }}" class="sidebar-link">
+                            <a href="{{ route('add-edit-branch') }}" class="sidebar-link {{ request()->routeIs('add-edit-branch') ? 'active' : '' }}">
                                 <span>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -592,7 +542,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="{{ route('branch-list') }}" class="sidebar-link">
+                            <a href="{{ route('branch-list') }}" class="sidebar-link {{ request()->routeIs('branch-list') ? 'active' : '' }}">
                                 <span>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -615,7 +565,7 @@
                 <li class="sidebar-item" id="has-dropdown-services">
                     <a
                         href="#"
-                        class="sidebar-link collapsed has-dropdown"
+                        class="sidebar-link collapsed has-dropdown {{ request()->routeIs('add-edit-service') || request()->routeIs('service-list') ? 'active' : '' }}"
                         data-bs-toggle="collapse"
                         data-bs-target="#services"
                         aria-expanded="true"
@@ -649,10 +599,10 @@
                     </a>
                     <ul
                         id="services"
-                        class="sidebar-dropdown list-unstyled collapse"
+                        class="sidebar-dropdown list-unstyled collapse {{ request()->routeIs('add-edit-service') || request()->routeIs('service-list') ? 'show' : '' }}"
                         data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="{{ route('add-edit-service') }}" class="sidebar-link">
+                            <a href="{{ route('add-edit-service') }}" class="sidebar-link {{ request()->routeIs('add-edit-service') ? 'active' : '' }}">
                                 <span>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -668,7 +618,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="{{ route('service-list') }}" class="sidebar-link">
+                            <a href="{{ route('service-list') }}" class="sidebar-link {{ request()->routeIs('service-list') ? 'active' : '' }}">
                                 <span>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -691,7 +641,7 @@
                 <li class="sidebar-item" id="has-dropdown-industries">
                     <a
                         href="#"
-                        class="sidebar-link collapsed has-dropdown"
+                        class="sidebar-link collapsed has-dropdown {{ request()->routeIs('add-edit-industry') || request()->routeIs('industry-list') ? 'active' : '' }}"
                         data-bs-toggle="collapse"
                         data-bs-target="#industries"
                         aria-expanded="true"
@@ -725,10 +675,10 @@
                     </a>
                     <ul
                         id="industries"
-                        class="sidebar-dropdown list-unstyled collapse"
+                        class="sidebar-dropdown list-unstyled collapse {{ request()->routeIs('add-edit-industry') || request()->routeIs('industry-list') ? 'show' : '' }}"
                         data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="{{ route('add-edit-industry') }}" class="sidebar-link">
+                            <a href="{{ route('add-edit-industry') }}" class="sidebar-link {{ request()->routeIs('add-edit-industry') ? 'active' : '' }}">
                                 <span>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -744,7 +694,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="{{ route('industry-list') }}" class="sidebar-link">
+                            <a href="{{ route('industry-list') }}" class="sidebar-link {{ request()->routeIs('industry-list') ? 'active' : '' }}">
                                 <span>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -767,7 +717,7 @@
                 <li class="sidebar-item" id="has-dropdown-certificate">
                     <a
                         href="#"
-                        class="sidebar-link collapsed has-dropdown"
+                        class="sidebar-link collapsed has-dropdown {{ request()->routeIs('add-edit-certificate') || request()->routeIs('certificate-list') ? 'active' : '' }}"
                         data-bs-toggle="collapse"
                         data-bs-target="#certificate"
                         aria-expanded="true"
@@ -801,10 +751,10 @@
                     </a>
                     <ul
                         id="certificate"
-                        class="sidebar-dropdown list-unstyled collapse"
+                        class="sidebar-dropdown list-unstyled collapse {{ request()->routeIs('add-edit-certificate') || request()->routeIs('certificate-list') ? 'show' : '' }}"
                         data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="{{ route('add-edit-certificate') }}" class="sidebar-link">
+                            <a href="{{ route('add-edit-certificate') }}" class="sidebar-link {{ request()->routeIs('add-edit-certificate') ? 'active' : '' }}">
                                 <span>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -820,7 +770,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="{{ route('certificate-list') }}" class="sidebar-link">
+                            <a href="{{ route('certificate-list') }}" class="sidebar-link {{ request()->routeIs('certificate-list') ? 'active' : '' }}">
                                 <span>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -843,7 +793,7 @@
                 <li class="sidebar-item" id="has-dropdown-case">
                     <a
                         href="#"
-                        class="sidebar-link collapsed has-dropdown"
+                        class="sidebar-link collapsed has-dropdown {{ request()->routeIs('add-edit-case-study') || request()->routeIs('case-study-list') ? 'active' : '' }}"
                         data-bs-toggle="collapse"
                         data-bs-target="#case"
                         aria-expanded="true"
@@ -877,10 +827,10 @@
                     </a>
                     <ul
                         id="case"
-                        class="sidebar-dropdown list-unstyled collapse"
+                        class="sidebar-dropdown list-unstyled collapse {{ request()->routeIs('add-edit-case-study') || request()->routeIs('case-study-list') ? 'show' : '' }}"
                         data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="{{ route('add-edit-case-study') }}" class="sidebar-link">
+                            <a href="{{ route('add-edit-case-study') }}" class="sidebar-link {{ request()->routeIs('add-edit-case-study') ? 'active' : '' }}">
                                 <span>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -896,7 +846,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="{{ route('case-study-list') }}" class="sidebar-link">
+                            <a href="{{ route('case-study-list') }}" class="sidebar-link {{ request()->routeIs('case-study-list') ? 'active' : '' }}">
                                 <span>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"

@@ -8,10 +8,11 @@ use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $services = Service::all();
-        return view('admin.service.service_list', compact('services'));
+        $perPage = $request->get('perPage', 10);
+        $services = Service::paginate($perPage);
+        return view('admin.service.service_list', compact('services' , 'perPage'));
     }
 
     public function addEditService()

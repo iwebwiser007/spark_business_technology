@@ -10,10 +10,12 @@ use Intervention\Image\Facades\Image;
 
 class BlogController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $blogs = Blog::all();
-        return view('admin.blog.blog_list' , compact('blogs'));
+        $perPage = $request->get('perPage', 10);
+        $blogs = Blog::paginate($perPage);
+        return view('admin.blog.blog_list' , compact('blogs' , 'perPage'));
+
     }
 
     public function addEditBlog()

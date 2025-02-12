@@ -10,11 +10,14 @@ use Intervention\Image\Facades\Image;
 
 class BannerController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $banners = Banner::get();
-        return view('admin.banner.banner_list', compact('banners'));
+        $perPage = $request->get('perPage', 10);
+        $banners = Banner::paginate($perPage);
+        return view('admin.banner.banner_list', compact('banners'  , 'perPage'));
     }
+
+ 
 
     public function addEditBanner()
     {

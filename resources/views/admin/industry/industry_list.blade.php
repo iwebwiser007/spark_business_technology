@@ -15,7 +15,7 @@
                     <!-- add banner breadcrumb start here  -->
                     <ol class="breadcrumb">
                       <li class="breadcrumb-item">
-                        <a href="#">Dashboard</a>
+                        <a href="{{route('dashboard')}}">Dashboard</a>
                       </li>
                       <li class="breadcrumb-item active" aria-current="page">
                         Industry List

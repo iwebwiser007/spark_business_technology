@@ -18,7 +18,7 @@
         <!-- add banner breadcrumb start here  -->
         <ol class="breadcrumb text-nowrap">
           <li class="breadcrumb-item">
-            <a href="#">Dashboard</a>
+            <a href="{{route('dashboard')}}">Dashboard</a>
           </li>
           <li class="breadcrumb-item active" aria-current="page">
             Banner List
@@ -68,10 +68,11 @@
             <!-- form start here  -->
             <form class="data-form">
               <div class="form-group">
-                <select name="cars" id="cars">
-                  <option value="volvo">Show 10</option>
-                  <option value="saab">Show 20</option>
-                  <option value="mercedes">shop 50</option>
+                <select name="perPage" id="perPage" onchange="updatePagination()">
+                  <option value="10" {{ $perPage == 10 ? 'selected' : '' }}>Show 10</option>
+                  <option value="20" {{ $perPage == 20 ? 'selected' : '' }}>Show 20</option>
+                  <option value="50" {{ $perPage == 50 ? 'selected' : '' }}>Show 50</option>
+                  <option value="100" {{ $perPage == 100 ? 'selected' : '' }}>Show 100</option>
                 </select>
                 <span>
                   <input
@@ -446,7 +447,7 @@
 
                                     <div class="row form-group">
                                       <div class="col-12 col-md-3">
-                                        <label for="inputBannerImage" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Upload Banner Image</label>
+                                        <label for="inputBannerImage" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Banner Image</label>
                                       </div>
                                       <div class="col-12 col-md-8 mt-0">
                                         <div class="form-group mb-20 upload-input">
@@ -455,18 +456,20 @@
                                               <span>
                                                 <!-- Optionally, an SVG icon or placeholder icon can go here -->
                                               </span>
-                                              <p id="bannerText" class="mb-0">Upload Banner</p>
+                                              
                                             </div>
                                           </label>
-                                          <input type="file" name="banner_image" class="form-control form-control-lg " id="bannerImg" onchange="previewBannerImage(event)" />
-                                        </div>
-
-                                        <!-- Banner Image Preview -->
-                                        <div id="bannerPreview" class="mt-3">
-                                          <img id="previewBannerImg" src="{{  asset('http://localhost/spark_technology/storage/app/public/images/banner_images/' . $banner->banner_image) }}" alt="Banner Image Preview" style="display: {{ isset($banner) ? 'block' : 'none' }}; width: 100%; max-width: 200px; border-radius: 8px;" />
+                                          <input type="file" name="banner_image" class="form-control form-control-lg d-none" id="bannerImg" onchange="previewBannerImage(event)" />
+                                          
+                                          <!-- Banner Image Preview -->
+                                          <div id="bannerPreview" class="me-5">
+                                            <img id="previewBannerImg" src="{{  asset('http://localhost/spark_technology/storage/app/public/images/banner_images/' . $banner->banner_image) }}" alt="Banner Image Preview" style="display: {{ isset($banner) ? 'block' : 'none' }}; width: 100%; max-width: 100%; border-radius: 8px;" />
+                                          </div>
                                         </div>
                                       </div>
                                     </div>
+
+                                    
 
 
 
@@ -591,7 +594,7 @@
           <!-- card body end here  -->
 
           <!-- card footer start here  -->
-          <div class="card-footer">
+          <!-- <div class="card-footer">
             <p>Showing 1 to 10 of xyz entries</p>
 
             <div class="pagination-div">
@@ -619,6 +622,45 @@
                       <span aria-hidden="true">&raquo;</span>
                     </a>
                   </li>
+                </ul>
+              </nav>
+            </div>
+          </div> -->
+
+          <div class="card-footer">
+            <!-- Pagination -->
+            <p>Showing {{ $banners->firstItem() }} to {{ $banners->lastItem() }} of {{ $banners->total() }} entries</p>
+            <div class="pagination-div">
+              <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <!-- Check if the pagination has previous and next links -->
+                  @if ($banners->onFirstPage())
+                  <li class="page-item disabled">
+                    <span class="page-link">Previous</span>
+                  </li>
+                  @else
+                  <li class="page-item">
+                    <a class="page-link" href="{{ $banners->previousPageUrl() }}">Previous</a>
+                  </li>
+                  @endif
+
+                  <!-- Loop through page numbers -->
+                  @foreach ($banners->getUrlRange(1, $banners->lastPage()) as $page => $url)
+                  <li class="page-item {{ $banners->currentPage() == $page ? 'active' : '' }}">
+                    <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                  </li>
+                  @endforeach
+
+                  <!-- Check if the pagination has a next link -->
+                  @if ($banners->hasMorePages())
+                  <li class="page-item">
+                    <a class="page-link" href="{{ $banners->nextPageUrl() }}">Next</a>
+                  </li>
+                  @else
+                  <li class="page-item disabled">
+                    <span class="page-link">Next</span>
+                  </li>
+                  @endif
                 </ul>
               </nav>
             </div>
@@ -659,5 +701,12 @@
       statusModal.show();
     });
   });
+</script>
+
+<script>
+  function updatePagination() {
+    const perPage = document.getElementById('perPage').value;
+    window.location.href = `?perPage=${perPage}`;
+  }
 </script>
 @endsection

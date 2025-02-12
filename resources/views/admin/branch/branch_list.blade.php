@@ -15,7 +15,7 @@
                     <!-- add banner breadcrumb start here  -->
                     <ol class="breadcrumb">
                       <li class="breadcrumb-item">
-                        <a href="#">Dashboard</a>
+                        <a href="{{route('dashboard')}}">Dashboard</a>
                       </li>
                       <!-- <li class="breadcrumb-item">
                         <a href="#">Branch</a>
@@ -37,7 +37,7 @@
                           class="card-title d-flex justify-content-between align-items-center"
                         >
                           <h2>Branch List</h2>
-                          <a href="add_branch.html" class="btn sub_btn">ADD</a>
+                          <a href="{{route('add-edit-branch')}}" class="btn sub_btn">ADD</a>
                         </div>
                       </div>
                       <!-- card header end here  -->

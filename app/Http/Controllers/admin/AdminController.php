@@ -82,6 +82,38 @@ class AdminController extends Controller
         
         return redirect('/admin/login')->with('success_message', 'Successfully logged out');
     }
+
+
+    public function profile(){
+        $admin = Admin::get()->first();
+        return view('admin.profile' , compact('admin'));
+    }
+
+    public function editProfile(Request $request){
+        $admin = Admin::get()->first();
+        $admin->name = $request->name;
+        $admin->email = $request->email;
+        $admin->save();
+        return redirect()->route('admin.profile')->with('success_messaage' , 'Your profile has been successfully updated!');
+
+
+    }
+
+    public function editPassword(Request $request){
+
+        $password = Hash::make($request->password);
+        $admin = Admin::get()->first();
+        $admin->password = $password;
+        $admin->save();
+        return redirect()->route('admin.profile')->with('success_messaage' , 'Your password has been successfully updated!');
+
+        
+
+    }
+
+    public function forgetPassword(){
+        return view('admin.forget_pass');
+    }
 }
 
 

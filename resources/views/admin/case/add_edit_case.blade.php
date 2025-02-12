@@ -9,7 +9,7 @@
                     <!-- dashboard Header title start here  -->
                     <div class="dash_title">
                       <a
-                        href="case_list.html"
+                        href="{{url()->previous()}}"
                         role="button"
                         class="btn link-btn"
                       >
@@ -33,7 +33,7 @@
                     <!-- add Header breadcrumb start here  -->
                     <ol class="breadcrumb">
                       <li class="breadcrumb-item">
-                        <a href="#">Dashboard</a>
+                        <a href="{{route('dashboard')}}">Dashboard</a>
                       </li>
                       <!-- <li class="breadcrumb-item">
                         <a href="#">Header</a>
@@ -1011,7 +1011,7 @@
                         <div
                           class="d-flex justify-content-center justify-content-md-end gap-3"
                         >
-                          <a href="case_list.html" class="btn cancel_btn"
+                          <a href="" class="btn cancel_btn"
                             >Cancel</a
                           >
                           <a href="#" class="btn submit-btn">Submit</a>

@@ -51,11 +51,16 @@ Route::match(['get', 'post'], '/admin/login', [AdminController::class, 'index'])
 Route::match(['get', 'post'], '/admin/registration', [AdminController::class, 'registration']);
 Route::match(['get', 'post'], '/admin/login-check', [AdminController::class, 'login'])->name('login');
 Route::get('/admin/logout', [AdminController::class, 'logout'])->name('logout');
+Route::get('/admin/forget-password',  [AdminController::class, 'forgetPassword'])->name('forgetPassword');
+
 
 
 // Protected Routes (using middleware)
 Route::middleware(['admin.auth'])->prefix('admin')->namespace('App\Http\Controllers\admin')->group(function () {
     Route::get('dashboard', 'AdminController@dashboard')->name('dashboard');
+    Route::get('profile', 'AdminController@profile')->name('admin.profile');
+    Route::post('edit-profile', 'AdminController@editProfile')->name('admin.editProfile');
+    Route::post('update-password', 'AdminController@editPassword')->name('admin.updatePassword');
     Route::get('header-list', 'HeaderController@index')->name('header-list');
     Route::match(['get', 'post'], 'add-edit-header', 'HeaderController@addEditHeader')->name('add-edit-header');
     Route::match(['get', 'post'], 'header-store', 'HeaderController@store')->name('admin.header.store');
@@ -77,13 +82,25 @@ Route::middleware(['admin.auth'])->prefix('admin')->namespace('App\Http\Controll
     Route::get('social-link-list', 'SocialLinkController@index')->name('social-link-list');
     Route::get('add-edit-social', 'SocialLinkController@add')->name('add-edit-social');
     Route::match(['get', 'post'], 'social-store', 'SocialLinkController@store')->name('admin.social.store');
+    Route::match(['get', 'post'], 'social-update/{id}', 'SocialLinkController@update')->name('socialLink.update');
+    Route::delete('/social-delete/{id}', 'SocialLinkController@delete')->name('social.delete');
+    Route::post('social-status-update/{id}',  'SocialLinkController@statusUpdate')->name('social.statusUpdate');
+
+
 
 
     Route::get('feedback-list', 'FeedbackController@index')->name('feedback-list');
     Route::match(['get', 'post'], 'add-edit-feedback', 'FeedbackController@addEditFeedback')->name('add-edit-feedback');
+    Route::match(['get', 'post'], 'feekback-store', 'FeedbackController@store')->name('admin.feekback.store');
+
 
     Route::get('client-list', 'ClientController@index')->name('client-list');
     Route::match(['get', 'post'], 'add-edit-client', 'ClientController@addEditClient')->name('add-edit-client');
+    Route::match(['get', 'post'], 'client-store', 'ClientController@store')->name('client.store');
+    Route::match(['get', 'post'], 'client-update/{id}', 'ClientController@update')->name('client.update');
+    Route::delete('client-delete/{id}', 'ClientController@delete')->name('client.delete');
+
+
 
     Route::get('blog-list', 'BlogController@index')->name('blog-list');
     Route::match(['get', 'post'], 'add-edit-blog', 'BlogController@addEditBlog')->name('add-edit-blog');
@@ -98,6 +115,11 @@ Route::middleware(['admin.auth'])->prefix('admin')->namespace('App\Http\Controll
 
     Route::get('technology-list', 'TechnologyController@index')->name('technology-list');
     Route::match(['get', 'post'], 'add-edit-technology', 'TechnologyController@addEditTechnology')->name('add-edit-technology');
+    Route::match(['get', 'post'], 'technology-store', 'TechnologyController@store')->name('technology.store');
+    Route::match(['get', 'post'], '/technology-update/{id}', 'TechnologyController@update')->name('technology.update');
+    Route::delete('/technology-delete/{id}', 'TechnologyController@delete')->name('technology.delete');
+
+
 
     Route::get('branch-list', 'BranchController@index')->name('branch-list');
     Route::match(['get', 'post'], 'add-edit-branch', 'BranchController@addEditBranch')->name('add-edit-branch');
@@ -115,6 +137,10 @@ Route::middleware(['admin.auth'])->prefix('admin')->namespace('App\Http\Controll
 
     Route::get('certificate-list', 'CertificateController@index')->name('certificate-list');
     Route::match(['get', 'post'], 'add-edit-certificate', 'CertificateController@addEditCertificate')->name('add-edit-certificate');
+    Route::match(['get', 'post'], 'certificate-store', 'CertificateController@store')->name('certificate.store');
+    Route::match(['get', 'post'], 'certificate-update/{id}', 'CertificateController@update')->name('certificate.update');
+    Route::delete('certificate-delete/{id}', 'CertificateController@delete')->name('certificate.delete');
+
 
     Route::get('case-study-list', 'CaseController@index')->name('case-study-list');
     Route::match(['get', 'post'], 'add-edit-case-study', 'CaseController@addEditCaseStudy')->name('add-edit-case-study');

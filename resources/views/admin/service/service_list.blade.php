@@ -22,7 +22,7 @@
         <!-- add banner breadcrumb start here  -->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="#">Dashboard</a>
+            <a href="{{route('dashboard')}}">Dashboard</a>
           </li>
           <!-- <li class="breadcrumb-item">
                         <a href="#">Services</a>
@@ -64,10 +64,11 @@
             <!-- form start here  -->
             <form class="data-form">
               <div class="form-group">
-                <select name="cars" id="cars">
-                  <option value="volvo">Show 10</option>
-                  <option value="saab">Show 20</option>
-                  <option value="mercedes">shop 50</option>
+                <select name="perPage" id="perPage" onchange="updatePagination()">
+                  <option value="10" {{ $perPage == 10 ? 'selected' : '' }}>Show 10</option>
+                  <option value="20" {{ $perPage == 20 ? 'selected' : '' }}>Show 20</option>
+                  <option value="50" {{ $perPage == 50 ? 'selected' : '' }}>Show 50</option>
+                  <option value="100" {{ $perPage == 100 ? 'selected' : '' }}>Show 100</option>
                 </select>
                 <span>
                   <input
@@ -515,17 +516,17 @@
 
             <!-- delete and cancel button start here  -->
             <div>
-             <form action="{{ route('service.delete', $service->id) }}" method="POST">
-                    @csrf
-                    @method('DELETE') <!-- This is important to use the DELETE HTTP method -->
-                    <button type="button" class="btn btn-secondary cancel_modal" data-bs-dismiss="modal">
-                        Cancel
-                    </button>
+              <form action="{{ route('service.delete', $service->id) }}" method="POST">
+                @csrf
+                @method('DELETE') <!-- This is important to use the DELETE HTTP method -->
+                <button type="button" class="btn btn-secondary cancel_modal" data-bs-dismiss="modal">
+                  Cancel
+                </button>
 
-                    <button type="submit" class="btn btn-danger del_modal">
-                        Delete
-                    </button>
-                </form>
+                <button type="submit" class="btn btn-danger del_modal">
+                  Delete
+                </button>
+              </form>
             </div>
             <!-- delete and cancel button end here  -->
           </div>
@@ -550,7 +551,7 @@
 <!-- card body end here  -->
 
 <!-- card footer start here  -->
-<div class="card-footer">
+<!-- <div class="card-footer">
   <p>Showing 1 to 10 of xyz entries</p>
 
   <div class="pagination-div">
@@ -581,6 +582,47 @@
       </ul>
     </nav>
   </div>
+</div> -->
+
+
+
+<div class="card-footer">
+  <!-- Pagination -->
+  <p>Showing {{ $services->firstItem() }} to {{ $services->lastItem() }} of {{ $services->total() }} entries</p>
+  <div class="pagination-div">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <!-- Check if the pagination has previous and next links -->
+        @if ($services->onFirstPage())
+        <li class="page-item disabled">
+          <span class="page-link">Previous</span>
+        </li>
+        @else
+        <li class="page-item">
+          <a class="page-link" href="{{ $services->previousPageUrl() }}">Previous</a>
+        </li>
+        @endif
+
+        <!-- Loop through page numbers -->
+        @foreach ($services->getUrlRange(1, $services->lastPage()) as $page => $url)
+        <li class="page-item {{ $services->currentPage() == $page ? 'active' : '' }}">
+          <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+        </li>
+        @endforeach
+
+        <!-- Check if the pagination has a next link -->
+        @if ($services->hasMorePages())
+        <li class="page-item">
+          <a class="page-link" href="{{ $services->nextPageUrl() }}">Next</a>
+        </li>
+        @else
+        <li class="page-item disabled">
+          <span class="page-link">Next</span>
+        </li>
+        @endif
+      </ul>
+    </nav>
+  </div>
 </div>
 <!-- card footer end here  -->
 </div>
@@ -597,6 +639,11 @@
     shiftEnterMode: CKEDITOR.ENTER_BR, // Use <br> on shift + enter
     // Other configurations if needed
   });
+
+  function updatePagination() {
+    const perPage = document.getElementById('perPage').value;
+    window.location.href = `?perPage=${perPage}`;
+  }
 </script>
 
 @endsection

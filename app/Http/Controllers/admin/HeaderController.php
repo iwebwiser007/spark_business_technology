@@ -10,13 +10,15 @@ use Illuminate\Http\Request;
 
 class HeaderController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $headers = Header::get();
-        return view('admin.header.header_list' , compact('headers'));
+        $perPage = $request->get('perPage', 10);
+        $headers = Header::paginate($perPage);
+        $totalHeaders = Header::count();
+        return view('admin.header.header_list' , compact('headers' , 'totalHeaders' , 'perPage'));
     }
 
-
+  
     public function addEditHeader(Request $request)
     {
         return view('admin.header.add_edit_header');

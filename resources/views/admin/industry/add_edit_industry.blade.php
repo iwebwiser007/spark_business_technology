@@ -9,7 +9,7 @@
                     <!-- dashboard title start here  -->
                     <div class="dash_title">
                       <a
-                        href="industry_list.html"
+                        href="{{url()->previous()}}"
                         role="button"
                         class="btn link-btn"
                       >
@@ -32,7 +32,7 @@
                     <!-- breadcrumb start here  -->
                     <ol class="breadcrumb">
                       <li class="breadcrumb-item">
-                        <a href="#">Dashboard</a>
+                        <a href="{{route('dashboard')}}">Dashboard</a>
                       </li>
                       <li class="breadcrumb-item active" aria-current="page">
                         Add Industry
@@ -250,7 +250,7 @@
                             <div class="col-4 col-md-3"></div>
                             <div class="col-12 col-md-9 form-button">
                               <a
-                                href="industry_list.html"
+                                href=""
                                 role="button"
                                 class="btn form-cancel my-0"
                                 >cancel</a
