@@ -48,7 +48,12 @@
             <div
               class="card-title d-flex justify-content-between align-items-center">
               <h2>Header List</h2>
-              <a href="{{route('add-edit-header')}}" class="btn sub_btn">ADD</a>
+              <!-- <a href="{{route('add-edit-header')}}" class="btn sub_btn">ADD</a> -->
+             <a href=" {{route('add-edit-header')}}  " ><button class="btn btn-primary rounded-circle d-flex align-items-center justify-content-center shadow-lg" style="width: 45px; height: 45px;">
+    <i class="bi bi-plus-lg fs-5 text-white"></i>
+</button></a> 
+
+
             </div>
           </div>
           <!-- card header end here  -->
@@ -76,8 +81,8 @@
 
             <!-- table content start here  -->
             <div class="table-content table-responsive">
-              <table class="table table-hover">
-                <thead>
+              <table class="table ">
+                <thead >
                   <tr>
                     <!-- <th scope="col"></th> -->
                     <th scope="col">Title</th>
@@ -958,7 +963,7 @@
 
             <div class="pagination-div">
               <nav aria-label="Page navigation example">
-                <ul class="pagination">
+               <ul class="pagination">
                   <li class="page-item">
                     <a
                       class="page-link"
@@ -970,18 +975,20 @@
                   <li class="page-item">
                     <a class="page-link" href="#">1</a>
                   </li>
-                  <li class="page-item">
+                  <!-- <li class="page-item">
                     <a class="page-link" href="#">2</a>
                   </li>
                   <li class="page-item">
                     <a class="page-link" href="#">3</a>
-                  </li>
+                  </li> -->
                   <li class="page-item">
                     <a class="page-link" href="#" aria-label="Next">
                       <span aria-hidden="true">&raquo;</span>
                     </a>
                   </li>
-                </ul>
+                </ul> 
+          
+
               </nav>
             </div>
           </div>

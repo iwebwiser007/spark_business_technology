@@ -5,7 +5,7 @@
     text-align: center;
     margin: 1rem 0;
     border-radius: 0.6rem;
-    border-bottom: $border-2;
+    // border-bottom: $border-2;
 
     th,
     tr,
@@ -15,6 +15,7 @@
       max-width: 2rem;
     }
     th {
+      background-color: $blue-400 ;
       font-weight: $fw-500;
     }
     tbody {

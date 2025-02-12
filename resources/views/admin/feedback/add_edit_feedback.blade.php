@@ -10,7 +10,7 @@
                   >
                     <!-- dashboard title start here  -->
                     <div class="dash_title">
-                      <a
+                       <a
                         href="feedback_list.html"
                         role="button"
                         class="btn link-btn"
@@ -26,7 +26,12 @@
                             d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z"
                           />
                         </svg>
-                      </a>
+                      </a> 
+                  <!-- <a href="feedback_list.html"> 
+                  <button class="btn link-btn rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+    <i class="bi bi-arrow-left-short fs-4 text-white"></i>
+</button>
+                  </a>   -->
                       <h2 class="main-title text-wrap">Add Feedback</h2>
                     </div>
                     <!-- dashboard title end here  -->

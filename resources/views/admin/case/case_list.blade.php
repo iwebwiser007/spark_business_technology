@@ -61,9 +61,9 @@
                         <!-- form end here  -->
 
                         <!-- table content start here  -->
-                        <div class="table-content table-responsive">
-                          <table class="table table-hover">
-                            <thead>
+                        <div class="table-content table-responsive ">
+                          <table class="table table-hover  table-bordered align-middle ">
+                            <thead class="table-light">
                               <tr>
                                 <th scope="col">Image</th>
                                 <th scope="col">Title</th>
@@ -500,11 +500,11 @@
 
                       <!-- card footer start here  -->
                       <div class="card-footer">
-                        <p>Showing 1 to 10 of xyz entries</p>
+                        <p>Showing 1 - 5 of 5 entries</p>
 
                         <div class="pagination-div">
                           <nav aria-label="Page navigation example">
-                            <ul class="pagination">
+                            <!-- <ul class="pagination">
                               <li class="page-item">
                                 <a
                                   class="page-link"
@@ -528,7 +528,20 @@
                                   <span aria-hidden="true">&raquo;</span>
                                 </a>
                               </li>
-                            </ul>
+                            </ul> -->
+
+                            <ul class="pagination">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">‹</a>
+                </li>
+                <li class="page-item active">
+                    <a class="page-link" href="#">1</a>
+                </li>
+                <li class="page-item disabled">
+                    <a class="page-link" href="#">›</a>
+                </li>
+            </ul>
+
                           </nav>
                         </div>
                       </div>

@@ -80,7 +80,7 @@
 
             <!-- table content start here  -->
             <div class="table-content table-responsive">
-              <table class="table table-hover">
+              <table class="table ">
                 <thead>
                   <tr>
                     <th scope="col">Image</th>
@@ -474,12 +474,12 @@
                   <li class="page-item">
                     <a class="page-link" href="#">1</a>
                   </li>
-                  <li class="page-item">
+                  <!-- <li class="page-item">
                     <a class="page-link" href="#">2</a>
                   </li>
                   <li class="page-item">
                     <a class="page-link" href="#">3</a>
-                  </li>
+                  </li> -->
                   <li class="page-item">
                     <a class="page-link" href="#" aria-label="Next">
                       <span aria-hidden="true">&raquo;</span>

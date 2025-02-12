@@ -232,7 +232,7 @@
                                                 <!-- Sociall Link area end here  -->
 
                                                 <!-- cancel and submit button  -->
-                                                <div class="my-3">
+                                                <div class="my-3 form-button">
                                                   <button
                                                     type="button"
                                                     class="btn btn-secondary cancel_modal"
@@ -599,7 +599,7 @@
                                                 <!-- Sociall Link area end here  -->
 
                                                 <!-- cancel and submit button  -->
-                                                <div class="my-3">
+                                                <div class="my-3 form-button">
                                                   <button
                                                     type="button"
                                                     class="btn btn-secondary cancel_modal"
@@ -809,7 +809,7 @@
                                                 <!-- Sociall Link area end here  -->
 
                                                 <!-- cancel and submit button  -->
-                                                <div class="my-3">
+                                                <div class="my-3 form-button">
                                                   <button
                                                     type="button"
                                                     class="btn btn-secondary cancel_modal"
@@ -1088,7 +1088,7 @@
                                                 <!-- Sociall Link area end here  -->
 
                                                 <!-- cancel and submit button  -->
-                                                <div class="my-3">
+                                                <div class="my-3 form-button">
                                                   <button
                                                     type="button"
                                                     class="btn btn-secondary cancel_modal"
@@ -1186,12 +1186,12 @@
                               <li class="page-item">
                                 <a class="page-link" href="#">1</a>
                               </li>
-                              <li class="page-item">
+                              <!-- <li class="page-item">
                                 <a class="page-link" href="#">2</a>
                               </li>
                               <li class="page-item">
                                 <a class="page-link" href="#">3</a>
-                              </li>
+                              </li> -->
                               <li class="page-item">
                                 <a class="page-link" href="#" aria-label="Next">
                                   <span aria-hidden="true">&raquo;</span>

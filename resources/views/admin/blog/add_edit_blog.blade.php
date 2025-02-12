@@ -23,7 +23,7 @@
       <div class="dash-head d-flex justify-content-between">
         <!-- dashboard title start here  -->
         <div class="dash_title">
-          <a
+           <a
             href="{{url()->previous()}}"
             role="button"
             class="btn link-btn">
@@ -36,7 +36,8 @@
               <path
                 d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z" />
             </svg>
-          </a>
+          </a> 
+          
           <h2 class="main-title">Add Blog</h2>
         </div>
         <!-- dashboard title end here  -->
@@ -147,15 +148,23 @@
                 <div class="col-12 col-md-8 mt-0">
                   <div class="form-group mb-20 upload-input">
                     <label for="thumbnailImg" class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4">
-                      <div class="d-flex flex-column align-items-center gap-3">
+                      <!-- <div class="d-flex flex-column align-items-center gap-3">
                         <span id="thumbnailIcon">
-                          <!-- You can add an SVG icon here, if needed -->
+                          <!-- You can add an SVG icon here, if needed 
                         </span>
                         <p id="thumbnailText" class="mb-0">Upload Thumbnail Image</p>
                       </div>
-                      <img id="previewThumbnailImg" src="" alt="Thumbnail Image Preview" style="display: none; width: 300px; height:300px; border-radius: 8px;" />
+                      <img id="previewThumbnailImg" src="" alt="Thumbnail Image Preview" style="display: none; width: 300px; height:300px; border-radius: 8px;" /> -->
+                   
+                      <div class="banner-image">
+                                    <label for="upload-photo">
+                                        <img src="" id="banner-image" class="img-fluid " alt="thumbnail image">
+                                    </label>
+                                    <input type="file" id="upload-photo" class="d-none">
+                                </div>
+                   
                     </label>
-                    <input type="file" name="thumbnail_image" class="form-control form-control-lg " id="thumbnailImg"  onchange="previewThumbnailImage(event)" data-parsley-required="true"  />
+                    <!-- <input type="file" name="thumbnail_image" class="form-control form-control-lg " id="thumbnailImg"  onchange="previewThumbnailImage(event)" data-parsley-required="true"  /> -->
                   </div>
                   <div id="thumbnailImg-error" ></div>
                 </div>
@@ -169,15 +178,24 @@
                 <div class="col-12 col-md-8 mt-0">
                   <div class="form-group mb-20 upload-input">
                     <label for="bannerImg" class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4">
-                      <div class="d-flex flex-column align-items-center gap-3">
+                      <!-- <div class="d-flex flex-column align-items-center gap-3">
                         <span id="bannerIcon">
-                          <!-- You can add an SVG icon here, if needed -->
+                          <!-- You can add an SVG icon here, if needed 
                         </span>
                         <p id="bannerText" class="mb-0">Upload Banner Image</p>
-                      </div>
-                      <img id="previewBannerImg" src="" alt="Banner Image Preview" style="display: none; width: 300px; height:300px; border-radius: 8px;" />
+                      </div> -->
+                      <!-- <img id="previewBannerImg" src="" alt="Banner Image Preview" style="display: none; width: 300px; height:300px; border-radius: 8px;" /> -->
+                   
+                   
+                      <div class="banner-image">
+                                    <label for="upload-photo">
+                                        <img src="" id="banner-image" class="img-fluid " alt="Banner  Image">
+                                    </label>
+                                    <input type="file" id="upload-photo" class="d-none">
+                                </div>
+                   
                     </label>
-                    <input type="file" name="banner_image" class="form-control form-control-lg " id="bannerImg" required onchange="previewBannerImage(event)" data-parsley-required="true"  />
+                    <!-- <input type="file" name="banner_image" class="form-control form-control-lg " id="bannerImg" required onchange="previewBannerImage(event)" data-parsley-required="true"  /> -->
                   </div>
                   <div id="bannerImg-error" ></div>
 

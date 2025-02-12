@@ -58,7 +58,14 @@
             <div
               class="card-title d-flex justify-content-between align-items-center">
               <h2>Banner List</h2>
-              <a href="{{route('add-edit-banner')}}" class="btn sub_btn">ADD</a>
+              <!-- <a href="{{route('add-edit-banner')}}" class="btn sub_btn">ADD</a> -->
+
+              <a href=" {{route('add-edit-banner')}}  " ><button class="btn btn-primary rounded-circle d-flex align-items-center justify-content-center shadow-lg" style="width: 45px; height: 45px;">
+    <i class="bi bi-plus-lg fs-5 text-white"></i>
+</button></a> 
+
+
+
             </div>
           </div>
           <!-- card header end here  -->
@@ -85,7 +92,7 @@
 
             <!-- table content start here  -->
             <div class="table-content table-responsive">
-              <table class="table table-hover">
+              <table class="table ">
                 <thead>
                   <tr>
                     <th scope="col">Image</th>
@@ -451,14 +458,24 @@
                                       <div class="col-12 col-md-8 mt-0">
                                         <div class="form-group mb-20 upload-input">
                                           <label for="bannerImg" class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4">
-                                            <div class="d-flex flex-column align-items-center gap-3">
+                                            <!-- <div class="d-flex flex-column align-items-center gap-3">
                                               <span>
-                                                <!-- Optionally, an SVG icon or placeholder icon can go here -->
+                                                <!-- Optionally, an SVG icon or placeholder icon can go here 
                                               </span>
                                               <p id="bannerText" class="mb-0">Upload Banner</p>
-                                            </div>
+                                            </div> -->
+
+ <div class="banner-image">
+                                    <label for="upload-photo">
+                                        <img src="" id="banner-image" class="img-fluid " alt="Profile">
+                                    </label>
+                                    <input type="file" id="upload-photo" class="d-none">
+                                </div>
+
+
+
                                           </label>
-                                          <input type="file" name="banner_image" class="form-control form-control-lg " id="bannerImg" onchange="previewBannerImage(event)" />
+                                          <!-- <input type="file" name="banner_image" class="form-control form-control-lg " id="bannerImg" onchange="previewBannerImage(event)" /> -->
                                         </div>
 
                                         <!-- Banner Image Preview -->
@@ -470,7 +487,7 @@
 
 
 
-                                    <div class="my-3">
+                                    <div class="my-3 form-button">
                                       <button
                                         type="button"
                                         class="btn btn-secondary cancel_modal"
@@ -608,12 +625,12 @@
                   <li class="page-item">
                     <a class="page-link" href="#">1</a>
                   </li>
-                  <li class="page-item">
+                  <!-- <li class="page-item">
                     <a class="page-link" href="#">2</a>
                   </li>
                   <li class="page-item">
                     <a class="page-link" href="#">3</a>
-                  </li>
+                  </li> -->
                   <li class="page-item">
                     <a class="page-link" href="#" aria-label="Next">
                       <span aria-hidden="true">&raquo;</span>

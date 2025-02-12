@@ -5,7 +5,7 @@
   border-radius: $radius-4;
   color: #333335;
   width: 100%;
-  box-shadow: $shadow-5;
+  // box-shadow: $shadow-5;
   padding: 0rem $fs-9;
   // margin-bottom: 1rem;
   margin: 1rem 0;
@@ -61,6 +61,7 @@
     @include flex-between;
     padding: $padding 0;
     background-color: $white;
+    border: 0px; 
     p {
       font-size: $fs-7;
     }
@@ -397,3 +398,6 @@
     }
   }
 }
+
+
+

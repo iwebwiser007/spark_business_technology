@@ -19,6 +19,9 @@
   <link rel="stylesheet" href="{{ asset('node_modules/bootstrap/dist/css/bootstrap.min.css') }}" />
   <!-- <link rel="stylesheet" href="../assets/scss/main.css" /> -->
   <link rel="stylesheet" href="{{ asset('assets/scss/main.css') }}" />
+  <!-- link bootstrap icon cdn -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
   <!-- All css links end here... -->
 
   <!-- favicon icon start here -->

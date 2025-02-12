@@ -11,7 +11,7 @@
       <div class="dash-head">
         <!-- dashboard title start here  -->
         <div class="dash_title">
-          <a
+          <!-- <a
             href="banner_list.html"
             role="button"
             class="btn link-btn">
@@ -24,7 +24,12 @@
               <path
                 d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z" />
             </svg>
-          </a>
+          </a> -->
+          <a href="banner_list.html">
+                    <button class="btn link-btn rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+    <i class="bi bi-arrow-left-short fs-4 text-white"></i>
+</button>
+                    </a> 
           <h2 class="main-title text-wrap">Add Banner</h2>
         </div>
         <!-- dashboard title end here  -->
@@ -234,21 +239,29 @@
                 <div class="col-12 col-md-3">
                   <label for="inputBannerImage" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Banner Image</label>
                 </div>
-                <div class="col-12 col-md-8 mt-0">
+                 <div class="col-12 col-md-8 mt-0">
                   <div class="form-group mb-20 upload-input">
                     <label for="bannerImg" class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4">
-                      <div class="d-flex flex-column align-items-center gap-3">
-                        <span id="bannerIcon">
+                      <!-- <div class="d-flex flex-column align-items-center gap-3"> -->
+                        <!-- <span id="bannerIcon"> -->
                           <!-- You can add an SVG icon here, if needed -->
-                        </span>
-                        <p id="bannerText" class="mb-0">Upload Banner Image</p>
-                      </div>
-                      <img id="previewBannerImg" src="" alt="Banner Image Preview" style="display: none; width: 300px; height:300px; border-radius: 8px;" />
+                        <!-- </span> -->
+                        <!-- <p id="bannerText" class="mb-0">Upload Banner Image</p> -->
+                      <!-- </div> -->
+                      <!-- <img id="previewBannerImg" src="" alt="Banner Image Preview" style="display: none; width: 300px; height:300px; border-radius: 8px;" /> -->
+                      <div class="banner-image">
+                                    <label for="upload-photo">
+                                        <img src="" id="banner-image" class="img-fluid " alt="Profile">
+                                    </label>
+                                    <input type="file" id="upload-photo" class="d-none">
+                                </div>
                     </label>
-                    <input type="file" name="banner_image" class="form-control form-control-lg " id="bannerImg" required onchange="previewBannerImage(event)" data-parsley-required="true" />
+                  
+                    <!-- <input type="file" name="banner_image" class="form-control form-control-lg " id="bannerImg" required onchange="previewBannerImage(event)" data-parsley-required="true" /> -->
+                   
                   </div>
                   <div id="bannerImg-error"></div>
-                </div>
+                </div> 
               </div>
 
               <div class="row">
