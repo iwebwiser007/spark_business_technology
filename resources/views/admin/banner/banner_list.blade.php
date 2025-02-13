@@ -58,11 +58,11 @@
             <div
               class="card-title d-flex justify-content-between align-items-center">
               <h2>Banner List</h2>
-              <!-- <a href="{{route('add-edit-banner')}}" class="btn sub_btn">ADD</a> -->
+              <a href="{{route('add-edit-banner')}}" class="btn sub_btn">ADD</a>
 
-              <a href=" {{route('add-edit-banner')}}  " ><button class="btn btn-primary rounded-circle d-flex align-items-center justify-content-center shadow-lg" style="width: 45px; height: 45px;">
+              <!-- <a href=" {{route('add-edit-banner')}}  " ><button class="btn btn-primary rounded-circle d-flex align-items-center justify-content-center shadow-lg" style="width: 45px; height: 45px;">
     <i class="bi bi-plus-lg fs-5 text-white"></i>
-</button></a> 
+</button></a>  -->
 
 
 
@@ -273,236 +273,108 @@
                         </a>
                         <!-- banner edit button end here  -->
 
-                        <!-- Edit Modal start here  -->
-                        <div
-                          class="modal fade"
-                          id="editModal-{{$banner->id}}"
-                          tabindex="-1"
-                          aria-labelledby="exampleModalLabel"
-                          aria-hidden="true">
-                          <div
-                            class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h1
-                                  class="modal-title"
-                                  id="exampleModalLabel">
-                                  Edit Banner-{{$banner->id}}
-                                </h1>
-                                <button
-                                  type="button"
-                                  class="btn-close"
-                                  data-bs-dismiss="modal"
-                                  aria-label="Close"></button>
-                              </div>
+                        <div class="modal fade" id="editModal-{{$banner->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 fw-bold text-start" id="exampleModalLabel">Edit Banner-{{$banner->id}}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
 
-                              <div class="modal-body">
-                                <div class="container">
-                                  <form class="upload-form" action="{{ isset($banner) ? route('banner.update', $banner->id) : route('banner.store') }}"
-                                    method="POST"
-                                    enctype="multipart/form-data">
+            <div class="modal-body">
+                <div class="container">
+                    <form class="upload-form" action="{{ isset($banner) ? route('banner.update', $banner->id) : route('banner.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @if(isset($banner))
+                        @method('POST')
+                        @endif
 
-                                    @csrf
-                                    @if(isset($blog))
-                                    @method('POST') <!-- for update -->
-                                    @endif
-                                    <!-- title  -->
-                                    <div
-                                      class="row form-group g-3 align-items-center">
-                                      <!-- title label start here  -->
-                                      <div class="col-3">
-                                        <label
-                                          for="inputTitle"
-                                          class="col-form-label form-label">Banner Title
-                                        </label>
-                                      </div>
-                                      <!-- title label end here  -->
-
-                                      <!-- title input start here  -->
-                                      <div class="col-9">
-                                        <div class="mb-3 mt-3">
-                                          <input
-                                            type="text"
-                                            id="inputTitle"
-                                            name="title"
-                                            class="form-control form-control-lg form-input"
-                                            placeholder="Enter Title..."
-                                            value="{{ old('title', $banner->title ?? '') }}" required />
-                                        </div>
-                                      </div>
-                                      <!-- title input end here  -->
-                                    </div>
-
-                                    <div
-                                      class="row form-group g-3 align-items-center">
-                                      <!-- banner description label start here  -->
-                                      <div
-                                        class="col-3 d-flex justify-content-center">
-                                        <label
-                                          for="inputDescription"
-                                          class="col-form-label form-label text-break">Description</label>
-                                      </div>
-                                      <!-- banner description label end here  -->
-
-                                      <!-- banner description textarea box start here  -->
-                                      <div class="col-9">
-                                        <textarea
-                                          class="form-control form-control-lg form-textbox"
-                                          id="inputDescription"
-                                          name="description"
-                                          rows="4"
-                                          cols="30"
-                                          placeholder="write your description here..."
-                                          required>{{ old('description', $banner->description ?? '') }}</textarea>
-                                      </div>
-
-                                      <!-- banner description textarea box end here  -->
-                                    </div>
-
-                                    <div
-                                      class="row form-group g-3 align-items-center mt-3">
-                                      <!-- button link label start here  -->
-                                      <div
-                                        class="col-3 d-flex justify-content-center align-items-center">
-                                        <label
-                                          for="btnLink"
-                                          class="col-form-label form-label">Button Link
-                                        </label>
-                                      </div>
-                                      <!-- button link label end here  -->
-
-                                      <!-- button link input start here  -->
-                                      <div class="col-9">
-                                        <input
-                                          type="text"
-                                          id="inputTitle"
-                                          name="link"
-                                          class="form-control form-control-lg form-input"
-                                          placeholder="Enter Button Link..."
-                                          value="{{ old('link', $banner->link ?? '') }}"
-                                          required />
-                                      </div>
-                                      <!-- button link input end here  -->
-                                    </div>
-
-                                    <!-- image  -->
-                                    {{-- <div
-                                      class="row form-group g-3 align-items-center mt-3">
-                                      <!-- upload banner input area start here  -->
-                                      <div class="col-12">
-                                        <div
-                                          class="form-group mb-20 upload-input">
-                                          <label
-                                            for="cateImg"
-                                            class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4">
-                                            <div
-                                              class="d-flex flex-column align-items-center gap-3">
-                                              <span>
-                                                <svg
-                                                  xmlns="http://www.w3.org/2000/svg"
-                                                  version="1.1"
-                                                  xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                  width="40"
-                                                  height="40"
-                                                  x="0"
-                                                  y="0"
-                                                  viewBox="0 0 512.056 512.056"
-                                                  style="
-                                                                enable-background: new
-                                                                  0 0 512 512;
-                                                              "
-                                                  xml:space="preserve"
-                                                  class="">
-                                                  <g>
-                                                    <path
-                                                      d="M426.635 188.224C402.969 93.946 307.358 36.704 213.08 60.37 139.404 78.865 85.907 142.542 80.395 218.303 28.082 226.93-7.333 276.331 1.294 328.644c7.669 46.507 47.967 80.566 95.101 80.379h80v-32h-80c-35.346 0-64-28.654-64-64 0-35.346 28.654-64 64-64 8.837 0 16-7.163 16-16-.08-79.529 64.327-144.065 143.856-144.144 68.844-.069 128.107 48.601 141.424 116.144a16 16 0 0 0 13.6 12.8c43.742 6.229 74.151 46.738 67.923 90.479-5.593 39.278-39.129 68.523-78.803 68.721h-64v32h64c61.856-.187 111.848-50.483 111.66-112.339-.156-51.49-35.4-96.241-85.42-108.46z"
-                                                      fill="#818898"
-                                                      opacity="1"
-                                                      data-original="#818898"
-                                                      class=""></path>
-                                                    <path
-                                                      d="m245.035 253.664-64 64 22.56 22.56 36.8-36.64v153.44h32v-153.44l36.64 36.64 22.56-22.56-64-64c-6.241-6.204-16.319-6.204-22.56 0z"
-                                                      fill="#818898"
-                                                      opacity="1"
-                                                      data-original="#818898"
-                                                      class=""></path>
-                                                  </g>
-                                                </svg>
-                                              </span>
-                                              <p class="mb-0">
-                                                Upload Image / Icon
-                                              </p>
-                                            </div>
-                                            <div
-                                              class="upload-img d-none">
-                                              <img
-                                                src="../assets/img/login-left.jpg"
-                                                class="rounded-4"
-                                                alt="upload-img" />
-                                            </div>
-                                          </label>
-                                          <input
-                                            type="file"
-                                            class="form-control form-control-lg d-none"
-                                            id="cateImg"
-                                            placeholder="Enter Category" />
-                                        </div>
-                                      </div>
-                                      <!-- upload banner input area end here  -->
-                                    </div> --}}
-
-                                    <div class="row form-group">
-                                      <div class="col-12 col-md-3">
-                                        <label for="inputBannerImage" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Upload Banner Image</label>
-                                      </div>
-                                      <div class="col-12 col-md-8 mt-0">
-                                        <div class="form-group mb-20 upload-input">
-                                          <label for="bannerImg" class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4">
-                                            <!-- <div class="d-flex flex-column align-items-center gap-3">
-                                              <span>
-                                                <!-- Optionally, an SVG icon or placeholder icon can go here 
-                                              </span>
-                                              <p id="bannerText" class="mb-0">Upload Banner</p>
-                                            </div> -->
-
- <div class="banner-image">
-                                    <label for="upload-photo">
-                                        <img src="" id="banner-image" class="img-fluid " alt="Profile">
-                                    </label>
-                                    <input type="file" id="upload-photo" class="d-none">
-                                </div>
-
-
-
-                                          </label>
-                                          <!-- <input type="file" name="banner_image" class="form-control form-control-lg " id="bannerImg" onchange="previewBannerImage(event)" /> -->
-                                        </div>
-
-                                        <!-- Banner Image Preview -->
-                                        <div id="bannerPreview" class="mt-3">
-                                          <img id="previewBannerImg" src="{{  asset('http://localhost/spark_technology/storage/app/public/images/banner_images/' . $banner->banner_image) }}" alt="Banner Image Preview" style="display: {{ isset($banner) ? 'block' : 'none' }}; width: 100%; max-width: 200px; border-radius: 8px;" />
-                                        </div>
-                                      </div>
-                                    </div>
-
-
-
-                                    <div class="my-3 form-button">
-                                      <button
-                                        type="button"
-                                        class="btn btn-secondary cancel_modal"
-                                        data-bs-dismiss="modal">
-                                        Close
-                                      </button>
-                                      <button type="submit" class="btn form-btn my-0">Update</button>
-                                    </div>
-                                  </form>
-                                </div>
-                              </div>
+                        <!-- Title & Button Link (Side by Side) -->
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="inputTitle" class="form-label fw-semibold text-start d-block">Banner Title</label>
+                                <input type="text" id="inputTitle" name="title" class="form-control text-start" 
+                                       placeholder="Enter Title..." 
+                                       value="{{ old('title') }}" required />
                             </div>
-                          </div>
+
+                            <div class="col-md-6">
+                                <label for="btnLink" class="form-label fw-semibold text-start d-block">Button Link</label>
+                                <input type="text" id="btnLink" name="link" class="form-control text-start" 
+                                       placeholder="Enter Button Link..." 
+                                       value="{{ old('link') }}" required />
+                            </div>
                         </div>
-                        <!-- Edit modal end here  -->
+<!-- 
+                        <!-- Description (Full Width) 
+                        <div class="row g-3 mt-2">
+                            <div class="col-md-12">
+                                <label for="inputDescription" class="form-label fw-semibold text-start d-block">Description</label>
+                                <textarea class="form-control text-start" id="inputDescription" name="description" rows="3" 
+                                          placeholder="Write your description here..." required>{{ old('description') }}</textarea>
+                            </div>
+                        </div>
+
+                        <!-- Image Upload (Side by Side) 
+                        <div class="row g-3 mt-2 align-items-center">
+                            <div class="col-md-6">
+                                <label for="upload-photo" class="form-label fw-semibold text-start d-block">Upload Banner Image</label>
+                                <input type="file" name="banner_image" id="upload-photo" class="form-control">
+                            </div>
+                            <div class="col-md-6 text-start">
+                                <label class="form-label fw-semibold d-block">Banner Image Preview</label>
+                                <div class="preview-box">
+                                    <img id="previewBannerImg" src="#" alt="Banner Image Preview" class="img-fluid rounded shadow-sm" style="display: none;" />
+                                </div>
+                            </div>
+                        </div> -->
+
+ <!-- Description (Full width) -->
+ <div class="row form-group mt-3">
+                    <div class="col-md-6">
+                        <label for="inputBannerDescription" class="form-label fw-semibold  text-start d-block   ">Banner Description</label>
+                        <textarea class="form-control" id="inputBannerDescription" name="description" rows="3" placeholder="Write your description here..." data-parsley-required="true"></textarea>
+                    </div>
+
+                    
+<!-- Image Upload -->
+<div class="col-md-6">
+        <label for="bannerImage" class="form-label fw-semibold  text-start d-block    ">Upload Banner Image</label>
+        <div class="form-group mb-3 upload-input styled-box">
+            <label for="bannerImage" class="form-label form-img-uploader d-flex align-items-center justify-content-center w-100 py-4 position-relative" style="cursor: pointer;">
+                <div class="d-flex flex-column align-items-center gap-2">
+                    <span>
+                        <i class="bi bi-upload" style="font-size: 24px; color: #6c757d;"></i>
+                    </span>
+                    <p class="mb-0 text-muted">Click to Upload Image</p>
+                </div>
+                <img id="previewImg" src="#" alt="Image Preview" class="d-none img-fluid rounded mt-2" style="max-width: 100%; max-height: 150px;">
+            </label>
+            <input type="file" name="banner_image" id="bannerImage" class="d-none" accept="image/*" onchange="previewImage(event)">
+        </div>
+    </div>
+
+
+
+
+
+                </div>
+
+
+
+                        <!-- Buttons -->
+                        <div class="d-flex justify-content-end mt-4">
+                            <button type="button" class="btn btn-secondary me-2 px-4 py-2" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary px-4 py-2">Update</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
                         <!-- banner delete button start here  -->
                         <a

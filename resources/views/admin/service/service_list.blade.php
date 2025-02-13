@@ -81,7 +81,7 @@
 
             <!-- table content start here  -->
             <div class="table-content table-responsive">
-              <table class="table table-hover">
+              <table class="table">
                 <thead>
                   <tr>
                     {{-- <th scope="col">Image</th> --}}
@@ -168,7 +168,7 @@
 
                         <!-- edit button end here  -->
 
-                        <!-- Edit Modal start here  -->
+                        <!-- Edit Modal start here  --
                         <div
                           class="modal fade"
                           id="editModal-{{ $service->id }}"
@@ -196,10 +196,10 @@
                                   <form class="upload-form" action="{{ route('service.update' , $service->id) }}"
                                     method="POST">
                                     @csrf
-                                    <!-- title  -->
+                                    <!-- title  --
                                     <div
                                       class="row form-group g-3 align-items-center">
-                                      <!-- title label start here  -->
+                                      <!-- title label start here  --
                                       <div class="col-3">
                                         <label
                                           for="inputTitle"
@@ -208,7 +208,7 @@
                                       </div>
                                       <!-- title label end here  -->
 
-                                      <!-- title input start here  -->
+                                      <!-- title input start here  --
                                       <div class="col-9">
                                         <div class="mb-3 mt-3">
                                           <input
@@ -221,12 +221,12 @@
                                             required />
                                         </div>
                                       </div>
-                                      <!-- title input end here  -->
+                                      <!-- title input end here  --
                                     </div>
 
                                     <div
                                       class="row form-group g-3 align-items-center">
-                                      <!-- title label start here  -->
+                                      <!-- title label start here  --
                                       <div class="col-3">
                                         <label
                                           for="inputTitle"
@@ -235,7 +235,7 @@
                                       </div>
                                       <!-- title label end here  -->
 
-                                      <!-- title input start here  -->
+                                      <!-- title input start here  --
                                       <div class="col-9">
                                         <div class="mb-3 mt-3">
                                           <input
@@ -248,13 +248,13 @@
                                             required />
                                         </div>
                                       </div>
-                                      <!-- title input end here  -->
+                                      <!-- title input end here  
                                     </div>
 
-                                    <!-- description  -->
+                                    <!-- description  --
                                     {{-- <div
                                       class="row form-group g-3 align-items-center">
-                                      <!-- description label start here  -->
+                                      <!-- description label start here  --
                                       <div
                                         class="col-3 d-flex justify-content-center">
                                         <label
@@ -263,7 +263,7 @@
                                       </div>
                                       <!-- description label end here  -->
 
-                                      <!-- description textarea box start here  -->
+                                      <!-- description textarea box start here  --
                                       <div class="col-9">
                                         <div class="form-floating">
                                           <textarea
@@ -278,13 +278,13 @@
                                 </div>
                               </div>
 
-                              <!-- description textarea box end here  -->
+                              <!-- description textarea box end here  --
                             </div> --}}
 
-                            <!-- Sub title  -->
+                            <!-- Sub title  --
                             {{-- <div
                                       class="row form-group g-3 align-items-center">
-                                      <!-- title label start here  -->
+                                      <!-- title label start here  --
                                       <div class="col-3">
                                         <label
                                           for="inputTitle"
@@ -293,7 +293,7 @@
                                       </div>
                                       <!-- title label end here  -->
 
-                                      <!-- title input start here  -->
+                                      <!-- title input start here  --
                                       <div class="col-9">
                                         <div class="mb-3 mt-3">
                                           <input
@@ -304,13 +304,13 @@
                                             required />
                                         </div>
                                       </div>
-                                      <!-- title input end here  -->
+                                      <!-- title input end here  --
                                     </div> --}}
 
-                            <!-- Social Link area start here  -->
+                            <!-- Social Link area start here  --
                             <div
                               class="row form-group g-3 align-items-center">
-                              <!-- Social Link label start here  -->
+                              <!-- Social Link label start here  --
                               <div
                                 class="col-3 d-flex justify-content-center align-items-center">
                                 <label
@@ -320,7 +320,7 @@
                               </div>
                               <!-- Social Link label end here  -->
 
-                              <!-- Social Link input start here  -->
+                              <!-- Social Link input start here  --
                               <div class="col-9">
                                 <div class="mb-3 mt-3">
                                   <input
@@ -333,14 +333,14 @@
                                     required />
                                 </div>
                               </div>
-                              <!-- Social Link input end here  -->
+                              <!-- Social Link input end here  --
                             </div>
                             <!-- Sociall Link area end here  -->
 
-                            <!-- image  -->
+                            <!-- image  --
                             {{-- <div
                                       class="row form-group g-3 align-items-center mt-3">
-                                      <!-- upload banner input area start here  -->
+                                      <!-- upload banner input area start here  --
                                       <div class="col-12">
                                         <div
                                           class="form-group mb-20 upload-input">
@@ -352,7 +352,7 @@
                                               class="img-fluid rounded-4"
                                               width="30%"
                                               alt="upload image" />
-                                            <!-- close button start here  -->
+                                            <!-- close button start here  --
                                             <button
                                               type="button"
                                               data-bs-dismiss="modal"
@@ -361,11 +361,11 @@
                                           </label>
                                         </div>
                                       </div>
-                                      <!-- upload banner input area end here  -->
+                                      <!-- upload banner input area end here  --
                                     </div> --}}
 
 
-                            <!-- Blog Content -->
+                            <!-- Blog Content --
                             <div class="row form-group">
                               <div class="col-12 col-md-3">
                                 <label for="metaTags" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Enter Metas (JSON Format)</label>
@@ -389,7 +389,7 @@
 
 
 
-                            <!-- Image Upload -->
+                            <!-- Image Upload --
                             {{-- <div class="row form-group">
     <div class="col-12 col-md-3">
       <label for="inputBlogFile" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Upload Banner Image</label>
@@ -399,7 +399,7 @@
         <label for="blogImg" class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4">
           <div class="d-flex flex-column align-items-center gap-3">
             <span>
-              <!-- SVG Icon or placeholder icon goes here -->
+              <!-- SVG Icon or placeholder icon goes here 
             </span>
             <p class="mb-0">Upload Image</p>
           </div>
@@ -407,7 +407,7 @@
         <input type="file" name="image" class="form-control form-control-lg d-none" id="blogImg" onchange="previewImage(event)" />
       </div>
 
-      <!-- Image Preview Area -->
+      <!-- Image Preview Area 
       <div id="imagePreview" class="mt-3">
       <img id="previewImg" src="{{ isset($service) ? asset('http://localhost/spark_technology/storage/app/public/images/' . $service->image) : '' }}"
                             alt="Image Preview" style="display: {{ isset($service) ? 'block' : 'none' }}; width: 100%; max-width: 200px; border-radius: 8px;" />
@@ -419,7 +419,7 @@
 
 
 
-                      <!-- cancel and submit button  -->
+                      <!-- cancel and submit button  
                       <div class="my-3">
                         <button
                           type="button"
@@ -441,6 +441,77 @@
     </div>
 
     <!-- Edit modal end here  -->
+
+
+
+<!-- Edit Modal start here -->
+<div class="modal fade" id="editModal-{{ $service->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 text-start" id="exampleModalLabel">Edit Blog-{{$service->id}}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="container">
+          <form class="upload-form" action="{{ route('service.update' , $service->id) }}" method="POST">
+            @csrf
+            <div class="row g-3">
+              <!-- Service Name -->
+              <div class="col-md-4">
+                <label for="inputName" class="col-form-label form-label text-start d-block ">Service Name</label>
+                <input type="text" id="inputName" name="name" class="form-control" placeholder="Enter Name..." value="{{ old('name', $service->name ?? '') }}" required>
+              </div>
+
+              <!-- Service Title -->
+              <div class="col-md-4">
+                <label for="inputTitle" class="col-form-label form-label text-start d-block">Service Title</label>
+                <input type="text" id="inputTitle" name="title" class="form-control" placeholder="Enter Title..." value="{{ old('title', $service->title ?? '') }}" required>
+              </div>
+
+              <!-- Button Link -->
+              <div class="col-md-4">
+                <label for="btnLink" class="col-form-label form-label text-start d-block ">Button Link</label>
+                <input type="text" id="btnLink" name="link" class="form-control" placeholder="Enter Button Link..." value="{{ old('link', $service->link ?? '') }}" required>
+              </div>
+
+              <!-- Enter Metas (Full Width) -->
+              <div class="col-12">
+                <label for="metaTags" class="col-form-label form-label text-start d-block ">Enter Metas (JSON Format)</label>
+                <textarea name="meta_tags" id="metaTags" class="form-control" rows="4" placeholder="Enter JSON formatted metas..." required>{{ old('meta_tags', $service->meta_tags ?? '') }}</textarea>
+              </div>
+
+              <!-- Service Content (Full Width) -->
+              <div class="col-12">
+                <label for="html_content" class="col-form-label form-label text-start d-block">Service Content</label>
+                <textarea class="form-control ckeditor" id="html_content" name="html_content" rows="6">{{ old('html_content', $service->html_content ?? '') }}</textarea>
+              </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="d-flex justify-content-end mt-4">
+              <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Edit Modal End Here -->
+
+
+
+
+
+
+
+
+
+
+    
 
     <!-- delete button start here  -->
     <a

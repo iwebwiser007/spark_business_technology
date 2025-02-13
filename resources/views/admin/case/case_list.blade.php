@@ -62,7 +62,7 @@
 
                         <!-- table content start here  -->
                         <div class="table-content table-responsive ">
-                          <table class="table table-hover  table-bordered align-middle ">
+                          <table class="table   table-bordered align-middle ">
                             <thead class="table-light">
                               <tr>
                                 <th scope="col">Image</th>
@@ -504,7 +504,7 @@
 
                         <div class="pagination-div">
                           <nav aria-label="Page navigation example">
-                            <!-- <ul class="pagination">
+                            <ul class="pagination">
                               <li class="page-item">
                                 <a
                                   class="page-link"
@@ -517,30 +517,19 @@
                               <li class="page-item">
                                 <a class="page-link" href="#">1</a>
                               </li>
-                              <li class="page-item">
+                              <!-- <li class="page-item">
                                 <a class="page-link" href="#">2</a>
                               </li>
                               <li class="page-item">
                                 <a class="page-link" href="#">3</a>
-                              </li>
+                              </li> -->
                               <li class="page-item">
                                 <a class="page-link" href="#" aria-label="Next">
                                   <span aria-hidden="true">&raquo;</span>
                                 </a>
                               </li>
-                            </ul> -->
+                            </ul> 
 
-                            <ul class="pagination">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">‹</a>
-                </li>
-                <li class="page-item active">
-                    <a class="page-link" href="#">1</a>
-                </li>
-                <li class="page-item disabled">
-                    <a class="page-link" href="#">›</a>
-                </li>
-            </ul>
 
                           </nav>
                         </div>

@@ -59,23 +59,23 @@
                       </div>
                       <!-- card header end here  -->
 
-                      <!-- card body start here  -->
+                      <!-- card body start here  
                       <div class="card-body">
-                        <!-- form start here  -->
+                        <!-- form start here  
                         <form class="upload-form">
-                          <!-- title area start here  -->
+                          <!-- title area start here  
                           <div class="row form-group mt-1 mt-md-2">
-                            <!-- title label start here  -->
+                            <!-- title label start here  
                             <div class="col-12 col-md-3">
                               <label
                                 for="inputBranchTitle"
-                                class="col-form-label form-label d-flex justify-content-left justify-content-md-center"
+                                class="col-form-label form-label d-flex justify-content-left "
                                 >Branch Title
                               </label>
                             </div>
                             <!-- title label end here  -->
 
-                            <!-- title input start here  -->
+                            <!-- title input start here 
                             <div class="col-12 col-md-8 mt-0">
                               <input
                                 type="text"
@@ -85,24 +85,24 @@
                                 required
                               />
                             </div>
-                            <!-- title input end here  -->
+                            <!-- title input end here  
                             <div class="col-1"></div>
                           </div>
                           <!-- title area end here  -->
 
-                          <!-- Address area start here  -->
+                          <!-- Address area start here  
                           <div class="row form-group">
-                            <!-- Address label start here  -->
+                            <!-- Address label start here 
                             <div class="col-12 col-md-3">
                               <label
                                 for="inputAddress"
-                                class="col-form-label form-label d-flex justify-content-left justify-content-md-center"
+                                class="col-form-label form-label d-flex justify-content-left "
                                 >Address
                               </label>
                             </div>
                             <!-- Address label end here  -->
 
-                            <!-- Address input start here  -->
+                            <!-- Address input start here  
                             <div class="col-12 col-md-8 mt-0">
                               <input
                                 type="text"
@@ -112,24 +112,24 @@
                                 required
                               />
                             </div>
-                            <!-- Address input end here  -->
+                            <!-- Address input end here  
                             <div class="col-1"></div>
                           </div>
                           <!-- Address area end here  -->
 
-                          <!-- City area start here  -->
+                          <!-- City area start here  
                           <div class="row form-group">
-                            <!-- City label start here  -->
+                            <!-- City label start here  
                             <div class="col-12 col-md-3">
                               <label
                                 for="inputCity"
-                                class="col-form-label form-label d-flex justify-content-left justify-content-md-center"
+                                class="col-form-label form-label d-flex justify-content-left "
                                 >City
                               </label>
                             </div>
                             <!-- City label end here  -->
 
-                            <!-- City input start here  -->
+                            <!-- City input start here  
                             <div class="col-12 col-md-8 mt-0">
                               <input
                                 type="text"
@@ -139,24 +139,24 @@
                                 required
                               />
                             </div>
-                            <!-- City input end here  -->
+                            <!-- City input end here  
                             <div class="col-1"></div>
                           </div>
                           <!-- City area end here  -->
 
-                          <!-- State area start here  -->
+                          <!-- State area start here  
                           <div class="row form-group">
-                            <!-- State label start here  -->
+                            <!-- State label start here  
                             <div class="col-12 col-md-3">
                               <label
                                 for="inputState"
-                                class="col-form-label form-label d-flex justify-content-left justify-content-md-center"
+                                class="col-form-label form-label d-flex justify-content-left "
                                 >State/Province
                               </label>
                             </div>
                             <!-- State label end here  -->
 
-                            <!-- State input start here  -->
+                            <!-- State input start here  
                             <div class="col-12 col-md-8 mt-0">
                               <input
                                 type="text"
@@ -166,24 +166,24 @@
                                 required
                               />
                             </div>
-                            <!-- State input end here  -->
+                            <!-- State input end here  
                             <div class="col-1"></div>
                           </div>
                           <!-- State area end here  -->
 
-                          <!-- Zip-code area start here  -->
+                          <!-- Zip-code area start here  
                           <div class="row form-group">
-                            <!-- Zip-code label start here  -->
+                            <!-- Zip-code label start here  
                             <div class="col-12 col-md-3">
                               <label
                                 for="inputZip"
-                                class="col-form-label form-label d-flex justify-content-left justify-content-md-center"
+                                class="col-form-label form-label d-flex justify-content-left"
                                 >Zip-Code
                               </label>
                             </div>
                             <!-- Zip-code label end here  -->
 
-                            <!-- Zip-code input start here  -->
+                            <!-- Zip-code input start here  
                             <div class="col-12 col-md-8 mt-0">
                               <input
                                 type="text"
@@ -193,24 +193,24 @@
                                 required
                               />
                             </div>
-                            <!-- Zip-code input end here  -->
+                            <!-- Zip-code input end here  
                             <div class="col-1"></div>
                           </div>
                           <!-- Zip-code area end here  -->
 
-                          <!-- Country area start here  -->
+                          <!-- Country area start here  
                           <div class="row form-group">
-                            <!-- Country description label start here  -->
+                            <!-- Country description label start here  
                             <div class="col-12 col-md-3">
                               <label
                                 for="inputCountryDescription"
-                                class="col-form-label form-label d-flex justify-content-left justify-content-md-center"
+                                class="col-form-label form-label d-flex justify-content-left"
                                 >Country/region</label
                               >
                             </div>
                             <!-- Country description label end here  -->
 
-                            <!-- Country description textarea box start here  -->
+                            <!-- Country description textarea box start here  
                             <div class="col-12 col-md-8 mt-0">
                               <select
                                 id="country"
@@ -226,24 +226,24 @@
                               </select>
                             </div>
 
-                            <!-- Country description textarea box end here  -->
+                            <!-- Country description textarea box end here  
                             <div class="col-1"></div>
                           </div>
                           <!-- Country area end here  -->
 
-                          <!-- Page Select area start here  -->
+                          <!-- Page Select area start here  
                           <div class="row form-group">
-                            <!-- Page Select label start here  -->
+                            <!-- Page Select label start here  
                             <div class="col-12 col-md-3">
                               <label
                                 for="pageSelect"
-                                class="col-form-label form-label d-flex justify-content-left justify-content-md-center"
+                                class="col-form-label form-label d-flex justify-content-left "
                                 >Page Select</label
                               >
                             </div>
                             <!-- Page Select label end here  -->
 
-                            <!-- Page Select select start here  -->
+                            <!-- Page Select select start here  
                             <div class="col-12 col-md-8 mt-0">
                               <select
                                 name="pageSelect"
@@ -255,12 +255,12 @@
                               </select>
                             </div>
 
-                            <!-- Page Select select end here  -->
+                            <!-- Page Select select end here  
                             <div class="col-1"></div>
                           </div>
                           <!-- Page Select area end here  -->
 
-                          <!-- save button start here  -->
+                          <!-- save button start here  
                           <div class="row">
                             <div class="col-4 col-md-3"></div>
                             <div class="col-12 col-md-9 form-button">
@@ -278,11 +278,107 @@
                               >
                             </div>
                           </div>
-                          <!-- save button end here  -->
+                          <!-- save button end here  
                         </form>
-                        <!-- form end here  -->
+                        <!-- form end here  
                       </div>
                       <!-- card body end here  -->
+
+
+
+<!-- Card Body Start Here -->
+<div class="card-body">
+  <!-- Form Start Here -->
+  <form class="upload-form">
+    <div class="row">
+      <!-- Branch Title -->
+      <div class="col-md-6">
+        <label for="inputBranchTitle" class="col-form-label form-label">Branch Title</label>
+        <input type="text" id="inputBranchTitle" class="form-control form-control-lg form-input" placeholder="Enter Title..." required />
+      </div>
+
+      <!-- Address -->
+      <div class="col-md-6">
+        <label for="inputAddress" class="col-form-label form-label">Address</label>
+        <input type="text" id="inputAddress" class="form-control form-control-lg form-input" placeholder="Enter Address..." required />
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <!-- City -->
+      <div class="col-md-6">
+        <label for="inputCity" class="col-form-label form-label">City</label>
+        <input type="text" id="inputCity" class="form-control form-control-lg form-input" placeholder="Enter City..." required />
+      </div>
+
+      <!-- State/Province -->
+      <div class="col-md-6">
+        <label for="inputState" class="col-form-label form-label">State/Province</label>
+        <input type="text" id="inputState" class="form-control form-control-lg form-input" placeholder="Enter State/Province..." required />
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <!-- Zip-Code -->
+      <div class="col-md-6">
+        <label for="inputZip" class="col-form-label form-label">Zip-Code</label>
+        <input type="text" id="inputZip" class="form-control form-control-lg form-input" placeholder="Enter zip-code..." required />
+      </div>
+
+      <!-- Country/Region -->
+      <div class="col-md-6">
+        <label for="inputCountry" class="col-form-label form-label">Country/Region</label>
+        <select id="inputCountry" class="form-control form-control-lg form-input">
+          <option>Select Country</option>
+          <option value="Australia">Australia</option>
+          <option value="Canada">Canada</option>
+          <option value="India">India</option>
+          <option value="USA">USA</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <!-- Page Select -->
+      <div class="col-md-6">
+        <label for="pageSelect" class="col-form-label form-label">Page Select</label>
+        <select id="pageSelect" class="form-control form-control-lg form-input">
+          <option>Select Page</option>
+          <option value="Global">Global</option>
+          <option value="Local">Local</option>
+        </select>
+      </div>
+
+      <div class="col-md-6">
+        <!-- Empty column to balance alignment -->
+      </div>
+    </div>
+
+    <!-- Save button -->
+    <div class="row mt-4">
+      <div class="col-12 d-flex justify-content-end">
+        <a href="branch_list.html" role="button" class="btn form-cancel mx-2">Cancel</a>
+        <a href="#" role="button" class="btn form-btn">Save</a>
+      </div>
+    </div>
+  </form>
+  <!-- Form End Here -->
+</div>
+<!-- Card Body End Here -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     </div>
                     <!-- card end here  -->
                   </div>

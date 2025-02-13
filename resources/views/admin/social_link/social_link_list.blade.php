@@ -83,7 +83,7 @@
 
                         <!-- table content start here  -->
                         <div class="table-content table-responsive">
-                          <table class="table table-hover">
+                          <table class="table ">
                             <thead>
                               <tr>
                                 <!-- <th scope="col">Date</th> -->
@@ -179,7 +179,7 @@
 
                                           <div class="modal-body">
                                             <div class="container">
-                                              <form class="upload-form">
+                                              <form class="compact-modal ">
                                                 <!-- icon  -->
                                                 <div
                                                   class="row form-group g-3 align-items-center"
@@ -546,7 +546,7 @@
 
                                           <div class="modal-body">
                                             <div class="container">
-                                              <form class="upload-form">
+                                              <form class="compact-modal ">
                                                 <!-- icon  -->
                                                 <div
                                                   class="row form-group g-3 align-items-center"
@@ -756,7 +756,7 @@
 
                                           <div class="modal-body">
                                             <div class="container">
-                                              <form class="upload-form">
+                                              <form class="compact-modal">
                                                 <!-- icon  -->
                                                 <div
                                                   class="row form-group g-3 align-items-center"
@@ -1035,7 +1035,7 @@
 
                                           <div class="modal-body">
                                             <div class="container">
-                                              <form class="upload-form">
+                                              <form class="compact-modal ">
                                                 <!-- icon  -->
                                                 <div
                                                   class="row form-group g-3 align-items-center"

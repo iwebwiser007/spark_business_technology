@@ -64,7 +64,7 @@
 
                         <!-- table content start here  -->
                         <div class="table-content table-responsive">
-                          <table class="table table-hover">
+                          <table class="table ">
                             <thead>
                               <tr>
                                 <th scope="col">Image</th>
@@ -149,7 +149,7 @@
 
                                           <div class="modal-body">
                                             <div class="container">
-                                              <form class="upload-form">
+                                              <form class="compact-modal">
                                                 <!-- title  -->
                                                 <div
                                                   class="row form-group g-3 align-items-center"
@@ -209,7 +209,7 @@
                                                   </div>
                                                   <!-- upload banner input area end here  -->
                                                 </div>
-                                                <div class="my-3">
+                                                <div class="my-3 form-button">
                                                   <button
                                                     type="button"
                                                     class="btn btn-secondary cancel_modal"
@@ -419,7 +419,7 @@
 
                                           <div class="modal-body">
                                             <div class="container">
-                                              <form class="upload-form">
+                                              <form class="compact-modal">
                                                 <!-- title  -->
                                                 <div
                                                   class="row form-group g-3 align-items-center"
@@ -470,7 +470,7 @@
                                                   </div>
                                                   <!-- upload banner input area end here  -->
                                                 </div>
-                                                <div class="my-3">
+                                                <div class="my-3 form-button">
                                                   <button
                                                     type="button"
                                                     class="btn btn-secondary cancel_modal"
@@ -596,7 +596,7 @@
 
                                           <div class="modal-body">
                                             <div class="container">
-                                              <form class="upload-form">
+                                              <form class="compact-modal">
                                                 <!-- title  -->
                                                 <div
                                                   class="row form-group g-3 align-items-center"
@@ -656,7 +656,7 @@
                                                   </div>
                                                   <!-- upload banner input area end here  -->
                                                 </div>
-                                                <div class="my-3">
+                                                <div class="my-3 form-button">
                                                   <button
                                                     type="button"
                                                     class="btn btn-secondary cancel_modal"

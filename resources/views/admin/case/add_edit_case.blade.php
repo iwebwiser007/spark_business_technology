@@ -73,7 +73,7 @@
                                 <div class="col-12 col-md-4">
                                   <label
                                     for="caseTitle"
-                                    class="col-form-label form-label d-flex justify-content-start justify-content-md-center"
+                                    class="col-form-label form-label d-flex justify-content-start "
                                     >Product Name
                                   </label>
                                 </div>
@@ -99,7 +99,7 @@
                                 <div class="col-12 col-md-4">
                                   <label
                                     for="productSlogan"
-                                    class="col-form-label form-label d-flex justify-content-start justify-content-md-center"
+                                    class="col-form-label form-label d-flex justify-content-start "
                                     >Product Slogan
                                   </label>
                                 </div>
@@ -125,7 +125,7 @@
                                 <div class="col-12 col-md-4">
                                   <label
                                     for="industry"
-                                    class="col-form-label form-label d-flex justify-content-start justify-content-md-center"
+                                    class="col-form-label form-label d-flex justify-content-start "
                                     >Industry
                                   </label>
                                 </div>
@@ -166,7 +166,7 @@
                                 <div class="col-12 col-md-4">
                                   <label
                                     for="Description"
-                                    class="col-form-label form-label d-flex justify-content-start justify-content-md-center"
+                                    class="col-form-label form-label d-flex justify-content-start "
                                     >Description</label
                                   >
                                 </div>
@@ -192,7 +192,7 @@
                                 <div class="col-12 col-md-4">
                                   <label
                                     for="inputLink"
-                                    class="col-form-label form-label d-flex justify-content-start justify-content-md-center"
+                                    class="col-form-label form-label d-flex justify-content-start "
                                     >Country
                                   </label>
                                 </div>
@@ -223,7 +223,7 @@
                                 <div class="col-12 col-md-4">
                                   <label
                                     for="platformUsers"
-                                    class="col-form-label form-label d-flex justify-content-start justify-content-md-center"
+                                    class="col-form-label form-label d-flex justify-content-start "
                                     >Platform Users
                                   </label>
                                 </div>
@@ -249,7 +249,7 @@
                                 <div class="col-12 col-md-4">
                                   <label
                                     for="btnLink"
-                                    class="col-form-label form-label d-flex justify-content-start justify-content-md-center"
+                                    class="col-form-label form-label d-flex justify-content-start "
                                     >Button Link
                                   </label>
                                 </div>
@@ -298,7 +298,7 @@
                                 <div class="col-12 col-md-4">
                                   <label
                                     for="caseImg"
-                                    class="col-form-label form-label d-flex justify-content-start justify-content-md-center"
+                                    class="col-form-label form-label d-flex justify-content-start "
                                     >Upload Logo</label
                                   >
                                 </div>
@@ -418,7 +418,7 @@
                                 <div class="col-12 col-md-4">
                                   <label
                                     for="productImg"
-                                    class="col-form-label form-label d-flex justify-content-start justify-content-md-center"
+                                    class="col-form-label form-label d-flex justify-content-start "
                                     >Upload certificate</label
                                   >
                                 </div>
@@ -541,7 +541,7 @@
                                 <div class="col-12 col-md-4">
                                   <label
                                     for="challenge"
-                                    class="col-form-label form-label d-flex justify-content-start justify-content-md-center"
+                                    class="col-form-label form-label d-flex justify-content-start"
                                     >Challenge</label
                                   >
                                 </div>
@@ -567,7 +567,7 @@
                                 <div class="col-12 col-md-4">
                                   <label
                                     for="Solution"
-                                    class="col-form-label form-label d-flex justify-content-start justify-content-md-center"
+                                    class="col-form-label form-label d-flex justify-content-start "
                                     >Solution</label
                                   >
                                 </div>
@@ -593,7 +593,7 @@
                                 <div class="col-12 col-md-4">
                                   <label
                                     for="productImg"
-                                    class="col-form-label form-label d-flex justify-content-start justify-content-md-center"
+                                    class="col-form-label form-label d-flex justify-content-start "
                                     >Upload Image</label
                                   >
                                 </div>
@@ -712,7 +712,7 @@
                                 <div class="col-12 col-md-4">
                                   <label
                                     for="caseTitle"
-                                    class="col-form-label form-label d-flex justify-content-start justify-content-md-center"
+                                    class="col-form-label form-label d-flex justify-content-start "
                                     >Title
                                   </label>
                                 </div>
@@ -738,7 +738,7 @@
                                 <div class="col-12 col-md-4">
                                   <label
                                     for="bussinessImpact"
-                                    class="col-form-label form-label d-flex justify-content-start justify-content-md-center"
+                                    class="col-form-label form-label d-flex justify-content-start "
                                     >Bussiness Impact</label
                                   >
                                 </div>
@@ -764,7 +764,7 @@
                                 <div class="col-12 col-md-4">
                                   <label
                                     for="userImpact"
-                                    class="col-form-label form-label d-flex justify-content-start justify-content-md-center"
+                                    class="col-form-label form-label d-flex justify-content-start "
                                     >User Impact</label
                                   >
                                 </div>
@@ -790,7 +790,7 @@
                                 <div class="col-12 col-md-4">
                                   <label
                                     for="productImg"
-                                    class="col-form-label form-label d-flex justify-content-start justify-content-md-center"
+                                    class="col-form-label form-label d-flex justify-content-start "
                                     >Upload Image</label
                                   >
                                 </div>
@@ -910,7 +910,7 @@
                                 <div class="col-12 col-md-4">
                                   <label
                                     for="feature"
-                                    class="col-form-label form-label d-flex justify-content-start justify-content-md-center"
+                                    class="col-form-label form-label d-flex justify-content-start "
                                     >Phase Title
                                   </label>
                                 </div>
@@ -956,7 +956,7 @@
                                 <div class="col-12 col-md-4">
                                   <label
                                     for="inputLink"
-                                    class="col-form-label form-label d-flex justify-content-start justify-content-md-center"
+                                    class="col-form-label form-label d-flex justify-content-start "
                                     >Phase Feature
                                   </label>
                                 </div>

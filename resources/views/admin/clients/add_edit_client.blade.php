@@ -73,7 +73,7 @@
                             <div class="col-12 col-md-3">
                               <label
                                 for="inputClientTitle"
-                                class="col-form-label form-label d-flex justify-content-left justify-content-md-center"
+                                class="col-form-label form-label d-flex justify-content-left"
                                 >Client Title
                               </label>
                             </div>
@@ -100,7 +100,7 @@
                             <div class="col-12 col-md-3">
                               <label
                                 for="inputClientFile"
-                                class="col-form-label form-label d-flex justify-content-left justify-content-md-center"
+                                class="col-form-label form-label d-flex justify-content-left"
                                 >Upload Logo</label
                               >
                             </div>

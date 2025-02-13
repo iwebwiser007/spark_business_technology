@@ -65,7 +65,7 @@
 
                         <!-- table content start here  -->
                         <div class="table-content table-responsive">
-                          <table class="table table-hover">
+                          <table class="table ">
                             <thead>
                               <tr>
                                 <th scope="col">Title</th>
@@ -83,13 +83,13 @@
                               <tr>
                                 <!-- branch-1 title start here  -->
                                 <td>
-                                  <p class="text-nowrap">Appwise Pty. Ltd.</p>
+                                  <p class="text-nowrap text-muted">Appwise Pty. Ltd.</p>
                                 </td>
                                 <!-- branch-1 title end here  -->
 
                                 <!-- Adress area start here  -->
                                 <td>
-                                  <p class="text-truncate">
+                                  <p class="text-truncate text-muted">
                                     102, Stephen Dlamini Road
                                   </p>
                                 </td>
@@ -97,31 +97,31 @@
 
                                 <!-- City area start here  -->
                                 <td>
-                                  <p>Musgrave</p>
+                                  <p class= "text-muted">Musgrave</p>
                                 </td>
                                 <!-- City area end here  -->
 
                                 <!-- State area start here  -->
                                 <td>
-                                  <p>Durban</p>
+                                  <p class="text-muted"  >Durban</p>
                                 </td>
                                 <!-- State area end here  -->
 
                                 <!-- Zip-code area start here  -->
                                 <td>
-                                  <p>4001</p>
+                                  <p  class="text-muted"   >4001</p>
                                 </td>
                                 <!-- Zip-code area end here  -->
 
                                 <!-- country area start here  -->
                                 <td>
-                                  <p>South Africa</p>
+                                  <p class="text-muted"     >South Africa</p>
                                 </td>
                                 <!-- country area end here  -->
 
                                 <!-- Page Select start here  -->
                                 <td>
-                                  <p>Global</p>
+                                  <p class="text-muted"    >Global</p>
                                 </td>
                                 <!-- Page Select End here  -->
 
@@ -152,7 +152,7 @@
                                     </a>
                                     <!-- branch edit button end here  -->
 
-                                    <!-- Edit Modal start here  -->
+                                    <!-- Edit Modal start here  
                                     <div
                                       class="modal fade"
                                       id="editModal"
@@ -182,14 +182,14 @@
                                           <div class="modal-body">
                                             <div class="container">
                                               <form class="upload-form">
-                                                <!-- title area start here  -->
+                                                <!-- title area start here  
                                                 <div
                                                   class="row form-group g-3 align-items-center"
                                                 >
                                                   <!-- <div class="col-1"></div> -->
-                                                  <!-- title label start here  -->
+                                                  <!-- title label start here  
                                                   <div
-                                                    class="col-3 d-flex justify-content-center align-items-center"
+                                                    class="col-3 d-flex  align-items-center"
                                                   >
                                                     <label
                                                       for="inputTitle"
@@ -199,7 +199,7 @@
                                                   </div>
                                                   <!-- title label end here  -->
 
-                                                  <!-- title input start here  -->
+                                                  <!-- title input start here  
                                                   <div class="col-9">
                                                     <div class="mb-3 mt-3">
                                                       <input
@@ -211,18 +211,18 @@
                                                       />
                                                     </div>
                                                   </div>
-                                                  <!-- title input end here  -->
+                                                  <!-- title input end here  
                                                 </div>
                                                 <!-- title area end here  -->
 
-                                                <!-- Address area start here  -->
+                                                <!-- Address area start here  
                                                 <div
                                                   class="row form-group g-3 align-items-center"
                                                 >
                                                   <!-- <div class="col-1"></div> -->
-                                                  <!-- Address label start here  -->
+                                                  <!-- Address label start here  
                                                   <div
-                                                    class="col-3 d-flex justify-content-center align-items-center"
+                                                    class="col-3 d-flex align-items-center"
                                                   >
                                                     <label
                                                       for="btnLink"
@@ -232,7 +232,7 @@
                                                   </div>
                                                   <!-- Address label end here  -->
 
-                                                  <!-- Address input start here  -->
+                                                  <!-- Address input start here  
                                                   <div class="col-9">
                                                     <div class="mb-3 mt-3">
                                                       <input
@@ -244,17 +244,17 @@
                                                       />
                                                     </div>
                                                   </div>
-                                                  <!-- Address input end here  -->
+                                                  <!-- Address input end here  
                                                 </div>
                                                 <!-- Address area end here  -->
 
-                                                <!-- City area start here  -->
+                                                <!-- City area start here  
                                                 <div
                                                   class="row form-group g-3 align-items-center"
                                                 >
-                                                  <!-- City label start here  -->
+                                                  <!-- City label start here  
                                                   <div
-                                                    class="col-3 d-flex justify-content-center align-items-center"
+                                                    class="col-3 d-flex  align-items-center"
                                                   >
                                                     <label
                                                       for="btnLink"
@@ -264,7 +264,7 @@
                                                   </div>
                                                   <!-- City label end here  -->
 
-                                                  <!-- City input start here  -->
+                                                  <!-- City input start here  
                                                   <div class="col-9">
                                                     <div class="mb-3 mt-3">
                                                       <input
@@ -276,17 +276,17 @@
                                                       />
                                                     </div>
                                                   </div>
-                                                  <!-- City input end here  -->
+                                                  <!-- City input end here  
                                                 </div>
                                                 <!-- City area end here  -->
 
-                                                <!-- State area start here  -->
+                                                <!-- State area start here  
                                                 <div
                                                   class="row form-group g-3 align-items-center"
                                                 >
-                                                  <!-- location label start here  -->
+                                                  <!-- location label start here  
                                                   <div
-                                                    class="col-3 d-flex justify-content-center align-items-center"
+                                                    class="col-3 d-flex  align-items-center"
                                                   >
                                                     <label
                                                       for="btnLink"
@@ -296,7 +296,7 @@
                                                   </div>
                                                   <!-- Location label end here  -->
 
-                                                  <!-- location input start here  -->
+                                                  <!-- location input start here  
                                                   <div class="col-9">
                                                     <div class="mb-3 mt-3">
                                                       <input
@@ -308,17 +308,17 @@
                                                       />
                                                     </div>
                                                   </div>
-                                                  <!-- location input end here  -->
+                                                  <!-- location input end here  
                                                 </div>
                                                 <!-- State area end here  -->
 
-                                                <!-- Zip-code area start here  -->
+                                                <!-- Zip-code area start here  
                                                 <div
                                                   class="row form-group g-3 align-items-center"
                                                 >
-                                                  <!-- Zip-code label start here  -->
+                                                  <!-- Zip-code label start here  
                                                   <div
-                                                    class="col-3 d-flex align-items-center justify-content-center"
+                                                    class="col-3 d-flex align-items-center "
                                                   >
                                                     <label
                                                       for="btnLink"
@@ -328,7 +328,7 @@
                                                   </div>
                                                   <!-- Zip-code label end here  -->
 
-                                                  <!-- Zip-code input start here  -->
+                                                  <!-- Zip-code input start here  
                                                   <div class="col-9">
                                                     <div class="mb-3 mt-3">
                                                       <input
@@ -340,17 +340,17 @@
                                                       />
                                                     </div>
                                                   </div>
-                                                  <!-- Zip-code input end here  -->
+                                                  <!-- Zip-code input end here  
                                                 </div>
                                                 <!-- Zip-code area end here  -->
 
-                                                <!-- Country area start here  -->
+                                                <!-- Country area start here  
                                                 <div
                                                   class="row form-group g-3 align-items-center"
                                                 >
-                                                  <!-- banner description label start here  -->
+                                                  <!-- banner description label start here  
                                                   <div
-                                                    class="col-3 d-flex justify-content-center align-items-center"
+                                                    class="col-3 d-flex  align-items-center"
                                                   >
                                                     <label
                                                       for="inputDescription"
@@ -360,7 +360,7 @@
                                                   </div>
                                                   <!-- banner description label end here  -->
 
-                                                  <!-- banner description textarea box start here  -->
+                                                  <!-- banner description textarea box start here  
                                                   <div class="col-9">
                                                     <select
                                                       id="country"
@@ -388,17 +388,17 @@
                                                     </select>
                                                   </div>
 
-                                                  <!-- banner description textarea box end here  -->
+                                                  <!-- banner description textarea box end here  
                                                 </div>
                                                 <!-- Country area end here  -->
 
-                                                <!-- Page select start here  -->
+                                                <!-- Page select start here  
                                                 <div
                                                   class="row form-group g-3 align-items-center mt-2"
                                                 >
-                                                  <!-- Page Select label start here  -->
+                                                  <!-- Page Select label start here  
                                                   <div
-                                                    class="col-3 d-flex justify-content-center align-items-center"
+                                                    class="col-3 d-flex  align-items-center"
                                                   >
                                                     <label
                                                       for="inputDescription"
@@ -408,7 +408,7 @@
                                                   </div>
                                                   <!-- Page Select label end here  -->
 
-                                                  <!-- Page Select input start here  -->
+                                                  <!-- Page Select input start here  
                                                   <div class="col-9">
                                                     <select
                                                       id="country"
@@ -427,12 +427,12 @@
                                                     </select>
                                                   </div>
 
-                                                  <!-- Page Select input end here  -->
+                                                  <!-- Page Select input end here  
                                                 </div>
                                                 <!-- Page select end here  -->
 
-                                                <!-- cancel and submit button  -->
-                                                <div class="my-3">
+                                                <!-- cancel and submit button  
+                                                <div class="my-3 form-button ">
                                                   <button
                                                     type="button"
                                                     class="btn btn-secondary cancel_modal"
@@ -454,6 +454,108 @@
                                       </div>
                                     </div>
                                     <!-- Edit modal end here  -->
+
+
+
+<!-- Edit Modal Start Here -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered"> 
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 text-start" id="exampleModalLabel">Edit Branch-1</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="container">
+          <form class="upload-form">
+            <div class="row g-3">
+              <!-- Branch Title -->
+              <div class="col-md-6">
+                <label for="inputBranchTitle" class="col-form-label form-label text-start d-block">Branch Title</label>
+                <input type="text" id="inputBranchTitle" class="form-control" placeholder="Enter Title..." required />
+              </div>
+
+              <!-- Address -->
+              <div class="col-md-6">
+                <label for="inputAddress" class="col-form-label form-label text-start d-block">Address</label>
+                <input type="text" id="inputAddress" class="form-control" placeholder="Enter Address..." required />
+              </div>
+
+              <!-- City -->
+              <div class="col-md-6">
+                <label for="inputCity" class="col-form-label form-label text-start d-block">City</label>
+                <input type="text" id="inputCity" class="form-control" placeholder="Enter City..." required />
+              </div>
+
+              <!-- State/Province -->
+              <div class="col-md-6">
+                <label for="inputState" class="col-form-label form-label text-start d-block">State/Province</label>
+                <input type="text" id="inputState" class="form-control" placeholder="Enter State/Province..." required />
+              </div>
+
+              <!-- Zip-Code -->
+              <div class="col-md-6">
+                <label for="inputZip" class="col-form-label form-label text-start d-block">Zip-Code</label>
+                <input type="text" id="inputZip" class="form-control" placeholder="Enter zip-code..." required />
+              </div>
+
+              <!-- Country -->
+              <div class="col-md-6">
+                <label for="inputCountry" class="col-form-label form-label text-start d-block">Country</label>
+                <select id="inputCountry" class="form-control">
+                  <option>Select Country</option>
+                  <option value="Australia">Australia</option>
+                  <option value="Canada">Canada</option>
+                  <option value="India">India</option>
+                  <option value="USA">USA</option>
+                </select>
+              </div>
+
+              <!-- Page Select -->
+              <div class="col-md-6">
+                <label for="pageSelect" class="col-form-label form-label text-start d-block">Page Select</label>
+                <select id="pageSelect" class="form-control">
+                  <option>Select Page</option>
+                  <option value="Global">Global</option>
+                  <option value="Local">Local</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="d-flex justify-content-end mt-4">
+              <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Edit Modal End Here -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                                     <!-- branch delete button start here  -->
                                     <a
@@ -639,7 +741,7 @@
                                     </a>
                                     <!-- branch edit button end here  -->
 
-                                    <!-- Edit Modal start here  -->
+                                    <!-- Edit Modal start here  
                                     <div
                                       class="modal fade"
                                       id="editModal1"
@@ -669,14 +771,14 @@
                                           <div class="modal-body">
                                             <div class="container">
                                               <form class="upload-form">
-                                                <!-- title area start here  -->
+                                                <!-- title area start here  
                                                 <div
                                                   class="row form-group g-3 align-items-center"
                                                 >
                                                   <!-- <div class="col-1"></div> -->
-                                                  <!-- title label start here  -->
+                                                  <!-- title label start here  
                                                   <div
-                                                    class="col-3 d-flex justify-content-center align-items-center"
+                                                    class="col-3 d-flex  align-items-center"
                                                   >
                                                     <label
                                                       for="inputTitle"
@@ -686,7 +788,7 @@
                                                   </div>
                                                   <!-- title label end here  -->
 
-                                                  <!-- title input start here  -->
+                                                  <!-- title input start here  
                                                   <div class="col-9">
                                                     <div class="mb-3 mt-3">
                                                       <input
@@ -698,18 +800,18 @@
                                                       />
                                                     </div>
                                                   </div>
-                                                  <!-- title input end here  -->
+                                                  <!-- title input end here 
                                                 </div>
                                                 <!-- title area end here  -->
 
-                                                <!-- Address area start here  -->
+                                                <!-- Address area start here  
                                                 <div
                                                   class="row form-group g-3 align-items-center"
                                                 >
                                                   <!-- <div class="col-1"></div> -->
-                                                  <!-- Address label start here  -->
+                                                  <!-- Address label start here  
                                                   <div
-                                                    class="col-3 d-flex justify-content-center align-items-center"
+                                                    class="col-3 d-flex  align-items-center"
                                                   >
                                                     <label
                                                       for="btnLink"
@@ -719,7 +821,7 @@
                                                   </div>
                                                   <!-- Address label end here  -->
 
-                                                  <!-- Address input start here  -->
+                                                  <!-- Address input start here  
                                                   <div class="col-9">
                                                     <div class="mb-3 mt-3">
                                                       <input
@@ -731,17 +833,17 @@
                                                       />
                                                     </div>
                                                   </div>
-                                                  <!-- Address input end here  -->
+                                                  <!-- Address input end here  
                                                 </div>
                                                 <!-- Address area end here  -->
 
-                                                <!-- City area start here  -->
+                                                <!-- City area start here  
                                                 <div
                                                   class="row form-group g-3 align-items-center"
                                                 >
-                                                  <!-- City label start here  -->
+                                                  <!-- City label start here 
                                                   <div
-                                                    class="col-3 d-flex justify-content-center align-items-center"
+                                                    class="col-3 d-flex  align-items-center"
                                                   >
                                                     <label
                                                       for="btnLink"
@@ -751,7 +853,7 @@
                                                   </div>
                                                   <!-- City label end here  -->
 
-                                                  <!-- City input start here  -->
+                                                  <!-- City input start here 
                                                   <div class="col-9">
                                                     <div class="mb-3 mt-3">
                                                       <input
@@ -763,17 +865,17 @@
                                                       />
                                                     </div>
                                                   </div>
-                                                  <!-- City input end here  -->
+                                                  <!-- City input end here  
                                                 </div>
                                                 <!-- City area end here  -->
 
-                                                <!-- State area start here  -->
+                                                <!-- State area start here  
                                                 <div
                                                   class="row form-group g-3 align-items-center"
                                                 >
-                                                  <!-- location label start here  -->
+                                                  <!-- location label start here 
                                                   <div
-                                                    class="col-3 d-flex justify-content-center align-items-center"
+                                                    class="col-3 d-flex  align-items-center"
                                                   >
                                                     <label
                                                       for="btnLink"
@@ -783,7 +885,7 @@
                                                   </div>
                                                   <!-- Location label end here  -->
 
-                                                  <!-- location input start here  -->
+                                                  <!-- location input start here 
                                                   <div class="col-9">
                                                     <div class="mb-3 mt-3">
                                                       <input
@@ -795,17 +897,17 @@
                                                       />
                                                     </div>
                                                   </div>
-                                                  <!-- location input end here  -->
+                                                  <!-- location input end here  
                                                 </div>
                                                 <!-- State area end here  -->
 
-                                                <!-- Zip-code area start here  -->
+                                                <!-- Zip-code area start here  
                                                 <div
                                                   class="row form-group g-3 align-items-center"
                                                 >
-                                                  <!-- Zip-code label start here  -->
+                                                  <!-- Zip-code label start here  
                                                   <div
-                                                    class="col-3 d-flex align-items-center justify-content-center"
+                                                    class="col-3 d-flex align-items-center "
                                                   >
                                                     <label
                                                       for="btnLink"
@@ -815,7 +917,7 @@
                                                   </div>
                                                   <!-- Zip-code label end here  -->
 
-                                                  <!-- Zip-code input start here  -->
+                                                  <!-- Zip-code input start here  
                                                   <div class="col-9">
                                                     <div class="mb-3 mt-3">
                                                       <input
@@ -827,17 +929,17 @@
                                                       />
                                                     </div>
                                                   </div>
-                                                  <!-- Zip-code input end here  -->
+                                                  <!-- Zip-code input end here  
                                                 </div>
                                                 <!-- Zip-code area end here  -->
 
-                                                <!-- Country area start here  -->
+                                                <!-- Country area start here  
                                                 <div
                                                   class="row form-group g-3 align-items-center"
                                                 >
-                                                  <!-- banner description label start here  -->
+                                                  <!-- banner description label start here  
                                                   <div
-                                                    class="col-3 d-flex justify-content-center align-items-center"
+                                                    class="col-3 d-flex  align-items-center"
                                                   >
                                                     <label
                                                       for="inputDescription"
@@ -847,7 +949,7 @@
                                                   </div>
                                                   <!-- banner description label end here  -->
 
-                                                  <!-- banner description textarea box start here  -->
+                                                  <!-- banner description textarea box start here  
                                                   <div class="col-9">
                                                     <select
                                                       id="country"
@@ -875,17 +977,17 @@
                                                     </select>
                                                   </div>
 
-                                                  <!-- banner description textarea box end here  -->
+                                                  <!-- banner description textarea box end here  
                                                 </div>
                                                 <!-- Country area end here  -->
 
-                                                <!-- Page select start here  -->
+                                                <!-- Page select start here  
                                                 <div
                                                   class="row form-group g-3 align-items-center mt-2"
                                                 >
-                                                  <!-- Page Select label start here  -->
+                                                  <!-- Page Select label start here  
                                                   <div
-                                                    class="col-3 d-flex justify-content-center align-items-center"
+                                                    class="col-3 d-flex  align-items-center"
                                                   >
                                                     <label
                                                       for="inputDescription"
@@ -895,7 +997,7 @@
                                                   </div>
                                                   <!-- Page Select label end here  -->
 
-                                                  <!-- Page Select input start here  -->
+                                                  <!-- Page Select input start here  
                                                   <div class="col-9">
                                                     <select
                                                       id="country"
@@ -914,12 +1016,12 @@
                                                     </select>
                                                   </div>
 
-                                                  <!-- Page Select input end here  -->
+                                                  <!-- Page Select input end here  
                                                 </div>
                                                 <!-- Page select end here  -->
 
-                                                <!-- cancel and submit button  -->
-                                                <div class="my-3">
+                                                <!-- cancel and submit button  
+                                                <div class="my-3 form-button">
                                                   <button
                                                     type="button"
                                                     class="btn btn-secondary cancel_modal"
@@ -941,6 +1043,100 @@
                                       </div>
                                     </div>
                                     <!-- Edit modal end here  -->
+
+
+
+<!-- Edit Modal Start Here -->
+<div class="modal fade" id="editModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered"> 
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 text-start" id="exampleModalLabel">Edit Branch-2</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="container">
+          <form class="upload-form">
+            <div class="row g-3">
+              <!-- Branch Title -->
+              <div class="col-md-6">
+                <label for="inputBranchTitle" class="col-form-label form-label text-start d-block">Branch Title</label>
+                <input type="text" id="inputBranchTitle" class="form-control" placeholder="Enter Title..." required />
+              </div>
+
+              <!-- Address -->
+              <div class="col-md-6">
+                <label for="inputAddress" class="col-form-label form-label text-start d-block">Address</label>
+                <input type="text" id="inputAddress" class="form-control" placeholder="Enter Address..." required />
+              </div>
+
+              <!-- City -->
+              <div class="col-md-6">
+                <label for="inputCity" class="col-form-label form-label text-start d-block">City</label>
+                <input type="text" id="inputCity" class="form-control" placeholder="Enter City..." required />
+              </div>
+
+              <!-- State/Province -->
+              <div class="col-md-6">
+                <label for="inputState" class="col-form-label form-label text-start d-block">State/Province</label>
+                <input type="text" id="inputState" class="form-control" placeholder="Enter State/Province..." required />
+              </div>
+
+              <!-- Zip-Code -->
+              <div class="col-md-6">
+                <label for="inputZip" class="col-form-label form-label text-start d-block">Zip-Code</label>
+                <input type="text" id="inputZip" class="form-control" placeholder="Enter zip-code..." required />
+              </div>
+
+              <!-- Country -->
+              <div class="col-md-6">
+                <label for="inputCountry" class="col-form-label form-label text-start d-block">Country</label>
+                <select id="inputCountry" class="form-control">
+                  <option>Select Country</option>
+                  <option value="Australia">Australia</option>
+                  <option value="Canada">Canada</option>
+                  <option value="India">India</option>
+                  <option value="USA">USA</option>
+                </select>
+              </div>
+
+              <!-- Page Select -->
+              <div class="col-md-6">
+                <label for="pageSelect" class="col-form-label form-label text-start d-block">Page Select</label>
+                <select id="pageSelect" class="form-control">
+                  <option>Select Page</option>
+                  <option value="Global">Global</option>
+                  <option value="Local">Local</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="d-flex justify-content-end mt-4">
+              <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Edit Modal End Here -->
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                                     <!-- branch delete button start here  -->
                                     <a
@@ -1043,7 +1239,7 @@
                                     </a>
                                     <!-- branch edit button end here  -->
 
-                                    <!-- Edit Modal start here  -->
+                                    <!-- Edit Modal start here  
                                     <div
                                       class="modal fade"
                                       id="editModal2"
@@ -1073,14 +1269,14 @@
                                           <div class="modal-body">
                                             <div class="container">
                                               <form class="upload-form">
-                                                <!-- title area start here  -->
+                                                <!-- title area start here  
                                                 <div
                                                   class="row form-group g-3 align-items-center"
                                                 >
                                                   <!-- <div class="col-1"></div> -->
-                                                  <!-- title label start here  -->
+                                                  <!-- title label start here  
                                                   <div
-                                                    class="col-3 d-flex justify-content-center align-items-center"
+                                                    class="col-3 d-flex  align-items-center"
                                                   >
                                                     <label
                                                       for="inputTitle"
@@ -1090,7 +1286,7 @@
                                                   </div>
                                                   <!-- title label end here  -->
 
-                                                  <!-- title input start here  -->
+                                                  <!-- title input start here  
                                                   <div class="col-9">
                                                     <div class="mb-3 mt-3">
                                                       <input
@@ -1102,18 +1298,18 @@
                                                       />
                                                     </div>
                                                   </div>
-                                                  <!-- title input end here  -->
+                                                  <!-- title input end here  
                                                 </div>
                                                 <!-- title area end here  -->
 
-                                                <!-- Address area start here  -->
+                                                <!-- Address area start here  
                                                 <div
                                                   class="row form-group g-3 align-items-center"
                                                 >
                                                   <!-- <div class="col-1"></div> -->
-                                                  <!-- Address label start here  -->
+                                                  <!-- Address label start here  
                                                   <div
-                                                    class="col-3 d-flex justify-content-center align-items-center"
+                                                    class="col-3 d-flex  align-items-center"
                                                   >
                                                     <label
                                                       for="btnLink"
@@ -1123,7 +1319,7 @@
                                                   </div>
                                                   <!-- Address label end here  -->
 
-                                                  <!-- Address input start here  -->
+                                                  <!-- Address input start here  
                                                   <div class="col-9">
                                                     <div class="mb-3 mt-3">
                                                       <input
@@ -1135,17 +1331,17 @@
                                                       />
                                                     </div>
                                                   </div>
-                                                  <!-- Address input end here  -->
+                                                  <!-- Address input end here  
                                                 </div>
                                                 <!-- Address area end here  -->
 
-                                                <!-- City area start here  -->
+                                                <!-- City area start here  
                                                 <div
                                                   class="row form-group g-3 align-items-center"
                                                 >
-                                                  <!-- City label start here  -->
+                                                  <!-- City label start here 
                                                   <div
-                                                    class="col-3 d-flex justify-content-center align-items-center"
+                                                    class="col-3 d-flex  align-items-center"
                                                   >
                                                     <label
                                                       for="btnLink"
@@ -1155,7 +1351,7 @@
                                                   </div>
                                                   <!-- City label end here  -->
 
-                                                  <!-- City input start here  -->
+                                                  <!-- City input start here 
                                                   <div class="col-9">
                                                     <div class="mb-3 mt-3">
                                                       <input
@@ -1167,17 +1363,17 @@
                                                       />
                                                     </div>
                                                   </div>
-                                                  <!-- City input end here  -->
+                                                  <!-- City input end here  
                                                 </div>
                                                 <!-- City area end here  -->
 
-                                                <!-- State area start here  -->
+                                                <!-- State area start here  
                                                 <div
                                                   class="row form-group g-3 align-items-center"
                                                 >
-                                                  <!-- location label start here  -->
+                                                  <!-- location label start here 
                                                   <div
-                                                    class="col-3 d-flex justify-content-center align-items-center"
+                                                    class="col-3 d-flex  align-items-center"
                                                   >
                                                     <label
                                                       for="btnLink"
@@ -1187,7 +1383,7 @@
                                                   </div>
                                                   <!-- Location label end here  -->
 
-                                                  <!-- location input start here  -->
+                                                  <!-- location input start here  
                                                   <div class="col-9">
                                                     <div class="mb-3 mt-3">
                                                       <input
@@ -1199,17 +1395,17 @@
                                                       />
                                                     </div>
                                                   </div>
-                                                  <!-- location input end here  -->
+                                                  <!-- location input end here  
                                                 </div>
                                                 <!-- State area end here  -->
 
-                                                <!-- Zip-code area start here  -->
+                                                <!-- Zip-code area start here 
                                                 <div
                                                   class="row form-group g-3 align-items-center"
                                                 >
-                                                  <!-- Zip-code label start here  -->
+                                                  <!-- Zip-code label start here  
                                                   <div
-                                                    class="col-3 d-flex align-items-center justify-content-center"
+                                                    class="col-3 d-flex align-items-center "
                                                   >
                                                     <label
                                                       for="btnLink"
@@ -1219,7 +1415,7 @@
                                                   </div>
                                                   <!-- Zip-code label end here  -->
 
-                                                  <!-- Zip-code input start here  -->
+                                                  <!-- Zip-code input start here  
                                                   <div class="col-9">
                                                     <div class="mb-3 mt-3">
                                                       <input
@@ -1231,17 +1427,17 @@
                                                       />
                                                     </div>
                                                   </div>
-                                                  <!-- Zip-code input end here  -->
+                                                  <!-- Zip-code input end here  
                                                 </div>
                                                 <!-- Zip-code area end here  -->
 
-                                                <!-- Country area start here  -->
+                                                <!-- Country area start here  
                                                 <div
                                                   class="row form-group g-3 align-items-center"
                                                 >
-                                                  <!-- banner description label start here  -->
+                                                  <!-- banner description label start here 
                                                   <div
-                                                    class="col-3 d-flex justify-content-center align-items-center"
+                                                    class="col-3 d-flex  align-items-center"
                                                   >
                                                     <label
                                                       for="inputDescription"
@@ -1251,7 +1447,7 @@
                                                   </div>
                                                   <!-- banner description label end here  -->
 
-                                                  <!-- banner description textarea box start here  -->
+                                                  <!-- banner description textarea box start here  
                                                   <div class="col-9">
                                                     <select
                                                       id="country"
@@ -1279,17 +1475,17 @@
                                                     </select>
                                                   </div>
 
-                                                  <!-- banner description textarea box end here  -->
+                                                  <!-- banner description textarea box end here  
                                                 </div>
                                                 <!-- Country area end here  -->
 
-                                                <!-- Page select start here  -->
+                                                <!-- Page select start here  
                                                 <div
                                                   class="row form-group g-3 align-items-center mt-2"
                                                 >
-                                                  <!-- Page Select label start here  -->
+                                                  <!-- Page Select label start here  
                                                   <div
-                                                    class="col-3 d-flex justify-content-center align-items-center"
+                                                    class="col-3 d-flex  align-items-center"
                                                   >
                                                     <label
                                                       for="inputDescription"
@@ -1299,7 +1495,7 @@
                                                   </div>
                                                   <!-- Page Select label end here  -->
 
-                                                  <!-- Page Select input start here  -->
+                                                  <!-- Page Select input start here  
                                                   <div class="col-9">
                                                     <select
                                                       id="country"
@@ -1318,12 +1514,12 @@
                                                     </select>
                                                   </div>
 
-                                                  <!-- Page Select input end here  -->
+                                                  <!-- Page Select input end here  
                                                 </div>
                                                 <!-- Page select end here  -->
 
-                                                <!-- cancel and submit button  -->
-                                                <div class="my-3">
+                                                <!-- cancel and submit button  
+                                                <div class="my-3 form-button">
                                                   <button
                                                     type="button"
                                                     class="btn btn-secondary cancel_modal"
@@ -1345,6 +1541,103 @@
                                       </div>
                                     </div>
                                     <!-- Edit modal end here  -->
+
+                                    
+
+
+
+<!-- Edit Modal Start Here -->
+<div class="modal fade" id="editModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered"> 
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 text-start" id="exampleModalLabel">Edit Branch-3</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="container">
+          <form class="upload-form">
+            <div class="row g-3">
+              <!-- Branch Title & Address -->
+              <div class="col-md-6">
+                <label for="inputBranchTitle" class="col-form-label form-label text-start d-block">Branch Title</label>
+                <input type="text" id="inputBranchTitle" class="form-control" placeholder="Enter Title..." required />
+              </div>
+
+              <div class="col-md-6">
+                <label for="inputAddress" class="col-form-label form-label text-start d-block">Address</label>
+                <input type="text" id="inputAddress" class="form-control" placeholder="Enter Address..." required />
+              </div>
+
+              <!-- City & State -->
+              <div class="col-md-6">
+                <label for="inputCity" class="col-form-label form-label text-start d-block">City</label>
+                <input type="text" id="inputCity" class="form-control" placeholder="Enter City..." required />
+              </div>
+
+              <div class="col-md-6">
+                <label for="inputState" class="col-form-label form-label text-start d-block">State/Province</label>
+                <input type="text" id="inputState" class="form-control" placeholder="Enter State/Province..." required />
+              </div>
+
+              <!-- Zip-Code & Country -->
+              <div class="col-md-6">
+                <label for="inputZip" class="col-form-label form-label text-start d-block">Zip-Code</label>
+                <input type="text" id="inputZip" class="form-control" placeholder="Enter zip-code..." required />
+              </div>
+
+              <div class="col-md-6">
+                <label for="inputCountry" class="col-form-label form-label text-start d-block">Country</label>
+                <select id="inputCountry" class="form-control">
+                  <option>Select Country</option>
+                  <option value="Australia">Australia</option>
+                  <option value="Canada">Canada</option>
+                  <option value="India">India</option>
+                  <option value="USA">USA</option>
+                </select>
+              </div>
+
+              <!-- Page Select -->
+              <div class="col-md-6">
+                <label for="pageSelect" class="col-form-label form-label text-start d-block">Page Select</label>
+                <select id="pageSelect" class="form-control">
+                  <option>Select Page</option>
+                  <option value="Global">Global</option>
+                  <option value="Local">Local</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="d-flex justify-content-end mt-4">
+              <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Edit Modal End Here -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                                     <!-- branch delete button start here  -->
                                     <a

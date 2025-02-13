@@ -11,7 +11,7 @@
                   <div class="dash-head">
                     <!-- dashboard Header title start here  -->
                     <div class="dash_title">
-                      <!-- <a
+                     <a
                         href="header_list.html"
                         role="button"
                         class="btn link-btn d-flex align-items-center justify-content-center"
@@ -27,12 +27,12 @@
                             d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z"
                           />
                         </svg>
-                      </a> -->
-                    <a href="header_list.html">
+                      </a> 
+                    <!-- <a href="header_list.html">
                     <button class="btn link-btn rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
     <i class="bi bi-arrow-left-short fs-4 text-white"></i>
 </button>
-                    </a>  
+                    </a>   -->
 
 
 

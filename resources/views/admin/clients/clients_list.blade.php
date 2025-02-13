@@ -135,7 +135,7 @@
                                       <div
                                         class="modal-dialog modal-dialog-centered"
                                       >
-                                        <div class="modal-content">
+                                        <div class="modal-content  ">
                                           <div class="modal-header">
                                             <h1
                                               class="modal-title"
@@ -153,7 +153,7 @@
 
                                           <div class="modal-body">
                                             <div class="container">
-                                              <form class="upload-form">
+                                              <form class=" compact-modal     ">
                                                 <!-- title  -->
                                                 <div
                                                   class="row form-group g-3 align-items-center"
@@ -212,7 +212,7 @@
                                                   </div>
                                                   <!-- upload banner input area end here  -->
                                                 </div>
-                                                <div class="my-3">
+                                                <div class="my-3 form-button">
                                                   <button
                                                     type="button"
                                                     class="btn btn-secondary cancel_modal"
@@ -422,7 +422,7 @@
 
                                           <div class="modal-body">
                                             <div class="container">
-                                              <form class="upload-form">
+                                              <form class="compact-modal ">
                                                 <!-- title  -->
                                                 <div
                                                   class="row form-group g-3 align-items-center"
@@ -526,7 +526,7 @@
                                                   </div>
                                                   <!-- upload banner input area end here  -->
                                                 </div>
-                                                <div class="my-3">
+                                                <div class="my-3 form-button">
                                                   <button
                                                     type="button"
                                                     class="btn btn-secondary cancel_modal"
@@ -653,7 +653,7 @@
 
                                           <div class="modal-body">
                                             <div class="container">
-                                              <form class="upload-form">
+                                              <form class="compact-modal ">
                                                 <!-- title  -->
                                                 <div
                                                   class="row form-group g-3 align-items-center"
@@ -712,7 +712,7 @@
                                                   </div>
                                                   <!-- upload banner input area end here  -->
                                                 </div>
-                                                <div class="my-3">
+                                                <div class="my-3 form-button">
                                                   <button
                                                     type="button"
                                                     class="btn btn-secondary cancel_modal"

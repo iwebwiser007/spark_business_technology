@@ -190,7 +190,7 @@
                         <!-- blog edit button end here  -->
 
                         <!-- Edit Modal start here  -->
-                        <!-- Edit Modal start here -->
+                        <!-- Edit Modal start here --
                         <div class="modal fade" id="editModal-{{$blog->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
@@ -211,10 +211,10 @@
                                     @method('POST') <!-- for update -->
                                     @endif
 
-                                    <!-- Blog Title -->
+                                    <!-- Blog Title --
                                     <div class="row form-group mt-1 mt-md-2">
                                       <div class="col-12 col-md-3">
-                                        <label for="inputBlogTitle" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Blog Title</label>
+                                        <label for="inputBlogTitle" class="col-form-label form-label d-flex justify-content-left ">Blog Title</label>
                                       </div>
                                       <div class="col-12 col-md-8 mt-0">
                                         <input type="text" name="title" id="inputBlogTitle" class="form-control form-control-lg form-input"
@@ -224,10 +224,10 @@
                                       <div class="col-1"></div>
                                     </div>
 
-                                    <!-- Blog Description -->
+                                    <!-- Blog Description --
                                     <div class="row form-group">
                                       <div class="col-12 col-md-3">
-                                        <label for="inputBlogDescription" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Blog Description</label>
+                                        <label for="inputBlogDescription" class="col-form-label form-label d-flex justify-content-left ">Blog Description</label>
                                       </div>
                                       <div class="col-12 col-md-8 mt-0">
                                         <textarea class="form-control form-control-lg form-textbox" name="description" id="inputBlogDescription"
@@ -236,10 +236,10 @@
                                       <div class="col-1"></div>
                                     </div>
 
-                                    <!-- Blog Link -->
+                                    <!-- Blog Link --
                                     <div class="row form-group">
                                       <div class="col-12 col-md-3">
-                                        <label for="inputBlogLink" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Blog Link</label>
+                                        <label for="inputBlogLink" class="col-form-label form-label d-flex justify-content-left ">Blog Link</label>
                                       </div>
                                       <div class="col-12 col-md-8 mt-0">
                                         <input type="text" name="slug" id="inputBlogLink" class="form-control form-control-lg form-input"
@@ -252,7 +252,7 @@
 
                                     <div class="row form-group">
                                       <div class="col-12 col-md-3">
-                                        <label for="metaTags" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Enter Metas (JSON Format)</label>
+                                        <label for="metaTags" class="col-form-label form-label d-flex justify-content-left ">Enter Metas (JSON Format)</label>
                                       </div>
                                       <div class="col-12 col-md-8">
                                         <textarea name="meta_tags" id="metaTags" class="form-control form-control-lg form-input" placeholder="Enter JSON formatted metas..." required rows="8" style="height: 250px;">{{ old('meta_tags', $blog->meta_tags ?? '') }}</textarea>
@@ -263,10 +263,10 @@
 
 
 
-                                    <!-- Blog Content -->
+                                    <!-- Blog Content -
                                     <div class="row form-group">
                                       <div class="col-12 col-md-3">
-                                        <label for="html_content" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Blog Content</label>
+                                        <label for="html_content" class="col-form-label form-label d-flex justify-content-left ">Blog Content</label>
                                       </div>
                                       <div class="col-12 col-md-8 mt-0">
                                         <textarea class="form-control ckeditor" id="html_content" name="html_content" rows="10">{{ old('html_content', $blog->html_content ?? '') }}</textarea>
@@ -277,50 +277,168 @@
 
 
 
-                                    <!-- Thumbnail Image Upload (Edit Form) -->
+                                    <!-- Thumbnail Image Upload (Edit Form) 
                                     <div class="row form-group">
                                       <div class="col-12 col-md-3">
-                                        <label for="inputThumbnailImage" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Upload Thumbnail Image</label>
+                                        <label for="inputThumbnailImage" class="col-form-label form-label d-flex justify-content-left ">Upload Thumbnail Image</label>
                                       </div>
                                       <div class="col-12 col-md-8 mt-0">
-                                        <div class="form-group mb-20 upload-input">
+                                        <!-- <div class="form-group mb-20 upload-input">
                                           <label for="thumbnailImg" class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4">
                                             <div class="d-flex flex-column align-items-center gap-3">
                                               <span>
-                                                <!-- Optionally, an SVG icon or placeholder icon can go here -->
+                                                <!-- Optionally, an SVG icon or placeholder icon can go here 
                                               </span>
                                               <p id="thumbnailText" class="mb-0">Upload Thumbnail</p>
                                             </div>
                                           </label>
                                           <input type="file" name="thumbnail_image" class="form-control form-control-lg " id="thumbnailImg" onchange="previewThumbnailImage(event)" />
-                                        </div>
+                                        </div> 
+                                        <div class="form-group mb-20 upload-input">
+                                <label
+                                  for="certificateImg"
+                                  class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4"
+                                >
+                                  <div
+                                    class="d-flex flex-column align-items-center gap-3"
+                                  >
+                                    <span>
+                                      <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        version="1.1"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        width="40"
+                                        height="40"
+                                        x="0"
+                                        y="0"
+                                        viewBox="0 0 512.056 512.056"
+                                        style="
+                                          enable-background: new 0 0 512 512;
+                                        "
+                                        xml:space="preserve"
+                                        class=""
+                                      >
+                                        <g>
+                                          <path
+                                            d="M426.635 188.224C402.969 93.946 307.358 36.704 213.08 60.37 139.404 78.865 85.907 142.542 80.395 218.303 28.082 226.93-7.333 276.331 1.294 328.644c7.669 46.507 47.967 80.566 95.101 80.379h80v-32h-80c-35.346 0-64-28.654-64-64 0-35.346 28.654-64 64-64 8.837 0 16-7.163 16-16-.08-79.529 64.327-144.065 143.856-144.144 68.844-.069 128.107 48.601 141.424 116.144a16 16 0 0 0 13.6 12.8c43.742 6.229 74.151 46.738 67.923 90.479-5.593 39.278-39.129 68.523-78.803 68.721h-64v32h64c61.856-.187 111.848-50.483 111.66-112.339-.156-51.49-35.4-96.241-85.42-108.46z"
+                                            fill="#818898"
+                                            opacity="1"
+                                            data-original="#818898"
+                                            class=""
+                                          ></path>
+                                          <path
+                                            d="m245.035 253.664-64 64 22.56 22.56 36.8-36.64v153.44h32v-153.44l36.64 36.64 22.56-22.56-64-64c-6.241-6.204-16.319-6.204-22.56 0z"
+                                            fill="#818898"
+                                            opacity="1"
+                                            data-original="#818898"
+                                            class=""
+                                          ></path>
+                                        </g>
+                                      </svg>
+                                    </span>
+                                    <p class="mb-0">Upload Image</p>
+                                  </div>
+                                  <div class="upload-img d-none">
+                                    <img
+                                      src="../assets/img/login-left.jpg"
+                                      class="rounded-4"
+                                      alt="upload-img"
+                                    />
+                                  </div>
+                                </label>
+                                <input
+                                  type="file"
+                                  class="form-control form-control-lg d-none"
+                                  id="certificateImg"
+                                  placeholder="Enter Certificate Image..."
+                                />
+                              </div>
 
-                                        <!-- Thumbnail Image Preview -->
+                                        <!-- Thumbnail Image Preview 
                                         <div id="thumbnailPreview" class="mt-3">
                                           <img id="previewThumbnailImg" src="{{ isset($blog) ? asset('http://localhost/spark_technology/storage/app/public/images/thumbnails/' . $blog->thumbnail_image) : '' }}" alt="Thumbnail Image Preview" style="display: {{ isset($blog) ? 'block' : 'none' }}; width: 100%; max-width: 200px; border-radius: 8px;" />
                                         </div>
                                       </div>
                                     </div>
 
-                                    <!-- Banner Image Upload (Edit Form) -->
+                                    <!-- Banner Image Upload (Edit Form) 
                                     <div class="row form-group">
                                       <div class="col-12 col-md-3">
-                                        <label for="inputBannerImage" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Upload Banner Image</label>
+                                        <label for="inputBannerImage" class="col-form-label form-label d-flex justify-content-left ">Upload Banner Image</label>
                                       </div>
                                       <div class="col-12 col-md-8 mt-0">
-                                        <div class="form-group mb-20 upload-input">
+                                        <!-- <div class="form-group mb-20 upload-input">
                                           <label for="bannerImg" class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4">
                                             <div class="d-flex flex-column align-items-center gap-3">
                                               <span>
-                                                <!-- Optionally, an SVG icon or placeholder icon can go here -->
+                                                <!-- Optionally, an SVG icon or placeholder icon can go here 
                                               </span>
                                               <p id="bannerText" class="mb-0">Upload Banner</p>
                                             </div>
                                           </label>
                                           <input type="file" name="banner_image" class="form-control form-control-lg " id="bannerImg" onchange="previewBannerImage(event)" />
-                                        </div>
+                                        </div> 
+                                        <div class="form-group mb-20 upload-input">
+                                <label
+                                  for="certificateImg"
+                                  class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4"
+                                >
+                                  <div
+                                    class="d-flex flex-column align-items-center gap-3"
+                                  >
+                                    <span>
+                                      <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        version="1.1"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        width="40"
+                                        height="40"
+                                        x="0"
+                                        y="0"
+                                        viewBox="0 0 512.056 512.056"
+                                        style="
+                                          enable-background: new 0 0 512 512;
+                                        "
+                                        xml:space="preserve"
+                                        class=""
+                                      >
+                                        <g>
+                                          <path
+                                            d="M426.635 188.224C402.969 93.946 307.358 36.704 213.08 60.37 139.404 78.865 85.907 142.542 80.395 218.303 28.082 226.93-7.333 276.331 1.294 328.644c7.669 46.507 47.967 80.566 95.101 80.379h80v-32h-80c-35.346 0-64-28.654-64-64 0-35.346 28.654-64 64-64 8.837 0 16-7.163 16-16-.08-79.529 64.327-144.065 143.856-144.144 68.844-.069 128.107 48.601 141.424 116.144a16 16 0 0 0 13.6 12.8c43.742 6.229 74.151 46.738 67.923 90.479-5.593 39.278-39.129 68.523-78.803 68.721h-64v32h64c61.856-.187 111.848-50.483 111.66-112.339-.156-51.49-35.4-96.241-85.42-108.46z"
+                                            fill="#818898"
+                                            opacity="1"
+                                            data-original="#818898"
+                                            class=""
+                                          ></path>
+                                          <path
+                                            d="m245.035 253.664-64 64 22.56 22.56 36.8-36.64v153.44h32v-153.44l36.64 36.64 22.56-22.56-64-64c-6.241-6.204-16.319-6.204-22.56 0z"
+                                            fill="#818898"
+                                            opacity="1"
+                                            data-original="#818898"
+                                            class=""
+                                          ></path>
+                                        </g>
+                                      </svg>
+                                    </span>
+                                    <p class="mb-0">Upload Image</p>
+                                  </div>
+                                  <div class="upload-img d-none">
+                                    <img
+                                      src="../assets/img/login-left.jpg"
+                                      class="rounded-4"
+                                      alt="upload-img"
+                                    />
+                                  </div>
+                                </label>
+                                <input
+                                  type="file"
+                                  class="form-control form-control-lg d-none"
+                                  id="certificateImg"
+                                  placeholder="Enter Certificate Image..."
+                                />
+                              </div>
 
-                                        <!-- Banner Image Preview -->
+                                        <!-- Banner Image Preview 
                                         <div id="bannerPreview" class="mt-3">
                                           <img id="previewBannerImg" src="{{ isset($blog) ? asset('http://localhost/spark_technology/storage/app/public/images/banners/' . $blog->banner_image) : '' }}" alt="Banner Image Preview" style="display: {{ isset($blog) ? 'block' : 'none' }}; width: 100%; max-width: 200px; border-radius: 8px;" />
                                         </div>
@@ -328,7 +446,7 @@
                                     </div>
 
 
-                                    <!-- Save Button -->
+                                    <!-- Save Button 
                                     <div class="row">
                                       <div class="col-4 col-md-3"></div>
                                       <div class="col-12 col-md-9 form-button">
@@ -345,6 +463,251 @@
                           </div>
                         </div>
                         <!-- Edit Modal end here -->
+
+
+
+
+<!-- Edit Modal start here -->
+<div class="modal fade" id="editModal-{{$blog->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content p-3">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Blog-{{$blog->id}}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="container">
+          <form class="upload-form" action="{{ isset($blog) ? route('blog.update', $blog->id) : route('blog.store') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            @if(isset($blog))
+            @method('POST') <!-- for update -->
+            @endif
+
+            <!-- Blog Title & Blog Link (Side by Side) -->
+            <div class="row g-4">
+              <div class="col-md-6">
+                <label for="inputBlogTitle" class="form-label text-start d-block">Blog Title</label>
+                <input type="text" name="title" id="inputBlogTitle" class="form-control" placeholder="Enter Blog Title..." value="{{ old('title', $blog->title ?? '') }}" required>
+              </div>
+              <div class="col-md-6">
+                <label for="inputBlogLink" class="form-label text-start d-block  ">Blog Link</label>
+                <input type="text" name="slug" id="inputBlogLink" class="form-control" placeholder="Enter Blog Link..." value="{{ old('slug', $blog->slug ?? '') }}" required>
+              </div>
+            </div>
+
+            <!-- Blog Description & Metas (Side by Side) -->
+            <div class="row g-4 mt-3">
+              <div class="col-md-6">
+                <label for="inputBlogDescription" class="form-label text-start d-block ">Blog Description</label>
+                <textarea class="form-control" name="description" id="inputBlogDescription" rows="3" placeholder="Write your blog description here..." required>{{ old('description', $blog->description ?? '') }}</textarea>
+              </div>
+              <div class="col-md-6">
+                <label for="metaTags" class="form-label  text-start d-block   ">Enter Metas (JSON Format)</label>
+                <textarea name="meta_tags" id="metaTags" class="form-control" placeholder="Enter JSON formatted metas..." required rows="3">{{ old('meta_tags', $blog->meta_tags ?? '') }}</textarea>
+              </div>
+            </div>
+
+            <!-- Blog Content -->
+            <div class="row mt-3">
+              <div class="col-12">
+                <label for="html_content" class="form-label  text-start d-block    ">Blog Content</label>
+                <textarea class="form-control ckeditor" id="html_content" name="html_content" rows="6">{{ old('html_content', $blog->html_content ?? '') }}</textarea>
+              </div>
+            </div>
+
+          <!-- image upload area start here  -->
+          <div class="row form-group">
+                            <!-- upload area start here  -->
+                           
+                            <!-- upload area end here  -->
+
+                            <!-- upload input area start here  -->
+                            <div class="col-12 col-md-6 mt-0">
+                            <label for="inputBlogTitle" class="form-label text-start d-block">Upload Thumbnail Image</label>
+
+                              <div class="form-group mb-20 upload-input">
+                                <label
+                                  for="certificateImg"
+                                  class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4"
+                                >
+                                  <div
+                                    class="d-flex flex-column align-items-center gap-3"
+                                  >
+                                    <span>
+                                      <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        version="1.1"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        width="40"
+                                        height="40"
+                                        x="0"
+                                        y="0"
+                                        viewBox="0 0 512.056 512.056"
+                                        style="
+                                          enable-background: new 0 0 512 512;
+                                        "
+                                        xml:space="preserve"
+                                        class=""
+                                      >
+                                        <g>
+                                          <path
+                                            d="M426.635 188.224C402.969 93.946 307.358 36.704 213.08 60.37 139.404 78.865 85.907 142.542 80.395 218.303 28.082 226.93-7.333 276.331 1.294 328.644c7.669 46.507 47.967 80.566 95.101 80.379h80v-32h-80c-35.346 0-64-28.654-64-64 0-35.346 28.654-64 64-64 8.837 0 16-7.163 16-16-.08-79.529 64.327-144.065 143.856-144.144 68.844-.069 128.107 48.601 141.424 116.144a16 16 0 0 0 13.6 12.8c43.742 6.229 74.151 46.738 67.923 90.479-5.593 39.278-39.129 68.523-78.803 68.721h-64v32h64c61.856-.187 111.848-50.483 111.66-112.339-.156-51.49-35.4-96.241-85.42-108.46z"
+                                            fill="#818898"
+                                            opacity="1"
+                                            data-original="#818898"
+                                            class=""
+                                          ></path>
+                                          <path
+                                            d="m245.035 253.664-64 64 22.56 22.56 36.8-36.64v153.44h32v-153.44l36.64 36.64 22.56-22.56-64-64c-6.241-6.204-16.319-6.204-22.56 0z"
+                                            fill="#818898"
+                                            opacity="1"
+                                            data-original="#818898"
+                                            class=""
+                                          ></path>
+                                        </g>
+                                      </svg>
+                                    </span>
+                                    <p class="mb-0">Upload Image</p>
+                                  </div>
+                                  <div class="upload-img d-none">
+                                    <img
+                                      src="../assets/img/login-left.jpg"
+                                      class="rounded-4"
+                                      alt="upload-img"
+                                    />
+                                  </div>
+                                </label>
+                                <input
+                                  type="file"
+                                  class="form-control form-control-lg d-none"
+                                  id="certificateImg"
+                                  placeholder="Enter Certificate Image..."
+                                />
+                              </div>
+                            </div>
+                            <!-- upload input area end here  -->
+
+ <!-- upload area start here  -->
+ 
+                            <!-- upload area end here  -->
+
+                            <!-- upload input area start here  -->
+                            <div class="col-12 col-md-6 mt-0">
+                            <label for="inputBlogTitle" class="form-label text-start d-block">Upload Banner Image</label>
+
+                              <div class="form-group mb-20 upload-input">
+                                <label
+                                  for="certificateImg"
+                                  class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4"
+                                >
+                                  <div
+                                    class="d-flex flex-column align-items-center gap-3"
+                                  >
+                                    <span>
+                                      <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        version="1.1"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        width="40"
+                                        height="40"
+                                        x="0"
+                                        y="0"
+                                        viewBox="0 0 512.056 512.056"
+                                        style="
+                                          enable-background: new 0 0 512 512;
+                                        "
+                                        xml:space="preserve"
+                                        class=""
+                                      >
+                                        <g>
+                                          <path
+                                            d="M426.635 188.224C402.969 93.946 307.358 36.704 213.08 60.37 139.404 78.865 85.907 142.542 80.395 218.303 28.082 226.93-7.333 276.331 1.294 328.644c7.669 46.507 47.967 80.566 95.101 80.379h80v-32h-80c-35.346 0-64-28.654-64-64 0-35.346 28.654-64 64-64 8.837 0 16-7.163 16-16-.08-79.529 64.327-144.065 143.856-144.144 68.844-.069 128.107 48.601 141.424 116.144a16 16 0 0 0 13.6 12.8c43.742 6.229 74.151 46.738 67.923 90.479-5.593 39.278-39.129 68.523-78.803 68.721h-64v32h64c61.856-.187 111.848-50.483 111.66-112.339-.156-51.49-35.4-96.241-85.42-108.46z"
+                                            fill="#818898"
+                                            opacity="1"
+                                            data-original="#818898"
+                                            class=""
+                                          ></path>
+                                          <path
+                                            d="m245.035 253.664-64 64 22.56 22.56 36.8-36.64v153.44h32v-153.44l36.64 36.64 22.56-22.56-64-64c-6.241-6.204-16.319-6.204-22.56 0z"
+                                            fill="#818898"
+                                            opacity="1"
+                                            data-original="#818898"
+                                            class=""
+                                          ></path>
+                                        </g>
+                                      </svg>
+                                    </span>
+                                    <p class="mb-0">Upload Image</p>
+                                  </div>
+                                  <div class="upload-img d-none">
+                                    <img
+                                      src="../assets/img/login-left.jpg"
+                                      class="rounded-4"
+                                      alt="upload-img"
+                                    />
+                                  </div>
+                                </label>
+                                <input
+                                  type="file"
+                                  class="form-control form-control-lg d-none"
+                                  id="certificateImg"
+                                  placeholder="Enter Certificate Image..."
+                                />
+                              </div>
+                            </div>
+                            <!-- upload input area end here  -->
+
+
+
+                            <div class="col-1 d-none d-sm-block"></div>
+                          </div>
+                          <!-- image upload area end here  -->
+
+            <!-- Save and Cancel Buttons -->
+            <!-- <div class="row mt-4">
+              <div class="col-12 ">
+                <button type="button" class="btn btn-secondary me-3" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-primary">Update</button>
+              </div>
+            </div> -->
+            <div class="d-flex justify-content-end mt-4 pb-4">
+                            <button type="button" class="btn btn-secondary px-4 py-2" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary px-4 py-2 ms-2">Add</button>
+                        </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Edit Modal end here -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                         <!-- Edit modal end here  -->
 

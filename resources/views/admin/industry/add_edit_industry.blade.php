@@ -55,23 +55,23 @@
                       </div>
                       <!-- card header end here  -->
 
-                      <!-- card body start here  -->
+                      <!-- card body start here  --
                       <div class="card-body">
-                        <!-- form start here  -->
+                        <!-- form start here  --
                         <form class="upload-form">
-                          <!-- title area start here  -->
+                          <!-- title area start here  --
                           <div class="row form-group mt-1 mt-md-2">
-                            <!-- industry title start here  -->
+                            <!-- industry title start here  --
                             <div class="col-12 col-md-3">
                               <label
                                 for="industryTitle"
-                                class="col-form-label form-label d-flex justify-content-left justify-content-md-center"
+                                class="col-form-label form-label d-flex justify-content-left "
                                 >Industry Title
                               </label>
                             </div>
                             <!-- industry title end here  -->
 
-                            <!-- industry title input start here  -->
+                            <!-- industry title input start here  --
                             <div class="col-12 col-md-8 mt-0">
                               <input
                                 type="text"
@@ -81,24 +81,24 @@
                                 required
                               />
                             </div>
-                            <!-- industry title input end here  -->
+                            <!-- industry title input end here  --
                             <div class="col-1 d-none d-sm-block"></div>
                           </div>
                           <!-- title area end here  -->
 
-                          <!-- description area start here  -->
+                          <!-- description area start here  --
                           <div class="row form-group">
-                            <!-- description label start here  -->
+                            <!-- description label start here  --
                             <div class="col-12 col-md-3">
                               <label
                                 for="industryDescription"
-                                class="col-form-label form-label d-flex justify-content-left justify-content-md-center"
+                                class="col-form-label form-label d-flex justify-content-left "
                                 >Industry Description</label
                               >
                             </div>
                             <!-- description label end here  -->
 
-                            <!-- description textarea box start here  -->
+                            <!-- description textarea box start here  --
                             <div class="col-12 col-md-8 mt-0">
                               <textarea
                                 class="form-control form-control-lg form-textbox"
@@ -108,24 +108,24 @@
                                 placeholder="write your Industry description here..."
                               ></textarea>
                             </div>
-                            <!-- description textarea box end here  -->
+                            <!-- description textarea box end here  --
                             <div class="col-1 d-none d-sm-block"></div>
                           </div>
                           <!-- description area end here  -->
 
-                          <!-- service field start here    -->
+                          <!-- service field start here    --
                           <div class="row form-group">
-                            <!-- service title start here  -->
+                            <!-- service title start here  --
                             <div class="col-12 col-md-3">
                               <label
                                 for="serviceTitle"
-                                class="col-form-label form-label d-flex justify-content-left justify-content-md-center"
+                                class="col-form-label form-label d-flex justify-content-left "
                                 >Services
                               </label>
                             </div>
                             <!-- service title end here  -->
 
-                            <!-- service text box start here  -->
+                            <!-- service text box start here  --
                             <div class="col-12 col-md-8 mt-0">
                               <input
                                 type="text"
@@ -134,24 +134,24 @@
                                 required
                               />
                             </div>
-                            <!-- service text box end here  -->
+                            <!-- service text box end here  --
                             <div class="col-1 d-none d-sm-block"></div>
                           </div>
                           <!-- service field end here  -->
 
-                          <!-- button link area start here  -->
+                          <!-- button link area start here  --
                           <div class="row form-group">
-                            <!-- button link label start here  -->
+                            <!-- button link label start here  --
                             <div class="col-12 col-md-3">
                               <label
                                 for="industryLink"
-                                class="col-form-label form-label d-flex justify-content-left justify-content-md-center"
+                                class="col-form-label form-label d-flex justify-content-left "
                                 >Button Link
                               </label>
                             </div>
                             <!-- button link label end here  -->
 
-                            <!-- button link input start here  -->
+                            <!-- button link input start here  --
                             <div class="col-12 col-md-8 mt-0">
                               <input
                                 type="text"
@@ -160,25 +160,25 @@
                                 required
                               />
                             </div>
-                            <!-- button link input end here  -->
+                            <!-- button link input end here  --
 
                             <div class="col-1 d-none d-sm-block"></div>
                           </div>
                           <!-- button link area end here  -->
 
-                          <!-- industry image upload area start here  -->
+                          <!-- industry image upload area start here  --
                           <div class="row form-group">
-                            <!-- upload image label area start here  -->
+                            <!-- upload image label area start here  --
                             <div class="col-12 col-md-3">
                               <label
                                 for="industryImg"
-                                class="col-form-label form-label d-flex justify-content-left justify-content-md-center"
+                                class="col-form-label form-label d-flex justify-content-left "
                                 >Upload Image</label
                               >
                             </div>
                             <!-- upload image label area end here  -->
 
-                            <!-- upload image input area start here  -->
+                            <!-- upload image input area start here  --
                             <div class="col-12 col-md-8 mt-0">
                               <div class="form-group mb-20 upload-input">
                                 <label
@@ -240,12 +240,12 @@
                                 />
                               </div>
                             </div>
-                            <!-- upload image input area end here  -->
+                            <!-- upload image input area end here  --
                             <div class="col-1 d-none d-sm-block"></div>
                           </div>
                           <!-- industry image upload area end here  -->
 
-                          <!-- Save button start here  -->
+                          <!-- Save button start here  --
                           <div class="row">
                             <div class="col-4 col-md-3"></div>
                             <div class="col-12 col-md-9 form-button">
@@ -263,11 +263,94 @@
                               >
                             </div>
                           </div>
-                          <!-- Save button end here  -->
+                          <!-- Save button end here  --
                         </form>
-                        <!-- form end here  -->
+                        <!-- form end here  --
                       </div>
                       <!-- card body end here  -->
+
+
+
+
+<!-- Updated Form with Two-Column Layout -->
+<div class="card-body">
+  <form class="upload-form">
+    <div class="row form-group mt-1 mt-md-2">
+      <!-- Industry Title -->
+      <div class="col-md-4">
+        <label for="industryTitle" class="col-form-label form-label">Industry Title</label>
+        <input type="text" id="industryTitle" class="form-control form-control-lg form-input" placeholder="Enter Industry Title..." required />
+      </div>
+      
+      <!-- Services -->
+      <div class="col-md-4">
+        <label for="serviceTitle" class="col-form-label form-label">Services</label>
+        <input type="text" id="serviceTitle" class="form-control form-control-lg form-input" placeholder="Enter Services..." required />
+      </div>
+      
+      <!-- Button Link -->
+      <div class="col-md-4">
+        <label for="industryLink" class="col-form-label form-label">Button Link</label>
+        <input type="text" id="industryLink" class="form-control form-control-lg form-input" placeholder="Enter button link..." required />
+      </div>
+    </div>
+    
+    <div class="row form-group mt-3">
+      <!-- Industry Description -->
+      <div class="col-md-6">
+        <label for="industryDescription" class="col-form-label form-label">Industry Description</label>
+        <textarea class="form-control form-control-lg form-textbox  " id="industryDescription" rows="4" placeholder="Write your Industry description here..." required></textarea>
+      </div>
+      
+      <!-- Upload Image -->
+      <div class="col-md-6">
+        <label for="industryImg" class="col-form-label form-label">Upload Image</label>
+        <div class="form-group mb-20 upload-input">
+          <label for="industryImg" class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4">
+            <div class="d-flex flex-column align-items-center gap-3">
+              <span>
+                <!-- <i class="bi bi-upload" style="font-size: 24px;"></i> -->
+              </span>
+              <p class="mb-0">Click to Upload Image</p>
+            </div>
+          </label>
+          <input type="file" class="form-control form-control-lg d-none" id="industryImg" placeholder="Upload Industry Image..." />
+        </div>
+      </div>
+    </div>
+    
+    <div class="row mt-3 mb-4">
+      <div class="col-md-12 text-end">
+        <button type="button" class="btn btn-secondary">Cancel</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     </div>
                     <!-- card end here  -->
                   </div>

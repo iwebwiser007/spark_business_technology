@@ -64,7 +64,7 @@
 
                         <!-- table content start here  -->
                         <div class="table-content table-responsive">
-                          <table class="table table-hover">
+                          <table class="table">
                             <thead>
                               <tr>
                                 <th scope="col">Image</th>
@@ -152,219 +152,76 @@
                                     </a>
                                     <!-- Industry edit button end here  -->
 
-                                    <!-- Edit Modal start here  -->
-                                    <div
-                                      class="modal fade"
-                                      id="editModal"
-                                      tabindex="-1"
-                                      aria-labelledby="exampleModalLabel"
-                                      aria-hidden="true"
-                                    >
-                                      <div
-                                        class="modal-dialog modal-dialog-centered"
-                                      >
-                                        <div class="modal-content">
-                                          <div class="modal-header">
-                                            <h1
-                                              class="modal-title"
-                                              id="exampleModalLabel"
-                                            >
-                                              Edit Health Care
-                                            </h1>
-                                            <button
-                                              type="button"
-                                              class="btn-close"
-                                              data-bs-dismiss="modal"
-                                              aria-label="Close"
-                                            ></button>
-                                          </div>
 
-                                          <div class="modal-body">
-                                            <div class="container">
-                                              <form class="upload-form">
-                                                <!-- title  -->
-                                                <div
-                                                  class="row form-group g-3 align-items-center"
-                                                >
-                                                  <!-- title label start here  -->
-                                                  <div class="col-3">
-                                                    <label
-                                                      for="inputTitle"
-                                                      class="col-form-label form-label"
-                                                      >Industry Title
-                                                    </label>
-                                                  </div>
-                                                  <!-- title label end here  -->
+                                    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered"> <!-- Increased width -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 fw-bold text-start" id="exampleModalLabel">Edit Health Care</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
 
-                                                  <!-- title input start here  -->
-                                                  <div class="col-9">
-                                                    <div class="mb-3 mt-3">
-                                                      <input
-                                                        type="text"
-                                                        id="inputTitle"
-                                                        class="form-control form-control-lg form-input"
-                                                        placeholder="Enter Title..."
-                                                        required
-                                                      />
-                                                    </div>
-                                                  </div>
-                                                  <!-- title input end here  -->
-                                                </div>
+            <div class="modal-body">
+                <div class="container">
+                    <form class="upload-form">
+                        <!-- Industry Title & Service Title (Side by Side) -->
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="inputTitle" class="form-label fw-semibold text-start d-block">Industry Title</label>
+                                <input type="text" id="inputTitle" class="form-control text-start" placeholder="Enter Title..." required />
+                            </div>
 
-                                                <!-- description  -->
-                                                <div
-                                                  class="row form-group g-3 align-items-center"
-                                                >
-                                                  <!-- description label start here  -->
-                                                  <div
-                                                    class="col-3 d-flex justify-content-center"
-                                                  >
-                                                    <label
-                                                      for="inputDescription"
-                                                      class="col-form-label form-label text-break"
-                                                      >Description</label
-                                                    >
-                                                  </div>
-                                                  <!-- description label end here  -->
+                            <div class="col-md-6">
+                                <label for="serviceTitle" class="form-label fw-semibold text-start d-block">Service Title</label>
+                                <input type="text" id="serviceTitle" class="form-control text-start" placeholder="Enter Service Title..." required />
+                            </div>
+                        </div>
 
-                                                  <!-- description textarea box start here  -->
-                                                  <div class="col-9">
-                                                    <div class="form-floating">
-                                                      <textarea
-                                                        class="form-control form-control-lg form-textbox"
-                                                        id="inputDescription"
-                                                        rows="4"
-                                                        cols="30"
-                                                        placeholder="write your banner description here..."
-                                                      ></textarea>
-                                                      <label
-                                                        for="inputDescription"
-                                                        >write your description
-                                                        here...</label
-                                                      >
-                                                    </div>
-                                                  </div>
+                        <!-- Description & Button Link (Side by Side) -->
+                        <div class="row g-3 mt-2">
+                            <div class="col-md-6">
+                                <label for="inputDescription" class="form-label fw-semibold text-start d-block">Description</label>
+                                <textarea class="form-control text-start" id="inputDescription" rows="3" placeholder="Write your description here..." required></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="btnLink" class="form-label fw-semibold text-start d-block">Button Link</label>
+                                <input type="text" id="btnLink" class="form-control text-start" placeholder="Enter Link..." required />
+                            </div>
+                        </div>
 
-                                                  <!-- description textarea box end here  -->
-                                                </div>
+                        <!-- Image Upload & Preview (Side by Side) -->
+                        <div class="row g-3 mt-2 align-items-center">
+                            <div class="col-md-6">
+                                <label for="upload-photo" class="form-label fw-semibold text-start d-block">Upload Banner Image</label>
+                                <input type="file" id="upload-photo" class="form-control">
+                            </div>
+                            <div class="col-md-6 text-start">
+                                <label class="form-label fw-semibold d-block text-start">Image Preview</label>
+                                <div class="preview-box">
+                                    <img id="previewBannerImg" src="../assets/img/health_care.jpg" alt="Banner Image Preview" class="img-fluid rounded shadow-sm" />
+                                    <button type="button" class="btn-close position-absolute top-0 end-0 p-2" aria-label="Close" onclick="removeImage()"></button>
+                                </div>
+                            </div>
+                        </div>
 
-                                                <!-- Service  -->
-                                                <div
-                                                  class="row form-group g-3 align-items-center"
-                                                >
-                                                  <!-- title label start here  -->
-                                                  <div class="col-3">
-                                                    <label
-                                                      for="inputTitle"
-                                                      class="col-form-label form-label"
-                                                      >Service Title
-                                                    </label>
-                                                  </div>
-                                                  <!-- title label end here  -->
+                        <!-- Buttons -->
+                        <div class="d-flex justify-content-end mt-4">
+                            <button type="button" class="btn btn-outline-secondary me-2 px-4 py-2" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary px-4 py-2">Add</button>
+                        </div>
 
-                                                  <!-- title input start here  -->
-                                                  <div class="col-9">
-                                                    <div class="mb-3 mt-3">
-                                                      <input
-                                                        type="text"
-                                                        id="inputTitle"
-                                                        class="form-control form-control-lg form-input"
-                                                        placeholder="Enter Service Title..."
-                                                        required
-                                                      />
-                                                    </div>
-                                                  </div>
-                                                  <!-- title input end here  -->
-                                                </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-                                                <!-- Button Link area start here  -->
-                                                <div
-                                                  class="row form-group g-3 align-items-center"
-                                                >
-                                                  <!-- Button Link label start here  -->
-                                                  <div
-                                                    class="col-3 d-flex justify-content-center align-items-center"
-                                                  >
-                                                    <label
-                                                      for="inputTitle"
-                                                      class="col-form-label form-label"
-                                                      >Button Link
-                                                    </label>
-                                                  </div>
-                                                  <!-- Button Link label end here  -->
 
-                                                  <!-- Button Link input start here  -->
-                                                  <div class="col-9">
-                                                    <div class="mb-3 mt-3">
-                                                      <input
-                                                        type="text"
-                                                        id="inputTitle"
-                                                        class="form-control form-control-lg form-input"
-                                                        placeholder="Enter Link..."
-                                                        required
-                                                      />
-                                                    </div>
-                                                  </div>
-                                                  <!-- Button Link input end here  -->
-                                                </div>
-                                                <!-- Button Link area end here  -->
 
-                                                <!-- image  -->
-                                                <div
-                                                  class="row form-group g-3 align-items-center mt-3"
-                                                >
-                                                  <!-- upload banner input area start here  -->
-                                                  <div class="col-12">
-                                                    <div
-                                                      class="form-group mb-20 upload-input"
-                                                    >
-                                                      <label
-                                                        for="ImgUpload"
-                                                        class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4 position-relative"
-                                                      >
-                                                        <img
-                                                          src="../assets/img/health_care.jpg"
-                                                          class="img-fluid rounded-4"
-                                                          width="80%"
-                                                          alt="upload image"
-                                                        />
-                                                        <!-- close button start here  -->
-                                                        <button
-                                                          type="button"
-                                                          data-bs-dismiss="modal"
-                                                          class="btn-close position-absolute top-0 end-0 p-2"
-                                                          aria-label="Close"
-                                                        ></button>
-                                                      </label>
-                                                    </div>
-                                                  </div>
-                                                  <!-- upload banner input area end here  -->
-                                                </div>
 
-                                                <!-- cancel and submit button  -->
-                                                <div class="my-3">
-                                                  <button
-                                                    type="button"
-                                                    class="btn btn-secondary cancel_modal"
-                                                    data-bs-dismiss="modal"
-                                                  >
-                                                    Close
-                                                  </button>
-                                                  <button
-                                                    type="button"
-                                                    class="btn add_modal"
-                                                  >
-                                                    Add
-                                                  </button>
-                                                </div>
-                                              </form>
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <!-- Edit modal end here  -->
 
+                                    
                                     <!-- Industry delete button start here  -->
                                     <a
                                       href="#"
@@ -546,218 +403,102 @@
                                     </a>
                                     <!-- Indusrty edit button end here  -->
 
-                                    <!-- Edit Modal start here  -->
-                                    <div
-                                      class="modal fade"
-                                      id="editModal1"
-                                      tabindex="-1"
-                                      aria-labelledby="exampleModalLabel"
-                                      aria-hidden="true"
-                                    >
-                                      <div
-                                        class="modal-dialog modal-dialog-centered"
-                                      >
-                                        <div class="modal-content">
-                                          <div class="modal-header">
-                                            <h1
-                                              class="modal-title"
-                                              id="exampleModalLabel"
-                                            >
-                                              Edit Real State
-                                            </h1>
-                                            <button
-                                              type="button"
-                                              class="btn-close"
-                                              data-bs-dismiss="modal"
-                                              aria-label="Close"
-                                            ></button>
-                                          </div>
+                                    <div class="modal fade" id="editModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered"> <!-- Increased width -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 fw-bold text-start" id="exampleModalLabel">Edit Real Estate</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
 
-                                          <div class="modal-body">
-                                            <div class="container">
-                                              <form class="upload-form">
-                                                <!-- title  -->
-                                                <div
-                                                  class="row form-group g-3 align-items-center"
-                                                >
-                                                  <!-- title label start here  -->
-                                                  <div class="col-3">
-                                                    <label
-                                                      for="inputTitle"
-                                                      class="col-form-label form-label"
-                                                      >Industry Title
-                                                    </label>
-                                                  </div>
-                                                  <!-- title label end here  -->
+            <div class="modal-body">
+                <div class="container">
+                    <form class="upload-form">
+                        <!-- Industry Title & Service Title (Side by Side) -->
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="inputTitle" class="form-label fw-semibold text-start d-block">Industry Title</label>
+                                <input type="text" id="inputTitle" class="form-control text-start" placeholder="Enter Title..." required />
+                            </div>
 
-                                                  <!-- title input start here  -->
-                                                  <div class="col-9">
-                                                    <div class="mb-3 mt-3">
-                                                      <input
-                                                        type="text"
-                                                        id="inputTitle"
-                                                        class="form-control form-control-lg form-input"
-                                                        placeholder="Enter Title..."
-                                                        required
-                                                      />
-                                                    </div>
-                                                  </div>
-                                                  <!-- title input end here  -->
-                                                </div>
+                            <div class="col-md-6">
+                                <label for="serviceTitle" class="form-label fw-semibold text-start d-block">Service Title</label>
+                                <input type="text" id="serviceTitle" class="form-control text-start" placeholder="Enter Service Title..." required />
+                            </div>
+                        </div>
 
-                                                <!-- description  -->
-                                                <div
-                                                  class="row form-group g-3 align-items-center"
-                                                >
-                                                  <!-- description label start here  -->
-                                                  <div
-                                                    class="col-3 d-flex justify-content-center"
-                                                  >
-                                                    <label
-                                                      for="inputDescription"
-                                                      class="col-form-label form-label text-break"
-                                                      >Description</label
-                                                    >
-                                                  </div>
-                                                  <!-- description label end here  -->
+                        <!-- Description & Button Link (Side by Side) -->
+                        <!-- <div class="row g-3 mt-2">
+                            <div class="col-md-6">
+                                <label for="inputDescription" class="form-label fw-semibold text-start d-block">Description</label>
+                                <textarea class="form-control text-start" id="inputDescription" rows="3" placeholder="Write your description here..." required></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="btnLink" class="form-label fw-semibold text-start d-block">Button Link</label>
+                                <input type="text" id="btnLink" class="form-control text-start" placeholder="Enter Link..." required />
+                            </div>
+                        </div> -->
 
-                                                  <!-- description textarea box start here  -->
-                                                  <div class="col-9">
-                                                    <div class="form-floating">
-                                                      <textarea
-                                                        class="form-control form-control-lg form-textbox"
-                                                        id="inputDescription"
-                                                        rows="4"
-                                                        cols="30"
-                                                        placeholder="write your banner description here..."
-                                                      ></textarea>
-                                                      <label
-                                                        for="inputDescription"
-                                                        >write your description
-                                                        here...</label
-                                                      >
-                                                    </div>
-                                                  </div>
+                        <!-- Image Upload & Preview (Side by Side) -->
+                        <!-- <div class="row g-3 mt-2 align-items-center">
+                            <div class="col-md-6">
+                                <label for="upload-photo" class="form-label fw-semibold text-start d-block">Upload Banner Image</label>
+                                <input type="file" id="upload-photo" class="form-control">
+                            </div>
+                            <div class="col-md-6 text-start">
+                                <label class="form-label fw-semibold d-block">Image Preview</label>
+                                <div class="preview-box">
+                                    <img id="previewBannerImg" src="../assets/img/real_state.jpg" alt="Banner Image Preview" class="img-fluid rounded shadow-sm" />
+                                    <button type="button" class="btn-close position-absolute top-0 end-0 p-2" aria-label="Close" onclick="removeImage()"></button>
+                                </div>
+                            </div>
+                        </div> -->
 
-                                                  <!-- description textarea box end here  -->
-                                                </div>
+                        
+                        
+                <!-- Description (Full width) -->
+                <div class="row form-group mt-3">
+                    <div class="col-md-6">
+                        <label for="inputBannerDescription" class="form-label fw-semibold text-start d-block">Banner Description</label>
+                        <textarea class="form-control" id="inputBannerDescription" name="description" rows="3" placeholder="Write your description here..." data-parsley-required="true"></textarea>
+                    </div>
 
-                                                <!-- Service  -->
-                                                <div
-                                                  class="row form-group g-3 align-items-center"
-                                                >
-                                                  <!-- title label start here  -->
-                                                  <div class="col-3">
-                                                    <label
-                                                      for="inputTitle"
-                                                      class="col-form-label form-label"
-                                                      >Service Title
-                                                    </label>
-                                                  </div>
-                                                  <!-- title label end here  -->
+                    
+<!-- Image Upload -->
+<div class="col-md-6">
+        <label for="bannerImage" class="form-label fw-semibold text-start d-block">Upload Banner Image</label>
+        <div class="form-group mb-3 upload-input styled-box">
+            <label for="bannerImage" class="form-label form-img-uploader d-flex align-items-center justify-content-center w-100 py-3 position-relative" style="cursor: pointer;">
+                <div class="d-flex flex-column align-items-center gap-2">
+                    <span>
+                        <i class="bi bi-upload" style="font-size: 24px; color: #6c757d;"></i>
+                    </span>
+                    <p class="mb-0 text-muted">Click to Upload Image</p>
+                </div>
+                <img id="previewImg" src="#" alt="Image Preview" class="d-none img-fluid rounded mt-2" style="max-width: 100%; max-height: 150px;">
+            </label>
+            <input type="file" name="banner_image" id="bannerImage" class="d-none" accept="image/*" onchange="previewImage(event)">
+        </div>
+    </div>
 
-                                                  <!-- title input start here  -->
-                                                  <div class="col-9">
-                                                    <div class="mb-3 mt-3">
-                                                      <input
-                                                        type="text"
-                                                        id="inputTitle"
-                                                        class="form-control form-control-lg form-input"
-                                                        placeholder="Enter Service Title..."
-                                                        required
-                                                      />
-                                                    </div>
-                                                  </div>
-                                                  <!-- title input end here  -->
-                                                </div>
 
-                                                <!-- Button Link area start here  -->
-                                                <div
-                                                  class="row form-group g-3 align-items-center"
-                                                >
-                                                  <!-- Button Link label start here  -->
-                                                  <div
-                                                    class="col-3 d-flex justify-content-center align-items-center"
-                                                  >
-                                                    <label
-                                                      for="inputTitle"
-                                                      class="col-form-label form-label"
-                                                      >Button Link
-                                                    </label>
-                                                  </div>
-                                                  <!-- Button Link label end here  -->
 
-                                                  <!-- Button Link input start here  -->
-                                                  <div class="col-9">
-                                                    <div class="mb-3 mt-3">
-                                                      <input
-                                                        type="text"
-                                                        id="inputTitle"
-                                                        class="form-control form-control-lg form-input"
-                                                        placeholder="Enter Link..."
-                                                        required
-                                                      />
-                                                    </div>
-                                                  </div>
-                                                  <!-- Button Link input end here  -->
-                                                </div>
-                                                <!-- Button Link area end here  -->
 
-                                                <!-- image  -->
-                                                <div
-                                                  class="row form-group g-3 align-items-center mt-3"
-                                                >
-                                                  <!-- upload banner input area start here  -->
-                                                  <div class="col-12">
-                                                    <div
-                                                      class="form-group mb-20 upload-input"
-                                                    >
-                                                      <label
-                                                        for="ImgUpload"
-                                                        class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4 position-relative"
-                                                      >
-                                                        <img
-                                                          src="../assets/img/real_state.jpg"
-                                                          class="img-fluid rounded-4"
-                                                          width="80%"
-                                                          alt="upload image"
-                                                        />
-                                                        <!-- close button start here  -->
-                                                        <button
-                                                          type="button"
-                                                          data-bs-dismiss="modal"
-                                                          class="btn-close position-absolute top-0 end-0 p-2"
-                                                          aria-label="Close"
-                                                        ></button>
-                                                      </label>
-                                                    </div>
-                                                  </div>
-                                                  <!-- upload banner input area end here  -->
-                                                </div>
 
-                                                <!-- cancel and submit button  -->
-                                                <div class="my-3">
-                                                  <button
-                                                    type="button"
-                                                    class="btn btn-secondary cancel_modal"
-                                                    data-bs-dismiss="modal"
-                                                  >
-                                                    Close
-                                                  </button>
-                                                  <button
-                                                    type="button"
-                                                    class="btn add_modal"
-                                                  >
-                                                    Add
-                                                  </button>
-                                                </div>
-                                              </form>
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <!-- Edit modal end here  -->
+                </div>
+
+                        <!-- Buttons -->
+                        <div class="d-flex justify-content-end mt-4">
+                            <button type="button" class="btn btn-secondary me-2 px-4 py-2" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary px-4 py-2">Add</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
                                     <!-- Indusrty delete button start here  -->
                                     <a
@@ -857,218 +598,108 @@
                                     </a>
                                     <!-- Industry edit button end here  -->
 
-                                    <!-- Edit Modal start here  -->
-                                    <div
-                                      class="modal fade"
-                                      id="editModal2"
-                                      tabindex="-1"
-                                      aria-labelledby="exampleModalLabel"
-                                      aria-hidden="true"
-                                    >
-                                      <div
-                                        class="modal-dialog modal-dialog-centered"
-                                      >
-                                        <div class="modal-content">
-                                          <div class="modal-header">
-                                            <h1
-                                              class="modal-title"
-                                              id="exampleModalLabel"
-                                            >
-                                              Edit Education
-                                            </h1>
-                                            <button
-                                              type="button"
-                                              class="btn-close"
-                                              data-bs-dismiss="modal"
-                                              aria-label="Close"
-                                            ></button>
-                                          </div>
+                                    <div class="modal fade" id="editModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered"> <!-- Increased width -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 fw-bold text-start" id="exampleModalLabel">Edit Education</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
 
-                                          <div class="modal-body">
-                                            <div class="container">
-                                              <form class="upload-form">
-                                                <!-- title  -->
-                                                <div
-                                                  class="row form-group g-3 align-items-center"
-                                                >
-                                                  <!-- title label start here  -->
-                                                  <div class="col-3">
-                                                    <label
-                                                      for="inputTitle"
-                                                      class="col-form-label form-label"
-                                                      >Industry Title
-                                                    </label>
-                                                  </div>
-                                                  <!-- title label end here  -->
+            <div class="modal-body">
+                <div class="container">
+                    <form class="upload-form">
+                        <!-- Industry Title & Service Title (Side by Side) -->
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="inputTitle" class="form-label fw-semibold text-start d-block">Industry Title</label>
+                                <input type="text" id="inputTitle" class="form-control text-start" placeholder="Enter Title..." required />
+                            </div>
 
-                                                  <!-- title input start here  -->
-                                                  <div class="col-9">
-                                                    <div class="mb-3 mt-3">
-                                                      <input
-                                                        type="text"
-                                                        id="inputTitle"
-                                                        class="form-control form-control-lg form-input"
-                                                        placeholder="Enter Title..."
-                                                        required
-                                                      />
-                                                    </div>
-                                                  </div>
-                                                  <!-- title input end here  -->
-                                                </div>
+                            <div class="col-md-6">
+                                <label for="serviceTitle" class="form-label fw-semibold text-start d-block">Service Title</label>
+                                <input type="text" id="serviceTitle" class="form-control text-start" placeholder="Enter Service Title..." required />
+                            </div>
+                        </div>
 
-                                                <!-- description  -->
-                                                <div
-                                                  class="row form-group g-3 align-items-center"
-                                                >
-                                                  <!-- description label start here  -->
-                                                  <div
-                                                    class="col-3 d-flex justify-content-center"
-                                                  >
-                                                    <label
-                                                      for="inputDescription"
-                                                      class="col-form-label form-label text-break"
-                                                      >Description</label
-                                                    >
-                                                  </div>
-                                                  <!-- description label end here  -->
+                        <!-- Description & Button Link (Side by Side) -->
+                        <!-- <div class="row g-3 mt-2">
+                            <div class="col-md-6">
+                                <label for="inputDescription" class="form-label fw-semibold text-start d-block">Description</label>
+                                <textarea class="form-control text-start" id="inputDescription" rows="3" placeholder="Write your description here..." required></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="btnLink" class="form-label fw-semibold text-start d-block">Button Link</label>
+                                <input type="text" id="btnLink" class="form-control text-start" placeholder="Enter Link..." required />
+                            </div>
+                        </div> -->
 
-                                                  <!-- description textarea box start here  -->
-                                                  <div class="col-9">
-                                                    <div class="form-floating">
-                                                      <textarea
-                                                        class="form-control form-control-lg form-textbox"
-                                                        id="inputDescription"
-                                                        rows="4"
-                                                        cols="30"
-                                                        placeholder="write your banner description here..."
-                                                      ></textarea>
-                                                      <label
-                                                        for="inputDescription"
-                                                        >write your description
-                                                        here...</label
-                                                      >
-                                                    </div>
-                                                  </div>
+                        <!-- Image Upload & Preview (Side by Side) -->
+                        <!-- <div class="row g-3 mt-2 align-items-center">
+                            <div class="col-md-6">
+                                <label for="upload-photo" class="form-label fw-semibold text-start d-block">Upload Banner Image</label>
+                                <input type="file" id="upload-photo" class="form-control">
+                            </div>
+                            <div class="col-md-6 text-start">
+                                <label class="form-label fw-semibold d-block">Image Preview</label>
+                                <div class="preview-box">
+                                    <img id="previewBannerImg" src="../assets/img/Education.jpg" alt="Banner Image Preview" class="img-fluid rounded shadow-sm" />
+                                    <button type="button" class="btn-close position-absolute top-0 end-0 p-2" aria-label="Close" onclick="removeImage()"></button>
+                                </div>
+                            </div>
+                        </div> -->
 
-                                                  <!-- description textarea box end here  -->
-                                                </div>
 
-                                                <!-- Service  -->
-                                                <div
-                                                  class="row form-group g-3 align-items-center"
-                                                >
-                                                  <!-- title label start here  -->
-                                                  <div class="col-3">
-                                                    <label
-                                                      for="inputTitle"
-                                                      class="col-form-label form-label"
-                                                      >Service Title
-                                                    </label>
-                                                  </div>
-                                                  <!-- title label end here  -->
 
-                                                  <!-- title input start here  -->
-                                                  <div class="col-9">
-                                                    <div class="mb-3 mt-3">
-                                                      <input
-                                                        type="text"
-                                                        id="inputTitle"
-                                                        class="form-control form-control-lg form-input"
-                                                        placeholder="Enter Service Title..."
-                                                        required
-                                                      />
-                                                    </div>
-                                                  </div>
-                                                  <!-- title input end here  -->
-                                                </div>
 
-                                                <!-- Button Link area start here  -->
-                                                <div
-                                                  class="row form-group g-3 align-items-center"
-                                                >
-                                                  <!-- Button Link label start here  -->
-                                                  <div
-                                                    class="col-3 d-flex justify-content-center align-items-center"
-                                                  >
-                                                    <label
-                                                      for="inputTitle"
-                                                      class="col-form-label form-label"
-                                                      >Button Link
-                                                    </label>
-                                                  </div>
-                                                  <!-- Button Link label end here  -->
 
-                                                  <!-- Button Link input start here  -->
-                                                  <div class="col-9">
-                                                    <div class="mb-3 mt-3">
-                                                      <input
-                                                        type="text"
-                                                        id="inputTitle"
-                                                        class="form-control form-control-lg form-input"
-                                                        placeholder="Enter Link..."
-                                                        required
-                                                      />
-                                                    </div>
-                                                  </div>
-                                                  <!-- Button Link input end here  -->
-                                                </div>
-                                                <!-- Button Link area end here  -->
 
-                                                <!-- image  -->
-                                                <div
-                                                  class="row form-group g-3 align-items-center mt-3"
-                                                >
-                                                  <!-- upload banner input area start here  -->
-                                                  <div class="col-12">
-                                                    <div
-                                                      class="form-group mb-20 upload-input"
-                                                    >
-                                                      <label
-                                                        for="ImgUpload"
-                                                        class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4 position-relative"
-                                                      >
-                                                        <img
-                                                          src="../assets/img/Education.jpg"
-                                                          class="img-fluid rounded-4"
-                                                          width="80%"
-                                                          alt="upload image"
-                                                        />
-                                                        <!-- close button start here  -->
-                                                        <button
-                                                          type="button"
-                                                          data-bs-dismiss="modal"
-                                                          class="btn-close position-absolute top-0 end-0 p-2"
-                                                          aria-label="Close"
-                                                        ></button>
-                                                      </label>
-                                                    </div>
-                                                  </div>
-                                                  <!-- upload banner input area end here  -->
-                                                </div>
 
-                                                <!-- cancel and submit button  -->
-                                                <div class="my-3">
-                                                  <button
-                                                    type="button"
-                                                    class="btn btn-secondary cancel_modal"
-                                                    data-bs-dismiss="modal"
-                                                  >
-                                                    Close
-                                                  </button>
-                                                  <button
-                                                    type="button"
-                                                    class="btn add_modal"
-                                                  >
-                                                    Add
-                                                  </button>
-                                                </div>
-                                              </form>
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <!-- Edit modal end here  -->
+
+                        
+                <!-- Description (Full width) -->
+                <div class="row form-group mt-3">
+                    <div class="col-md-6">
+                        <label for="inputBannerDescription" class="form-label fw-semibold text-start d-block">Banner Description</label>
+                        <textarea class="form-control" id="inputBannerDescription" name="description" rows="3" placeholder="Write your description here..." data-parsley-required="true"></textarea>
+                    </div>
+
+                    
+<!-- Image Upload -->
+<div class="col-md-6">
+        <label for="bannerImage" class="form-label fw-semibold text-start d-block">Upload Banner Image</label>
+        <div class="form-group mb-3 upload-input styled-box">
+            <label for="bannerImage" class="form-label form-img-uploader d-flex align-items-center justify-content-center w-100 py-3 position-relative" style="cursor: pointer;">
+                <div class="d-flex flex-column align-items-center gap-2">
+                    <span>
+                        <i class="bi bi-upload" style="font-size: 24px; color: #6c757d;"></i>
+                    </span>
+                    <p class="mb-0 text-muted">Click to Upload Image</p>
+                </div>
+                <img id="previewImg" src="#" alt="Image Preview" class="d-none img-fluid rounded mt-2" style="max-width: 100%; max-height: 150px;">
+            </label>
+            <input type="file" name="banner_image" id="bannerImage" class="d-none" accept="image/*" onchange="previewImage(event)">
+        </div>
+    </div>
+
+
+
+
+
+                </div>
+
+                        <!-- Buttons -->
+                        <div class="d-flex justify-content-end mt-4">
+                            <button type="button" class="btn btn-secondary me-2 px-4 py-2" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary px-4 py-2">Add</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
                                     <!-- Industry delete button start here  -->
                                     <a

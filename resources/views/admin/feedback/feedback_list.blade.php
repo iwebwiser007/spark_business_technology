@@ -140,7 +140,7 @@
                                     </a>
                                     <!-- feedback edit button end here  -->
 
-                                    <!-- Edit Modal start here  -->
+                                    <!-- Edit Modal start here 
                                     <div
                                       class="modal fade"
                                       id="editModal"
@@ -170,11 +170,11 @@
                                           <div class="modal-body">
                                             <div class="container">
                                               <form class="upload-form">
-                                                <!-- title  -->
+                                                <!-- title  
                                                 <div
                                                   class="row form-group g-3 align-items-center"
                                                 >
-                                                  <!-- title label start here  -->
+                                                  <!-- title label start here  
                                                   <div class="col-3">
                                                     <label
                                                       for="inputTitle"
@@ -184,7 +184,7 @@
                                                   </div>
                                                   <!-- title label end here  -->
 
-                                                  <!-- title input start here  -->
+                                                  <!-- title input start here  
                                                   <div class="col-9">
                                                     <div class="mb-3 mt-3">
                                                       <input
@@ -197,13 +197,13 @@
                                                     </div>
                                                   </div>
                                                   <!-- title input end here  -->
-                                                  <!-- <div class="col-2"></div> -->
+                                                  <!-- <div class="col-2"></div> 
                                                 </div>
 
                                                 <div
                                                   class="row form-group g-3 align-items-center"
                                                 >
-                                                  <!-- banner description label start here  -->
+                                                  <!-- banner description label start here  
                                                   <div
                                                     class="col-3 d-flex justify-content-center"
                                                   >
@@ -215,7 +215,7 @@
                                                   </div>
                                                   <!-- banner description label end here  -->
 
-                                                  <!-- banner description textarea box start here  -->
+                                                  <!-- banner description textarea box start here 
                                                   <div class="col-9">
                                                     <div class="form-floating">
                                                       <textarea
@@ -229,17 +229,17 @@
                                                         for="inputDescription"
                                                         >write your description
                                                         here...</label
-                                                      > -->
+                                                      > 
                                                     </div>
                                                   </div>
 
-                                                  <!-- banner description textarea box end here  -->
+                                                  <!-- banner description textarea box end here 
                                                 </div>
 
-                                                <div
+                                                <!-- <div
                                                   class="row form-group g-3 align-items-center mt-3"
                                                 >
-                                                  <!-- button link label start here  -->
+                                                  <!-- button link label start here 
                                                   <div
                                                     class="col-3 d-flex justify-content-center align-items-center"
                                                   >
@@ -248,11 +248,11 @@
                                                       class="col-form-label form-label"
                                                       >Page Select
                                                     </label>
-                                                  </div>
+                                                  </div> -->
                                                   <!-- button link label end here  -->
 
                                                   <!-- button link input start here  -->
-                                                  <div class="col-9">
+                                                  <!-- <div class="col-9">
                                                     <select
                                                       id="country"
                                                       name="country"
@@ -271,15 +271,15 @@
                                                         Testimonial
                                                       </option>
                                                     </select>
-                                                  </div>
+                                                  </div> -->
                                                   <!-- button link input end here  -->
-                                                </div>
+                                                <!-- </div> -->
                                                 <!-- image  -->
-                                                <div
+                                                <!-- <div
                                                   class="row form-group g-3 align-items-center mt-3"
-                                                >
+                                                > -->
                                                   <!-- upload banner input area start here  -->
-                                                  <div class="col-12">
+                                                  <!-- <div class="col-12">
                                                     <div
                                                       class="form-group mb-20 upload-input"
                                                     >
@@ -292,9 +292,9 @@
                                                           class="img-fluid rounded-4"
                                                           width="70%"
                                                           alt="upload image"
-                                                        />
+                                                        /> -->
                                                         <!-- close button start here  -->
-                                                        <button
+                                                        <!-- <button
                                                           type="button"
                                                           data-bs-dismiss="modal"
                                                           class="btn-close position-absolute top-0 end-0 p-2"
@@ -302,9 +302,9 @@
                                                         ></button>
                                                       </label>
                                                     </div>
-                                                  </div>
+                                                  </div> -->
                                                   <!-- upload banner input area end here  -->
-                                                </div>
+                                                <!-- </div>
 
                                                 <div class="my-3 form-button">
                                                   <button
@@ -326,8 +326,82 @@
                                           </div>
                                         </div>
                                       </div>
-                                    </div>
+                                    </div> -->
                                     <!-- Edit modal end here  -->
+
+                                    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered"> <!-- Increased width -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 fw-bold text-start" id="exampleModalLabel">Edit Feedback-1</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <div class="container">
+                    <form class="upload-form">
+                        <!-- Feedback Title & Page Select (Side by Side) -->
+                        <div class="row g-3 align-items-start"> <!-- Fixed alignment -->
+                            <div class="col-md-6">
+                                <label for="inputTitle" class="form-label fw-semibold text-start d-block">Feedback Title</label>
+                                <input type="text" id="inputTitle" class="form-control" placeholder="Enter Title..." required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="pageSelect" class="form-label fw-semibold text-start d-block">Page Select</label>
+                                <select name="pageSelect" id="pageSelect" class="form-select">
+                                    <option>Select Page</option>
+                                    <option value="Home">Home</option>
+                                    <option value="About">About</option>
+                                    <option value="Testimonial">Testimonial</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Description (Full Width) -->
+                        <div class="row g-3 mt-2 align-items-start">
+                            <div class="col-md-12">
+                                <label for="inputDescription" class="form-label fw-semibold text-start d-block">Description</label>
+                                <textarea class="form-control" id="inputDescription" rows="3" placeholder="Write your description here..."></textarea>
+                            </div>
+                        </div>
+
+                       <!-- Image Upload & Preview (Fixed Size) -->
+                       <div class="row g-3 mt-2 align-items-start">
+                            <div class="col-md-12">
+                                <label for="upload-photo" class="form-label fw-semibold text-start d-block">Upload Feedback Image</label>
+                                <div class="position-relative w-100">
+                                    <label for="upload-photo" class="form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 position-relative overflow-hidden" style="cursor: pointer; max-width: 400px; height: 200px;">
+                                        <img id="previewFeedbackImg" src="../assets/img/blog-1.jpg" alt="Feedback Image Preview" class="img-fluid rounded-4" style="width: 100%; height: 100%; object-fit: cover;">
+                                        <!-- Close Button -->
+                                        <button type="button" class="btn-close position-absolute top-0 end-0 p-2" aria-label="Close" onclick="removeImage()"></button>
+                                    </label>
+                                    <input type="file" id="upload-photo" class="d-none" onchange="previewImage(event)">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="d-flex justify-content-end mt-4 pb-4">
+                            <button type="button" class="btn btn-secondary px-4 py-2" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary px-4 py-2 ms-2">Add</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
 
                                     <!-- feedback delete button start here  -->
                                     <a
@@ -500,7 +574,7 @@
                                     </a>
                                     <!-- feedback edit button end here  -->
 
-                                    <!-- Edit Modal start here  -->
+                                    <!-- Edit Modal start here  
                                     <div
                                       class="modal fade"
                                       id="editModal1"
@@ -530,22 +604,22 @@
                                           <div class="modal-body">
                                             <div class="container">
                                               <form class="upload-form">
-                                                <!-- title  -->
+                                                <!-- title  
                                                 <div
                                                   class="row form-group g-3 align-items-center"
                                                 >
                                                   <!-- title label start here  -->
-                                                  <div class="col-3">
+                                                  <!-- <div class="col-3">
                                                     <label
                                                       for="inputTitle"
                                                       class="col-form-label form-label"
                                                       >Feedback Title
                                                     </label>
-                                                  </div>
+                                                  </div> -->
                                                   <!-- title label end here  -->
 
                                                   <!-- title input start here  -->
-                                                  <div class="col-9">
+                                                  <!-- <div class="col-9">
                                                     <div class="mb-3 mt-3">
                                                       <input
                                                         type="text"
@@ -555,16 +629,16 @@
                                                         required
                                                       />
                                                     </div>
-                                                  </div>
+                                                  </div> -->
                                                   <!-- title input end here  -->
                                                   <!-- <div class="col-2"></div> -->
-                                                </div>
+                                                <!-- </div>
 
                                                 <div
                                                   class="row form-group g-3 align-items-center"
-                                                >
+                                                > -->
                                                   <!-- banner description label start here  -->
-                                                  <div
+                                                  <!-- <div
                                                     class="col-3 d-flex justify-content-center"
                                                   >
                                                     <label
@@ -572,11 +646,11 @@
                                                       class="col-form-label form-label text-break"
                                                       >Description</label
                                                     >
-                                                  </div>
+                                                  </div> -->
                                                   <!-- banner description label end here  -->
 
                                                   <!-- banner description textarea box start here  -->
-                                                  <div class="col-9">
+                                                  <!-- <div class="col-9">
                                                     <div class="form-floating">
                                                       <textarea
                                                         class="form-control form-control-lg form-textbox"
@@ -584,24 +658,24 @@
                                                         rows="4"
                                                         cols="30"
                                                         placeholder="write your banner description here..."
-                                                      ></textarea>
+                                                      ></textarea> -->
                                                       <!-- <label
                                                         for="inputDescription"
                                                         >write your description
                                                         here...</label
                                                       > -->
-                                                    </div>
-                                                  </div>
+                                                    <!-- </div>
+                                                  </div> -->
 
                                                   <!-- banner description textarea box end here  -->
-                                                </div>
+                                                <!-- </div>
 
                                                 <div
                                                   class="row form-group g-3 align-items-center mt-3"
-                                                >
+                                                > -->
                                                   <!-- <div class="col-1"></div> -->
                                                   <!-- button link label start here  -->
-                                                  <div
+                                                  <!-- <div
                                                     class="col-3 d-flex justify-content-center align-items-center"
                                                   >
                                                     <label
@@ -609,11 +683,11 @@
                                                       class="col-form-label form-label"
                                                       >Page Select
                                                     </label>
-                                                  </div>
+                                                  </div> -->
                                                   <!-- button link label end here  -->
 
                                                   <!-- button link input start here  -->
-                                                  <div class="col-9">
+                                                  <!-- <div class="col-9">
                                                     <select
                                                       id="country"
                                                       name="country"
@@ -632,14 +706,14 @@
                                                         Testimonial
                                                       </option>
                                                     </select>
-                                                  </div>
-                                                  <!-- button link input end here  -->
+                                                  </div> -->
+                                                  <!-- button link input end here  
                                                 </div>
                                                 <!-- image  -->
-                                                <div
+                                                <!-- <div
                                                   class="row form-group g-3 align-items-center mt-3"
                                                 >
-                                                  <!-- upload banner input area start here  -->
+                                                  <!-- upload banner input area start here  
                                                   <div class="col-12">
                                                     <div
                                                       class="form-group mb-20 upload-input"
@@ -653,9 +727,9 @@
                                                           class="img-fluid rounded-4"
                                                           width="70%"
                                                           alt="upload image"
-                                                        />
+                                                        /> -->
                                                         <!-- close button start here  -->
-                                                        <button
+                                                        <!-- <button
                                                           type="button"
                                                           data-bs-dismiss="modal"
                                                           class="btn-close position-absolute top-0 end-0 p-2"
@@ -664,7 +738,7 @@
                                                       </label>
                                                     </div>
                                                   </div>
-                                                  <!-- upload banner input area end here  -->
+                                                  <!-- upload banner input area end here 
                                                 </div>
 
                                                 <div class="my-3 form-button">
@@ -687,8 +761,92 @@
                                           </div>
                                         </div>
                                       </div>
-                                    </div>
+                                    </div> -->
                                     <!-- Edit modal end here  -->
+
+
+                                    <div class="modal fade" id="editModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered"> <!-- Increased Width -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 fw-bold text-start" id="exampleModalLabel">Edit Feedback-2</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <div class="container">
+                    <form class="upload-form">
+                        <!-- Feedback Title & Page Select (Side by Side) -->
+                        <div class="row g-3 align-items-start">
+                            <div class="col-md-6">
+                                <label for="inputTitle" class="form-label fw-semibold text-start d-block">Feedback Title</label>
+                                <input type="text" id="inputTitle" class="form-control" placeholder="Enter Title..." required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="pageSelect" class="form-label fw-semibold text-start d-block">Page Select</label>
+                                <select name="pageSelect" id="pageSelect" class="form-select">
+                                    <option>Select Page</option>
+                                    <option value="Home">Home</option>
+                                    <option value="About">About</option>
+                                    <option value="Testimonial">Testimonial</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Description (Full Width) -->
+                        <div class="row g-3 mt-2 align-items-start">
+                            <div class="col-md-12">
+                                <label for="inputDescription" class="form-label fw-semibold text-start d-block">Description</label>
+                                <textarea class="form-control" id="inputDescription" rows="3" placeholder="Write your description here..."></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Image Upload & Preview (Fixed Size) -->
+                        <div class="row g-3 mt-2 align-items-start">
+                            <div class="col-md-12">
+                                <label for="upload-photo" class="form-label fw-semibold text-start d-block">Upload Feedback Image</label>
+                                <div class="position-relative w-100">
+                                    <label for="upload-photo" class="form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 position-relative overflow-hidden" style="cursor: pointer; max-width: 400px; height: 200px;">
+                                        <img id="previewFeedbackImg" src="../assets/img/blog-2.jpg" alt="Feedback Image Preview" class="img-fluid rounded-4" style="width: 100%; height: 100%; object-fit: cover;">
+                                        <!-- Close Button -->
+                                        <button type="button" class="btn-close position-absolute top-0 end-0 p-2" aria-label="Close" onclick="removeImage()"></button>
+                                    </label>
+                                    <input type="file" id="upload-photo" class="d-none" onchange="previewImage(event)">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="d-flex justify-content-end mt-4 pb-4">
+                            <button type="button" class="btn btn-secondary px-4 py-2" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary px-4 py-2 ms-2">Add</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                                     <!-- feedback delete button start here  -->
                                     <a
@@ -778,7 +936,7 @@
                                     </a>
                                     <!-- feedback edit button end here  -->
 
-                                    <!-- Edit Modal start here  -->
+                                    <!-- Edit Modal start here  
                                     <div
                                       class="modal fade"
                                       id="editModal2"
@@ -808,11 +966,11 @@
                                           <div class="modal-body">
                                             <div class="container">
                                               <form class="upload-form">
-                                                <!-- title  -->
+                                                <!-- title  
                                                 <div
                                                   class="row form-group g-3 align-items-center"
                                                 >
-                                                  <!-- title label start here  -->
+                                                  <!-- title label start here  
                                                   <div class="col-3">
                                                     <label
                                                       for="inputTitle"
@@ -822,7 +980,7 @@
                                                   </div>
                                                   <!-- title label end here  -->
 
-                                                  <!-- title input start here  -->
+                                                  <!-- title input start here  
                                                   <div class="col-9">
                                                     <div class="mb-3 mt-3">
                                                       <input
@@ -835,13 +993,13 @@
                                                     </div>
                                                   </div>
                                                   <!-- title input end here  -->
-                                                  <!-- <div class="col-2"></div> -->
+                                                  <!-- <div class="col-2"></div> 
                                                 </div>
 
                                                 <div
                                                   class="row form-group g-3 align-items-center"
                                                 >
-                                                  <!-- banner description label start here  -->
+                                                  <!-- banner description label start here  
                                                   <div
                                                     class="col-3 d-flex justify-content-center"
                                                   >
@@ -853,7 +1011,7 @@
                                                   </div>
                                                   <!-- banner description label end here  -->
 
-                                                  <!-- banner description textarea box start here  -->
+                                                  <!-- banner description textarea box start here  
                                                   <div class="col-9">
                                                     <div class="form-floating">
                                                       <textarea
@@ -868,19 +1026,19 @@
                                                         >write your banner
                                                         description
                                                         here...</label
-                                                      > -->
+                                                      > 
                                                     </div>
                                                   </div>
 
                                                   <!-- banner description textarea box end here  -->
-                                                </div>
+                                                <!-- </div>
 
                                                 <div
                                                   class="row form-group g-3 align-items-center mt-3"
-                                                >
+                                                > -->
                                                   <!-- <div class="col-1"></div> -->
                                                   <!-- button link label start here  -->
-                                                  <div
+                                                  <!-- <div
                                                     class="col-3 d-flex justify-content-center align-items-center"
                                                   >
                                                     <label
@@ -888,11 +1046,11 @@
                                                       class="col-form-label form-label"
                                                       >Page Select
                                                     </label>
-                                                  </div>
+                                                  </div> -->
                                                   <!-- button link label end here  -->
 
                                                   <!-- button link input start here  -->
-                                                  <div class="col-9">
+                                                  <!-- <div class="col-9">
                                                     <select
                                                       id="country"
                                                       name="country"
@@ -911,16 +1069,16 @@
                                                         Testimonial
                                                       </option>
                                                     </select>
-                                                  </div>
-                                                  <!-- button link input end here  -->
+                                                  </div> -->
+                                                  <!-- button link input end here  
                                                 </div>
 
                                                 <!-- image  -->
-                                                <div
+                                                <!-- <div
                                                   class="row form-group g-3 align-items-center mt-3"
-                                                >
+                                                > -->
                                                   <!-- upload banner input area start here  -->
-                                                  <div class="col-12">
+                                                  <!-- <div class="col-12">
                                                     <div
                                                       class="form-group mb-20 upload-input"
                                                     >
@@ -933,9 +1091,9 @@
                                                           class="img-fluid rounded-4"
                                                           width="70%"
                                                           alt="upload image"
-                                                        />
+                                                        /> -->
                                                         <!-- close button start here  -->
-                                                        <button
+                                                        <!-- <button
                                                           type="button"
                                                           data-bs-dismiss="modal"
                                                           class="btn-close position-absolute top-0 end-0 p-2"
@@ -943,9 +1101,9 @@
                                                         ></button>
                                                       </label>
                                                     </div>
-                                                  </div>
+                                                  </div> -->
                                                   <!-- upload banner input area end here  -->
-                                                </div>
+                                                <!-- </div>
 
                                                 <div class="my-3 form-button">
                                                   <button
@@ -967,8 +1125,93 @@
                                           </div>
                                         </div>
                                       </div>
-                                    </div>
+                                    </div> -->
                                     <!-- Edit modal end here  -->
+
+
+
+
+                                    <div class="modal fade" id="editModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered"> <!-- Modal Width Increased -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 fw-bold text-start" id="exampleModalLabel">Edit Feedback-3</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <div class="container">
+                    <form class="upload-form">
+                        <!-- Feedback Title & Page Select (Side by Side) -->
+                        <div class="row g-3 align-items-start">
+                            <div class="col-md-6">
+                                <label for="inputTitle" class="form-label fw-semibold text-start d-block">Feedback Title</label>
+                                <input type="text" id="inputTitle" class="form-control" placeholder="Enter Title..." required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="pageSelect" class="form-label fw-semibold text-start d-block">Page Select</label>
+                                <select name="pageSelect" id="pageSelect" class="form-select">
+                                    <option>Select Page</option>
+                                    <option value="Home">Home</option>
+                                    <option value="About">About</option>
+                                    <option value="Testimonial">Testimonial</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Description (Full Width) -->
+                        <div class="row g-3 mt-2 align-items-start">
+                            <div class="col-md-12">
+                                <label for="inputDescription" class="form-label fw-semibold text-start d-block">Description</label>
+                                <textarea class="form-control" id="inputDescription" rows="3" placeholder="Write your description here..."></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Image Upload & Preview (Fixed Size) -->
+                        <div class="row g-3 mt-2 align-items-start">
+                            <div class="col-md-12">
+                                <label for="upload-photo" class="form-label fw-semibold text-start d-block">Upload Feedback Image</label>
+                                <div class="position-relative w-100">
+                                    <label for="upload-photo" class="form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 position-relative overflow-hidden" style="cursor: pointer; max-width: 400px; height: 200px;">
+                                        <img id="previewFeedbackImg" src="../assets/img/blog-3.jpg" alt="Feedback Image Preview" class="img-fluid rounded-4" style="width: 100%; height: 100%; object-fit: cover;">
+                                        <!-- Close Button -->
+                                        <button type="button" class="btn-close position-absolute top-0 end-0 p-2" aria-label="Close" onclick="removeImage()"></button>
+                                    </label>
+                                    <input type="file" id="upload-photo" class="d-none" onchange="previewImage(event)">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="d-flex justify-content-end mt-4 pb-4">
+                            <button type="button" class="btn btn-secondary px-4 py-2" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary px-4 py-2 ms-2">Add</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                                     <!-- feedback delete button start here  -->
                                     <a

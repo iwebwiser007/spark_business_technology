@@ -62,23 +62,23 @@
                       </div>
                       <!-- card header end here  -->
 
-                      <!-- card body start here  -->
+                      <!-- card body start here  
                       <div class="card-body">
-                        <!-- form start here  -->
+                        <!-- form start here  
                         <form class="upload-form">
-                          <!-- title area start here  -->
+                          <!-- title area start here  
                           <div class="row form-group mt-1 mt-md-2">
-                            <!-- banner title start here  -->
+                            <!-- banner title start here  
                             <div class="col-12 col-md-3">
                               <label
                                 for="inputFeedbackTitle"
-                                class="col-form-label form-label d-flex justify-content-left justify-content-md-center align-items-center"
+                                class="col-form-label form-label d-flex justify-content-left  align-items-center"
                                 >Feedback Title
                               </label>
                             </div>
                             <!-- banner title end here  -->
 
-                            <!-- banner search form start here  -->
+                            <!-- banner search form start here  
                             <div class="col-12 col-md-8 mt-0">
                               <input
                                 type="text"
@@ -88,24 +88,24 @@
                                 required
                               />
                             </div>
-                            <!-- banner search form end here  -->
+                            <!-- banner search form end here  
                             <div class="col-1 d-none d-md-block"></div>
                           </div>
                           <!-- title area end here  -->
 
                           <!-- description area start here  -->
                           <div class="row form-group">
-                            <!-- description label start here  -->
+                            <!-- description label start here  
                             <div class="col-12 col-md-3">
                               <label
                                 for="inputFeedbackDescription"
-                                class="col-form-label form-label d-flex justify-content-left justify-content-md-center text-nowrap"
+                                class="col-form-label form-label d-flex justify-content-left text-nowrap"
                                 >Feedback Description</label
                               >
                             </div>
                             <!-- banner description label end here  -->
 
-                            <!-- banner description textarea box start here  -->
+                            <!-- banner description textarea box start here  
                             <div class="col-12 col-md-8 mt-0">
                               <textarea
                                 class="form-control form-control-lg form-textbox"
@@ -115,24 +115,24 @@
                                 placeholder="write your description here..."
                               ></textarea>
                             </div>
-                            <!-- banner description textarea box end here  -->
+                            <!-- banner description textarea box end here  
                             <div class="col-1 d-none d-md-block"></div>
                           </div>
                           <!-- description area end here  -->
 
-                          <!-- Page Select area start here  -->
+                          <!-- Page Select area start here  
                           <div class="row form-group">
-                            <!-- Page Select label start here  -->
+                            <!-- Page Select label start here  
                             <div class="col-12 col-md-3">
                               <label
                                 for="btnFeedbackLink"
-                                class="col-form-label form-label d-flex justify-content-left justify-content-md-center"
+                                class="col-form-label form-label d-flex justify-content-left "
                                 >Page Select
                               </label>
                             </div>
                             <!-- Page Select label end here  -->
 
-                            <!-- Page Select input start here  -->
+                            <!-- Page Select input start here  
                             <div class="col-12 col-md-8 mt-0">
                               <select
                                 name="pageSelect"
@@ -144,25 +144,25 @@
                                 <option value="India">Testimonial</option>
                               </select>
                             </div>
-                            <!-- Page Select input end here  -->
+                            <!-- Page Select input end here  
 
                             <div class="col-1 d-none d-md-block"></div>
                           </div>
                           <!-- Page Select area end here  -->
 
-                          <!-- Feedback image upload area start here  -->
+                          <!-- Feedback image upload area start here  
                           <div class="row form-group">
-                            <!-- upload banner label area start here  -->
+                            <!-- upload banner label area start here  
                             <div class="col-12 col-md-3">
                               <label
                                 for="inputFeedbackImg"
-                                class="col-form-label form-label d-flex justify-content-left justify-content-md-center"
+                                class="col-form-label form-label d-flex justify-content-left "
                                 >Upload Feedback</label
                               >
                             </div>
                             <!-- upload banner label area end here  -->
 
-                            <!-- upload feedback input area start here  -->
+                            <!-- upload feedback input area start here  
                             <div class="col-12 col-md-8 mt-0">
                               <div class="form-group mb-20 upload-input">
                                 <label
@@ -224,12 +224,12 @@
                                 />
                               </div>
                             </div>
-                            <!-- upload feedback input area end here  -->
+                            <!-- upload feedback input area end here  
                             <div class="col-1 d-none d-md-block"></div>
                           </div>
                           <!-- Feedback image upload area end here  -->
 
-                          <!-- Save button start here  -->
+                          <!-- Save button start here  
                           <div class="row">
                             <div class="col-4 col-md-3"></div>
                             <div class="col-12 col-md-9 form-button">
@@ -247,11 +247,107 @@
                               >
                             </div>
                           </div>
-                          <!-- Save button end here  -->
+                          <!-- Save button end here 
                         </form>
-                        <!-- form end here  -->
+                        <!-- form end here  
                       </div>
                       <!-- card body end here  -->
+
+                      <div class="card-body">
+    <!-- form start here -->
+    <form class="upload-form">
+        <!-- Feedback Title & Page Select (Side by Side) -->
+        <div class="row form-group g-3">
+            <div class="col-md-6">
+                <label for="inputFeedbackTitle" class="form-label fw-semibold">Feedback Title</label>
+                <input type="text" id="inputFeedbackTitle" class="form-control" placeholder="Enter Feedback Title..." required>
+            </div>
+
+            <div class="col-md-6">
+                <label for="pageSelect" class="form-label fw-semibold">Page Select</label>
+                <select name="pageSelect" id="pageSelect" class="form-control">
+                    <option id="place">Select Page</option>
+                    <option value="Home">Home</option>
+                    <option value="About">About</option>
+                    <option value="Testimonial">Testimonial</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Feedback Description (Full Width) 
+        <div class="row form-group mt-3">
+            <div class="col-md-12">
+                <label for="inputFeedbackDescription" class="form-label fw-semibold">Feedback Description</label>
+                <textarea class="form-control" id="inputFeedbackDescription" rows="3" placeholder="Write your description here..."></textarea>
+            </div>
+        </div>
+
+        <!-- Image Upload & Preview 
+        <div class="row form-group mt-3">
+            <div class="col-md-6">
+                <label for="upload-photo" class="form-label fw-semibold">Upload Feedback</label>
+                <input type="file" id="upload-photo" class="form-control">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label fw-semibold d-block">Image Preview</label>
+                <div class="preview-box">
+                    <img id="previewFeedbackImg" src="../assets/img/feedback-placeholder.jpg" alt="Feedback Image Preview" class="img-fluid rounded shadow-sm" />
+                    <!-- <button type="button" class="btn-close position-absolute top-0 end-0 p-2" aria-label="Close" onclick="removeImage()"></button> 
+                </div>
+            </div>
+        </div>
+
+ <!-- Description (Full width) -->
+ <div class="row form-group mt-3">
+                    <div class="col-md-6">
+                        <label for="inputBannerDescription" class="form-label fw-semibold  text-start d-block   ">Feedback Description</label>
+                        <textarea class="form-control" id="inputBannerDescription" name="description" rows="3" placeholder="Write your description here..." data-parsley-required="true"></textarea>
+                    </div>
+
+                    
+<!-- Image Upload -->
+<div class="col-md-6">
+        <label for="bannerImage" class="form-label fw-semibold  text-start d-block    ">Upload Feedback Image</label>
+        <div class="form-group mb-3 upload-input styled-box">
+            <label for="bannerImage" class="form-label form-img-uploader d-flex align-items-center justify-content-center w-100 py-4 position-relative" style="cursor: pointer;">
+                <div class="d-flex flex-column align-items-center gap-2">
+                    <span>
+                        <i class="bi bi-upload" style="font-size: 24px; color: #6c757d;"></i>
+                    </span>
+                    <p class="mb-0 text-muted">Click to Upload Image</p>
+                </div>
+                <img id="previewImg" src="#" alt="Image Preview" class="d-none img-fluid rounded mt-2" style="max-width: 100%; max-height: 150px;">
+            </label>
+            <input type="file" name="banner_image" id="bannerImage" class="d-none" accept="image/*" onchange="previewImage(event)">
+        </div>
+    </div>
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+        <!-- Buttons (Added Padding Below) -->
+        <div class="d-flex justify-content-end mt-4 pb-4">
+            <a href="feedback_list.html" class="btn btn-secondary px-4 py-2">Cancel</a>
+            <button type="submit" class="btn btn-primary px-4 py-2 ms-2">Save</button>
+        </div>
+    </form>
+    <!-- form end here -->
+</div>
+
+
+
+
                     </div>
                     <!-- card end here  -->
                   </div>

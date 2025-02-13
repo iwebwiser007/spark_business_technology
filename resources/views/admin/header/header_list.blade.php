@@ -48,10 +48,10 @@
             <div
               class="card-title d-flex justify-content-between align-items-center">
               <h2>Header List</h2>
-              <!-- <a href="{{route('add-edit-header')}}" class="btn sub_btn">ADD</a> -->
-             <a href=" {{route('add-edit-header')}}  " ><button class="btn btn-primary rounded-circle d-flex align-items-center justify-content-center shadow-lg" style="width: 45px; height: 45px;">
+              <a href="{{route('add-edit-header')}}" class="btn sub_btn">ADD</a>
+             <!-- <a href=" {{route('add-edit-header')}}  " ><button class="btn btn-primary rounded-circle d-flex align-items-center justify-content-center shadow-lg" style="width: 45px; height: 45px;">
     <i class="bi bi-plus-lg fs-5 text-white"></i>
-</button></a> 
+</button></a>  -->
 
 
             </div>

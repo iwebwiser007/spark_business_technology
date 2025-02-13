@@ -65,23 +65,23 @@
                       </div>
                       <!-- card header end here  -->
 
-                      <!-- card body start here  -->
+                      <!-- card body start here  --
                       <div class="card-body">
-                        <!-- form start here  -->
+                        <!-- form start here  --
                         <form class="upload-form" action="{{ url('admin/service-store') }}" method="POST" enctype="multipart/form-data" data-parsley-validate>
                         @csrf
                         <div class="row form-group mt-1 mt-md-2">
-                            <!--  title label start here  -->
+                            <!--  title label start here  --
                             <div class="col-12 col-md-3">
                               <label
                                 for="inputServiceTitle"
-                                class="col-form-label form-label d-flex justify-content-left justify-content-md-center"
+                                class="col-form-label form-label d-flex justify-content-left "
                                 >Service Name
                               </label>
                             </div>
                             <!-- title label end here  -->
 
-                            <!-- title input start here  -->
+                            <!-- title input start here  --
                             <div class="col-12 col-md-8 mt-0">
                               <input
                                 type="text"
@@ -92,22 +92,22 @@
                                 data-parsley-required="true"
                               />
                             </div>
-                            <!-- title input end here  -->
+                            <!-- title input end here  --
                             <div class="col-1"></div>
                           </div>
-                          <!-- title area start here  -->
+                          <!-- title area start here  --
                           <div class="row form-group mt-1 mt-md-2">
-                            <!--  title label start here  -->
+                            <!--  title label start here  --
                             <div class="col-12 col-md-3">
                               <label
                                 for="inputServiceTitle"
-                                class="col-form-label form-label d-flex justify-content-left justify-content-md-center"
+                                class="col-form-label form-label d-flex justify-content-left "
                                 >Service Title
                               </label>
                             </div>
                             <!-- title label end here  -->
 
-                            <!-- title input start here  -->
+                            <!-- title input start here  --
                             <div class="col-12 col-md-8 mt-0">
                               <input
                                 type="text"
@@ -118,24 +118,24 @@
                                 data-parsley-required="true"
                               />
                             </div>
-                            <!-- title input end here  -->
+                            <!-- title input end here  --
                             <div class="col-1"></div>
                           </div>
                           <!--title area end here  -->
 
-                          <!-- description area start here  -->
+                          <!-- description area start here  --
                           {{--  <div class="row form-group">
-                            <!-- description label start here  -->
+                            <!-- description label start here  --
                             <div class="col-12 col-md-3">
                               <label
                                 for="serviceDescription"
-                                class="col-form-label form-label d-flex justify-content-left justify-content-md-center"
+                                class="col-form-label form-label d-flex justify-content-left "
                                 >Service Description</label
                               >
                             </div>
                             <!-- description label end here  -->
 
-                            <!-- description textarea box start here  -->
+                            <!-- description textarea box start here  --
                             <div class="col-12 col-md-8 mt-0">
                               <textarea
                                 class="form-control form-control-lg form-textbox"
@@ -146,24 +146,24 @@
                                 placeholder="Write your Service description here..."
                               ></textarea>
                             </div>
-                            <!-- description textarea box end here  -->
+                            <!-- description textarea box end here  -
                             <div class="col-1"></div>
                           </div> --}}
                           <!-- description area end here  -->
 
-                          <!-- Sub Service area start here  -->
+                          <!-- Sub Service area start here  --
                          {{-- <div class="row form-group">
-                            <!-- button link label start here  -->
+                            <!-- button link label start here  --
                             <div class="col-12 col-md-3">
                               <label
                                 for="subService"
-                                class="col-form-label form-label d-flex justify-content-left justify-content-md-center"
+                                class="col-form-label form-label d-flex justify-content-left"
                                 >Sub-service Title
                               </label>
                             </div>
                             <!-- button link label end here  -->
 
-                            <!-- button link input start here  -->
+                            <!-- button link input start here  -
                             <div class="col-12 col-md-8 mt-0">
                               <input
                                 type="text"
@@ -173,24 +173,24 @@
                                 required
                               />
                             </div>
-                            <!-- button link input end here  -->
+                            <!-- button link input end here  --
                             <div class="col-1"></div>
                           </div> --}}
                           <!-- Sub Service area end here  -->
 
-                          <!-- button link area start here  -->
+                          <!-- button link area start here  --
                           <div class="row form-group">
-                            <!-- button link label start here  -->
+                            <!-- button link label start here  --
                             <div class="col-4 col-sm-3">
                               <label
                                 for="serviceLink"
-                                class="col-form-label form-label d-flex justify-content-left justify-content-md-center"
+                                class="col-form-label form-label d-flex justify-content-left "
                                 >Button Link
                               </label>
                             </div>
-                            <!-- button link label end here  -->
+                            <!-- button link label end here  --
 
-                            <!-- button link input start here  -->
+                            <!-- button link input start here  --
                             <div class="col-12 col-md-8 mt-0">
                               <input
                                 type="text"
@@ -202,14 +202,14 @@
 
                               />
                             </div>
-                            <!-- button link input end here  -->
+                            <!-- button link input end here  
                             <div class="col-1"></div>
                           </div>
-                          <!-- button link area end here  -->
+                          <!-- button link area end here  
 
                           <div class="row form-group">
                 <div class="col-12 col-md-3">
-                  <label for="metaTags" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Metas</label>
+                  <label for="metaTags" class="col-form-label form-label d-flex justify-content-left ">Metas</label>
                 </div>
                 <div class="col-12 col-md-8">
                   <textarea name="meta_tags" id="metaTags" class="form-control form-control-lg form-input" placeholder="Enter JSON formatted metas..."  rows="8" style="height: 150px;" data-parsley-required="true" ></textarea>
@@ -217,19 +217,19 @@
                 <div class="col-1"></div>
               </div>
 
-                          <!-- image upload area start here  -->
+                          <!-- image upload area start here  
                           {{-- <div class="row form-group">
-                            <!-- upload area start here -->
+                            <!-- upload area start here 
                             <div class="col-12 col-md-3">
                               <label
                                 for="serviceImg"
-                                class="col-form-label form-label d-flex justify-content-left justify-content-md-center"
+                                class="col-form-label form-label d-flex justify-content-left "
                                 >Upload Image</label
                               >
                             </div>
                             <!-- upload area end here -->
 
-                            <!-- upload input area start here  -->
+                            <!-- upload input area start here 
                             <div class="col-12 col-md-8 mt-0">
                               <div class="form-group mb-20 upload-input">
                                 <label
@@ -291,14 +291,14 @@
                                 />
                               </div>
                             </div>
-                            <!-- upload input area end here  -->
+                            <!-- upload input area end here  
                             <div class="col-1"></div>
                           </div> --}}
-                          <!-- image upload area end here  -->
+                          <!-- image upload area end here  
 
                           <div class="row form-group">
     <div class="col-12 col-md-3">
-      <label for="html_content" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Service Content</label>
+      <label for="html_content" class="col-form-label form-label d-flex justify-content-left ">Service Content</label>
     </div>
     <div class="col-12 col-md-8 mt-0">
       <textarea class="form-control ckeditor" id="html_content" name="html_content" rows="10" ></textarea>
@@ -309,14 +309,14 @@
 
   {{-- <div class="row form-group">
     <div class="col-12 col-md-3">
-      <label for="inputBlogFile" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Upload Banner Image</label>
+      <label for="inputBlogFile" class="col-form-label form-label d-flex justify-content-left ">Upload Banner Image</label>
     </div>
     <div class="col-12 col-md-8 mt-0">
       <div class="form-group mb-20 upload-input">
         <label for="blogImg" class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4">
           <div class="d-flex flex-column align-items-center gap-3">
             <span>
-              <!-- SVG Icon or placeholder icon goes here -->
+              <!-- SVG Icon or placeholder icon goes here 
             </span>
             <p class="mb-0">Upload Image</p>
           </div>
@@ -324,7 +324,7 @@
         <input type="file" name="image" class="form-control form-control-lg d-none" id="blogImg" required onchange="previewImage(event)" />
       </div>
 
-      <!-- Image Preview Area -->
+      <!-- Image Preview Area 
       <div id="imagePreview" class="mt-3">
         <img id="previewImg" src="" alt="Image Preview" style="display: none; width: 100%; max-width: 200px; border-radius: 8px;" />
       </div>
@@ -336,7 +336,7 @@
 
 
 
-                          <!-- save button start here  -->
+                          <!-- save button start here  
                           <div class="row">
                             <div class="col-4 col-md-3"></div>
                             <div class="col-12 col-md-9 form-button">
@@ -349,11 +349,66 @@
                               <button type="submit" class="btn form-btn my-0">Save</button>
                             </div>
                           </div>
-                          <!-- save button end here  -->
+                          <!-- save button end here  
                         </form>
-                        <!-- form end here  -->
+                        <!-- form end here  
                       </div>
                       <!-- card body end here  -->
+
+
+<!-- Card Body Start Here -->
+<div class="card-body">
+  <!-- Form Start Here -->
+  <form class="upload-form" action="{{ url('admin/service-store') }}" method="POST" enctype="multipart/form-data" data-parsley-validate>
+    @csrf
+    <div class="row g-3">
+      <!-- Service Name -->
+      <div class="col-md-6">
+        <label for="inputServiceName" class="col-form-label form-label">Service Name</label>
+        <input type="text" id="inputServiceName" name="name" class="form-control" placeholder="Enter Service Name..." required />
+      </div>
+
+      <!-- Service Title -->
+      <div class="col-md-6">
+        <label for="inputServiceTitle" class="col-form-label form-label">Service Title</label>
+        <input type="text" id="inputServiceTitle" name="title" class="form-control" placeholder="Enter Service Title..." required />
+      </div>
+
+      <!-- Button Link -->
+      <div class="col-md-6">
+        <label for="serviceLink" class="col-form-label form-label">Button Link</label>
+        <input type="text" id="serviceLink" name="link" class="form-control" placeholder="Enter Button Link..." required />
+      </div>
+
+      <!-- Metas -->
+      <div class="col-md-6">
+        <label for="metaTags" class="col-form-label form-label">Metas</label>
+        <textarea name="meta_tags" id="metaTags" class="form-control" placeholder="Enter JSON formatted metas..." rows="4" required></textarea>
+      </div>
+
+      <!-- Service Content -->
+      <div class="col-12">
+        <label for="html_content" class="col-form-label form-label">Service Content</label>
+        <textarea class="form-control ckeditor" id="html_content" name="html_content" rows="6"></textarea>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="d-flex justify-content-end mt-4 mb-4">
+      <a href="{{route('service-list')}}" role="button" class="btn btn-secondary me-2">Cancel</a>
+      <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+  </form>
+  <!-- Form End Here -->
+</div>
+<!-- Card Body End Here -->
+
+
+
+
+
+
+
                     </div>
                     <!-- card end here  -->
                   </div>
