@@ -330,7 +330,7 @@
                                     <!-- Edit modal end here  -->
 
                                     <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered"> <!-- Increased width -->
+    <div class="modal-dialog modal-l modal-dialog-centered"> <!-- Increased width -->
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5 fw-bold text-start" id="exampleModalLabel">Edit Feedback-1</h1>
@@ -766,7 +766,7 @@
 
 
                                     <div class="modal fade" id="editModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered"> <!-- Increased Width -->
+    <div class="modal-dialog modal-l modal-dialog-centered"> <!-- Increased Width -->
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5 fw-bold text-start" id="exampleModalLabel">Edit Feedback-2</h1>
@@ -1132,7 +1132,7 @@
 
 
                                     <div class="modal fade" id="editModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered"> <!-- Modal Width Increased -->
+    <div class="modal-dialog modal-l modal-dialog-centered"> <!-- Modal Width Increased -->
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5 fw-bold text-start" id="exampleModalLabel">Edit Feedback-3</h1>

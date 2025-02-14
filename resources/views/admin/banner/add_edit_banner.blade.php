@@ -11,7 +11,7 @@
       <div class="dash-head">
         <!-- dashboard title start here  -->
         <div class="dash_title">
-          <!-- <a
+           <a
             href="banner_list.html"
             role="button"
             class="btn link-btn">
@@ -24,12 +24,12 @@
               <path
                 d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z" />
             </svg>
-          </a> -->
-          <a href="banner_list.html">
+          </a> 
+          <!-- <a href="banner_list.html">
                     <button class="btn link-btn rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
     <i class="bi bi-arrow-left-short fs-4 text-white"></i>
 </button>
-                    </a> 
+                    </a>  -->
           <h2 class="main-title text-wrap">Add Banner</h2>
         </div>
         <!-- dashboard title end here  -->
@@ -140,18 +140,18 @@
                     </div>
                 </div>
 
-                <!-- Description (Full width) -->
+                <!-- Description (Full width) --
                 <div class="row form-group mt-3">
-                    <div class="col-md-6">
+                    <div class="col-md-6 d-flex flex-column">
                         <label for="inputBannerDescription" class="form-label fw-semibold">Banner Description</label>
-                        <textarea class="form-control" id="inputBannerDescription" name="description" rows="3" placeholder="Write your description here..." data-parsley-required="true"></textarea>
+                        <textarea class="form-control flex-grow-1" id="inputBannerDescription" name="description" rows="3" placeholder="Write your description here..." data-parsley-required="true"></textarea>
                     </div>
 
                     
-<!-- Image Upload -->
-<div class="col-md-6">
+<!-- Image Upload --
+<div class="col-md-6 d-flex flex-column  ">
         <label for="bannerImage" class="form-label fw-semibold">Upload Banner Image</label>
-        <div class="form-group mb-3 upload-input styled-box">
+        <div class="form-group mb-3 upload-input  flex-grow-1 d-flex    styled-box">
             <label for="bannerImage" class="form-label form-img-uploader d-flex align-items-center justify-content-center w-100 py-3 position-relative" style="cursor: pointer;">
                 <div class="d-flex flex-column align-items-center gap-2">
                     <span>
@@ -170,6 +170,31 @@
 
 
                 </div>
+
+
+                <!-- Description & Image Upload in one row -->
+<div class="row form-group mt-3 align-items-stretch">
+    <!-- Banner Description -->
+    <div class="col-md-6 d-flex flex-column">
+        <label for="inputBannerDescription" class="form-label fw-semibold">Banner Description</label>
+        <textarea class="form-control flex-grow-1" id="inputBannerDescription" name="description" rows="3" placeholder="Write your description here..." data-parsley-required="true"></textarea>
+    </div>
+
+    <!-- Image Upload -->
+    <div class="col-md-6 d-flex flex-column">
+        <label for="bannerImage" class="form-label fw-semibold">Upload Banner Image</label>
+        <div class="form-group  upload-input flex-grow-1 d-flex align-items-center justify-content-center styled-box">
+            <label for="bannerImage" class="form-label form-img-uploader d-flex flex-column align-items-center justify-content-center w-100 py-3 position-relative" style="cursor: pointer;">
+                <span>
+                    <i class="bi bi-upload" style="font-size: 24px; color: #6c757d;"></i>
+                </span>
+                <p class="mb-0 text-muted">Click to Upload Image</p>
+                <img id="previewImg" src="#" alt="Image Preview" class="d-none img-fluid rounded mt-2" style="max-width: 100%; max-height: 150px;">
+            </label>
+            <input type="file" name="banner_image" id="bannerImage" class="d-none" accept="image/*" onchange="previewImage(event)">
+        </div>
+    </div>
+</div>
 
                
 

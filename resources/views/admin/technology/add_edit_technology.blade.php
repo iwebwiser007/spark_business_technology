@@ -165,23 +165,10 @@
                           <!-- Technology image upload area end here  -->
 
                           <!-- Technology upload button start here  -->
-                          <div class="row">
-                            <div class="col-4 col-md-3"></div>
-                            <div class="col-12 col-md-9 form-button">
-                              <a
-                                href="technology_list.html"
-                                role="button"
-                                class="btn form-cancel my-0"
-                                >cancel</a
-                              >
-                              <a
-                                href="#"
-                                role="button"
-                                class="btn form-btn my-0"
-                                >save</a
-                              >
-                            </div>
-                          </div>
+                          <div class="d-flex justify-content-end mt-4 pb-4">
+                            <button type="button" class="btn btn-secondary px-4 py-2" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary px-4 py-2 ms-2">Add</button>
+                        </div>
                           <!-- Technology upload button end here  -->
                         </form>
                         <!-- form end here  -->

@@ -166,30 +166,37 @@
                     <form class="upload-form">
                         <!-- Industry Title & Service Title (Side by Side) -->
                         <div class="row g-3">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label for="inputTitle" class="form-label fw-semibold text-start d-block">Industry Title</label>
                                 <input type="text" id="inputTitle" class="form-control text-start" placeholder="Enter Title..." required />
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label for="serviceTitle" class="form-label fw-semibold text-start d-block">Service Title</label>
                                 <input type="text" id="serviceTitle" class="form-control text-start" placeholder="Enter Service Title..." required />
                             </div>
+
+                            <div class="col-md-4">
+                                <label for="btnLink" class="form-label fw-semibold text-start d-block">Button Link</label>
+                                <input type="text" id="btnLink" class="form-control text-start" placeholder="Enter Link..." required />
+                            </div>
+
+
                         </div>
 
-                        <!-- Description & Button Link (Side by Side) -->
+                        <!-- Description & Button Link (Side by Side) 
                         <div class="row g-3 mt-2">
                             <div class="col-md-6">
                                 <label for="inputDescription" class="form-label fw-semibold text-start d-block">Description</label>
                                 <textarea class="form-control text-start" id="inputDescription" rows="3" placeholder="Write your description here..." required></textarea>
                             </div>
-                            <div class="col-md-6">
+                            <!-- <div class="col-md-6">
                                 <label for="btnLink" class="form-label fw-semibold text-start d-block">Button Link</label>
                                 <input type="text" id="btnLink" class="form-control text-start" placeholder="Enter Link..." required />
-                            </div>
+                            </div> 
                         </div>
 
-                        <!-- Image Upload & Preview (Side by Side) -->
+                        <!-- Image Upload & Preview (Side by Side) -
                         <div class="row g-3 mt-2 align-items-center">
                             <div class="col-md-6">
                                 <label for="upload-photo" class="form-label fw-semibold text-start d-block">Upload Banner Image</label>
@@ -202,7 +209,36 @@
                                     <button type="button" class="btn-close position-absolute top-0 end-0 p-2" aria-label="Close" onclick="removeImage()"></button>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
+
+  <div class="row form-group mt-3">
+      <!-- Industry Description -->
+      <div class="col-md-6">
+        <label for="industryDescription" class="col-form-label form-label text-start d-block">Industry Description</label>
+        <textarea class="form-control form-control-lg form-textbox  " id="industryDescription" rows="4" placeholder="Write your Industry description here..." required></textarea>
+      </div>
+      
+      <!-- Upload Image -->
+      <div class="col-md-6">
+        <label for="industryImg" class="col-form-label form-label">Upload Image</label>
+        <div class="form-group mb-20 upload-input">
+          <label for="industryImg" class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4">
+            <div class="d-flex flex-column align-items-center gap-3">
+              <span>
+                <!-- <i class="bi bi-upload" style="font-size: 24px;"></i> -->
+              </span>
+              <p class="mb-0">Click to Upload Image</p>
+            </div>
+          </label>
+          <input type="file" class="form-control form-control-lg d-none" id="industryImg" placeholder="Upload Industry Image..." />
+        </div>
+      </div>
+    </div>
+    
+
+
+
+
 
                         <!-- Buttons -->
                         <div class="d-flex justify-content-end mt-4">
@@ -416,15 +452,24 @@
                     <form class="upload-form">
                         <!-- Industry Title & Service Title (Side by Side) -->
                         <div class="row g-3">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label for="inputTitle" class="form-label fw-semibold text-start d-block">Industry Title</label>
                                 <input type="text" id="inputTitle" class="form-control text-start" placeholder="Enter Title..." required />
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label for="serviceTitle" class="form-label fw-semibold text-start d-block">Service Title</label>
                                 <input type="text" id="serviceTitle" class="form-control text-start" placeholder="Enter Service Title..." required />
                             </div>
+
+
+                            <div class="col-md-4">
+                                <label for="btnLink" class="form-label fw-semibold text-start d-block">Button Link</label>
+                                <input type="text" id="btnLink" class="form-control text-start" placeholder="Enter Link..." required />
+                            </div>
+
+
+
                         </div>
 
                         <!-- Description & Button Link (Side by Side) -->
@@ -456,7 +501,7 @@
 
                         
                         
-                <!-- Description (Full width) -->
+                <!-- Description (Full width) 
                 <div class="row form-group mt-3">
                     <div class="col-md-6">
                         <label for="inputBannerDescription" class="form-label fw-semibold text-start d-block">Banner Description</label>
@@ -465,7 +510,7 @@
 
                     
 <!-- Image Upload -->
-<div class="col-md-6">
+<!-- <div class="col-md-6">
         <label for="bannerImage" class="form-label fw-semibold text-start d-block">Upload Banner Image</label>
         <div class="form-group mb-3 upload-input styled-box">
             <label for="bannerImage" class="form-label form-img-uploader d-flex align-items-center justify-content-center w-100 py-3 position-relative" style="cursor: pointer;">
@@ -479,13 +524,35 @@
             </label>
             <input type="file" name="banner_image" id="bannerImage" class="d-none" accept="image/*" onchange="previewImage(event)">
         </div>
+    </div> 
+</div>-->
+
+    <div class="row form-group mt-3">
+      <!-- Industry Description -->
+      <div class="col-md-6">
+        <label for="industryDescription" class="col-form-label form-label">Industry Description</label>
+        <textarea class="form-control form-control-lg form-textbox  " id="industryDescription" rows="4" placeholder="Write your Industry description here..." required></textarea>
+      </div>
+      
+      <!-- Upload Image -->
+      <div class="col-md-6">
+        <label for="industryImg" class="col-form-label form-label">Upload Image</label>
+        <div class="form-group mb-20 upload-input">
+          <label for="industryImg" class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4">
+            <div class="d-flex flex-column align-items-center gap-3">
+              <span>
+                <!-- <i class="bi bi-upload" style="font-size: 24px;"></i> -->
+              </span>
+              <p class="mb-0">Click to Upload Image</p>
+            </div>
+          </label>
+          <input type="file" class="form-control form-control-lg d-none" id="industryImg" placeholder="Upload Industry Image..." />
+        </div>
+      </div>
     </div>
+    
 
 
-
-
-
-                </div>
 
                         <!-- Buttons -->
                         <div class="d-flex justify-content-end mt-4">
@@ -611,15 +678,21 @@
                     <form class="upload-form">
                         <!-- Industry Title & Service Title (Side by Side) -->
                         <div class="row g-3">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label for="inputTitle" class="form-label fw-semibold text-start d-block">Industry Title</label>
                                 <input type="text" id="inputTitle" class="form-control text-start" placeholder="Enter Title..." required />
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label for="serviceTitle" class="form-label fw-semibold text-start d-block">Service Title</label>
                                 <input type="text" id="serviceTitle" class="form-control text-start" placeholder="Enter Service Title..." required />
                             </div>
+
+                            <div class="col-md-4">
+                                <label for="btnLink" class="form-label fw-semibold text-start d-block">Button Link</label>
+                                <input type="text" id="btnLink" class="form-control text-start" placeholder="Enter Link..." required />
+                            </div>
+
                         </div>
 
                         <!-- Description & Button Link (Side by Side) -->
@@ -657,7 +730,7 @@
 
 
                         
-                <!-- Description (Full width) -->
+                <!-- Description (Full width) 
                 <div class="row form-group mt-3">
                     <div class="col-md-6">
                         <label for="inputBannerDescription" class="form-label fw-semibold text-start d-block">Banner Description</label>
@@ -665,7 +738,7 @@
                     </div>
 
                     
-<!-- Image Upload -->
+<!-- Image Upload -
 <div class="col-md-6">
         <label for="bannerImage" class="form-label fw-semibold text-start d-block">Upload Banner Image</label>
         <div class="form-group mb-3 upload-input styled-box">
@@ -686,7 +759,35 @@
 
 
 
-                </div>
+                </div>-->
+
+
+
+
+                <div class="row form-group mt-3">
+      <!-- Industry Description -->
+      <div class="col-md-6">
+        <label for="industryDescription" class="col-form-label form-label">Industry Description</label>
+        <textarea class="form-control form-control-lg form-textbox  " id="industryDescription" rows="4" placeholder="Write your Industry description here..." required></textarea>
+      </div>
+      
+      <!-- Upload Image -->
+      <div class="col-md-6">
+        <label for="industryImg" class="col-form-label form-label">Upload Image</label>
+        <div class="form-group mb-20 upload-input">
+          <label for="industryImg" class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4">
+            <div class="d-flex flex-column align-items-center gap-3">
+              <span>
+                <!-- <i class="bi bi-upload" style="font-size: 24px;"></i> -->
+              </span>
+              <p class="mb-0">Click to Upload Image</p>
+            </div>
+          </label>
+          <input type="file" class="form-control form-control-lg d-none" id="industryImg" placeholder="Upload Industry Image..." />
+        </div>
+      </div>
+    </div>
+    
 
                         <!-- Buttons -->
                         <div class="d-flex justify-content-end mt-4">

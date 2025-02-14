@@ -328,37 +328,29 @@
                                 </div>
                             </div>
                         </div> -->
+               <!-- Description & Image Upload in one row -->
+               <div class="row form-group mt-3 align-items-stretch">
+    <!-- Banner Description -->
+    <div class="col-md-6 d-flex flex-column">
+    <label for="inputTitle" class="form-label fw-semibold text-start d-block">Banner Description</label>
+    <textarea class="form-control flex-grow-1" id="inputBannerDescription" name="description" rows="3" placeholder="Write your description here..." data-parsley-required="true"></textarea>
+    </div>
 
- <!-- Description (Full width) -->
- <div class="row form-group mt-3">
-                    <div class="col-md-6">
-                        <label for="inputBannerDescription" class="form-label fw-semibold  text-start d-block   ">Banner Description</label>
-                        <textarea class="form-control" id="inputBannerDescription" name="description" rows="3" placeholder="Write your description here..." data-parsley-required="true"></textarea>
-                    </div>
-
-                    
-<!-- Image Upload -->
-<div class="col-md-6">
-        <label for="bannerImage" class="form-label fw-semibold  text-start d-block    ">Upload Banner Image</label>
-        <div class="form-group mb-3 upload-input styled-box">
-            <label for="bannerImage" class="form-label form-img-uploader d-flex align-items-center justify-content-center w-100 py-4 position-relative" style="cursor: pointer;">
-                <div class="d-flex flex-column align-items-center gap-2">
-                    <span>
-                        <i class="bi bi-upload" style="font-size: 24px; color: #6c757d;"></i>
-                    </span>
-                    <p class="mb-0 text-muted">Click to Upload Image</p>
-                </div>
+    <!-- Image Upload -->
+    <div class="col-md-6 d-flex flex-column">
+    <label for="inputTitle" class="form-label fw-semibold text-start d-block">Upload Banner Image</label>
+        <div class="form-group  upload-input flex-grow-1 d-flex align-items-center justify-content-center styled-box">
+            <label for="bannerImage" class="form-label form-img-uploader d-flex flex-column align-items-center justify-content-center w-100 py-3 position-relative" style="cursor: pointer;">
+                <span>
+                    <i class="bi bi-upload" style="font-size: 24px; color: #6c757d;"></i>
+                </span>
+                <p class="mb-0 text-muted">Click to Upload Image</p>
                 <img id="previewImg" src="#" alt="Image Preview" class="d-none img-fluid rounded mt-2" style="max-width: 100%; max-height: 150px;">
             </label>
             <input type="file" name="banner_image" id="bannerImage" class="d-none" accept="image/*" onchange="previewImage(event)">
         </div>
     </div>
-
-
-
-
-
-                </div>
+</div>
 
 
 

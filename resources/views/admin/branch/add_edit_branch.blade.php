@@ -355,12 +355,10 @@
     </div>
 
     <!-- Save button -->
-    <div class="row mt-4">
-      <div class="col-12 d-flex justify-content-end">
-        <a href="branch_list.html" role="button" class="btn form-cancel mx-2">Cancel</a>
-        <a href="#" role="button" class="btn form-btn">Save</a>
-      </div>
-    </div>
+    <div class="d-flex justify-content-end mt-4 pb-4">
+                            <button type="button" class="btn btn-secondary px-4 py-2" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary px-4 py-2 ms-2">Add</button>
+                        </div>
   </form>
   <!-- Form End Here -->
 </div>
