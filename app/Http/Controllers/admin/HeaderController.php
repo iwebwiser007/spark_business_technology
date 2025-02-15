@@ -13,15 +13,20 @@ class HeaderController extends Controller
     public function index(Request $request)
     {
         $perPage = $request->get('perPage', 10);
-        $headers = Header::paginate($perPage);
+        $search = $request->get('search', '');
+        $headers = Header::query()
+        ->when($search, function ($query) use ($search) {
+            $query->where('title', 'like', '%' . $search . '%');
+        })
+        ->paginate($perPage);
         $totalHeaders = Header::count();
         return view('admin.header.header_list' , compact('headers' , 'totalHeaders' , 'perPage'));
     }
 
   
-    public function addEditHeader(Request $request)
+    public function add(Request $request)
     {
-        return view('admin.header.add_edit_header');
+        return view('admin.header.add_header');
     }
 
     public function store(Request $request)
@@ -32,7 +37,7 @@ class HeaderController extends Controller
             'link' => $request->link,
         ]);
     
-        return redirect()->route('header-list')->with('success_message', 'Header saved successfully!');
+        return redirect()->route('admin.headerList')->with('success_message', 'Header saved successfully!');
     }
 
     public function delete(string $id){
@@ -40,7 +45,7 @@ class HeaderController extends Controller
         $header = Header::find($id);
         $header->delete();
     
-        return redirect()->route('header-list')->with('success_message' , 'Header Deleted Successfully!');
+        return redirect()->route('admin.headerList')->with('success_message' , 'Header Deleted Successfully!');
     
     }
 
@@ -51,7 +56,7 @@ class HeaderController extends Controller
         $header->link = $request->link;
         $header->save();
 
-        return redirect()->route('header-list')->with('success_message' , 'Header Updated Successfully!');
+        return redirect()->route('admin.headerList')->with('success_message' , 'Header Updated Successfully!');
     }
     
     

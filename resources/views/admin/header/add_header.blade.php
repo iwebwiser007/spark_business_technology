@@ -61,7 +61,7 @@
                       <!-- card body start here  -->
                       <div class="card-body">
                         <!-- form start here  -->
-                        <form class="upload-form" action="{{ route('admin.header.store') }}" method="POST" data-parsley-validate>
+                        <form class="upload-form" action="{{ route('admin.headerStore') }}" method="POST" data-parsley-validate>
                             @csrf
                           <!-- header title/Link start here  -->
                           <div

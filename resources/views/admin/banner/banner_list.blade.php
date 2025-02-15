@@ -11,7 +11,7 @@
       <div class="dash-head">
         <div class="dash_title">
           <!-- dashboard banner title start here  -->
-          <h2 class="main-title">Banners List</h2>
+          <h2 class="main-title">Banner List</h2>
           <!-- dashboard banner title end here  -->
         </div>
 
@@ -58,16 +58,16 @@
             <div
               class="card-title d-flex justify-content-between align-items-center">
               <h2>Banner List</h2>
-              <a href="{{route('add-edit-banner')}}" class="btn sub_btn">ADD</a>
+              <a href="{{route('admin.bannerAdd')}}" class="btn sub_btn">ADD</a>
             </div>
           </div>
           <!-- card header end here  -->
 
           <!-- card body start here  -->
           <div class="card-body">
-            <!-- form start here  -->
-            <form class="data-form">
-              <div class="form-group">
+
+            <form method="GET" action="{{ route('admin.bannerList') }}" class="data-form">
+              <div class="form-group gap-2">
                 <select name="perPage" id="perPage" onchange="updatePagination()">
                   <option value="10" {{ $perPage == 10 ? 'selected' : '' }}>Show 10</option>
                   <option value="20" {{ $perPage == 20 ? 'selected' : '' }}>Show 20</option>
@@ -77,12 +77,15 @@
                 <span>
                   <input
                     type="search"
-                    placeholder="search..."
-                    class="d-none d-sm-block" />
+                    name="search"
+                    id="searchInput"
+                    class="form-control form-control-sm"
+                    placeholder="Search by title..."
+                    value="{{ request()->query('search') }}" />
                 </span>
+                <button type="submit" class="btn btn-primary">Search</button>
               </div>
             </form>
-            <!-- form end here  -->
 
             <!-- table content start here  -->
             <div class="table-content table-responsive">
@@ -104,7 +107,7 @@
                     <td class="list_img">
                       <div class="table_img">
                         <img
-                          src="{{ asset('http://localhost/spark_technology/storage/app/public/images/banner_images/' . $banner->banner_image) }}"
+                          src="{{ asset('storage/app/public/images/banner_images/' . $banner->banner_image) }}"
                           alt="banner-1"
                           class="img-fluid" />
                       </div>
@@ -224,7 +227,7 @@
                               <div class="modal-body">
                                 <span>
                                   <img
-                                    src="{{ asset('http://localhost/spark_technology/storage/app/public/images/banner_images/' . $banner->banner_image) }}"
+                                    src="{{ asset('storage/app/public/images/banner_images/' . $banner->banner_image) }}"
                                     alt="image"
                                     class="img-fluid" />
 
@@ -292,7 +295,7 @@
 
                               <div class="modal-body">
                                 <div class="container">
-                                  <form class="upload-form" action="{{ isset($banner) ? route('banner.update', $banner->id) : route('banner.store') }}"
+                                  <form class="upload-form" action="{{  route('admin.bannerUpdate', $banner->id) }}"
                                     method="POST"
                                     enctype="multipart/form-data">
 
@@ -456,23 +459,18 @@
                                               <span>
                                                 <!-- Optionally, an SVG icon or placeholder icon can go here -->
                                               </span>
-                                              
+
                                             </div>
                                           </label>
                                           <input type="file" name="banner_image" class="form-control form-control-lg d-none" id="bannerImg" onchange="previewBannerImage(event)" />
-                                          
+
                                           <!-- Banner Image Preview -->
                                           <div id="bannerPreview" class="me-5">
-                                            <img id="previewBannerImg" src="{{  asset('http://localhost/spark_technology/storage/app/public/images/banner_images/' . $banner->banner_image) }}" alt="Banner Image Preview" style="display: {{ isset($banner) ? 'block' : 'none' }}; width: 100%; max-width: 100%; border-radius: 8px;" />
+                                            <img id="previewBannerImg" src="{{  asset('storage/app/public/images/banner_images/' . $banner->banner_image) }}" alt="Banner Image Preview" style="display: {{ isset($banner) ? 'block' : 'none' }}; width: 100%; max-width: 100%; border-radius: 8px;" />
                                           </div>
                                         </div>
                                       </div>
                                     </div>
-
-                                    
-
-
-
                                     <div class="my-3">
                                       <button
                                         type="button"
@@ -563,7 +561,7 @@
 
                                 <!-- delete and cancel button start here  -->
                                 <div>
-                                  <form action="{{ route('banner.delete' , $banner->id) }}" method="POST">
+                                  <form action="{{ route('admin.bannerDelete' , $banner->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE') <!-- This is important to use the DELETE HTTP method -->
                                     <button type="button" class="btn btn-secondary cancel_modal" data-bs-dismiss="modal">

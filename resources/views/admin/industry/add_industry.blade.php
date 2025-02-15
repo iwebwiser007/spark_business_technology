@@ -8,8 +8,7 @@
   <div class="main-data">
     <div class="container-fluid">
       <!-- dashboard-head start here... -->
-      <div
-        class="dash-head d-flex justify-content-between align-items-cente">
+      <div class="dash-head">
         <!-- dashboard title start here  -->
         <div class="dash_title">
           <a
@@ -26,7 +25,7 @@
                 d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z" />
             </svg>
           </a>
-          <h2 class="main-title text-wrap">Add Feedback</h2>
+          <h2 class="main-title">Add Industry</h2>
         </div>
         <!-- dashboard title end here  -->
 
@@ -36,7 +35,7 @@
             <a href="{{route('dashboard')}}">Dashboard</a>
           </li>
           <li class="breadcrumb-item active" aria-current="page">
-            Add Feedback
+            Add Industry
           </li>
         </ol>
         <!-- add breadcrumb end here  -->
@@ -50,7 +49,7 @@
           <div class="card-header">
             <div
               class="card-title d-flex justify-content-between align-items-center">
-              <h2>Add Feedback</h2>
+              <h2>Add Industry</h2>
             </div>
           </div>
           <!-- card header end here  -->
@@ -58,31 +57,31 @@
           <!-- card body start here  -->
           <div class="card-body">
             <!-- form start here  -->
-            <form class="upload-form" action="{{ route('admin.feekback.store') }}" method="POST" enctype="multipart/form-data" data-parsley-validate>
+            <form class="upload-form" action="{{ route('admin.industryStore') }}" method="POST" enctype="multipart/form-data" data-parsley-validate>
               @csrf
               <!-- title area start here  -->
               <div class="row form-group mt-1 mt-md-2">
-                <!-- banner title start here  -->
+                <!-- industry title start here  -->
                 <div class="col-12 col-md-3">
                   <label
-                    for="inputFeedbackTitle"
-                    class="col-form-label form-label d-flex justify-content-left justify-content-md-center align-items-center">Feedback Title
+                    for="industryTitle"
+                    class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Industry Title
                   </label>
                 </div>
-                <!-- banner title end here  -->
+                <!-- industry title end here  -->
 
-                <!-- banner search form start here  -->
+                <!-- industry title input start here  -->
                 <div class="col-12 col-md-8 mt-0">
                   <input
                     type="text"
-                    id="inputFeedbackTitle"
+                    id="industryTitle"
                     name="title"
                     class="form-control form-control-lg form-input"
-                    placeholder="Enter Feedback Title..."
+                    placeholder="Enter Industry Title..."
                     data-parsley-required="true" />
                 </div>
-                <!-- banner search form end here  -->
-                <div class="col-1 d-none d-md-block"></div>
+                <!-- industry title input end here  -->
+                <div class="col-1 d-none d-sm-block"></div>
               </div>
               <!-- title area end here  -->
 
@@ -91,67 +90,95 @@
                 <!-- description label start here  -->
                 <div class="col-12 col-md-3">
                   <label
-                    for="inputFeedbackDescription"
-                    class="col-form-label form-label d-flex justify-content-left justify-content-md-center text-nowrap">Feedback Description</label>
+                    for="industryDescription"
+                    class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Industry Description</label>
                 </div>
-                <!-- banner description label end here  -->
+                <!-- description label end here  -->
 
-                <!-- banner description textarea box start here  -->
+                <!-- description textarea box start here  -->
                 <div class="col-12 col-md-8 mt-0">
                   <textarea
                     class="form-control form-control-lg form-textbox"
-                    id="inputFeedbackDescription"
+                    id="industryDescription"
                     name="description"
                     rows="4"
                     cols="30"
-                    placeholder="write your description here..."
+                    placeholder="write your Industry description here..."
                     data-parsley-required="true"></textarea>
                 </div>
-                <!-- banner description textarea box end here  -->
-                <div class="col-1 d-none d-md-block"></div>
+                <!-- description textarea box end here  -->
+                <div class="col-1 d-none d-sm-block"></div>
               </div>
               <!-- description area end here  -->
 
-              <!-- Page Select area start here  -->
+              <!-- service field start here    -->
               <div class="row form-group">
+                <!-- service title start here  -->
                 <div class="col-12 col-md-3">
-                  <label for="btnFeedbackLink" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">
-                    Page Select
+                  <label
+                    for="serviceTitle"
+                    class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Services
                   </label>
                 </div>
+                <!-- service title end here  -->
+
+                <!-- service text box start here  -->
                 <div class="col-12 col-md-8 mt-0">
-                  <select name="pageSelect" class="form-control form-control-lg form-input" id="pageSelect" data-parsley-required="true">
-                    <option value="" disabled selected>Select Page</option> <!-- Placeholder option -->
-                    @foreach ($headers as $header)
-                    <option value="{{ $header->id }}">{{ $header->title }}</option>
-                    @endforeach
-                  </select>
+                  <input
+                    type="text"
+                    name="service"
+                    class="form-control form-control-lg form-input"
+                    placeholder="Enter Services..."
+                    data-parsley-required="true" />
                 </div>
-                <div class="col-1 d-none d-md-block"></div>
+                <!-- service text box end here  -->
+                <div class="col-1 d-none d-sm-block"></div>
               </div>
+              <!-- service field end here  -->
 
+              <!-- button link area start here  -->
+              <div class="row form-group">
+                <!-- button link label start here  -->
+                <div class="col-12 col-md-3">
+                  <label
+                    for="industryLink"
+                    class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Button Link
+                  </label>
+                </div>
+                <!-- button link label end here  -->
 
+                <!-- button link input start here  -->
+                <div class="col-12 col-md-8 mt-0">
+                  <input
+                    type="text"
+                    name="slug"
+                    class="form-control form-control-lg form-input"
+                    placeholder="Enter button link..."
+                    data-parsley-required="true" />
+                </div>
+                <!-- button link input end here  -->
 
+                <div class="col-1 d-none d-sm-block"></div>
+              </div>
+              <!-- button link area end here  -->
 
-              <!-- Page Select area end here  -->
-
-              <!-- Feedback image upload area start here  -->
+              <!-- industry image upload area start here  -->
               {{-- <div class="row form-group">
-                            <!-- upload banner label area start here  -->
+                            <!-- upload image label area start here  -->
                             <div class="col-12 col-md-3">
                               <label
-                                for="inputFeedbackImg"
+                                for="industryImg"
                                 class="col-form-label form-label d-flex justify-content-left justify-content-md-center"
-                                >Upload Feedback</label
+                                >Upload Image</label
                               >
                             </div>
-                            <!-- upload banner label area end here  -->
+                            <!-- upload image label area end here  -->
 
-                            <!-- upload feedback input area start here  -->
+                            <!-- upload image input area start here  -->
                             <div class="col-12 col-md-8 mt-0">
                               <div class="form-group mb-20 upload-input">
                                 <label
-                                  for="feedImg"
+                                  for="industryImg"
                                   class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4"
                                 >
                                   <div
@@ -191,7 +218,7 @@
                                         </g>
                                       </svg>
                                     </span>
-                                    <p class="mb-0">Upload Image / Icon</p>
+                                    <p class="mb-0">Upload Image</p>
                                   </div>
                                   <div class="upload-img d-none">
                                     <img
@@ -204,19 +231,18 @@
                                 <input
                                   type="file"
                                   class="form-control form-control-lg d-none"
-                                  id="feedImg"
-                                  placeholder="Enter Feedback"
+                                  id="industryImg"
+                                  placeholder="Enter Industry Image.."
                                 />
                               </div>
                             </div>
-                            <!-- upload feedback input area end here  -->
-                            <div class="col-1 d-none d-md-block"></div>
+                            <!-- upload image input area end here  -->
+                            <div class="col-1 d-none d-sm-block"></div>
                           </div> --}}
-
 
               <div class="row form-group">
                 <div class="col-12 col-md-3">
-                  <label for="inputIcon" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Upload Feekback</label>
+                  <label for="inputIcon" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Upload Image</label>
                 </div>
                 <div class="col-12 col-md-8 mt-0">
                   <div class="form-group mb-20 upload-input">
@@ -259,12 +285,12 @@
                       </div>
                       <img id="previewIconImg" src="" alt="Icon Image Preview" style="display: none; width: 300px; height:300px; border-radius: 8px;" />
                     </label>
-                    <input type="file" name="upload_logo" class="form-control form-control-lg d-none" id="iconImg" required onchange="previewIconImage(event)" data-parsley-required="true" />
+                    <input type="file" name="upload_img" class="form-control form-control-lg d-none" id="iconImg" required onchange="previewIconImage(event)" data-parsley-required="true" />
                   </div>
                   <div id="iconImg-error"></div>
                 </div>
               </div>
-              <!-- Feedback image upload area end here  -->
+              <!-- industry image upload area end here  -->
 
               <!-- Save button start here  -->
               <div class="row">
@@ -274,6 +300,7 @@
                   <button type="submit" class="btn form-btn my-0">Save</button>
                 </div>
               </div>
+              <!-- Save button end here  -->
             </form>
             <!-- form end here  -->
           </div>
@@ -285,6 +312,7 @@
   </div>
   <!-- main data end here  -->
 </div>
+
 <script>
   function previewIconImage(event) {
     const preview = document.getElementById('previewIconImg');
@@ -307,8 +335,5 @@
       return $('#iconImg-error');
     }
   });
-
-
-
 </script>
 @endsection

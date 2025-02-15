@@ -39,7 +39,7 @@ class SocialLinkController extends Controller
         ]);
 
         // Redirect with a success message
-        return redirect()->route('social-link-list')->with('success_message', 'Social-Link created successfully!');
+        return redirect()->route('admin.socialLinkList')->with('success_message', 'Social-Link created successfully!');
     }
 
 
@@ -49,7 +49,7 @@ class SocialLinkController extends Controller
         $socialLink->slug = $request->slug;
 
         $socialLink->save();
-        return redirect()->route('social-link-list')->with('success_message', 'Social-Link Updated successfully!');
+        return redirect()->route('admin.socialLinkList')->with('success_message', 'Social-Link Updated successfully!');
     }
 
 
@@ -58,7 +58,7 @@ class SocialLinkController extends Controller
         $socialLink = SocialLink::find($id);
         $socialLink->delete();
     
-        return redirect()->route('social-link-list')->with('success_message' , 'Social-Link Deleted Successfully!');
+        return redirect()->route('admin.socialLinkList')->with('success_message' , 'Social-Link Deleted Successfully!');
     
     }
 
@@ -71,7 +71,7 @@ class SocialLinkController extends Controller
         $socialLink->status = 0;
        }
        $socialLink->save();
-       return redirect()->route('social-link-list')->with('success_message', 'Social-Link Status updated successfully');
+       return redirect()->route('admin.socialLinkList')->with('success_message', 'Social-Link Status updated successfully');
 
     }
 }

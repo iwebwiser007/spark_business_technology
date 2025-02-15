@@ -54,8 +54,8 @@
           <div class="card-header">
             <div
               class="card-title d-flex justify-content-between align-items-center">
-              <h2>Header List</h2>
-              <!-- <a href="{{route('add-edit-social')}}" class="btn sub_btn">ADD</a> -->
+              <h2>Social List</h2>
+              <!-- <a href="{{route('admin.socialLinkAdd')}}" class="btn sub_btn">ADD</a> -->
             </div>
           </div>
           <!-- card header end here  -->
@@ -70,12 +70,12 @@
                   <option value="saab">Show 20</option>
                   <option value="mercedes">shop 50</option>
                 </select> -->
-                <span>
+                <!-- <span>
                   <input
                     type="search"
                     placeholder="search..."
                     class="d-none d-sm-block" />
-                </span>
+                </span> -->
               </div>
             </form>
             <!-- form end here  -->
@@ -101,7 +101,7 @@
                     <td class="list_img">
                       <div class="icon_img">
                         <img
-                          src="{{ asset('http://localhost/spark_technology/storage/app/public/social_icons/' . $socialLink->icon) }}"
+                          src="{{ asset('storage/app/public/social_icons/' . $socialLink->icon) }}"
                           alt="banner-1"
                           class="img-fluid" />
                       </div>
@@ -169,7 +169,7 @@
 
                               <div class="modal-body">
                                 <div class="container">
-                                  <form class="upload-form" action="{{ route('socialLink.update', $socialLink->id) }}"
+                                  <form class="upload-form" action="{{ route('admin.socialLinkUpdate', $socialLink->id) }}"
                                     method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
@@ -181,7 +181,7 @@
                                         <div
                                           class="icon_img m-auto">
                                           <img
-                                            src="{{ asset('http://localhost/spark_technology/storage/app/public/social_icons/' . $socialLink->icon) }}"
+                                            src="{{ asset('storage/app/public/social_icons/' . $socialLink->icon) }}"
                                             alt="facebook"
                                             class="img-fluid" />
                                         </div>
@@ -311,7 +311,7 @@
 
                                 <!-- delete and cancel button start here  -->
                                 <div>
-                                  <form action="{{ route('social.delete' , $socialLink->id) }}" method="POST">
+                                  <form action="{{ route('admin.socialLinkDelete' , $socialLink->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE') <!-- This is important to use the DELETE HTTP method -->
                                     <button type="button" class="btn btn-secondary cancel_modal" data-bs-dismiss="modal">
@@ -403,7 +403,7 @@
 
 
                                 <div>
-                                  <form action="{{ route('social.statusUpdate', $socialLink->id) }}" method="POST">
+                                  <form action="{{ route('admin.socialLinkStatusUpdate', $socialLink->id) }}" method="POST">
                                     @csrf
                                     <button type="button" class="btn btn-secondary cancel_modal" data-bs-dismiss="modal">
                                       Cancel

@@ -13,15 +13,24 @@ class BannerController extends Controller
     public function index(Request $request)
     {
         $perPage = $request->get('perPage', 10);
-        $banners = Banner::paginate($perPage);
+        $search = $request->get('search', '');
+
+        $banners = Banner::query()
+        ->when($search, function ($query) use ($search) {
+            $query->where('title', 'like', '%' . $search . '%');
+        })
+        ->paginate($perPage);
         return view('admin.banner.banner_list', compact('banners'  , 'perPage'));
+
+
+       
     }
 
  
 
-    public function addEditBanner()
+    public function add()
     {
-        return view('admin.banner.add_edit_banner');
+        return view('admin.banner.add_banner');
     }
 
     public function store(Request $request)
@@ -50,7 +59,7 @@ class BannerController extends Controller
 
         ]);
 
-        return redirect()->route('banner-list')->with('success_message', 'Banner created successfully!');
+        return redirect()->route('admin.bannerList')->with('success_message', 'Banner created successfully!');
     }
 
     public function update(Request $request, $id)
@@ -87,7 +96,7 @@ class BannerController extends Controller
         $banner->link = $request->link;
         $banner->save();
 
-        return redirect()->route('banner-list')->with('success_message', 'Banner Updated Successfully!');
+        return redirect()->route('admin.bannerList')->with('success_message', 'Banner Updated Successfully!');
     }
 
 
@@ -97,7 +106,7 @@ class BannerController extends Controller
         $banner = Banner::find($id);
         $banner->delete();
 
-        return redirect()->route('banner-list')->with('success_message', 'Banner Deleted Successfully!');
+        return redirect()->route('admin.bannerList')->with('success_message', 'Banner Deleted Successfully!');
     }
 
     public function updateStatus(Request $request, $id)
@@ -110,7 +119,7 @@ class BannerController extends Controller
         }
         $banner->save();
     
-        return redirect()->route('banner-list')->with('success_message', 'Status updated successfully');
+        return redirect()->route('admin.bannerList')->with('success_message', 'Status updated successfully');
     }
     
 }

@@ -28,6 +28,16 @@
           <h2 class="main-title">Add Certificate</h2>
         </div>
         <!-- dashboard title end here  -->
+        @if (Session::has('success_message'))
+      <!-- Check vendorRegister() method in Front/VendorController.php -->
+      <div class="alert alert-success alert-dismissible fade show mt-3 d-flex justify-content-between align-items-center"
+        role="alert">
+        <div>
+          <strong>Success:</strong> {{ Session::get('success_message') }}
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      @endif
 
         <!-- add banner breadcrumb start here  -->
         <ol class="breadcrumb">
@@ -57,7 +67,7 @@
           <!-- card body start here  -->
           <div class="card-body">
             <!-- form start here  -->
-            <form class="upload-form" action="{{ route('certificate.store') }}" method="POST" enctype="multipart/form-data" data-parsley-validate>
+            <form class="upload-form" action="{{ route('admin.certificateStore') }}" method="POST" enctype="multipart/form-data" data-parsley-validate>
               @csrf
               <!-- title area start here  -->
               <div class="row form-group mt-1 mt-md-2">

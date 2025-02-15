@@ -59,7 +59,7 @@
                         <!-- admin image start here  -->
                         <span class="admin_logo">
                             <img
-                                src="../assets/img/default.jpg"
+                                src="../public/assets/img/default.jpg"
                                 alt="admin"
                                 class="img-fluid" />
                         </span>

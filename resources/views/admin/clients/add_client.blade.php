@@ -7,9 +7,9 @@
               <!-- main data start here  -->
               <div class="main-data">
                 <div class="container-fluid">
-                  <!-- dashboard banner start here... -->
+                  <!-- dashboard head start here... -->
                   <div class="dash-head">
-                    <!-- dashboard banner title start here  -->
+                    <!-- dashboard title start here  -->
                     <div class="dash_title">
                       <a
                         href="{{url()->previous()}}"
@@ -28,22 +28,26 @@
                           />
                         </svg>
                       </a>
-                      <h2 class="main-title">Add Technology</h2>
+                      <h2 class="main-title text-wrap">Add Clients</h2>
                     </div>
-                    <!-- dashboard banner title end here  -->
+                    <!-- dashboard title end here  -->
 
                     <!-- add banner breadcrumb start here  -->
                     <ol class="breadcrumb">
                       <li class="breadcrumb-item">
                         <a href="{{route('dashboard')}}">Dashboard</a>
                       </li>
+                      <!-- <li class="breadcrumb-item">
+                        <a href="#">Our Clients</a>
+                      </li> -->
                       <li class="breadcrumb-item active" aria-current="page">
-                        Add Technology
+                        Add Clients
                       </li>
                     </ol>
                     <!-- add banner breadcrumb end here  -->
                   </div>
-                  <!-- dashboard-head end here... -->
+                  <!-- dashboard head end here  -->
+
                   <div class="container-fluid">
                     <!-- card start here  -->
                     <div class="card">
@@ -52,7 +56,7 @@
                         <div
                           class="card-title d-flex justify-content-between align-items-center"
                         >
-                          <h2>Add Technology</h2>
+                          <h2>Add Clients</h2>
                         </div>
                       </div>
                       <!-- card header end here  -->
@@ -60,39 +64,40 @@
                       <!-- card body start here  -->
                       <div class="card-body">
                         <!-- form start here  -->
-                        <form class="upload-form" action="{{ route('technology.store') }}" method="POST" enctype="multipart/form-data" data-parsley-validate>
+                        <form class="upload-form" action="{{ route('admin.clientStore') }}" method="POST" enctype="multipart/form-data" data-parsley-validate>
                         @csrf
-                          <!-- technology title area start here  -->
+                          <!-- title area start here  -->
                           <div class="row form-group mt-1 mt-md-2">
-                            <!-- technology title start here  -->
+                            <!-- title label start here  -->
                             <div class="col-12 col-md-3">
                               <label
-                                for="inputTitle"
+                                for="inputClientTitle"
                                 class="col-form-label form-label d-flex justify-content-left justify-content-md-center"
-                                >Technology Title
+                                >Client Title
                               </label>
                             </div>
-                            <!-- technology title end here  -->
+                            <!-- title label end here  -->
 
-                            <!-- technology input start here  -->
+                            <!-- title input start here  -->
                             <div class="col-12 col-md-8 mt-0">
                               <input
                                 type="text"
-                                id="inputTitle"
+                                id="inputClientTitle"
                                 name="title"
                                 class="form-control form-control-lg form-input"
-                                placeholder="Enter Technology Title..."
-                                  data-parsley-required="true"
+                                placeholder="Enter Client Title..."
+                                 data-parsley-required="true"
                               />
                             </div>
-                            <!-- technology input end here  -->
+                            <!-- title input end here  -->
                             <div class="col-1"></div>
                           </div>
-                          <!-- technology title area end here  -->
+                          <!--title area end here  -->
+
 
                           <div class="row form-group">
                                 <div class="col-12 col-md-3">
-                                    <label for="inputIcon" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Upload Image</label>
+                                    <label for="inputIcon" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Upload Logo</label>
                                 </div>
                                 <div class="col-12 col-md-8 mt-0">
                                     <div class="form-group mb-20 upload-input">
@@ -134,7 +139,7 @@
                                       </svg>
                                     </span>
                                                 </span>
-                                                <p id="iconText" class="mb-0">Upload Image </p>
+                                                <p id="iconText" class="mb-0">Upload Logo / Image </p>
                                             </div>
                                             <img id="previewIconImg" src="" alt="Icon Image Preview" style="display: none; width: 300px; height:300px; border-radius: 8px;" />
                                         </label>
@@ -144,23 +149,24 @@
                                 </div>
                             </div>
 
-                          <!-- Technology image upload area start here  -->
-                          {{-- <div class="row form-group">
-                            <!-- upload image label area start here  -->
+
+                          <!-- image upload area start here  -->
+                          {{--  <div class="row form-group">
+                            <!-- upload area start here  -->
                             <div class="col-12 col-md-3">
                               <label
-                                for="inputFile"
+                                for="inputClientFile"
                                 class="col-form-label form-label d-flex justify-content-left justify-content-md-center"
-                                >Upload Image</label
+                                >Upload Logo</label
                               >
                             </div>
-                            <!-- upload image label area end here  -->
+                            <!-- upload area end here  -->
 
-                            <!-- upload image input area start here  -->
+                            <!-- upload input area start here  -->
                             <div class="col-12 col-md-8 mt-0">
                               <div class="form-group mb-20 upload-input">
                                 <label
-                                  for="techImg"
+                                  for="clientImg"
                                   class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4"
                                 >
                                   <div
@@ -213,17 +219,17 @@
                                 <input
                                   type="file"
                                   class="form-control form-control-lg d-none"
-                                  id="techImg"
-                                  placeholder="Enter Technology Image..."
+                                  id="clientImg"
+                                  placeholder="Enter Client Image.."
                                 />
                               </div>
                             </div>
-                            <!-- upload image input area end here  -->
+                            <!-- upload input area end here  -->
                             <div class="col-1"></div>
                           </div> --}}
-                          <!-- Technology image upload area end here  -->
+                          <!-- image upload area end here  -->
 
-                          <!-- Technology upload button start here  -->
+                          <!-- Save button start here  -->
                           <div class="row">
                                 <div class="col-4 col-md-3"></div>
                                 <div class="col-12 col-md-9 form-button">
@@ -231,7 +237,7 @@
                                     <button type="submit" class="btn form-btn my-0">Save</button>
                                 </div>
                             </div>
-                          <!-- Technology upload button end here  -->
+                          <!-- Save button end here  -->
                         </form>
                         <!-- form end here  -->
                       </div>
@@ -240,9 +246,8 @@
                     <!-- card end here  -->
                   </div>
                 </div>
-                <!-- main data end here  -->
               </div>
-              <!-- main-right-content end here... -->
+              <!-- main data end here  -->
             </div>
 
             <script>
@@ -267,5 +272,5 @@
             return $('#iconImg-error');
         }
     });
-</script>            
+</script>
 @endsection

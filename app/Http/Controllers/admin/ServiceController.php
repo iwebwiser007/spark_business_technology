@@ -11,13 +11,16 @@ class ServiceController extends Controller
     public function index(Request $request)
     {
         $perPage = $request->get('perPage', 10);
-        $services = Service::paginate($perPage);
+        $search = $request->get('search' , '');
+        $services = Service::query() ->when($search, function ($query) use ($search) {
+            $query->where('title', 'like', '%' . $search . '%');
+        })->paginate($perPage);
         return view('admin.service.service_list', compact('services' , 'perPage'));
     }
 
-    public function addEditService()
+    public function add()
     {
-        return view('admin.service.add_edit_service');
+        return view('admin.service.add_service');
     }
 
     public function store(Request $request)
@@ -35,7 +38,7 @@ class ServiceController extends Controller
         ]);
 
         // Step 3: Redirect to the blog list page with a success message
-        return redirect()->route('service-list')->with('success_message', 'Service created successfully!');
+        return redirect()->route('admin.serviceList')->with('success_message', 'Service created successfully!');
     }
 
 
@@ -51,7 +54,7 @@ class ServiceController extends Controller
         $service->meta_tags = json_encode($metaTags);
 
         $service->save();
-        return redirect()->route('service-list')->with('success_message', 'Service Updated successfully!');
+        return redirect()->route('admin.serviceList')->with('success_message', 'Service Updated successfully!');
     }
 
 
@@ -60,7 +63,7 @@ class ServiceController extends Controller
         $service = Service::find($id);
         $service->delete();
     
-        return redirect()->route('service-list')->with('success_message' , 'Service Deleted Successfully!');
+        return redirect()->route('admin.serviceList')->with('success_message' , 'Service Deleted Successfully!');
     
     }
 }

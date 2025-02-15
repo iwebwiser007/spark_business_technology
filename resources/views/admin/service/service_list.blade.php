@@ -54,7 +54,7 @@
             <div
               class="card-title d-flex justify-content-between align-items-center">
               <h2>Services List</h2>
-              <a href="{{ url('admin/add-edit-service') }}" class="btn sub_btn">ADD</a>
+              <a href="{{ url('admin/add-service') }}" class="btn sub_btn">ADD</a>
             </div>
           </div>
           <!-- card header end here  -->
@@ -62,8 +62,8 @@
           <!-- card body start here  -->
           <div class="card-body">
             <!-- form start here  -->
-            <form class="data-form">
-              <div class="form-group">
+            <form method="GET" action="{{ route('admin.serviceList') }}" class="data-form">
+              <div class="form-group gap-2">
                 <select name="perPage" id="perPage" onchange="updatePagination()">
                   <option value="10" {{ $perPage == 10 ? 'selected' : '' }}>Show 10</option>
                   <option value="20" {{ $perPage == 20 ? 'selected' : '' }}>Show 20</option>
@@ -73,9 +73,13 @@
                 <span>
                   <input
                     type="search"
-                    placeholder="search..."
-                    class="d-none d-sm-block" />
+                    name="search"
+                    id="searchInput"
+                    class="form-control form-control-sm"
+                    placeholder="Search by title..."
+                    value="{{ request()->query('search') }}" />
                 </span>
+                <button type="submit" class="btn btn-primary">Search</button>
               </div>
             </form>
             <!-- form end here  -->
@@ -194,7 +198,7 @@
 
                               <div class="modal-body">
                                 <div class="container">
-                                  <form class="upload-form" action="{{ route('service.update' , $service->id) }}"
+                                  <form class="upload-form" action="{{ route('admin.serviceUpdate' , $service->id) }}"
                                     method="POST">
                                     @csrf
                                     <!-- title  -->
@@ -382,11 +386,17 @@
                                 <label for="html_content" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Service Content</label>
                               </div>
                               <div class="col-12 col-md-8 mt-0">
-                                <textarea class="form-control ckeditor" id="html_content" name="html_content" rows="10">
+                                <textarea class="form-control ckeditor" id="html_content_{{ $service->id }}" name="html_content" rows="10">
                                 {{ old('html_content', $service->html_content ?? '') }}
                                 </textarea>
                               </div>
                             </div>
+
+                            <script>
+                              CKEDITOR.replace('html_content_{{ $service->id }}', {
+                                allowedContent: true,
+                              });
+                            </script>
 
 
 
@@ -516,7 +526,7 @@
 
             <!-- delete and cancel button start here  -->
             <div>
-              <form action="{{ route('service.delete', $service->id) }}" method="POST">
+              <form action="{{ route('admin.serviceDelete', $service->id) }}" method="POST">
                 @csrf
                 @method('DELETE') <!-- This is important to use the DELETE HTTP method -->
                 <button type="button" class="btn btn-secondary cancel_modal" data-bs-dismiss="modal">
@@ -633,17 +643,12 @@
 <!-- main data end here  -->
 </div>
 <script>
-  // CKEditor initialization for the edit form
-  CKEDITOR.replace('html_content', {
-    enterMode: CKEDITOR.ENTER_DIV, // Use <div> for line breaks
-    shiftEnterMode: CKEDITOR.ENTER_BR, // Use <br> on shift + enter
-    // Other configurations if needed
-  });
-
   function updatePagination() {
     const perPage = document.getElementById('perPage').value;
     window.location.href = `?perPage=${perPage}`;
   }
 </script>
+
+
 
 @endsection

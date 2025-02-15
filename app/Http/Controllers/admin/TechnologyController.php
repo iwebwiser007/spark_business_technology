@@ -12,21 +12,20 @@ class TechnologyController extends Controller
 {
     public function index(Request $request)
     {
-        // Default value for perPage
-        $perPage = $request->get('perPage', 10);  // Default is 10 if no value is provided
-    
-        // Fetch paginated data
-        $technologies = Technology::paginate($perPage);
-    
-        $totalTechnologies = Technology::count();  // Get the total count of records
+        $perPage = $request->get('perPage', 10);  
+        $search = $request->get('search' , '');
+        $technologies = Technology::query() ->when($search, function ($query) use ($search) {
+            $query->where('title', 'like', '%' . $search . '%');
+        })->paginate($perPage);
+        $totalTechnologies = Technology::count();  
     
         return view('admin.technology.technology_list', compact('technologies', 'totalTechnologies', 'perPage'));
     }
     
 
-    public function addEditTechnology()
+    public function add()
     {
-        return view('admin.technology.add_edit_technology');
+        return view('admin.technology.add_technology');
     }
 
     public function store(Request $request){
@@ -47,7 +46,7 @@ class TechnologyController extends Controller
 
         ]);
 
-        return redirect()->route('technology-list')->with('success_message', 'Technology created successfully!');
+        return redirect()->route('admin.technologyList')->with('success_message', 'Technology created successfully!');
     }
 
 
@@ -85,7 +84,7 @@ class TechnologyController extends Controller
         $technology->save();
     
         // Redirect with a success message
-        return redirect()->route('technology-list')->with('success_message' , 'Technology Updated Successfully!');
+        return redirect()->route('admin.technologyList')->with('success_message' , 'Technology Updated Successfully!');
     }
 
     
@@ -94,7 +93,7 @@ public function delete(string $id){
     $technology = Technology::find($id);
     $technology->delete();
 
-    return redirect()->route('technology-list')->with('success_message' , 'Technology Deleted Successfully!');
+    return redirect()->route('admin.technologyList')->with('success_message' , 'Technology Deleted Successfully!');
 
 }
     

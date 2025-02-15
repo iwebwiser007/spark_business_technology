@@ -12,13 +12,16 @@ class CertificateController extends Controller
     public function index(Request $request)
     {
         $perPage = $request->get('perPage', 10);
-        $certificates = Certificate::paginate($perPage);
+        $search = $request->get('search' , '');
+        $certificates = Certificate::query() ->when($search, function ($query) use ($search) {
+            $query->where('title', 'like', '%' . $search . '%');
+        })->paginate($perPage);
         return view('admin.certificate.certificate_list' , compact('certificates' , 'perPage'));
     }
 
-    public function addEditCertificate()
+    public function add()
     {
-        return view('admin.certificate.add_edit_certificate');
+        return view('admin.certificate.add_certificate');
     }
 
 
@@ -39,14 +42,14 @@ class CertificateController extends Controller
 
         ]);
 
-        return redirect()->route('certificate-list')->with('success_message', 'Certificate created successfully!');
+        return redirect()->route('admin.certificateList')->with('success_message', 'Certificate created successfully!');
     }
 
     public function update(Request $request , $id){
         $certificate = Certificate::find($id);
         $certificate->title = $request->title;
         $certificate->save();
-        return redirect()->route('certificate-list')->with('success_message' , 'Certificate Updated Successfully!');
+        return redirect()->route('admin.certificateList')->with('success_message' , 'Certificate Updated Successfully!');
     }
 
     
@@ -55,7 +58,7 @@ class CertificateController extends Controller
         $certificate = Certificate::find($id);
         $certificate->delete();
     
-        return redirect()->route('certificate-list')->with('success_message' , 'Certificate Deleted Successfully!');
+        return redirect()->route('admin.certificateList')->with('success_message' , 'Certificate Deleted Successfully!');
     
     }
 }

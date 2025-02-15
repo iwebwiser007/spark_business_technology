@@ -9,21 +9,30 @@ use Illuminate\Http\Request;
 
 class FeedbackController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $feedbacks = Feedback::get();
-        return view('admin.feedback.feedback_list' , compact('feedbacks'));
-    }
+        $perPage = $request->get('perPage', 10);
+        $search = $request->get('search' , '');
+        $feedbacks = Feedback::query()
+        ->when($search, function ($query) use ($search) {
+            $query->where('title', 'like', '%' . $search . '%');
+        })
+        ->paginate($perPage);
+        $headers = Header::get();
 
-    public function addEditFeedback()
+        return view('admin.feedback.feedback_list', compact('feedbacks', 'headers' , 'perPage'));
+    }
+  
+
+    public function add()
     {
         $headers = Header::get();
-        return view('admin.feedback.add_edit_feedback' , compact('headers'));
+        return view('admin.feedback.add_feedback', compact('headers'));
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
 
-        $page = Header::find($request->pageSelect);
 
         if ($request->hasFile('upload_logo')) {
             $feekbackIcon = $request->file('upload_logo');
@@ -37,11 +46,32 @@ class FeedbackController extends Controller
             'image' => $feekbackIconPath,  // Store the relative path in the database
             'title' => $request->title,
             'description' => $request->description,
-            'page' => $page->title,
+            'page' => $request->pageSelect,
         ]);
 
         // Redirect with a success message
-        return redirect()->route('feedback-list')->with('success_message', 'Feedback created successfully!');
-        
+        return redirect()->route('admin.feedbackList')->with('success_message', 'Feedback created successfully!');
+    }
+
+    public function update(Request $request, $id)
+    {
+        $feedback = Feedback::find($id);
+
+        $feedback->title = $request->title;
+        $feedback->description = $request->description;
+        $feedback->page = $request->pageSelect;
+
+        $feedback->save();
+        return redirect()->route('admin.feedbackList')->with('success_message', 'Feedback Updated successfully!');
+    }
+
+
+    public function delete(string $id){
+ 
+        $feedback = Feedback::find($id);
+        $feedback->delete();
+    
+        return redirect()->route('admin.feedbackList')->with('success_message' , 'Feedback Deleted Successfully!');
+    
     }
 }

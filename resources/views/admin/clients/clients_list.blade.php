@@ -47,7 +47,7 @@
             <div
               class="card-title d-flex justify-content-between align-items-center">
               <h2>Client List</h2>
-              <a href="{{route('add-edit-client')}}" class="btn sub_btn">ADD</a>
+              <a href="{{route('admin.clientAdd')}}" class="btn sub_btn">ADD</a>
             </div>
           </div>
           <!-- card header end here  -->
@@ -55,9 +55,9 @@
           <!-- card body start here  -->
           <div class="card-body">
             <!-- form start here  -->
-            <form class="data-form">
-              <div class="form-group">
-              <select name="perPage" id="perPage" onchange="updatePagination()">
+            <form method="GET" action="{{ route('admin.clientList') }}" class="data-form">
+              <div class="form-group gap-2">
+                <select name="perPage" id="perPage" onchange="updatePagination()">
                   <option value="10" {{ $perPage == 10 ? 'selected' : '' }}>Show 10</option>
                   <option value="20" {{ $perPage == 20 ? 'selected' : '' }}>Show 20</option>
                   <option value="50" {{ $perPage == 50 ? 'selected' : '' }}>Show 50</option>
@@ -66,9 +66,13 @@
                 <span>
                   <input
                     type="search"
-                    placeholder="search..."
-                    class="d-none d-sm-block" />
+                    name="search"
+                    id="searchInput"
+                    class="form-control form-control-sm"
+                    placeholder="Search by title..."
+                    value="{{ request()->query('search') }}" />
                 </span>
+                <button type="submit" class="btn btn-primary">Search</button>
               </div>
             </form>
             <!-- form end here  -->
@@ -91,7 +95,7 @@
                     <td class="list_img">
                       <div class="icon_img">
                         <img
-                          src="{{ asset('http://localhost/spark_technology/storage/app/public/client_logos/' . $client->logo) }}"
+                          src="{{ asset('storage/app/public/client_logos/' . $client->logo) }}"
                           alt="banner-1"
                           class="img-fluid" />
                       </div>
@@ -152,7 +156,7 @@
 
                               <div class="modal-body">
                                 <div class="container">
-                                  <form class="upload-form" action="{{ route('client.update', $client->id) }}"
+                                  <form class="upload-form" action="{{ route('admin.clientUpdate', $client->id) }}"
                                     method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
@@ -202,7 +206,7 @@
 
                                         <!-- Thumbnail Image Preview -->
                                         <div id="thumbnailPreview" class="mt-3">
-                                          <img id="previewThumbnailImg" src="{{ isset($client) ? asset('http://localhost/spark_technology/storage/app/public/client_logos/' . $client->logo) : '' }}" alt="Thumbnail Image Preview" style="display: {{ isset($client) ? 'block' : 'none' }}; width: 100%; max-width: 200px; border-radius: 8px;" />
+                                          <img id="previewThumbnailImg" src="{{ isset($client) ? asset('storage/app/public/client_logos/' . $client->logo) : '' }}" alt="Thumbnail Image Preview" style="display: {{ isset($client) ? 'block' : 'none' }}; width: 100%; max-width: 200px; border-radius: 8px;" />
                                         </div>
                                       </div>
                                     </div>
@@ -218,134 +222,134 @@
                                             class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4 position-relative">
                                             <img
                                             src="{{ asset('http://localhost/spark_technology/storage/app/public/client_logos/' . $client->logo) }}"
-                                              class="img-fluid rounded-4"
-                                              alt="upload image" />
-                                            <!-- close button start here  -->
-                                            <!-- <button
+                                    class="img-fluid rounded-4"
+                                    alt="upload image" />
+                                    <!-- close button start here  -->
+                                    <!-- <button
                                               type="button"
                                               data-bs-dismiss="modal"
                                               class="btn-close position-absolute top-0 end-0 p-2"
                                               aria-label="Close"></button> -->
-                                          </label>
-                                        </div>
-                                      </div>
-                                    </div> --}}
-                                    <div class="my-3">
-                                      <button
-                                        type="button"
-                                        class="btn btn-secondary cancel_modal"
-                                        data-bs-dismiss="modal">
-                                        Close
-                                      </button>
-                                      <button type="submit" class="btn form-btn my-0">Update</button>
-                                    </div>
-                                  </form>
+                                    </label>
                                 </div>
                               </div>
+                            </div> --}}
+                            <div class="my-3">
+                              <button
+                                type="button"
+                                class="btn btn-secondary cancel_modal"
+                                data-bs-dismiss="modal">
+                                Close
+                              </button>
+                              <button type="submit" class="btn form-btn my-0">Update</button>
                             </div>
+                            </form>
                           </div>
                         </div>
-                        <!-- Edit modal end here  -->
-
-                        <!-- client delete button start here  -->
-                        <a
-                          href="#"
-                          role="button"
-                          class="btn text-decoration-none table_del bg-danger-subtle"
-                          data-bs-toggle="modal"
-                          data-bs-target="#deleteModal-{{$client->id}}"
-                          title="delete">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            height="12"
-                            viewBox="0 -960 960 960"
-                            width="12"
-                            fill="#f70808">
-                            <path
-                              d="M312-144q-29.7 0-50.85-21.15Q240-186.3 240-216v-480h-48v-72h192v-48h192v48h192v72h-48v479.57Q720-186 698.85-165T648-144H312Zm336-552H312v480h336v-480ZM384-288h72v-336h-72v336Zm120 0h72v-336h-72v336ZM312-696v480-480Z" />
-                          </svg>
-                        </a>
-                        <!-- client delete button end here  -->
-
-                        <!-- delete modal start here  -->
-                        <div
-                          class="modal fade"
-                          id="deleteModal-{{$client->id}}"
-                          tabindex="-1"
-                          aria-labelledby="exampleModalLabel"
-                          aria-hidden="true">
-                          <div
-                            class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                              <!-- close button start here  -->
-                              <a
-                                href="#"
-                                role="button"
-                                data-bs-dismiss="modal"
-                                class="position-absolute end-0 p-2"
-                                arial-label="close">
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  height="24"
-                                  viewBox="0 -960 960 960"
-                                  width="24"
-                                  fill="#5d6d7e">
-                                  <path
-                                    d="m291-240-51-51 189-189-189-189 51-51 189 189 189-189 51 51-189 189 189 189-51 51-189-189-189 189Z" />
-                                </svg>
-                              </a>
-                              <!-- close button end here  -->
-
-                              <div class="modal-body my-3">
-                                <span class="m-4">
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    height="30"
-                                    viewBox="0 -960 960 960"
-                                    width="30"
-                                    fill="#dc3545">
-                                    <path
-                                      d="M312-144q-29.7 0-50.85-21.15Q240-186.3 240-216v-480h-48v-72h192v-48h192v48h192v72h-48v479.57Q720-186 698.85-165T648-144H312Zm336-552H312v480h336v-480ZM384-288h72v-336h-72v336Zm120 0h72v-336h-72v336ZM312-696v480-480Z" />
-                                  </svg>
-                                </span>
-                                <h1
-                                  class="modal-title mt-2"
-                                  id="exampleModalLabel">
-                                  Delete Client
-                                </h1>
-                                <p class="pb-4">
-                                  Are you sure you want to remove
-                                  this Client?
-                                </p>
-
-                                <!-- delete and cancel button start here  -->
-                                <div>
-                                  <form action="{{ route('client.delete' , $client->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE') <!-- This is important to use the DELETE HTTP method -->
-                                    <button type="button" class="btn btn-secondary cancel_modal" data-bs-dismiss="modal">
-                                      Cancel
-                                    </button>
-
-                                    <button type="submit" class="btn btn-danger del_modal">
-                                      Delete
-                                    </button>
-                                  </form>
-                                </div>
-                                <!-- delete and cancel button end here  -->
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <!-- delete modal end here  -->
                       </div>
-                    </td>
-                    <!-- client edit and delete icon end here  -->
-                  </tr>
-                  <!-- client-1 end here  -->
+            </div>
+          </div>
+          <!-- Edit modal end here  -->
 
-                  <!-- client-2 start here  -->
-                  {{-- <tr>
+          <!-- client delete button start here  -->
+          <a
+            href="#"
+            role="button"
+            class="btn text-decoration-none table_del bg-danger-subtle"
+            data-bs-toggle="modal"
+            data-bs-target="#deleteModal-{{$client->id}}"
+            title="delete">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="12"
+              viewBox="0 -960 960 960"
+              width="12"
+              fill="#f70808">
+              <path
+                d="M312-144q-29.7 0-50.85-21.15Q240-186.3 240-216v-480h-48v-72h192v-48h192v48h192v72h-48v479.57Q720-186 698.85-165T648-144H312Zm336-552H312v480h336v-480ZM384-288h72v-336h-72v336Zm120 0h72v-336h-72v336ZM312-696v480-480Z" />
+            </svg>
+          </a>
+          <!-- client delete button end here  -->
+
+          <!-- delete modal start here  -->
+          <div
+            class="modal fade"
+            id="deleteModal-{{$client->id}}"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div
+              class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <!-- close button start here  -->
+                <a
+                  href="#"
+                  role="button"
+                  data-bs-dismiss="modal"
+                  class="position-absolute end-0 p-2"
+                  arial-label="close">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24"
+                    viewBox="0 -960 960 960"
+                    width="24"
+                    fill="#5d6d7e">
+                    <path
+                      d="m291-240-51-51 189-189-189-189 51-51 189 189 189-189 51 51-189 189 189 189-51 51-189-189-189 189Z" />
+                  </svg>
+                </a>
+                <!-- close button end here  -->
+
+                <div class="modal-body my-3">
+                  <span class="m-4">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      height="30"
+                      viewBox="0 -960 960 960"
+                      width="30"
+                      fill="#dc3545">
+                      <path
+                        d="M312-144q-29.7 0-50.85-21.15Q240-186.3 240-216v-480h-48v-72h192v-48h192v48h192v72h-48v479.57Q720-186 698.85-165T648-144H312Zm336-552H312v480h336v-480ZM384-288h72v-336h-72v336Zm120 0h72v-336h-72v336ZM312-696v480-480Z" />
+                    </svg>
+                  </span>
+                  <h1
+                    class="modal-title mt-2"
+                    id="exampleModalLabel">
+                    Delete Client
+                  </h1>
+                  <p class="pb-4">
+                    Are you sure you want to remove
+                    this Client?
+                  </p>
+
+                  <!-- delete and cancel button start here  -->
+                  <div>
+                    <form action="{{ route('admin.clientDelete' , $client->id) }}" method="POST">
+                      @csrf
+                      @method('DELETE') <!-- This is important to use the DELETE HTTP method -->
+                      <button type="button" class="btn btn-secondary cancel_modal" data-bs-dismiss="modal">
+                        Cancel
+                      </button>
+
+                      <button type="submit" class="btn btn-danger del_modal">
+                        Delete
+                      </button>
+                    </form>
+                  </div>
+                  <!-- delete and cancel button end here  -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- delete modal end here  -->
+        </div>
+        </td>
+        <!-- client edit and delete icon end here  -->
+        </tr>
+        <!-- client-1 end here  -->
+
+        <!-- client-2 start here  -->
+        {{-- <tr>
                                 <!-- client-2 image start here -->
                                 <td class="list_img">
                                   <div class="icon_img">
@@ -759,18 +763,18 @@
                                 </td>
                                 <!-- client edit and delete icon end here  -->
                               </tr> --}}
-                  <!-- client-3 end here  -->
+        <!-- client-3 end here  -->
 
-                  @endforeach
-                </tbody>
-              </table>
-            </div>
-            <!-- table content end here  -->
-          </div>
-          <!-- card body end here  -->
+        @endforeach
+        </tbody>
+        </table>
+      </div>
+      <!-- table content end here  -->
+    </div>
+    <!-- card body end here  -->
 
-          <!-- card footer start here  -->
-          <!-- <div class="card-footer">
+    <!-- card footer start here  -->
+    <!-- <div class="card-footer">
             <p>Showing 1 to 10 of xyz entries</p>
 
             <div class="pagination-div">
@@ -803,51 +807,51 @@
             </div>
           </div> -->
 
-          <div class="card-footer">
-            <!-- Pagination -->
-            <p>Showing {{ $clients->firstItem() }} to {{ $clients->lastItem() }} of {{ $clients->total() }} entries</p>
-            <div class="pagination-div">
-              <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                  <!-- Check if the pagination has previous and next links -->
-                  @if ($clients->onFirstPage())
-                  <li class="page-item ">
-                    <span class="page-link">Previous</span>
-                  </li>
-                  @else
-                  <li class="page-item">
-                    <a class="page-link" href="{{ $clients->previousPageUrl() }}">Previous</a>
-                  </li>
-                  @endif
+    <div class="card-footer">
+      <!-- Pagination -->
+      <p>Showing {{ $clients->firstItem() }} to {{ $clients->lastItem() }} of {{ $clients->total() }} entries</p>
+      <div class="pagination-div">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <!-- Check if the pagination has previous and next links -->
+            @if ($clients->onFirstPage())
+            <li class="page-item ">
+              <span class="page-link">Previous</span>
+            </li>
+            @else
+            <li class="page-item">
+              <a class="page-link" href="{{ $clients->previousPageUrl() }}">Previous</a>
+            </li>
+            @endif
 
-                  <!-- Loop through page numbers -->
-                  @foreach ($clients->getUrlRange(1, $clients->lastPage()) as $page => $url)
-                  <li class="page-item {{ $clients->currentPage() == $page ? 'active' : '' }}">
-                    <a class="page-link" href="{{ $url }}">{{ $page }}</a>
-                  </li>
-                  @endforeach
+            <!-- Loop through page numbers -->
+            @foreach ($clients->getUrlRange(1, $clients->lastPage()) as $page => $url)
+            <li class="page-item {{ $clients->currentPage() == $page ? 'active' : '' }}">
+              <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+            </li>
+            @endforeach
 
-                  <!-- Check if the pagination has a next link -->
-                  @if ($clients->hasMorePages())
-                  <li class="page-item">
-                    <a class="page-link" href="{{ $clients->nextPageUrl() }}">Next</a>
-                  </li>
-                  @else
-                  <li class="page-item disabled">
-                    <span class="page-link">Next</span>
-                  </li>
-                  @endif
-                </ul>
-              </nav>
-            </div>
-          </div>
-          <!-- card footer end here  -->
-        </div>
-        <!-- card end here  -->
+            <!-- Check if the pagination has a next link -->
+            @if ($clients->hasMorePages())
+            <li class="page-item">
+              <a class="page-link" href="{{ $clients->nextPageUrl() }}">Next</a>
+            </li>
+            @else
+            <li class="page-item disabled">
+              <span class="page-link">Next</span>
+            </li>
+            @endif
+          </ul>
+        </nav>
       </div>
     </div>
+    <!-- card footer end here  -->
   </div>
-  <!-- main data end here  -->
+  <!-- card end here  -->
+</div>
+</div>
+</div>
+<!-- main data end here  -->
 </div>
 <script>
   // Preview Thumbnail Image for Edit Form

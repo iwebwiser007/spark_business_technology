@@ -109,7 +109,7 @@
                             <li>
                               <span>
                                 <img loading="lazy"
-                                  src="{{asset('public/web/img/checkMark.svg')}}"
+                                  src="{{asset('public/public/web/img/checkMark.svg')}}"
                                   alt="check-mark"
                                 />
                               </span>

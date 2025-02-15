@@ -13,15 +13,18 @@ class ClientController extends Controller
     public function index(Request $request)
     {
         $perPage = $request->get('perPage', 10);
-        $clients = Client::paginate($perPage);
+        $search = $request->get('search' , '');
+        $clients = Client::query() ->when($search, function ($query) use ($search) {
+            $query->where('title', 'like', '%' . $search . '%');
+        })->paginate($perPage);
         return view('admin.clients.clients_list' , compact('clients' , 'perPage'));
     }
 
   
 
-    public function addEditClient()
+    public function add()
     {
-        return view('admin.clients.add_edit_client');
+        return view('admin.clients.add_client');
     }
 
     public function store(Request $request){
@@ -42,7 +45,7 @@ class ClientController extends Controller
 
         ]);
 
-        return redirect()->route('client-list')->with('success_message', 'Client created successfully!');
+        return redirect()->route('admin.clientList')->with('success_message', 'Client created successfully!');
     }
 
 
@@ -74,7 +77,7 @@ class ClientController extends Controller
         }
         $client->title = $request->title;
         $client->save();
-        return redirect()->route('client-list')->with('success_message' , 'Client Updated Successfully!');
+        return redirect()->route('admin.clientList')->with('success_message' , 'Client Updated Successfully!');
     }
 
     
@@ -83,7 +86,7 @@ class ClientController extends Controller
         $client = Client::find($id);
         $client->delete();
     
-        return redirect()->route('client-list')->with('success_message' , 'Client Deleted Successfully!');
+        return redirect()->route('admin.clientList')->with('success_message' , 'Client Deleted Successfully!');
     
     }
 }

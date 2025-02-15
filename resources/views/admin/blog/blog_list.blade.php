@@ -53,7 +53,7 @@
             <div
               class="card-title d-flex justify-content-between align-items-center">
               <h2>Blog List</h2>
-              <a href="{{url( 'admin/add-edit-blog' )}}" class="btn sub_btn">ADD</a>
+              <a href="{{url( 'admin/add-blog' )}}" class="btn sub_btn">ADD</a>
             </div>
           </div>
           <!-- card header end here  -->
@@ -61,9 +61,9 @@
           <!-- card body start here  -->
           <div class="card-body">
             <!-- form start here  -->
-            <form class="data-form">
-              <div class="form-group">
-              <select name="perPage" id="perPage" onchange="updatePagination()">
+            <form method="GET" action="{{ route('admin.blogList') }}" class="data-form">
+              <div class="form-group gap-2">
+                <select name="perPage" id="perPage" onchange="updatePagination()">
                   <option value="10" {{ $perPage == 10 ? 'selected' : '' }}>Show 10</option>
                   <option value="20" {{ $perPage == 20 ? 'selected' : '' }}>Show 20</option>
                   <option value="50" {{ $perPage == 50 ? 'selected' : '' }}>Show 50</option>
@@ -72,9 +72,13 @@
                 <span>
                   <input
                     type="search"
-                    placeholder="search..."
-                    class="d-none d-sm-block" />
+                    name="search"
+                    id="searchInput"
+                    class="form-control form-control-sm"
+                    placeholder="Search by title..."
+                    value="{{ request()->query('search') }}" />
                 </span>
+                <button type="submit" class="btn btn-primary">Search</button>
               </div>
             </form>
             <!-- form end here  -->
@@ -98,7 +102,7 @@
                     <!-- blog-1 image start here -->
                     <td class="list_img">
                       <div class="table_img">
-                        <img src="{{ asset('http://localhost/spark_technology/storage/app/public/images/thumbnails/' . $blog->thumbnail_image) }}"
+                        <img src="{{ asset('storage/app/public/images/thumbnails/' . $blog->thumbnail_image) }}"
                           alt="banner-1"
                           class="img-fluid" />
                       </div>
@@ -112,7 +116,7 @@
                     <!-- blog-1 title end here  -->
 
                     <!-- blog-1 Description start here  -->
-                    <td class="banner_desc">
+                    <td class="">
                       <p class="desc text-truncate">
                         {{$blog->description}}
                       </p>
@@ -160,7 +164,7 @@
                               <!-- modal body start here -->
                               <div class="modal-body">
                                 <span>
-                                  <img src="{{ asset('http://localhost/spark_technology/storage/app/public/images/thumbnails/' . $blog->thumbnail_image) }}" alt="image" class="img-fluid" />
+                                  <img src="{{ asset('storage/app/public/images/thumbnails/' . $blog->thumbnail_image) }}" alt="image" class="img-fluid" />
                                   <h1 class="fs-5 p-2 mt-4">{{ $blog->title }}</h1>
                                   <p class="desc px-4">{{ $blog->description }}</p>
                                 </span>
@@ -203,7 +207,7 @@
                               <div class="modal-body">
                                 <div class="container">
                                   <form class="upload-form"
-                                    action="{{ isset($blog) ? route('blog.update', $blog->id) : route('blog.store') }}"
+                                    action="{{  route('admin.blogUpdate', $blog->id)  }}"
                                     method="POST"
                                     enctype="multipart/form-data">
 
@@ -270,10 +274,16 @@
                                         <label for="html_content" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Blog Content</label>
                                       </div>
                                       <div class="col-12 col-md-8 mt-0">
-                                        <textarea class="form-control ckeditor" id="html_content" name="html_content" rows="10">{{ old('html_content', $blog->html_content ?? '') }}</textarea>
+                                        <textarea class="form-control ckeditor" id="html_content_{{ $blog->id }}" name="html_content" rows="10">{{ old('html_content', $blog->html_content ?? '') }}</textarea>
                                       </div>
                                       <div class="col-1"></div>
                                     </div>
+
+                                    <script>
+                                      CKEDITOR.replace('html_content_{{ $blog->id }}', {
+                                        allowedContent: true,
+                                      });
+                                    </script>
 
 
 
@@ -298,7 +308,7 @@
 
                                         <!-- Thumbnail Image Preview -->
                                         <div id="thumbnailPreview" class="mt-3">
-                                          <img id="previewThumbnailImg" src="{{ isset($blog) ? asset('http://localhost/spark_technology/storage/app/public/images/thumbnails/' . $blog->thumbnail_image) : '' }}" alt="Thumbnail Image Preview" style="display: {{ isset($blog) ? 'block' : 'none' }}; width: 100%; max-width: 200px; border-radius: 8px;" />
+                                          <img id="previewThumbnailImg" src="{{ isset($blog) ? asset('storage/app/public/images/thumbnails/' . $blog->thumbnail_image) : '' }}" alt="Thumbnail Image Preview" style="display: {{ isset($blog) ? 'block' : 'none' }}; width: 100%; max-width: 200px; border-radius: 8px;" />
                                         </div>
                                       </div>
                                     </div>
@@ -323,7 +333,7 @@
 
                                         <!-- Banner Image Preview -->
                                         <div id="bannerPreview" class="mt-3">
-                                          <img id="previewBannerImg" src="{{ isset($blog) ? asset('http://localhost/spark_technology/storage/app/public/images/banners/' . $blog->banner_image) : '' }}" alt="Banner Image Preview" style="display: {{ isset($blog) ? 'block' : 'none' }}; width: 100%; max-width: 200px; border-radius: 8px;" />
+                                          <img id="previewBannerImg" src="{{ isset($blog) ? asset('storage/app/public/images/banners/' . $blog->banner_image) : '' }}" alt="Banner Image Preview" style="display: {{ isset($blog) ? 'block' : 'none' }}; width: 100%; max-width: 200px; border-radius: 8px;" />
                                         </div>
                                       </div>
                                     </div>
@@ -423,7 +433,7 @@
                                 <!-- delete and cancel button start here  -->
                                 <div>
 
-                                  <form action="{{ route('blog.delete' , $blog->id) }}" method="POST">
+                                  <form action="{{ route('admin.blogDelete' , $blog->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE') <!-- This is important to use the DELETE HTTP method -->
                                     <button type="button" class="btn btn-secondary cancel_modal" data-bs-dismiss="modal">
@@ -577,5 +587,4 @@
     window.location.href = `?perPage=${perPage}`;
   }
 </script>
-
 @endsection

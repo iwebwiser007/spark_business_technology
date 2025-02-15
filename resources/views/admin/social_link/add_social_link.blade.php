@@ -33,7 +33,7 @@
                 <!-- breadcrumb start here  -->
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                        <a href="#">Dashboard</a>
+                        <a href="{{route('dashboard')}}">Dashboard</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
                         Add Social Link
@@ -58,7 +58,7 @@
                     <!-- card body start here  -->
                     <div class="card-body">
                         <!-- form start here  -->
-                        <form class="upload-form" action="{{ route('admin.social.store') }}" method="POST" enctype="multipart/form-data" data-parsley-validate>
+                        <form class="upload-form" action="{{ route('admin.socialLinkStore') }}" method="POST" enctype="multipart/form-data" data-parsley-validate>
                             @csrf
                             <!-- social icon/slug/title start here  -->
                             <div class="row form-group">

@@ -43,7 +43,7 @@
             <div
               class="card-title d-flex justify-content-between align-items-center">
               <h2>Technology List</h2>
-              <a href="{{route('add-edit-technology')}}" class="btn sub_btn">ADD</a>
+              <a href="{{route('admin.technologyAdd')}}" class="btn sub_btn">ADD</a>
             </div>
           </div>
           <!-- card header end here  -->
@@ -51,9 +51,9 @@
           <!-- card body start here  -->
           <div class="card-body">
             <!-- form start here  -->
-            <form class="data-form">
-              <div class="form-group">
-              <select name="perPage" id="perPage"  onchange="updatePagination()">
+            <form method="GET" action="{{ route('admin.technologyList') }}" class="data-form">
+              <div class="form-group gap-2">
+                <select name="perPage" id="perPage" onchange="updatePagination()">
                   <option value="10" {{ $perPage == 10 ? 'selected' : '' }}>Show 10</option>
                   <option value="20" {{ $perPage == 20 ? 'selected' : '' }}>Show 20</option>
                   <option value="50" {{ $perPage == 50 ? 'selected' : '' }}>Show 50</option>
@@ -62,9 +62,13 @@
                 <span>
                   <input
                     type="search"
-                    placeholder="search..."
-                    class="d-none d-sm-block" />
+                    name="search"
+                    id="searchInput"
+                    class="form-control form-control-sm"
+                    placeholder="Search by title..."
+                    value="{{ request()->query('search') }}" />
                 </span>
+                <button type="submit" class="btn btn-primary">Search</button>
               </div>
             </form>
             <!-- form end here  -->
@@ -87,7 +91,7 @@
                     <td class="list_img">
                       <div class="icon_img">
                         <img
-                          src="{{ asset('http://localhost/spark_technology/storage/app/public/technology_logos/' . $technology->image) }}"
+                          src="{{ asset('storage/app/public/technology_logos/' . $technology->image) }}"
                           alt="banner-1"
                           class="img-fluid" />
                       </div>
@@ -148,7 +152,7 @@
 
                               <div class="modal-body">
                                 <div class="container">
-                                  <form class="upload-form" action="{{ route('technology.update', $technology->id) }}"
+                                  <form class="upload-form" action="{{ route('admin.technologyUpdate', $technology->id) }}"
                                     method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
@@ -197,7 +201,7 @@
 
                                         <!-- Thumbnail Image Preview -->
                                         <div id="thumbnailPreview" class="mt-3">
-                                          <img id="previewThumbnailImg" src="{{ isset($technology) ? asset('http://localhost/spark_technology/storage/app/public/technology_logos/' . $technology->image) : '' }}" alt="Thumbnail Image Preview" style="display: {{ isset($technology) ? 'block' : 'none' }}; width: 100%; max-width: 200px; border-radius: 8px;" />
+                                          <img id="previewThumbnailImg" src="{{ isset($technology) ? asset('storage/app/public/technology_logos/' . $technology->image) : '' }}" alt="Thumbnail Image Preview" style="display: {{ isset($technology) ? 'block' : 'none' }}; width: 100%; max-width: 200px; border-radius: 8px;" />
                                         </div>
                                       </div>
                                     </div>
@@ -320,7 +324,7 @@
 
                                 <!-- delete and cancel button start here  -->
                                 <div>
-                                  <form action="{{ route('technology.delete' , $technology->id) }}" method="POST">
+                                  <form action="{{ route('admin.technologyDelete' , $technology->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE') <!-- This is important to use the DELETE HTTP method -->
                                     <button type="button" class="btn btn-secondary cancel_modal" data-bs-dismiss="modal">

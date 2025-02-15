@@ -212,7 +212,7 @@
                   <label for="metaTags" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Metas</label>
                 </div>
                 <div class="col-12 col-md-8">
-                  <textarea name="meta_tags" id="metaTags" class="form-control form-control-lg form-input" placeholder="Enter JSON formatted metas..."  rows="8" style="height: 150px;" data-parsley-required="true" ></textarea>
+                  <textarea name="meta_tags" id="metaTags" class="form-control form-control-lg form-input" placeholder="Enter JSON formatted metas..."  rows="8" style="height: 150px;"  ></textarea>
                 </div>
                 <div class="col-1"></div>
               </div>
@@ -373,6 +373,9 @@
     reader.readAsDataURL(event.target.files[0]); // Read the selected file
   }
 </script>
+
+
+
 
 
 @endsection

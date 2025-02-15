@@ -27,13 +27,13 @@
   <!-- All css links start here... -->
   <link
     rel="stylesheet"
-    href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    href="{{ asset('public/node_modules/bootstrap/dist/css/bootstrap.min.css') }}" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/parsleyjs/dist/parsley.css" />
-  <link rel="stylesheet" href="../assets/scss/main.css" />
+  <link rel="stylesheet" href="{{ asset('public/assets/scss/main.css') }}" />
   <!-- All css links end here... -->
 
   <!-- favicon icon start here -->
-  <link rel="icon" type="image/x-icon" href="../assets/icons/Logo.svg" />
+  <link rel="icon" type="image/x-icon" href="{{ asset('public/assets/icons/Logo.svg') }}" />
   <!-- favicon icon end here -->
 </head>
 <!-- Head tag end here... -->
@@ -62,7 +62,7 @@
                         <!-- card image start here  -->
                         <div class="col-md-4 d-none d-md-flex">
                           <img
-                            src="../assets/img/login.jpg"
+                            src="../public/assets/img/login.jpg"
                             alt="Trendy Pants and Shoes"
                             class="w-100 rounded-t-5" />
                         </div>
@@ -76,7 +76,7 @@
                               href="#loginForm"
                               class="btn border-0 login_logo d-block d-md-none"
                               role="button">
-                              <img src="../assets/icons/Logo.svg" alt="logo" />
+                              <img src="../public/assets/icons/Logo.svg" alt="logo" />
                             </a>
                             <!-- company logo end here  -->
 
@@ -227,8 +227,8 @@
   <!-- main container end here  -->
 
   <!-- All js scripts start here... -->
-  <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/js/main.js"></script>
+  <script src="{{ asset('public/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ asset('public/assets/js/main.js') }}"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery first -->
   <script src="https://cdn.jsdelivr.net/npm/parsleyjs/dist/parsley.min.js"></script> <!-- Then Parsley -->
 

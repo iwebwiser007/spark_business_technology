@@ -20,7 +20,7 @@ class BlogController extends Controller
         // return view('blog');
     }
 
-    
+
 
     // Show the form to create a new blog post
     public function create(Request $request)
@@ -32,20 +32,13 @@ class BlogController extends Controller
     public function store(Request $request)
     {
         return $request;
-        
     }
 
     public function show($slug)
-{
-    // Find the blog post by the slug
-    $blog = Blog::where('slug', $slug)->firstOrFail();
-    $metaTags = json_decode($blog->meta_tags, true);
-
-   
-
-
-
-    // Return the view with the blog data
-    return view('front.blog.show', compact('blog' , 'metaTags'));
-}
+    {
+        // Find the blog post by the slug
+        $blog = Blog::where('slug', $slug)->firstOrFail();
+        $metaTags = json_decode($blog->meta_tags, true);
+        return view('front.blog.show', compact('blog', 'metaTags'));
+    }
 }

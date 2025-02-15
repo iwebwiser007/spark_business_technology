@@ -44,7 +44,7 @@
             <div
               class="card-title d-flex justify-content-between align-items-center">
               <h2>Certificate List</h2>
-              <a href="{{route('add-edit-certificate')}}" class="btn sub_btn">ADD</a>
+              <a href="{{route('admin.certificateAdd')}}" class="btn sub_btn">ADD</a>
             </div>
           </div>
           <!-- card header end here  -->
@@ -52,9 +52,9 @@
           <!-- card body start here  -->
           <div class="card-body">
             <!-- form start here  -->
-            <form class="data-form">
-              <div class="form-group">
-              <select name="perPage" id="perPage" onchange="updatePagination()">
+            <form method="GET" action="{{ route('admin.certificateList') }}" class="data-form">
+              <div class="form-group gap-2">
+                <select name="perPage" id="perPage" onchange="updatePagination()">
                   <option value="10" {{ $perPage == 10 ? 'selected' : '' }}>Show 10</option>
                   <option value="20" {{ $perPage == 20 ? 'selected' : '' }}>Show 20</option>
                   <option value="50" {{ $perPage == 50 ? 'selected' : '' }}>Show 50</option>
@@ -63,9 +63,13 @@
                 <span>
                   <input
                     type="search"
-                    placeholder="search..."
-                    class="d-none d-sm-block" />
+                    name="search"
+                    id="searchInput"
+                    class="form-control form-control-sm"
+                    placeholder="Search by title..."
+                    value="{{ request()->query('search') }}" />
                 </span>
+                <button type="submit" class="btn btn-primary">Search</button>
               </div>
             </form>
             <!-- form end here  -->
@@ -88,7 +92,7 @@
                     <td class="list_img">
                       <div class="table_img">
                         <img
-                          src="{{ asset('http://localhost/spark_technology/storage/app/public/certificates/' . $certificate->image) }}"
+                          src="{{ asset('storage/app/public/certificates/' . $certificate->image) }}"
                           alt="banner-1"
                           class="img-fluid" />
                       </div>
@@ -149,7 +153,7 @@
 
                               <div class="modal-body">
                                 <div class="container">
-                                  <form class="upload-form" action="{{ route('certificate.update', $certificate->id) }}"
+                                  <form class="upload-form" action="{{ route('admin.certificateUpdate', $certificate->id) }}"
                                     method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
@@ -192,7 +196,7 @@
                                             for="ImgUpload"
                                             class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4 position-relative">
                                             <img
-                                              src="{{ asset('http://localhost/spark_technology/storage/app/public/certificates/' . $certificate->image) }}"
+                                              src="{{ asset('storage/app/public/certificates/' . $certificate->image) }}"
                                               class="img-fluid rounded-4"
                                               width="50%"
                                               alt="upload image" />
@@ -300,7 +304,7 @@
 
                                 <!-- delete and cancel button start here  -->
                                 <div>
-                                  <form action="{{ route('certificate.delete' , $certificate->id) }}" method="POST">
+                                  <form action="{{ route('admin.certificateDelete' , $certificate->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE') <!-- This is important to use the DELETE HTTP method -->
                                     <button type="button" class="btn btn-secondary cancel_modal" data-bs-dismiss="modal">
@@ -747,43 +751,43 @@
 
 
           <div class="card-footer">
-  <!-- Pagination -->
-  <p>Showing {{ $certificates->firstItem() }} to {{ $certificates->lastItem() }} of {{ $certificates->total() }} entries</p>
-  <div class="pagination-div">
-    <nav aria-label="Page navigation example">
-      <ul class="pagination">
-        <!-- Check if the pagination has previous and next links -->
-        @if ($certificates->onFirstPage())
-        <li class="page-item disabled">
-          <span class="page-link">Previous</span>
-        </li>
-        @else
-        <li class="page-item">
-          <a class="page-link" href="{{ $certificates->previousPageUrl() }}">Previous</a>
-        </li>
-        @endif
+            <!-- Pagination -->
+            <p>Showing {{ $certificates->firstItem() }} to {{ $certificates->lastItem() }} of {{ $certificates->total() }} entries</p>
+            <div class="pagination-div">
+              <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <!-- Check if the pagination has previous and next links -->
+                  @if ($certificates->onFirstPage())
+                  <li class="page-item disabled">
+                    <span class="page-link">Previous</span>
+                  </li>
+                  @else
+                  <li class="page-item">
+                    <a class="page-link" href="{{ $certificates->previousPageUrl() }}">Previous</a>
+                  </li>
+                  @endif
 
-        <!-- Loop through page numbers -->
-        @foreach ($certificates->getUrlRange(1, $certificates->lastPage()) as $page => $url)
-        <li class="page-item {{ $certificates->currentPage() == $page ? 'active' : '' }}">
-          <a class="page-link" href="{{ $url }}">{{ $page }}</a>
-        </li>
-        @endforeach
+                  <!-- Loop through page numbers -->
+                  @foreach ($certificates->getUrlRange(1, $certificates->lastPage()) as $page => $url)
+                  <li class="page-item {{ $certificates->currentPage() == $page ? 'active' : '' }}">
+                    <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                  </li>
+                  @endforeach
 
-        <!-- Check if the pagination has a next link -->
-        @if ($certificates->hasMorePages())
-        <li class="page-item">
-          <a class="page-link" href="{{ $certificates->nextPageUrl() }}">Next</a>
-        </li>
-        @else
-        <li class="page-item disabled">
-          <span class="page-link">Next</span>
-        </li>
-        @endif
-      </ul>
-    </nav>
-  </div>
-</div>
+                  <!-- Check if the pagination has a next link -->
+                  @if ($certificates->hasMorePages())
+                  <li class="page-item">
+                    <a class="page-link" href="{{ $certificates->nextPageUrl() }}">Next</a>
+                  </li>
+                  @else
+                  <li class="page-item disabled">
+                    <span class="page-link">Next</span>
+                  </li>
+                  @endif
+                </ul>
+              </nav>
+            </div>
+          </div>
           <!-- card footer end here  -->
         </div>
         <!-- card end here  -->
@@ -791,10 +795,10 @@
     </div>
   </div>
   <!-- main data end here  -->
-<script>
-  function updatePagination() {
-    const perPage = document.getElementById('perPage').value;
-    window.location.href = `?perPage=${perPage}`;
-  }
-</script>
-@endsection
+  <script>
+    function updatePagination() {
+      const perPage = document.getElementById('perPage').value;
+      window.location.href = `?perPage=${perPage}`;
+    }
+  </script>
+  @endsection
