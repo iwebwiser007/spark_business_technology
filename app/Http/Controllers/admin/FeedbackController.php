@@ -16,7 +16,7 @@ class FeedbackController extends Controller
         $feedbacks = Feedback::query()
         ->when($search, function ($query) use ($search) {
             $query->where('title', 'like', '%' . $search . '%');
-        })
+        })->orderby('id' , 'desc')
         ->paginate($perPage);
         $headers = Header::get();
 

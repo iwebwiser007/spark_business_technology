@@ -53,7 +53,7 @@
           <div class="card-body">
             <!-- form start here  -->
             <form method="GET" action="{{ route('admin.certificateList') }}" class="data-form">
-              <div class="form-group gap-2">
+              <div class="form-group d-flex align-items-center">
                 <select name="perPage" id="perPage" onchange="updatePagination()">
                   <option value="10" {{ $perPage == 10 ? 'selected' : '' }}>Show 10</option>
                   <option value="20" {{ $perPage == 20 ? 'selected' : '' }}>Show 20</option>
@@ -65,11 +65,11 @@
                     type="search"
                     name="search"
                     id="searchInput"
-                    class="form-control form-control-sm"
+                    class="form-control form-control-sm me-3"
                     placeholder="Search by title..."
                     value="{{ request()->query('search') }}" />
                 </span>
-                <button type="submit" class="btn btn-primary">Search</button>
+                <button type="submit" class="btn sub_btn mb-2">Search</button>
               </div>
             </form>
             <!-- form end here  -->
@@ -164,7 +164,7 @@
                                       <div class="col-3">
                                         <label
                                           for="inputTitle"
-                                          class="col-form-label form-label">Certificate Title
+                                          class="col-form-label form-label">Title
                                         </label>
                                       </div>
                                       <!-- title label end here  -->
@@ -182,46 +182,38 @@
                                             required />
                                         </div>
                                       </div>
-                                      <!-- title input end here  -->
                                     </div>
 
-                                    <!-- image  -->
                                     <div
-                                      class="row form-group g-3 align-items-center mt-3">
-                                      <!-- upload input area start here  -->
-                                      <div class="col-12">
+                                      class="row form-group">
+                                      <div class="col-12 col-md-3">
+                                        <label for="ImgUpload" class="col-form-label form-label d-flex justify-content-left justify-content-md-center"> Image</label>
+                                      </div>
+                                      <div class="col-12 col-md-9 mt-0">
                                         <div
-                                          class="form-group mb-20 upload-input">
+                                          class="form-group upload-input">
                                           <label
                                             for="ImgUpload"
-                                            class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4 position-relative">
+                                            class="form-img-uploader rounded-2 d-flex align-items-center justify-content-center w-100 py-4 position-relative">
                                             <img
                                               src="{{ asset('storage/app/public/certificates/' . $certificate->image) }}"
                                               class="img-fluid rounded-4"
-                                              width="50%"
+                                              width="400px" height="279px"
                                               alt="upload image" />
-                                            <!-- close button start here  -->
-                                            <!-- <button
-                                                          type="button"
-                                                          data-bs-dismiss="modal"
-                                                          class="btn-close position-absolute top-0 end-0 p-2"
-                                                          aria-label="Close"
-                                                        ></button> -->
                                           </label>
                                         </div>
                                       </div>
-                                      <!-- upload  input area end here  -->
                                     </div>
 
+
+
                                     <!-- cancel and submit button  -->
-                                    <div class="my-3">
-                                      <button
-                                        type="button"
-                                        class="btn btn-secondary cancel_modal"
-                                        data-bs-dismiss="modal">
-                                        Close
-                                      </button>
-                                      <button type="submit" class="btn form-btn my-0">Update</button>
+                                    <div class="row">
+                                      <div class="col-4 col-md-3"></div>
+                                      <div class="col-12 col-md-9 form-button">
+                                        <button type="button" class="btn btn-secondary cancel_modal my-3" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn form-btn my-0">Update</button>
+                                      </div>
                                     </div>
                                   </form>
                                 </div>
@@ -404,7 +396,7 @@
 
                                           <div class="modal-body">
                                             <div class="container">
-                                              <form class="upload-form">
+                                              <form class="compact-modal">
                                                 <!-- title  -->
                                                 <div
                                                   class="row form-group g-3 align-items-center"
@@ -467,7 +459,7 @@
                                                 </div>
 
                                                 <!-- cancel and submit button  -->
-                                                <div class="my-3">
+                                                <div class="my-3 form-button ">
                                                   <button
                                                     type="button"
                                                     class="btn btn-secondary cancel_modal"
@@ -594,7 +586,7 @@
 
                                           <div class="modal-body">
                                             <div class="container">
-                                              <form class="upload-form">
+                                              <form class="compact-modal">
                                                 <!-- title  -->
                                                 <div
                                                   class="row form-group g-3 align-items-center"
@@ -657,7 +649,7 @@
                                                 </div>
 
                                                 <!-- cancel and submit button  -->
-                                                <div class="my-3">
+                                                <div class="my-3 form-button ">
                                                   <button
                                                     type="button"
                                                     class="btn btn-secondary cancel_modal"

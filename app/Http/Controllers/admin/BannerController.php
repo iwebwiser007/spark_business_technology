@@ -18,15 +18,10 @@ class BannerController extends Controller
         $banners = Banner::query()
         ->when($search, function ($query) use ($search) {
             $query->where('title', 'like', '%' . $search . '%');
-        })
+        })->orderby('id' , 'desc')
         ->paginate($perPage);
         return view('admin.banner.banner_list', compact('banners'  , 'perPage'));
-
-
-       
     }
-
- 
 
     public function add()
     {
@@ -35,6 +30,12 @@ class BannerController extends Controller
 
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'link' => 'unique:banners,link',  
+            // 'banner_image' => 'mimes:jpeg,jpg,png',
+            'banner_image' => 'mimes:jpeg,jpg,png,gif,webp',  
+
+        ]);
 
         if ($request->hasFile('banner_image')) {
             $banner = $request->file('banner_image');
@@ -64,6 +65,12 @@ class BannerController extends Controller
 
     public function update(Request $request, $id)
     {
+
+        $validated = $request->validate([
+            'link' => 'unique:banners,link,' . $id,  
+            'banner_image' => 'mimes:jpeg,jpg,png,gif,webp',  
+        ]);
+        
 
         $banner = Banner::find($id);
 

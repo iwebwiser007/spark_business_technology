@@ -56,7 +56,7 @@
           <div class="card-body">
             <!-- form start here  -->
             <form method="GET" action="{{ route('admin.branchList') }}" class="data-form">
-              <div class="form-group gap-2">
+              <div class="form-group d-flex align-items-center">
                 <select name="perPage" id="perPage" onchange="updatePagination()">
                   <option value="10" {{ $perPage == 10 ? 'selected' : '' }}>Show 10</option>
                   <option value="20" {{ $perPage == 20 ? 'selected' : '' }}>Show 20</option>
@@ -68,11 +68,11 @@
                     type="search"
                     name="search"
                     id="searchInput"
-                    class="form-control form-control-sm"
+                    class="form-control form-control-sm me-3"
                     placeholder="Search by title..."
                     value="{{ request()->query('search') }}" />
                 </span>
-                <button type="submit" class="btn btn-primary">Search</button>
+                <button type="submit" class="btn sub_btn mb-2">Search</button>
               </div>
             </form>
             <!-- form end here  -->
@@ -171,7 +171,7 @@
                           aria-labelledby="exampleModalLabel"
                           aria-hidden="true">
                           <div
-                            class="modal-dialog modal-dialog-centered">
+                            class="modal-dialog modal-lg modal-dialog-centered">
                             <div class="modal-content">
                               <div class="modal-header">
                                 <h1
@@ -188,238 +188,125 @@
 
                               <div class="modal-body">
                                 <div class="container">
-                                  <form class="upload-form" action="{{ route('admin.branchUpdate', $branch->id) }}"
-                                    method="POST">
+                                  <form class="upload-form" action="{{ route('admin.branchUpdate', $branch->id) }}" method="POST">
                                     @csrf
-                                    <div
-                                      class="row form-group g-3 align-items-center">
-                                      <!-- <div class="col-1"></div> -->
-                                      <!-- title label start here  -->
-                                      <div
-                                        class="col-3 d-flex justify-content-center align-items-center">
-                                        <label
-                                          for="inputTitle"
-                                          class="col-form-label form-label">Branch Title
-                                        </label>
-                                      </div>
-                                      <!-- title label end here  -->
 
-                                      <!-- title input start here  -->
-                                      <div class="col-9">
-                                        <div class="mb-3 mt-3">
-                                          <input
-                                            type="text"
-                                            id="inputTitle"
-                                            name="title"
-                                            class="form-control form-control-lg form-input"
-                                            placeholder="Enter Title..."
-                                            value="{{old('title' , $branch->title ?? '')}}"
-                                            required />
-                                        </div>
+                                    <!-- Title and Address in one row (col-6 each) -->
+                                    <div class="row form-group g-3">
+                                      <!-- Title Input -->
+                                      <div class="col-6">
+                                        <label for="inputTitle" class="col-form-label form-label text-start d-block">Branch Title</label>
+                                        <input
+                                          type="text"
+                                          id="inputTitle"
+                                          name="title"
+                                          class="form-control form-control-lg form-input"
+                                          placeholder="Enter Title..."
+                                          value="{{old('title' , $branch->title ?? '')}}"
+                                          required />
                                       </div>
-                                      <!-- title input end here  -->
+
+                                      <!-- Address Input -->
+                                      <div class="col-6">
+                                        <label for="inputlocation" class="col-form-label form-label text-start d-block">Address</label>
+                                        <input
+                                          type="text"
+                                          id="inputlocation"
+                                          name="address"
+                                          class="form-control form-control-lg form-input"
+                                          placeholder="Enter Address..."
+                                          value="{{old('address' , $branch->address ?? '')}}"
+                                          required />
+                                      </div>
                                     </div>
-                                    <!-- title area end here  -->
 
-                                    <!-- Address area start here  -->
-                                    <div
-                                      class="row form-group g-3 align-items-center">
-                                      <!-- <div class="col-1"></div> -->
-                                      <!-- Address label start here  -->
-                                      <div
-                                        class="col-3 d-flex justify-content-center align-items-center">
-                                        <label
-                                          for="btnLink"
-                                          class="col-form-label form-label">Address
-                                        </label>
+                                    <!-- City and State in one row (col-6 each) -->
+                                    <div class="row form-group">
+                                      <!-- City Input -->
+                                      <div class="col-6">
+                                        <label for="inputCity" class="col-form-label form-label text-start d-block">City</label>
+                                        <input
+                                          type="text"
+                                          id="inputCity"
+                                          name="city"
+                                          class="form-control form-control-lg form-input"
+                                          placeholder="Enter City..."
+                                          value="{{old('city' , $branch->city ?? '')}}"
+                                          required />
                                       </div>
-                                      <!-- Address label end here  -->
 
-                                      <!-- Address input start here  -->
-                                      <div class="col-9">
-                                        <div class="mb-3 mt-3">
-                                          <input
-                                            type="text"
-                                            id="inputlocation"
-                                            name="address"
-                                            class="form-control form-control-lg form-input"
-                                            placeholder="Enter Address..."
-                                            value="{{old('address' , $branch->address ?? '')}}"
-                                            required />
-                                        </div>
+                                      <!-- State Input -->
+                                      <div class="col-6">
+                                        <label for="inputState" class="col-form-label form-label text-start d-block">State</label>
+                                        <input
+                                          type="text"
+                                          id="inputState"
+                                          name="state"
+                                          class="form-control form-control-lg form-input"
+                                          placeholder="Enter State/Province..."
+                                          value="{{old('state' , $branch->state ?? '')}}"
+                                          required />
                                       </div>
-                                      <!-- Address input end here  -->
                                     </div>
-                                    <!-- Address area end here  -->
 
-                                    <!-- City area start here  -->
-                                    <div
-                                      class="row form-group g-3 align-items-center">
-                                      <!-- City label start here  -->
-                                      <div
-                                        class="col-3 d-flex justify-content-center align-items-center">
-                                        <label
-                                          for="btnLink"
-                                          class="col-form-label form-label">City
-                                        </label>
+                                    <!-- Zip-code and Country in one row (col-6 each) -->
+                                    <div class="row form-group ">
+                                      <!-- Zip-code Input -->
+                                      <div class="col-6">
+                                        <label for="inputZip" class="col-form-label form-label text-start d-block">Zip-Code</label>
+                                        <input
+                                          type="text"
+                                          id="inputZip"
+                                          name="zip_code"
+                                          class="form-control form-control-lg form-input"
+                                          placeholder="Enter Zip-code..."
+                                          value="{{old('zip_code' , $branch->zip_code ?? '')}}"
+                                          required />
                                       </div>
-                                      <!-- City label end here  -->
 
-                                      <!-- City input start here  -->
-                                      <div class="col-9">
-                                        <div class="mb-3 mt-3">
-                                          <input
-                                            type="text"
-                                            id="inputlocation"
-                                            name="city"
-                                            class="form-control form-control-lg form-input"
-                                            placeholder="Enter City..."
-                                            value="{{old('city' , $branch->city ?? '')}}"
-                                            required />
-                                        </div>
-                                      </div>
-                                      <!-- City input end here  -->
-                                    </div>
-                                    <!-- City area end here  -->
-
-                                    <!-- State area start here  -->
-                                    <div
-                                      class="row form-group g-3 align-items-center">
-                                      <!-- location label start here  -->
-                                      <div
-                                        class="col-3 d-flex justify-content-center align-items-center">
-                                        <label
-                                          for="btnLink"
-                                          class="col-form-label form-label">State
-                                        </label>
-                                      </div>
-                                      <!-- Location label end here  -->
-
-                                      <!-- location input start here  -->
-                                      <div class="col-9">
-                                        <div class="mb-3 mt-3">
-                                          <input
-                                            type="text"
-                                            id="inputlocation"
-                                            name="state"
-                                            class="form-control form-control-lg form-input"
-                                            placeholder="Enter State/Province..."
-                                            value="{{old('state' , $branch->state ?? '')}}"
-                                            required />
-                                        </div>
-                                      </div>
-                                      <!-- location input end here  -->
-                                    </div>
-                                    <!-- State area end here  -->
-
-                                    <!-- Zip-code area start here  -->
-                                    <div
-                                      class="row form-group g-3 align-items-center">
-                                      <!-- Zip-code label start here  -->
-                                      <div
-                                        class="col-3 d-flex align-items-center justify-content-center">
-                                        <label
-                                          for="btnLink"
-                                          class="col-form-label form-label">Zip-Code
-                                        </label>
-                                      </div>
-                                      <!-- Zip-code label end here  -->
-
-                                      <!-- Zip-code input start here  -->
-                                      <div class="col-9">
-                                        <div class="mb-3 mt-3">
-                                          <input
-                                            type="text"
-                                            id="inputlocation"
-                                            name="zip_code"
-                                            class="form-control form-control-lg form-input"
-                                            placeholder="Enter zip-code..."
-                                            value="{{old('zipcode' , $branch->zip_code ?? '')}}"
-                                            required />
-                                        </div>
-                                      </div>
-                                      <!-- Zip-code input end here  -->
-                                    </div>
-                                    <!-- Zip-code area end here  -->
-
-                                    <!-- Country area start here  -->
-                                    <div
-                                      class="row form-group g-3 align-items-center">
-                                      <!-- banner description label start here  -->
-                                      <div
-                                        class="col-3 d-flex justify-content-center align-items-center">
-                                        <label
-                                          for="inputDescription"
-                                          class="col-form-label form-label text-break">Country</label>
-                                      </div>
-                                      <!-- banner description label end here  -->
-
-                                      <!-- banner description textarea box start here  -->
-                                      <div class="col-9">
-                                        <select
-                                          id="country"
-                                          name="country"
-                                          class="form-control form-control-lg form-input" required>
+                                      <!-- Country Select -->
+                                      <div class="col-6">
+                                        <label for="country" class="col-form-label form-label text-start d-block">Country</label>
+                                        <select id="country" name="country" class="form-control form-control-lg form-input" required>
                                           <option value="">Select Country</option>
                                           @foreach ($countries as $country)
-                                          <option value="{{ $country->country_name }}" {{ old('country', $branch->country ?? '') == $country->country_name ? 'selected' : '' }}>{{ $country->country_name }}</option>
+                                          <option value="{{ $country->country_name }}" {{ old('country', $branch->country ?? '') == $country->country_name ? 'selected' : '' }}>
+                                            {{ $country->country_name }}
+                                          </option>
                                           @endforeach
                                         </select>
                                       </div>
-
-                                      <!-- banner description textarea box end here  -->
                                     </div>
-                                    <!-- Country area end here  -->
 
-                                    <!-- Page select start here  -->
-                                    <div
-                                      class="row form-group g-3 align-items-center mt-2">
-                                      <!-- Page Select label start here  -->
-                                      <div
-                                        class="col-3 d-flex justify-content-center align-items-center">
-                                        <label
-                                          for="inputDescription"
-                                          class="col-form-label form-label text-break">Page Select</label>
-                                      </div>
-                                      <!-- Page Select label end here  -->
-
-                                      <!-- Page Select input start here  -->
-                                      <div class="col-9">
+                                    <!-- Page Select -->
+                                    <div class="row form-group">
+                                      <div class="col-6">
+                                        <label for="pageSelect" class="col-form-label form-label text-start d-block">Page Select</label>
                                         <select
                                           id="pageSelect"
                                           name="pageSelect"
-                                          class="form-control form-control-lg form-input" required>
-                                          <option value="">
-                                            Select Page
-                                          </option>
-                                          <option value="Global" {{ old('pageSelect', $branch->page ?? '') == 'Global' ? 'selected' : '' }}>
-                                            Global
-                                          </option>
-                                          <option value="Local" {{ old('pageSelect', $branch->page ?? '') == 'Local' ? 'selected' : '' }}>
-                                            Local
-                                          </option>
+                                          class="form-control form-control-lg form-input "
+                                          required>
+                                          <option value="">Select Page</option>
+                                          <option value="Global" {{ old('pageSelect', $branch->page ?? '') == 'Global' ? 'selected' : '' }}>Global</option>
+                                          <option value="Local" {{ old('pageSelect', $branch->page ?? '') == 'Local' ? 'selected' : '' }}>Local</option>
                                         </select>
-
-
                                       </div>
-
-                                      <!-- Page Select input end here  -->
                                     </div>
-                                    <!-- Page select end here  -->
 
-                                    <!-- cancel and submit button  -->
-                                    <div class="my-3">
-                                      <button
-                                        type="button"
-                                        class="btn btn-secondary cancel_modal"
-                                        data-bs-dismiss="modal">
-                                        Close
-                                      </button>
-                                      <button type="submit" class="btn form-btn my-0">Update</button>
+                                    <!-- Action Buttons -->
+                                    <div class="row">
+                                      <div class="col-4 col-md-3"></div>
+                                      <div class="col-12 col-md-9 form-button">
+                                        <button type="button" class="btn btn-secondary cancel_modal my-3" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn form-btn my-0">Update</button>
+                                      </div>
                                     </div>
+
                                   </form>
                                 </div>
                               </div>
+
                             </div>
                           </div>
                         </div>

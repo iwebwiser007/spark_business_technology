@@ -35,6 +35,22 @@
       </div>
       @endif
 
+      @if ($errors->any())
+      <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex flex-column">
+            <!-- <strong class="me-2">Error:</strong> -->
+            <ul class="mb-0 ps-3">
+              @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      </div>
+      @endif
+
       <div class="container-fluid">
         <!-- card start here  -->
         <div class="card">
@@ -52,7 +68,7 @@
           <div class="card-body">
             <!-- form start here  -->
             <form method="GET" action="{{ route('admin.industryList') }}" class="data-form">
-              <div class="form-group gap-2">
+              <div class="form-group d-flex align-items-center">
                 <select name="perPage" id="perPage" onchange="updatePagination()">
                   <option value="10" {{ $perPage == 10 ? 'selected' : '' }}>Show 10</option>
                   <option value="20" {{ $perPage == 20 ? 'selected' : '' }}>Show 20</option>
@@ -64,11 +80,11 @@
                     type="search"
                     name="search"
                     id="searchInput"
-                    class="form-control form-control-sm"
+                    class="form-control form-control-sm me-3"
                     placeholder="Search by title..."
                     value="{{ request()->query('search') }}" />
                 </span>
-                <button type="submit" class="btn btn-primary">Search</button>
+                <button type="submit" class="btn sub_btn mb-2">Search</button>
               </div>
             </form>
             <!-- form end here  -->
@@ -156,209 +172,72 @@
                         <!-- Industry edit button end here  -->
 
                         <!-- Edit Modal start here  -->
-                        <div
-                          class="modal fade"
-                          id="editModal-{{$industry->id}}"
-                          tabindex="-1"
-                          aria-labelledby="exampleModalLabel"
-                          aria-hidden="true">
-                          <div
-                            class="modal-dialog modal-dialog-centered">
+                        <div class="modal fade" id="editModal-{{$industry->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered modal-lg"> <!-- Increased modal size here -->
                             <div class="modal-content">
                               <div class="modal-header">
-                                <h1
-                                  class="modal-title"
-                                  id="exampleModalLabel">
+                                <h1 class="modal-title" id="exampleModalLabel">
                                   Edit {{$industry->title}}
                                 </h1>
-                                <button
-                                  type="button"
-                                  class="btn-close"
-                                  data-bs-dismiss="modal"
-                                  aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                               </div>
 
                               <div class="modal-body">
                                 <div class="container">
-                                  <form class="upload-form" action="{{ route('admin.industryUpdate', $industry->id) }}"
-                                    method="POST"
-                                    enctype="multipart/form-data">
+                                  <form class="upload-form" action="{{ route('admin.industryUpdate', $industry->id) }}" method="POST" enctype="multipart/form-data">
                                     @csrf
-                                    <div
-                                      class="row form-group g-3 align-items-center">
-                                      <!-- title label start here  -->
-                                      <div class="col-3">
-                                        <label
-                                          for="inputTitle"
-                                          class="col-form-label form-label">Industry Title
-                                        </label>
-                                      </div>
-                                      <!-- title label end here  -->
-
-                                      <!-- title input start here  -->
-                                      <div class="col-9">
-                                        <div class="mb-3 mt-3">
-                                          <input
-                                            type="text"
-                                            id="inputTitle"
-                                            name="title"
-                                            class="form-control form-control-lg form-input"
-                                            placeholder="Enter Title..."
-                                            value="{{old('title' , $industry->title ?? '')}}"
-                                            required />
-                                        </div>
-                                      </div>
-                                      <!-- title input end here  -->
-                                    </div>
-
-                                    <!-- description  -->
-                                    <div
-                                      class="row form-group g-3 align-items-center">
-                                      <!-- description label start here  -->
-                                      <div
-                                        class="col-3 d-flex justify-content-center">
-                                        <label
-                                          for="inputDescription"
-                                          class="col-form-label form-label text-break">Description</label>
-                                      </div>
-                                      <!-- description label end here  -->
-
-                                      <!-- description textarea box start here  -->
-                                      <div class="col-9">
-                                        <div class="form-floating">
-                                          <textarea
-                                            class="form-control form-control-lg form-textbox"
-                                            id="inputDescription"
-                                            name="description"
-                                            rows="4"
-                                            cols="30"
-                                            placeholder="write your banner description here..."
-                                            required>{{old('description' , $industry->description ?? '')}}</textarea>
-
-                                        </div>
+                                    <!-- Industry Title, Service Title, Button Link in one row -->
+                                    <div class="row form-group g-3">
+                                      <div class="col-6">
+                                        <label for="inputTitle" class="col-form-label form-label text-start d-block">Industry Title</label>
+                                        <input type="text" id="inputTitle" name="title" class="form-control form-control-lg form-input" placeholder="Enter Title..." value="{{old('title' , $industry->title ?? '')}}" required />
                                       </div>
 
-                                      <!-- description textarea box end here  -->
-                                    </div>
-
-                                    <!-- Service  -->
-                                    <div
-                                      class="row form-group g-3 align-items-center">
-                                      <!-- title label start here  -->
-                                      <div class="col-3">
-                                        <label
-                                          for="inputTitle"
-                                          class="col-form-label form-label">Service Title
-                                        </label>
+                                      <div class="col-6">
+                                        <label for="inputService" class="col-form-label form-label text-start d-block">Service Title</label>
+                                        <input type="text" id="inputService" name="service" class="form-control form-control-lg form-input" placeholder="Enter Service Title..." value="{{old('service' , $industry->service ?? '')}}" required />
                                       </div>
-                                      <!-- title label end here  -->
-
-                                      <!-- title input start here  -->
-                                      <div class="col-9">
-                                        <div class="mb-3 mt-3">
-                                          <input
-                                            type="text"
-                                            id="inputTitle"
-                                            name="service"
-                                            class="form-control form-control-lg form-input"
-                                            placeholder="Enter Service Title..."
-                                            value="{{old('service' , $industry->service ?? '')}}"
-                                            required />
-                                        </div>
                                       </div>
-                                      <!-- title input end here  -->
-                                    </div>
 
-                                    <!-- Button Link area start here  -->
-                                    <div
-                                      class="row form-group g-3 align-items-center">
-                                      <!-- Button Link label start here  -->
-                                      <div
-                                        class="col-3 d-flex justify-content-center align-items-center">
-                                        <label
-                                          for="inputTitle"
-                                          class="col-form-label form-label">Button Link
-                                        </label>
+                                      <div class="row form-group g-3">
+                                      <div class="col-6">
+                                        <label for="inputDescription" class="col-form-label form-label text-break text-start d-block">Description</label>
+                                        <textarea class="form-control form-control-lg form-textbox" id="inputDescription" name="description" rows="4" placeholder="Write your banner description here..." required>{{old('description' , $industry->description ?? '')}}</textarea>
                                       </div>
-                                      <!-- Button Link label end here  -->
 
-                                      <!-- Button Link input start here  -->
-                                      <div class="col-9">
-                                        <div class="mb-3 mt-3">
-                                          <input
-                                            type="text"
-                                            id="inputTitle"
-                                            name="slug"
-                                            class="form-control form-control-lg form-input"
-                                            placeholder="Enter Link..."
-                                            value="{{old('slug' , $industry->slug ?? '')}}"
-                                            required />
-                                        </div>
+                                      <div class="col-6">
+                                        <label for="inputSlug" class="col-form-label form-label text-start d-block">Button Link</label>
+                                        <input type="text" id="inputSlug" name="slug" class="form-control form-control-lg form-input" placeholder="Enter Link..." value="{{old('slug' , $industry->slug ?? '')}}" required />
                                       </div>
-                                      <!-- Button Link input end here  -->
-                                    </div>
-                                    <!-- Button Link area end here  -->
+                                      </div>
 
-                                    <!-- image  -->
-                                    {{-- <div
-                                      class="row form-group g-3 align-items-center mt-3">
-                                      <!-- upload banner input area start here  -->
-                                      <div class="col-12">
-                                        <div
-                                          class="form-group mb-20 upload-input">
-                                          <label
-                                            for="ImgUpload"
-                                            class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4 position-relative">
-                                            <img
-                                              src="../assets/img/health_care.jpg"
-                                              class="img-fluid rounded-4"
-                                              width="80%"
-                                              alt="upload image" />
-                                            <!-- close button start here  -->
-                                            <button
-                                              type="button"
-                                              data-bs-dismiss="modal"
-                                              class="btn-close position-absolute top-0 end-0 p-2"
-                                              aria-label="Close"></button>
-                                          </label>
-                                        </div>
-                                      </div>
-                                      <!-- upload banner input area end here  -->
-                                    </div> --}}
-
-                                    <div class="row form-group">
-                                      <div class="col-12 col-md-3">
-                                        <label for="inputThumbnailImage" class="col-form-label form-label d-flex justify-content-left justify-content-md-center"> Image</label>
-                                      </div>
-                                      <div class="col-12 col-md-8 mt-0">
-                                        <div class="form-group mb-20 upload-input">
-                                          <label for="thumbnailImg" class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4">
-                                            <div class="d-flex flex-column align-items-center gap-3">
+                                      <div class="row form-group g-3">
+                                      <div class="col-6">
+                                        <label for="inputThumbnailImage" class="col-form-label form-label d-flex ">Image</label>
+                                        <div class="form-group upload-input">
+                                          <label for="thumbnailImg-{{$industry->id}}" class="form-label form-img-uploader rounded-2 d-flex align-items-center justify-content-center w-100 py-2">
+                                            <div class="d-flex flex-column align-items-center">
                                               <span>
                                                 <!-- Optionally, an SVG icon or placeholder icon can go here -->
                                               </span>
-                                              <p id="thumbnailText" class="mb-0">Upload Image</p>
+                                              <p id="thumbnailText-{{$industry->id}}" class="mb-0" style="display: none;">Upload Image</p>
+                                            </div>
+                                            <div id="thumbnailPreview-{{$industry->id}}" class="mt-1">
+                                              <img id="previewThumbnailImg-{{$industry->id}}" src="{{ isset($industry) ? asset('storage/app/public/industry/' . $industry->image) : '' }}" alt="Thumbnail Image Preview" style="display: {{ isset($industry) ? 'block' : 'none' }}; width: 100%; max-width: 400px; height:279px; border-radius: 8px;" />
                                             </div>
                                           </label>
-                                          <input type="file" name="image" class="form-control form-control-lg " id="thumbnailImg" onchange="previewThumbnailImage(event)" />
-                                        </div>
-
-                                        <!-- Thumbnail Image Preview -->
-                                        <div id="thumbnailPreview" class="mt-3">
-                                          <img id="previewThumbnailImg" src="{{ isset($industry) ? asset('storage/app/public/industry/' . $industry->image) : '' }}" alt="Thumbnail Image Preview" style="display: {{ isset($industry) ? 'block' : 'none' }}; width: 100%; max-width: 200px; border-radius: 8px;" />
+                                          <input type="file" name="image" class="form-control form-control-lg d-none" id="thumbnailImg-{{$industry->id}}" onchange="previewThumbnailImage(event , {{$industry->id}})" />
                                         </div>
                                       </div>
                                     </div>
 
-                                    <!-- cancel and submit button  -->
-                                    <div class="my-3">
-                                      <button
-                                        type="button"
-                                        class="btn btn-secondary cancel_modal"
-                                        data-bs-dismiss="modal">
-                                        Close
-                                      </button>
-                                      <button type="submit" class="btn form-btn my-0">Update</button>
+                                    <!-- Cancel and Submit buttons -->
+                                    <div class="row">
+                                      <div class="col-4 col-md-3"></div>
+                                      <div class="col-12 col-md-9 form-button">
+                                        <button type="button" class="btn btn-secondary cancel_modal my-3" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn form-btn my-0">Update</button>
+                                      </div>
                                     </div>
                                   </form>
                                 </div>
@@ -366,6 +245,7 @@
                             </div>
                           </div>
                         </div>
+
                         <!-- Edit modal end here  -->
 
                         <!-- Industry delete button start here  -->
@@ -1104,8 +984,8 @@
   <!-- main data end here  -->
 </div>
 <script>
-  function previewThumbnailImage(event) {
-    const preview = document.getElementById('previewThumbnailImg');
+  function previewThumbnailImage(event, industryId) {
+    const preview = document.getElementById('previewThumbnailImg-' + industryId);
     const file = event.target.files[0];
     const reader = new FileReader();
 
@@ -1114,7 +994,7 @@
       preview.style.display = 'block';
 
       // Hide the placeholder text and icon, and display the image
-      document.getElementById('thumbnailText').style.display = 'none';
+      document.getElementById('thumbnailText-' + industryId).style.display = 'none';
     };
     reader.readAsDataURL(file);
   }

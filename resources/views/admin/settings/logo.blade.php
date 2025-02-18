@@ -39,6 +39,22 @@
             </div>
             @endif
 
+            @if ($errors->any())
+            <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex flex-column">
+                        <!-- <strong class="me-2">Error:</strong> -->
+                        <ul class="mb-0 ps-3">
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+            @endif
+
             <div class="container-fluid">
                 <!-- Card start -->
                 <div class="card">
@@ -105,8 +121,8 @@
                             <div class="row">
                                 <div class="col-4 col-md-3"></div>
                                 <div class="col-12 col-md-9 form-button">
-                                    <a href="" role="button" class="btn form-cancel my-0">Cancel</a>
-                                    <button type="submit" class="btn form-btn my-0">Save</button>
+                                    <button type="button" class="btn btn-secondary cancel_modal my-3" data-bs-dismiss="modal">Cancel</button>
+                                    <button type="submit" class="btn form-btn my-0">Update</button>
                                 </div>
                             </div>
                         </form>
@@ -128,8 +144,8 @@
             reader.onload = function() {
                 preview.src = reader.result;
                 preview.style.display = 'block';
-                document.getElementById('adminText').style.display = 'none'; 
-                document.getElementById('adminIcon').style.display = 'none'; 
+                document.getElementById('adminText').style.display = 'none';
+                document.getElementById('adminIcon').style.display = 'none';
             };
             reader.readAsDataURL(file);
         }

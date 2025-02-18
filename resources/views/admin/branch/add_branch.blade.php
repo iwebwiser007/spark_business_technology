@@ -64,185 +64,134 @@
             <form class="upload-form" action="{{route('admin.branchStore')}}" method="POST" enctype="multipart/form-data" data-parsley-validate>
               @csrf
               <!-- title area start here  -->
-              <div class="row form-group mt-1 mt-md-2">
+              <div class="row">
                 <!-- title label start here  -->
-                <div class="col-12 col-md-3">
-                  <label
-                    for="inputBranchTitle"
-                    class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Branch Title
-                  </label>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label
+                      for="inputBranchTitle"
+                      class="col-form-label form-label">Branch Title
+                    </label>
+                    <input
+                      type="text"
+                      id="inputBranchTitle"
+                      name="title"
+                      class="form-control form-input"
+                      placeholder="Enter Title..."
+                      data-parsley-required="true" />
+                  </div>
                 </div>
-                <!-- title label end here  -->
 
-                <!-- title input start here  -->
-                <div class="col-12 col-md-8 mt-0">
-                  <input
-                    type="text"
-                    id="inputBranchTitle"
-                    name="title"
-                    class="form-control form-control-lg form-input"
-                    placeholder="Enter Title..."
-                    data-parsley-required="true" />
-                </div>
-                <!-- title input end here  -->
-                <div class="col-1"></div>
-              </div>
-              <!-- title area end here  -->
 
-              <!-- Address area start here  -->
-              <div class="row form-group">
+                <!-- Address area start here  -->
                 <!-- Address label start here  -->
-                <div class="col-12 col-md-3">
-                  <label
-                    for="inputAddress"
-                    class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Address
-                  </label>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label
+                      for="inputAddress"
+                      class="col-form-label form-label">Address
+                    </label>
+                    <input
+                      type="text"
+                      id="inputAddress"
+                      name="address"
+                      class="form-control form-input"
+                      placeholder="Enter Address..."
+                      data-parsley-required="true" />
+                  </div>
                 </div>
-                <!-- Address label end here  -->
 
-                <!-- Address input start here  -->
-                <div class="col-12 col-md-8 mt-0">
-                  <input
-                    type="text"
-                    id="inputAddress"
-                    name="address"
-                    class="form-control form-control-lg form-input"
-                    placeholder="Enter Address..."
-                    data-parsley-required="true" />
-                </div>
-                <!-- Address input end here  -->
-                <div class="col-1"></div>
-              </div>
-              <!-- Address area end here  -->
-
-              <!-- City area start here  -->
-              <div class="row form-group">
+                <!-- City area start here  -->
                 <!-- City label start here  -->
-                <div class="col-12 col-md-3">
-                  <label
-                    for="inputCity"
-                    class="col-form-label form-label d-flex justify-content-left justify-content-md-center">City
-                  </label>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label
+                      for="inputCity"
+                      class="col-form-label form-label">City
+                    </label>
+                    <input
+                      type="text"
+                      id="inputCity"
+                      name="city"
+                      class="form-control form-input"
+                      placeholder="Enter City..."
+                      data-parsley-required="true" />
+                  </div>
                 </div>
-                <!-- City label end here  -->
+                <!-- City area end here  -->
 
-                <!-- City input start here  -->
-                <div class="col-12 col-md-8 mt-0">
-                  <input
-                    type="text"
-                    id="inputCity"
-                    name="city"
-                    class="form-control form-control-lg form-input"
-                    placeholder="Enter City..."
-                    data-parsley-required="true" />
-                </div>
-                <!-- City input end here  -->
-                <div class="col-1"></div>
-              </div>
-              <!-- City area end here  -->
-
-              <!-- State area start here  -->
-              <div class="row form-group">
+                <!-- State area start here  -->
                 <!-- State label start here  -->
-                <div class="col-12 col-md-3">
-                  <label
-                    for="inputState"
-                    class="col-form-label form-label d-flex justify-content-left justify-content-md-center">State
-                  </label>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label
+                      for="inputState"
+                      class="col-form-label form-label">State
+                    </label>
+                    <input
+                      type="text"
+                      id="inputState"
+                      name="state"
+                      class="form-control form-input"
+                      placeholder="Enter State/Province..."
+                      data-parsley-required="true" />
+                  </div>
                 </div>
-                <!-- State label end here  -->
+                <!-- State area end here  -->
 
-                <!-- State input start here  -->
-                <div class="col-12 col-md-8 mt-0">
-                  <input
-                    type="text"
-                    id="inputState"
-                    name="state"
-                    class="form-control form-control-lg form-input"
-                    placeholder="Enter State/Province..."
-                    data-parsley-required="true" />
-                </div>
-                <!-- State input end here  -->
-                <div class="col-1"></div>
-              </div>
-              <!-- State area end here  -->
-
-              <!-- Zip-code area start here  -->
-              <div class="row form-group">
+                <!-- Zip-code area start here  -->
                 <!-- Zip-code label start here  -->
-                <div class="col-12 col-md-3">
-                  <label
-                    for="inputZip"
-                    class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Zip-Code
-                  </label>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label
+                      for="inputZip"
+                      class="col-form-label form-label">Zip-Code
+                    </label>
+                    <input
+                      type="number"
+                      id="inputZip"
+                      name="zip_code"
+                      class="form-control form-input"
+                      placeholder="Enter zip-code..."
+                      data-parsley-required="true" />
+                  </div>
                 </div>
-                <!-- Zip-code label end here  -->
+                <!-- Zip-code area end here  -->
 
-                <!-- Zip-code input start here  -->
-                <div class="col-12 col-md-8 mt-0">
-                  <input
-                    type="number"
-                    id="inputZip"
-                    name="zip_code"
-                    class="form-control form-control-lg form-input"
-                    placeholder="Enter zip-code..."
-                    data-parsley-required="true" />
-                </div>
-                <!-- Zip-code input end here  -->
-                <div class="col-1"></div>
-              </div>
-              <!-- Zip-code area end here  -->
-
-              <!-- Country area start here  -->
-              <div class="row form-group">
-                <div class="col-12 col-md-3">
-                  <label
-                    for="inputCountryDescription"
-                    class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Country/region</label>
-                </div>
-                <div class="col-12 col-md-8 mt-0">
-                  <select
-                    id="country"
-                    name="country"
-                    class="form-control form-control-lg form-input" data-parsley-required="true">
-                    <option value="" disabled selected >Select Country</option>
-                    @foreach ($countries as $country)
-                    <option value="{{ $country->country_name }}">{{ $country->country_name }}</option>
-                    @endforeach
-                  </select>
+                <!-- Country area start here  -->
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label
+                      for="inputCountryDescription"
+                      class="col-form-label form-label">Country/region</label>
+                    <select
+                      id="country"
+                      name="country"
+                      class="form-control form-input" data-parsley-required="true">
+                      <option value="" disabled selected>Select Country</option>
+                      @foreach ($countries as $country)
+                      <option value="{{ $country->country_name }}">{{ $country->country_name }}</option>
+                      @endforeach
+                    </select>
+                  </div>
                 </div>
 
-                <!-- Country description textarea box end here  -->
-                <div class="col-1"></div>
-              </div>
 
-
-           
-
-              <!-- Page Select area start here  -->
-              <div class="row form-group">
-                <!-- Page Select label start here  -->
-                <div class="col-12 col-md-3">
-                  <label
-                    for="pageSelect"
-                    class="col-form-label form-label d-flex justify-content-left justify-content-md-center" >Page Select</label>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label
+                      for="pageSelect"
+                      class="col-form-label form-label">Page Select</label>
+                    <select
+                      id="pageSelect"
+                      name="pageSelect"
+                      class="form-control form-input" data-parsley-required="true">
+                      <option value="" disabled selected>Select Page</option>
+                      <option value="Global">Global</option>
+                      <option value="Local">Local</option>
+                    </select>
+                  </div>
                 </div>
-                <!-- Page Select label end here  -->
-
-                <!-- Page Select select start here  -->
-                <div class="col-12 col-md-8 mt-0">
-                  <select
-                  id="pageSelect"
-                    name="pageSelect"
-                    class="form-control form-control-lg form-input" data-parsley-required="true">
-                    <option value="" disabled selected >Select Page</option>
-                    <option value="Global">Global</option>
-                    <option value="Local">Local</option>
-                  </select>
-                </div>
-
-                <!-- Page Select select end here  -->
-                <div class="col-1"></div>
               </div>
               <!-- Page Select area end here  -->
 

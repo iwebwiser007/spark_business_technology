@@ -17,3 +17,58 @@
 @import "./common/login.scss";
 @import "./common/modal";
 @import "./common/badge";
+
+
+.pagination .page-item.active .page-link {
+    color: white;
+}
+
+.pagination .page-item .page-link {
+    font-size: 0.800rem;
+
+}
+
+/* Reduce margin-bottom for inputs and textareas */
+.form-group {
+    margin-bottom: 10px !important;
+    /* You can adjust the value */
+}
+
+.form-control {
+    margin-bottom: 5px;
+    /* Reduce bottom margin of form fields */
+    padding: 10px;
+    /* Adjust padding if needed */
+}
+
+textarea.form-control {
+    margin-bottom: 10px;
+    /* Adjust bottom margin for textarea */
+}
+
+/* Adjust button margins too */
+.form-button .btn {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.upload-form {
+    .form-group {
+        margin: 1rem 0;
+    }
+}
+
+
+  .parsley-errors-list {
+    list-style: none;
+    color: #cd4444;
+  }
+
+
+  #searchInput {
+    width: 220px;  /* Fixed width */
+    margin-left: 720px;   /* No margin on the left */
+  }
+  
+
+ 

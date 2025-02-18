@@ -17,7 +17,7 @@ class BlogController extends Controller
         $search = $request->get('search', '');
         $blogs = Blog::query()->when($search, function ($query) use ($search) {
             $query->where('title', 'like', '%' . $search . '%');
-        })->paginate($perPage);
+        })->orderby('id' , 'desc')->paginate($perPage);
         return view('admin.blog.blog_list', compact('blogs', 'perPage'));
     }
 
@@ -31,6 +31,12 @@ class BlogController extends Controller
 
     public function blogStore(Request $request)
     {
+        $validated = $request->validate([
+            'link' => 'unique:blogs,slug',  
+            'thumbnail_image' => 'mimes:jpeg,jpg,png,gif,webp',  
+            'banner_image' => 'mimes:jpeg,jpg,png,gif,webp',  
+
+        ]);
 
         if ($request->hasFile('thumbnail_image')) {
             $thumbnail = $request->file('thumbnail_image');
@@ -86,45 +92,60 @@ class BlogController extends Controller
 
     public function update(Request $request, $id)
     {
+        $validated = $request->validate([
+            'slug' => 'unique:blogs,slug,' . $id,  
+            'thumbnail_image' => 'mimes:jpeg,jpg,png,gif,webp',  
+            'banner_image' => 'mimes:jpeg,jpg,png,gif,webp',  
+            'meta_tags' => 'required|string',
+        ]);
         // Find the blog post
         $blog = Blog::find($id);
 
-        // Validate incoming request
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'slug' => 'required|string|unique:blogs,slug,' . $id,
-            'meta_tags' => 'required|string',
-        ]);
-
         // Handle image upload if new thumbnail image is provided
         if ($request->hasFile('thumbnail_image')) {
+            $thumbnailImage = $request->file('thumbnail_image');
+            $image = Image::make($thumbnailImage);
+            $width = $image->width();
+            $height = $image->height();
+            if ($width < 360 || $height < 268) {
+                return back()->with(['error_message' => 'Thumbnail image must be at least 360x268 pixels.']);
+            }
+
             // Delete old thumbnail image if exists
             if ($blog->thumbnail_image && file_exists(storage_path('app/public/images/thumbnails/' . $blog->thumbnail_image))) {
                 unlink(storage_path('app/public/images/thumbnails/' . $blog->thumbnail_image));
             }
 
+
             // Resize and store new thumbnail image
-            $thumbnailImage = $request->file('thumbnail_image');
-            $thumbnailResized = Image::make($thumbnailImage)->resize(360, 268); // Resize to the same size as store
+            $image->resize(360, 268);
             $thumbnailImageName = time() . '_thumbnail.' . $thumbnailImage->getClientOriginalExtension();
-            $thumbnailResized->save(storage_path('app/public/images/thumbnails/' . $thumbnailImageName));
+            $image->save(storage_path('app/public/images/thumbnails/' . $thumbnailImageName));
 
             $blog->thumbnail_image = $thumbnailImageName;
         }
 
+
+
         // Handle image upload if new banner image is provided
         if ($request->hasFile('banner_image')) {
+            $bannerImage = $request->file('banner_image');
+            $image = Image::make($bannerImage);
+            $width = $image->width();
+            $height = $image->height();
+            if ($width < 1020 || $height < 496) {
+                return back()->with(['error_message' => 'Banner image must be at least 1020x496 pixels.']);
+            }
+
             // Delete old banner image if exists
             if ($blog->banner_image && file_exists(storage_path('app/public/images/banners/' . $blog->banner_image))) {
                 unlink(storage_path('app/public/images/banners/' . $blog->banner_image));
             }
 
             // Resize and store new banner image
-            $bannerImage = $request->file('banner_image');
-            $bannerResized = Image::make($bannerImage)->resize(1020, 496); // Resize to the same size as store
+            $image->resize(1020, 496);
             $bannerImageName = time() . '_banner.' . $bannerImage->getClientOriginalExtension();
-            $bannerResized->save(storage_path('app/public/images/banners/' . $bannerImageName));
+            $image->save(storage_path('app/public/images/banners/' . $bannerImageName));
 
             $blog->banner_image = $bannerImageName;
         }

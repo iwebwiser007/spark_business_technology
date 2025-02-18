@@ -28,6 +28,24 @@
       </div>
       @endif
 
+      @if ($errors->any())
+      <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex flex-column">
+            <!-- <strong class="me-2">Error:</strong> -->
+            <ul class="mb-0 ps-3">
+              @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      </div>
+      @endif
+
+
+
       <div class="container-fluid">
         <div class="card">
           <div class="card-header">
@@ -57,32 +75,33 @@
             </form> -->
 
             <form method="GET" action="{{ route('admin.headerList') }}" class="data-form">
-              <div class="form-group gap-2">
-                <select name="perPage" id="perPage" onchange="updatePagination()">
-                  <option value="10" {{ $perPage == 10 ? 'selected' : '' }}>Show 10</option>
-                  <option value="20" {{ $perPage == 20 ? 'selected' : '' }}>Show 20</option>
-                  <option value="50" {{ $perPage == 50 ? 'selected' : '' }}>Show 50</option>
-                  <option value="100" {{ $perPage == 100 ? 'selected' : '' }}>Show 100</option>
-                </select>
-                <span>
-                  <input
-                    type="search"
-                    name="search"
-                    id="searchInput"
-                    class="form-control form-control-sm"
-                    placeholder="Search by title..."
-                    value="{{ request()->query('search') }}" />
-                </span>
-                <button type="submit" class="btn btn-primary">Search</button>
-              </div>
-            </form>
+  <div class="form-group d-flex align-items-center">
+    <select name="perPage" id="perPage" onchange="updatePagination()" class="me-2">
+      <option value="10" {{ $perPage == 10 ? 'selected' : '' }}>Show 10</option>
+      <option value="20" {{ $perPage == 20 ? 'selected' : '' }}>Show 20</option>
+      <option value="50" {{ $perPage == 50 ? 'selected' : '' }}>Show 50</option>
+      <option value="100" {{ $perPage == 100 ? 'selected' : '' }}>Show 100</option>
+    </select>
+    
+    <input
+      type="search"
+      name="search"
+      id="searchInput"
+      class="form-control form-control-sm me-3"
+      placeholder="Search by title..."
+      value="{{ request()->query('search') }}" />
+      
+    <button type="submit" class="btn sub_btn mb-2">Search</button>
+  </div>
+</form>
+
 
 
 
 
 
             <div class="table-content table-responsive">
-              <table class="table table-hover">
+              <table class="table ">
                 <thead>
                   <tr>
                     <th scope="col">Title</th>

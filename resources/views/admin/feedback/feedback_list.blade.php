@@ -57,7 +57,7 @@
           <div class="card-body">
             <!-- form start here  -->
             <form method="GET" action="{{ route('admin.feedbackList') }}" class="data-form">
-              <div class="form-group gap-2">
+              <div class="form-group d-flex align-items-center">
                 <select name="perPage" id="perPage" onchange="updatePagination()">
                   <option value="10" {{ $perPage == 10 ? 'selected' : '' }}>Show 10</option>
                   <option value="20" {{ $perPage == 20 ? 'selected' : '' }}>Show 20</option>
@@ -69,11 +69,11 @@
                     type="search"
                     name="search"
                     id="searchInput"
-                    class="form-control form-control-sm"
+                    class="form-control form-control-sm me-3"
                     placeholder="Search by title..."
                     value="{{ request()->query('search') }}" />
                 </span>
-                <button type="submit" class="btn btn-primary">Search</button>
+                <button type="submit" class="btn sub_btn mb-2">Search</button>
               </div>
             </form>
 
@@ -111,7 +111,7 @@
                     <!-- feedback-1 title end here  -->
 
                     <!-- feedback-1 Description start here  -->
-                    <td class="banner_desc">
+                    <td class="">
                       <p class="desc text-truncate">
                         {{$feedback->description}}
                       </p>
@@ -146,160 +146,79 @@
                         <!-- feedback edit button end here  -->
 
                         <!-- Edit Modal start here  -->
-                        <div
-                          class="modal fade"
-                          id="editModal-{{$feedback->id}}"
-                          tabindex="-1"
-                          aria-labelledby="exampleModalLabel"
-                          aria-hidden="true">
-                          <div
-                            class="modal-dialog modal-dialog-centered">
+                        <div class="modal fade" id="editModal-{{$feedback->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-lg modal-dialog-centered">
                             <div class="modal-content">
                               <div class="modal-header">
-                                <h1
-                                  class="modal-title"
-                                  id="exampleModalLabel">
-                                  Edit Feedback-{{$feedback->id}}
-                                </h1>
-                                <button
-                                  type="button"
-                                  class="btn-close"
-                                  data-bs-dismiss="modal"
-                                  aria-label="Close"></button>
+                                <h1 class="modal-title" id="exampleModalLabel">Edit Feedback-{{$feedback->id}}</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                               </div>
 
                               <div class="modal-body">
                                 <div class="container">
 
-                                  <form class="upload-form" action="{{route('admin.feedbackUpdate', $feedback->id)}}"
-                                    method="POST">
+                                  <form class="upload-form" action="{{route('admin.feedbackUpdate', $feedback->id)}}" method="POST">
                                     @csrf
-                                    <div
-                                      class="row form-group g-3 align-items-center">
-                                      <!-- title label start here  -->
-                                      <div class="col-3">
-                                        <label
-                                          for="inputTitle"
-                                          class="col-form-label form-label">Feedback Title
-                                        </label>
-                                      </div>
-                                      <!-- title label end here  -->
 
-                                      <!-- title input start here  -->
-                                      <div class="col-9">
-                                        <div class="mb-3 mt-3">
-                                          <input
-                                            type="text"
-                                            id="inputTitle"
-                                            name="title"
-                                            class="form-control form-control-lg form-input"
-                                            placeholder="Enter Title..."
-                                            value="{{old('title' , $feedback->title ?? '')}}"
-                                            required />
-                                        </div>
-                                      </div>
-                                      <!-- title input end here  -->
-                                      <!-- <div class="col-2"></div> -->
-                                    </div>
-
-                                    <div
-                                      class="row form-group g-3 align-items-center">
-                                      <!-- banner description label start here  -->
-                                      <div
-                                        class="col-3 d-flex justify-content-center">
-                                        <label
-                                          for="inputDescription"
-                                          class="col-form-label form-label text-break">Description</label>
-                                      </div>
-                                      <!-- banner description label end here  -->
-
-                                      <!-- banner description textarea box start here  -->
-                                      <div class="col-9">
-                                        <div class="form-floating">
-                                          <textarea
-                                            class="form-control form-control-lg form-textbox"
-                                            id="inputDescription"
-                                            name="description"
-                                            rows="4"
-                                            cols="30"
-                                            placeholder="write your description here..." required>{{old('description' , $feedback->description ?? '')}}</textarea>
-                                        </div>
+                                    <!-- Title and Page Select in One Row -->
+                                    <div class="row form-group g-4">
+                                      <!-- Feedback Title -->
+                                      <div class="col-md-6">
+                                        <label for="inputTitle" class="form-label text-start d-block">Feedback Title</label>
+                                        <input type="text" id="inputTitle" name="title" class="form-control form-input" placeholder="Enter Title..." value="{{old('title', $feedback->title ?? '')}}" required />
                                       </div>
 
-                                      <!-- banner description textarea box end here  -->
-                                    </div>
-
-                                    <div class="row form-group g-3 align-items-center mt-3">
-                                      <!-- button link label start here -->
-                                      <div class="col-3 d-flex justify-content-center align-items-center">
-                                        <label for="btnLink" class="col-form-label form-label">Page Select</label>
-                                      </div>
-                                      <!-- button link label end here -->
-
-                                      <!-- button link input start here -->
-                                      <div class="col-9">
-                                        <select name="pageSelect" class="form-control form-control-lg form-input" id="pageSelect" required>
+                                      <!-- Page Select -->
+                                      <div class="col-md-6">
+                                        <label for="btnLink" class="form-label text-start d-block">Page Select</label>
+                                        <select name="pageSelect" class="form-control form-input" id="pageSelect" required>
                                           <option value="">Select Page</option>
                                           @foreach ($headers as $header)
-                                          <option value="{{ $header->title }}"
-                                            {{ old('pageSelect', $feedback->page ?? '') == $header->title ? 'selected' : '' }}>
+                                          <option value="{{ $header->title }}" {{ old('pageSelect', $feedback->page ?? '') == $header->title ? 'selected' : '' }}>
                                             {{ $header->title }}
                                           </option>
                                           @endforeach
                                         </select>
-
-                                       
                                       </div>
-                                      <!-- button link input end here -->
                                     </div>
 
+                                    <!-- Description -->
+                                    <div class="row form-group g-4 mt-3">
+                                      <div class="col-md-6">
+                                        <label for="inputDescription" class="form-label text-start d-block">Description</label>
+                                        <textarea class="form-control form-textbox" id="inputDescription" name="description" rows="4" placeholder="Write your description here..." required>{{old('description', $feedback->description ?? '')}}</textarea>
+                                      </div>
 
-
-
-
-
-                                    <!-- image  -->
-                                    <div
-                                      class="row form-group g-3 align-items-center mt-3">
-                                      <!-- upload banner input area start here  -->
-                                      <div class="col-12">
-                                        <div
-                                          class="form-group mb-20 upload-input">
-                                          <label
-                                            for="ImgUpload"
-                                            class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4 position-relative">
-                                            <img
-                                              src="{{ asset('storage/app/public/feedbacks/' . $feedback->image) }}"
-                                              class="img-fluid rounded-4"
-                                              width="70%"
-                                              alt="upload image" />
-                                            <!-- close button start here  -->
-                                            <!-- <button
-                                              type="button"
-                                              data-bs-dismiss="modal"
-                                              class="btn-close position-absolute top-0 end-0 p-2"
-                                              aria-label="Close"></button> -->
-                                          </label>
+                                    <!-- Image Upload -->
+                                      <div class="col-md-6">
+                                        <label for="image" class="form-label text-start d-block">Image</label>
+                                        <div class="form-group mb-20 upload-input">
+                                          <div class=" p-3 rounded-4">
+                                            <label for="ImgUpload" class="form-label form-img-uploader d-flex align-items-center justify-content-center w-100 position-relative">
+                                              <!-- Image Display -->
+                                              <img src="{{ asset('storage/app/public/feedbacks/' . $feedback->image) }}" class="img-fluid rounded-4" id="image" width="100%" alt="upload image" />
+                                            </label>
+                                          </div>
                                         </div>
                                       </div>
-                                      <!-- upload banner input area end here  -->
                                     </div>
 
-                                    <div class="my-3">
-                                      <button
-                                        type="button"
-                                        class="btn btn-secondary cancel_modal"
-                                        data-bs-dismiss="modal">
-                                        Close
-                                      </button>
-                                      <button type="submit" class="btn form-btn my-0">Update</button>
+                                    <div class="row">
+                                      <div class="col-4 col-md-3"></div>
+                                      <div class="col-12 col-md-9 form-button">
+                                        <button type="button" class="btn btn-secondary cancel_modal my-3" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn form-btn my-0">Update</button>
+                                      </div>
                                     </div>
+
                                   </form>
                                 </div>
                               </div>
                             </div>
                           </div>
                         </div>
+
+
                         <!-- Edit modal end here  -->
 
                         <!-- feedback delete button start here  -->

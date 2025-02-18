@@ -124,6 +124,12 @@ class AdminController extends Controller
     }
 
     public function updateLogo(Request $request) {
+
+        $validated = $request->validate([
+            'admin_logo' => 'mimes:jpeg,jpg,png,gif,webp',  
+            'front_logo' => 'mimes:jpeg,jpg,png,gif,webp',  
+        ]);
+
         $logo = Logo::first(); // Assuming you are only dealing with one logo record
     
         // Check and process the admin logo
@@ -156,6 +162,9 @@ class AdminController extends Controller
         return redirect()->back()->with('success_message', 'Logo Updated successfully!');
     }
     
+    public function newPassword(){
+        return view('admin.new_pass');
+    }
 }
 
 

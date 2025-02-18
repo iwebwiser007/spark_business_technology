@@ -116,7 +116,7 @@
                                       class="col-12 d-flex justify-content-start"
                                     >
                                       <a
-                                        href="new_pass.html"
+                                        href="{{route('newPassword')}}"
                                         role="button"
                                         class="btn btn-signin btn-block"
                                         >Reset Password</a

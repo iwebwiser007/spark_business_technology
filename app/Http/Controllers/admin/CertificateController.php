@@ -15,7 +15,7 @@ class CertificateController extends Controller
         $search = $request->get('search' , '');
         $certificates = Certificate::query() ->when($search, function ($query) use ($search) {
             $query->where('title', 'like', '%' . $search . '%');
-        })->paginate($perPage);
+        })->orderby('id' , 'desc')->paginate($perPage);
         return view('admin.certificate.certificate_list' , compact('certificates' , 'perPage'));
     }
 
@@ -26,6 +26,11 @@ class CertificateController extends Controller
 
 
     public function store(Request $request){
+
+        $validated = $request->validate([
+            'image' => 'mimes:jpeg,jpg,png,gif,webp',  
+        ]);
+
         if ($request->hasFile('image')) {
             $image = $request->file('image');
 
@@ -46,6 +51,7 @@ class CertificateController extends Controller
     }
 
     public function update(Request $request , $id){
+      
         $certificate = Certificate::find($id);
         $certificate->title = $request->title;
         $certificate->save();

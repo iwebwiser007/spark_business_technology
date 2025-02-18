@@ -17,7 +17,7 @@ class HeaderController extends Controller
         $headers = Header::query()
         ->when($search, function ($query) use ($search) {
             $query->where('title', 'like', '%' . $search . '%');
-        })
+        })->orderBy('id', 'desc')
         ->paginate($perPage);
         $totalHeaders = Header::count();
         return view('admin.header.header_list' , compact('headers' , 'totalHeaders' , 'perPage'));
@@ -31,7 +31,10 @@ class HeaderController extends Controller
 
     public function store(Request $request)
     {
-      
+        $validated = $request->validate([
+            'link' => 'unique:headings,link',  
+        ]);
+
         $header = Header::create([
             'title' => $request->title,
             'link' => $request->link,
@@ -51,6 +54,9 @@ class HeaderController extends Controller
 
     public function update(Request $request , $id){
 
+        $validated = $request->validate([
+            'link' => 'unique:headings,link,' . $id,  // Ignore the current record's link during validation
+        ]);
         $header = Header::find($id);
         $header->title = $request->title;
         $header->link = $request->link;

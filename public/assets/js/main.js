@@ -620,3 +620,15 @@ document
       .getElementById("main-right-container")
       .classList.toggle("main-right-container-active");
   });
+
+
+
+
+
+
+
+
+
+
+
+  

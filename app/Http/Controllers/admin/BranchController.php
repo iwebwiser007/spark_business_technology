@@ -15,7 +15,7 @@ class BranchController extends Controller
         $search = $request->get('search' , '');
         $branches = Branch::query() ->when($search, function ($query) use ($search) {
             $query->where('title', 'like', '%' . $search . '%');
-        })->paginate($perPage);
+        })->orderby('id' , 'desc')->paginate($perPage);
         $countries = Country::all();
         return view('admin.branch.branch_list' , compact('branches' , 'perPage' , 'countries'));
     }

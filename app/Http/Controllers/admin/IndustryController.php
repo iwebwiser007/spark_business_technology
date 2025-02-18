@@ -16,7 +16,7 @@ class IndustryController extends Controller
         $search = $request->get('search' , '');
         $industries = Industry::query()->when($search, function ($query) use ($search) {
             $query->where('title', 'like', '%' . $search . '%');
-        })->paginate($perPage);
+        })->orderby('id' , 'desc')->paginate($perPage);
         return view('admin.industry.industry_list', compact('industries' , 'perPage'));
     }
 
@@ -27,6 +27,13 @@ class IndustryController extends Controller
 
     public function store(Request $request)
     {
+
+        $validated = $request->validate([
+            'slug' => 'unique:industries,slug',  
+            'upload_img' => 'mimes:jpeg,jpg,png,gif,webp',  
+
+        ]);
+
         if ($request->hasFile('upload_img')) {
             $industryImg = $request->file('upload_img');
             $imgName = time() . '_' . $industryImg->getClientOriginalName(); // Unique name
@@ -49,6 +56,13 @@ class IndustryController extends Controller
 
     public function update(Request $request, $id)
     {
+        
+        $validated = $request->validate([
+            'slug' => 'unique:industries,slug,' . $id,  
+            'image' => 'mimes:jpeg,jpg,png,gif,webp',  
+
+        ]);
+
         $industry = Industry::find($id);
         if ($request->hasFile('image')) {
             // Delete the old image if it exists

@@ -61,9 +61,9 @@
                         <!-- form end here  -->
 
                         <!-- table content start here  -->
-                        <div class="table-content table-responsive">
-                          <table class="table table-hover">
-                            <thead>
+                        <div class="table-content table-responsive ">
+                          <table class="table   table-bordered align-middle ">
+                            <thead class="table-light">
                               <tr>
                                 <th scope="col">Image</th>
                                 <th scope="col">Title</th>
@@ -500,7 +500,7 @@
 
                       <!-- card footer start here  -->
                       <div class="card-footer">
-                        <p>Showing 1 to 10 of xyz entries</p>
+                        <p>Showing 1 - 5 of 5 entries</p>
 
                         <div class="pagination-div">
                           <nav aria-label="Page navigation example">
@@ -517,18 +517,20 @@
                               <li class="page-item">
                                 <a class="page-link" href="#">1</a>
                               </li>
-                              <li class="page-item">
+                              <!-- <li class="page-item">
                                 <a class="page-link" href="#">2</a>
                               </li>
                               <li class="page-item">
                                 <a class="page-link" href="#">3</a>
-                              </li>
+                              </li> -->
                               <li class="page-item">
                                 <a class="page-link" href="#" aria-label="Next">
                                   <span aria-hidden="true">&raquo;</span>
                                 </a>
                               </li>
-                            </ul>
+                            </ul> 
+
+
                           </nav>
                         </div>
                       </div>

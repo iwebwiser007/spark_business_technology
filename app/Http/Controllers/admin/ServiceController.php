@@ -14,7 +14,7 @@ class ServiceController extends Controller
         $search = $request->get('search' , '');
         $services = Service::query() ->when($search, function ($query) use ($search) {
             $query->where('title', 'like', '%' . $search . '%');
-        })->paginate($perPage);
+        })->orderby('id' , 'desc')->paginate($perPage);
         return view('admin.service.service_list', compact('services' , 'perPage'));
     }
 
@@ -25,6 +25,9 @@ class ServiceController extends Controller
 
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'link' => 'unique:services,link',  
+        ]);
 
         $metaTags = json_decode($request->meta_tags, true);
 
@@ -44,6 +47,10 @@ class ServiceController extends Controller
 
     public function update(Request $request, $id)
     {
+        $validated = $request->validate([
+            'link' => 'unique:services,link,' . $id,  
+        ]);
+
         $service = Service::find($id);
         $metaTags = json_decode($request->meta_tags, true);
 

@@ -47,6 +47,7 @@ Route::match(['get', 'post'], '/admin/registration', [AdminController::class, 'r
 Route::match(['get', 'post'], '/admin/login', [AdminController::class, 'login'])->name('login');
 Route::get('/admin/logout', [AdminController::class, 'logout'])->name('logout');
 Route::get('/admin/forget-password',  [AdminController::class, 'forgetPassword'])->name('forgetPassword');
+Route::get('/admin/new-password',  [AdminController::class, 'newPassword'])->name('newPassword');
 
 Route::middleware(['admin.auth'])->prefix('admin')->namespace('App\Http\Controllers\admin')->group(function () {
     Route::get('dashboard', 'AdminController@dashboard')->name('dashboard');

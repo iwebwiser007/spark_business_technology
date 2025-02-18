@@ -13,6 +13,27 @@
       /* Change error text color to red */
     }
 
+    .eyebtn {
+    position: absolute;
+    cursor: pointer;
+    top: 50%;
+    right: 40px; /* Adjust the right distance to your liking */
+    transform: translateY(-50%); /* Vertically center the icon */
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    padding: 0;
+    border: 0;
+    background: 0;
+    margin-left: 200px;
+}
+
+/* Style for the icon */
+.eyebtn i {
+    font-size: 20px; /* You can adjust the size */
+    line-height: normal;
+}
+
     /* Optional: Style the error list items as well */
   </style>
   <!-- Meta tags start here... -->
@@ -30,6 +51,8 @@
     href="{{ asset('public/node_modules/bootstrap/dist/css/bootstrap.min.css') }}" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/parsleyjs/dist/parsley.css" />
   <link rel="stylesheet" href="{{ asset('public/assets/scss/main.css') }}" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
   <!-- All css links end here... -->
 
   <!-- favicon icon start here -->
@@ -164,24 +187,16 @@
                                         class="form-control form-input"
                                         placeholder="Enter Password..."
                                         data-parsley-required="true" />
-                                      <a
-                                        href="#"
-                                        class="position-absolute">
-                                        <svg
-                                          xmlns="http://www.w3.org/2000/svg"
-                                          height="20px"
-                                          viewBox="0 -960 960 960"
-                                          width="20px"
-                                          fill="#818889">
-                                          <path
-                                            d="M480-312q70 0 119-49t49-119q0-70-49-119t-119-49q-70 0-119 49t-49 119q0 70 49 119t119 49Zm0-72q-40 0-68-28t-28-68q0-40 28-68t68-28q40 0 68 28t28 68q0 40-28 68t-68 28Zm0 192q-142.6 0-259.8-78.5Q103-349 48-480q55-131 172.2-209.5Q337.4-768 480-768q142.6 0 259.8 78.5Q857-611 912-480q-55 131-172.2 209.5Q622.6-192 480-192Zm0-288Zm0 216q112 0 207-58t146-158q-51-100-146-158t-207-58q-112 0-207 58T127-480q51 100 146 158t207 58Z" />
-                                        </svg>
-                                      </a>
+                                      <span class="eyebtn" id="eye-toggle-password">
+                                        <i class="bi bi-eye" id="password-toggles-password"></i>
+                                      </span>
                                     </div>
                                   </div>
                                   <!-- Password input end here  -->
                                 </div>
                                 <!-- password end here  -->
+
+
 
                                 <!-- forgot password start here   -->
                                 <div class="row my-4">
@@ -243,6 +258,25 @@
         // Check if the form is valid before submitting
         if (!$('#loginForm').parsley().isValid()) {
           e.preventDefault(); // Prevent form submission if validation fails
+        }
+      });
+    });
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // For password field
+      const passwordField = document.getElementById('loginPass');
+      const passwordToggleIcon = document.getElementById('password-toggles-password');
+
+      passwordToggleIcon.addEventListener('click', function() {
+        if (passwordField.type === 'loginPass') {
+          passwordField.type = 'text'; // Show password
+          passwordToggleIcon.classList.remove('bi-eye');
+          passwordToggleIcon.classList.add('bi-eye-slash');
+        } else {
+          passwordField.type = 'loginPass'; // Hide password
+          passwordToggleIcon.classList.remove('bi-eye-slash');
+          passwordToggleIcon.classList.add('bi-eye');
         }
       });
     });

@@ -16,7 +16,7 @@ class TechnologyController extends Controller
         $search = $request->get('search' , '');
         $technologies = Technology::query() ->when($search, function ($query) use ($search) {
             $query->where('title', 'like', '%' . $search . '%');
-        })->paginate($perPage);
+        })->orderby('id' , 'desc')->paginate($perPage);
         $totalTechnologies = Technology::count();  
     
         return view('admin.technology.technology_list', compact('technologies', 'totalTechnologies', 'perPage'));
@@ -29,6 +29,10 @@ class TechnologyController extends Controller
     }
 
     public function store(Request $request){
+
+        $validated = $request->validate([
+            'upload_logo' => 'mimes:jpeg,jpg,png,gif,webp',  
+        ]);
 
         if ($request->hasFile('upload_logo')) {
             $logo = $request->file('upload_logo');
@@ -52,6 +56,9 @@ class TechnologyController extends Controller
 
     public function update(Request $request , $id)
     {
+        $validated = $request->validate([
+            'image' => 'mimes:jpeg,jpg,png,gif,webp',  
+        ]);
         $technology = Technology::find($id);
         
         if ($request->hasFile('image')) {

@@ -167,6 +167,10 @@ body {
 .upload-form .form-group .upload-input .form-img-uploader p {
   opacity: 0.5;
 }
+.upload-form .form-group .form-input::-moz-placeholder, .upload-form .form-group .form-textbox::-moz-placeholder {
+  color: #818889;
+  font-size: 12px;
+}
 .upload-form .form-group .form-input::placeholder,
 .upload-form .form-group .form-textbox::placeholder,
 .upload-form .form-group #header-link {
@@ -294,7 +298,7 @@ body {
 .form-button {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: flex-end;
   gap: 10px;
   margin-bottom: 1.5rem;
 }
@@ -302,7 +306,8 @@ body {
 #apps .btn img {
   width: 1rem;
   height: 1rem;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   margin-right: 0.3rem;
 }
 
@@ -355,7 +360,6 @@ body {
   border-radius: 0.4rem;
   color: #333335;
   width: 100%;
-  box-shadow: rgba(127, 148, 255, 0.4) 0px 3px 8px;
   padding: 0rem 0.9rem;
   margin: 1rem 0;
 }
@@ -375,11 +379,6 @@ body {
 }
 .card .card-body {
   padding: 0 0.5rem;
-}
-.card .card-body .form-group {
-  display: flex;
-  align-items: center;
-  /* justify-content: space-between; */
 }
 .card .card-body .form-group select,
 .card .card-body .form-group input {
@@ -404,6 +403,7 @@ body {
   justify-content: space-between;
   padding: 1rem 0;
   background-color: #ffffff;
+  border: 0px;
 }
 .card .card-footer p {
   font-size: 0.7rem;
@@ -443,7 +443,8 @@ body {
 .card .admin_info .admin_logo img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 1.6rem;
   padding: 0.2rem;
 }
@@ -461,7 +462,8 @@ body {
 .card .client_info .client_logo img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
   border-radius: 1.6rem;
   padding: 0.2rem;
 }
@@ -492,7 +494,8 @@ body {
 .card .certificate_div .certificate_img img {
   width: 80%;
   height: 80%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .card .tab_img {
   padding: 0.5rem 1rem;
@@ -501,7 +504,8 @@ body {
 .card .tab_img img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 .card .slogan {
   font-size: 1.2rem;
@@ -612,7 +616,8 @@ body {
   .card .admin_info .admin_logo img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
     border-radius: 1rem;
     padding: 0.2rem;
   }
@@ -650,7 +655,8 @@ body {
   .card .client_info .client_logo img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    -o-object-fit: contain;
+       object-fit: contain;
     border-radius: 1.6rem;
     padding: 0.2rem;
   }
@@ -684,7 +690,6 @@ body {
   text-align: center;
   margin: 1rem 0;
   border-radius: 0.6rem;
-  border-bottom: 1px solid rgb(238, 238, 247);
 }
 .table-content table th,
 .table-content table tr,
@@ -693,6 +698,7 @@ body {
   max-width: 2rem;
 }
 .table-content table th {
+  background-color: #f2f4ff;
   font-weight: 500;
 }
 .table-content table tbody .table_img {
@@ -705,7 +711,8 @@ body {
   border-radius: 4px;
   width: 80%;
   height: 80%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .table-content table tbody .icon_img {
   height: 2.6rem;
@@ -717,7 +724,8 @@ body {
   border-radius: 4px;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .table-content table tbody .table_title .tab_title {
   display: flex;
@@ -783,7 +791,8 @@ body {
     border-radius: 4px;
     width: 80%;
     height: 80%;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
   }
   .table-content table tbody .icon_img {
     height: 2rem;
@@ -795,7 +804,8 @@ body {
     border-radius: 4px;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
   }
   .table-content table tbody .table_action {
     max-width: 11rem;
@@ -832,6 +842,14 @@ body {
     font-weight: 400;
   }
 }
+td p {
+  color: gray;
+}
+
+tr td {
+  color: gray;
+}
+
 .breadcrumb {
   display: flex;
   align-items: center;
@@ -897,6 +915,10 @@ body {
   border-radius: 4px;
   padding: 0.3rem 0.5rem;
 }
+.header .form-control::-moz-placeholder {
+  color: #818889;
+  font-size: 12px;
+}
 .header .form-control::placeholder {
   color: #818889;
   font-size: 12px;
@@ -924,7 +946,8 @@ body {
   border-radius: 50%;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .header .admin_details {
   text-align: left;
@@ -1084,7 +1107,8 @@ body {
     border-radius: 50%;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
   }
   .header .notification svg {
     width: 18px;
@@ -1422,7 +1446,8 @@ body {
 .main-right-container .data_card .card .dash_img img {
   width: 70%;
   height: 70%;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 .main-right-container .data_card .card h2 {
   font-size: 0.813rem;
@@ -1513,6 +1538,11 @@ body {
   font-weight: 500;
   margin-top: 1rem;
 }
+.form_section #loginEmail::-moz-placeholder, .form_section #loginPass::-moz-placeholder, .form_section #confirmPass::-moz-placeholder, .form_section #newPass::-moz-placeholder {
+  color: #818889;
+  font-size: 12px;
+  padding: 0;
+}
 .form_section #loginEmail::placeholder,
 .form_section #loginPass::placeholder,
 .form_section #confirmPass::placeholder,
@@ -1572,7 +1602,8 @@ body {
 #viewModal2 .blog_img img {
   height: 14rem;
   width: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .modal-title {
@@ -1599,6 +1630,59 @@ body {
   color: #ffffff;
 }
 
+.modal-lg {
+  max-width: 900px; /* Adjust modal width */
+}
+
+.modal-content {
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.modal-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #ddd;
+}
+
+.form-label {
+  font-size: 14px;
+  color: #333;
+  font-weight: 600;
+}
+
+.form-control {
+  border-radius: 6px;
+  font-size: 14px;
+  padding: 10px;
+}
+
+textarea.form-control {
+  resize: none;
+}
+
+.preview-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 120px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+
+.preview-box img {
+  max-width: 100%;
+  max-height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 6px;
+}
+
+.compact-modal .form-group {
+  margin-bottom: 0px !important; /* Reduce space between fields */
+}
+
 .table_badge {
   font-size: 0.7rem;
   font-weight: 400;
@@ -1612,12 +1696,48 @@ body {
     padding: 0.3rem 0.5rem;
   }
 }
-
- /* Custom Parsley error message color */
- .parsley-errors-list {
-  color: rgb(210, 78, 76) !important;
-  list-style-type: none;
-
-
-  /* Change error text color to red */
+.pagination .page-item.active .page-link {
+  color: white;
 }
+
+.pagination .page-item .page-link {
+  font-size: 0.8rem;
+}
+
+/* Reduce margin-bottom for inputs and textareas */
+.form-group {
+  margin-bottom: 10px !important;
+  /* You can adjust the value */
+}
+
+.form-control {
+  margin-bottom: 5px;
+  /* Reduce bottom margin of form fields */
+  padding: 10px;
+  /* Adjust padding if needed */
+}
+
+textarea.form-control {
+  margin-bottom: 10px;
+  /* Adjust bottom margin for textarea */
+}
+
+/* Adjust button margins too */
+.form-button .btn {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.upload-form .form-group {
+  margin: 1rem 0;
+}
+
+.parsley-errors-list {
+  list-style: none;
+  color: #cd4444;
+}
+
+#searchInput {
+  width: 220px; /* Fixed width */
+  margin-left: 720px; /* No margin on the left */
+}/*# sourceMappingURL=main.css.map */

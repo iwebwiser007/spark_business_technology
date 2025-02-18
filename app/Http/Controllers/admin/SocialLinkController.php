@@ -45,6 +45,11 @@ class SocialLinkController extends Controller
 
     public function update(Request $request, $id)
     {
+        $validated = $request->validate([
+            'slug' => 'unique:social_links,slug,' . $id,  
+        ]);
+        
+
         $socialLink = SocialLink::find($id);
         $socialLink->slug = $request->slug;
 
