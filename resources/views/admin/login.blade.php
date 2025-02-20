@@ -14,25 +14,28 @@
     }
 
     .eyebtn {
-    position: absolute;
-    cursor: pointer;
-    top: 50%;
-    right: 40px; /* Adjust the right distance to your liking */
-    transform: translateY(-50%); /* Vertically center the icon */
-    display: flex;
-    align-items: left;
-    justify-content: left;
-    padding: 0;
-    border: 0;
-    background: 0;
-    margin-left: 200px;
-}
+      position: absolute;
+      cursor: pointer;
+      top: 50%;
+      right: 40px;
+      /* Adjust the right distance to your liking */
+      transform: translateY(-50%);
+      /* Vertically center the icon */
+      display: flex;
+      align-items: left;
+      justify-content: left;
+      padding: 0;
+      border: 0;
+      background: 0;
+      margin-left: 200px;
+    }
 
-/* Style for the icon */
-.eyebtn i {
-    font-size: 20px; /* You can adjust the size */
-    line-height: normal;
-}
+    /* Style for the icon */
+    .eyebtn i {
+      font-size: 20px;
+      /* You can adjust the size */
+      line-height: normal;
+    }
 
     /* Optional: Style the error list items as well */
   </style>
@@ -198,6 +201,8 @@
 
 
 
+
+
                                 <!-- forgot password start here   -->
                                 <div class="row my-4">
                                   <div class="col-12">
@@ -269,12 +274,12 @@
       const passwordToggleIcon = document.getElementById('password-toggles-password');
 
       passwordToggleIcon.addEventListener('click', function() {
-        if (passwordField.type === 'loginPass') {
+        if (passwordField.type === 'password') {
           passwordField.type = 'text'; // Show password
           passwordToggleIcon.classList.remove('bi-eye');
           passwordToggleIcon.classList.add('bi-eye-slash');
         } else {
-          passwordField.type = 'loginPass'; // Hide password
+          passwordField.type = 'password'; // Hide password
           passwordToggleIcon.classList.remove('bi-eye-slash');
           passwordToggleIcon.classList.add('bi-eye');
         }

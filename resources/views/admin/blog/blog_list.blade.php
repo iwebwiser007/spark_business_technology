@@ -8,30 +8,22 @@
 </style>
 @section('content')
 <div class="main-right-container" id="main-right-container">
-  <!-- main data start here  -->
   <div class="main-data">
     <div class="container-fluid">
-      <!-- dashboard head start here... -->
       <div class="dash-head d-flex justify-content-between">
         <div class="dash_title">
-          <!-- dashboard banner title start here  -->
           <h2 class="main-title">Blog List</h2>
-          <!-- dashboard banner title end here  -->
         </div>
 
-        <!-- add banner breadcrumb start here  -->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
             <a href="{{route('dashboard')}}">Dashboard</a>
           </li>
-          <!-- <li class="breadcrumb-item">
-                        <a href="#">Blog</a>
-                      </li> -->
+
           <li class="breadcrumb-item active" aria-current="page">
             Blog List
           </li>
         </ol>
-        <!-- add banner breadcrumb end here  -->
       </div>
       @if (Session::has('success_message'))
       <!-- Check vendorRegister() method in Front/VendorController.php -->

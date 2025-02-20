@@ -359,13 +359,6 @@
                           </div>
                         </div>
 
-
-
-
-
-
-
-
                         <a
                           href="#"
                           role="button"
@@ -385,9 +378,6 @@
                         </a>
 
 
-                        <!-- banner delete button end here  -->
-
-                        <!-- delete modal start here  -->
                         <div
                           class="modal fade"
                           id="deleteModal-{{$banner->id}}"
@@ -470,41 +460,7 @@
             </div>
             <!-- table content end here  -->
           </div>
-          <!-- card body end here  -->
-
-          <!-- card footer start here  -->
-          <!-- <div class="card-footer">
-            <p>Showing 1 to 10 of xyz entries</p>
-
-            <div class="pagination-div">
-              <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                  <li class="page-item">
-                    <a
-                      class="page-link"
-                      href="#"
-                      aria-label="Previous">
-                      <span aria-hidden="true">&laquo;</span>
-                    </a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">1</a>
-                  </li>
-                   <li class="page-item">
-                    <a class="page-link" href="#">2</a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">3</a>
-                  </li> -->
-          <!-- <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                      <span aria-hidden="true">&raquo;</span>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </div>  -->
+         
 
           <div class="card-footer">
             <!-- Pagination -->
