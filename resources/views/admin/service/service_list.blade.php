@@ -22,7 +22,7 @@
         <!-- add banner breadcrumb start here  -->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="#">Dashboard</a>
+            <a href="{{route('dashboard')}}">Dashboard</a>
           </li>
           <!-- <li class="breadcrumb-item">
                         <a href="#">Services</a>
@@ -46,6 +46,22 @@
       </div>
       @endif
 
+      @if ($errors->any())
+      <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex flex-column">
+            <!-- <strong class="me-2">Error:</strong> -->
+            <ul class="mb-0 ps-3">
+              @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      </div>
+      @endif
+
       <div class="container-fluid">
         <!-- card start here  -->
         <div class="card">
@@ -54,7 +70,7 @@
             <div
               class="card-title d-flex justify-content-between align-items-center">
               <h2>Services List</h2>
-              <a href="{{ url('admin/add-edit-service') }}" class="btn sub_btn">ADD</a>
+              <a href="{{ url('admin/add-service') }}" class="btn sub_btn">ADD</a>
             </div>
           </div>
           <!-- card header end here  -->
@@ -62,26 +78,31 @@
           <!-- card body start here  -->
           <div class="card-body">
             <!-- form start here  -->
-            <form class="data-form">
-              <div class="form-group">
-                <select name="cars" id="cars">
-                  <option value="volvo">Show 10</option>
-                  <option value="saab">Show 20</option>
-                  <option value="mercedes">shop 50</option>
+            <form method="GET" action="{{ route('admin.serviceList') }}" class="data-form">
+              <div class="form-group d-flex align-items-center">
+                <select name="perPage" id="perPage" onchange="updatePagination()">
+                  <option value="10" {{ $perPage == 10 ? 'selected' : '' }}>Show 10</option>
+                  <option value="20" {{ $perPage == 20 ? 'selected' : '' }}>Show 20</option>
+                  <option value="50" {{ $perPage == 50 ? 'selected' : '' }}>Show 50</option>
+                  <option value="100" {{ $perPage == 100 ? 'selected' : '' }}>Show 100</option>
                 </select>
                 <span>
                   <input
                     type="search"
-                    placeholder="search..."
-                    class="d-none d-sm-block" />
+                    name="search"
+                    id="searchInput"
+                    class="form-control form-control-sm me-3"
+                    placeholder="Search by title..."
+                    value="{{ request()->query('search') }}" />
                 </span>
+                <button type="submit" class="btn sub_btn mb-2">Search</button>
               </div>
             </form>
             <!-- form end here  -->
 
             <!-- table content start here  -->
             <div class="table-content table-responsive">
-              <table class="table table-hover">
+              <table class="table">
                 <thead>
                   <tr>
                     {{-- <th scope="col">Image</th> --}}
@@ -168,7 +189,7 @@
 
                         <!-- edit button end here  -->
 
-                        <!-- Edit Modal start here  -->
+                        <!-- Edit Modal start here  --
                         <div
                           class="modal fade"
                           id="editModal-{{ $service->id }}"
@@ -193,13 +214,13 @@
 
                               <div class="modal-body">
                                 <div class="container">
-                                  <form class="upload-form" action="{{ route('service.update' , $service->id) }}"
+                                  <form class="upload-form" action="{{ route('admin.serviceUpdate' , $service->id) }}"
                                     method="POST">
                                     @csrf
-                                    <!-- title  -->
+                                    <!-- title  --
                                     <div
                                       class="row form-group g-3 align-items-center">
-                                      <!-- title label start here  -->
+                                      <!-- title label start here  --
                                       <div class="col-3">
                                         <label
                                           for="inputTitle"
@@ -208,7 +229,7 @@
                                       </div>
                                       <!-- title label end here  -->
 
-                                      <!-- title input start here  -->
+                        <!-- title input start here  --
                                       <div class="col-9">
                                         <div class="mb-3 mt-3">
                                           <input
@@ -221,12 +242,12 @@
                                             required />
                                         </div>
                                       </div>
-                                      <!-- title input end here  -->
+                                      <!-- title input end here  --
                                     </div>
 
                                     <div
                                       class="row form-group g-3 align-items-center">
-                                      <!-- title label start here  -->
+                                      <!-- title label start here  --
                                       <div class="col-3">
                                         <label
                                           for="inputTitle"
@@ -235,7 +256,7 @@
                                       </div>
                                       <!-- title label end here  -->
 
-                                      <!-- title input start here  -->
+                        <!-- title input start here  --
                                       <div class="col-9">
                                         <div class="mb-3 mt-3">
                                           <input
@@ -248,13 +269,13 @@
                                             required />
                                         </div>
                                       </div>
-                                      <!-- title input end here  -->
+                                      <!-- title input end here  
                                     </div>
 
-                                    <!-- description  -->
+                                    <!-- description  --
                                     {{-- <div
                                       class="row form-group g-3 align-items-center">
-                                      <!-- description label start here  -->
+                                      <!-- description label start here  --
                                       <div
                                         class="col-3 d-flex justify-content-center">
                                         <label
@@ -263,7 +284,7 @@
                                       </div>
                                       <!-- description label end here  -->
 
-                                      <!-- description textarea box start here  -->
+                        <!-- description textarea box start here  --
                                       <div class="col-9">
                                         <div class="form-floating">
                                           <textarea
@@ -278,13 +299,13 @@
                                 </div>
                               </div>
 
-                              <!-- description textarea box end here  -->
+                              <!-- description textarea box end here  --
                             </div> --}}
 
-                            <!-- Sub title  -->
+                            <!-- Sub title  --
                             {{-- <div
                                       class="row form-group g-3 align-items-center">
-                                      <!-- title label start here  -->
+                                      <!-- title label start here  --
                                       <div class="col-3">
                                         <label
                                           for="inputTitle"
@@ -293,7 +314,7 @@
                                       </div>
                                       <!-- title label end here  -->
 
-                                      <!-- title input start here  -->
+                        <!-- title input start here  --
                                       <div class="col-9">
                                         <div class="mb-3 mt-3">
                                           <input
@@ -304,13 +325,13 @@
                                             required />
                                         </div>
                                       </div>
-                                      <!-- title input end here  -->
+                                      <!-- title input end here  --
                                     </div> --}}
 
-                            <!-- Social Link area start here  -->
+                            <!-- Social Link area start here  --
                             <div
                               class="row form-group g-3 align-items-center">
-                              <!-- Social Link label start here  -->
+                              <!-- Social Link label start here  --
                               <div
                                 class="col-3 d-flex justify-content-center align-items-center">
                                 <label
@@ -320,7 +341,7 @@
                               </div>
                               <!-- Social Link label end here  -->
 
-                              <!-- Social Link input start here  -->
+                        <!-- Social Link input start here  --
                               <div class="col-9">
                                 <div class="mb-3 mt-3">
                                   <input
@@ -333,14 +354,14 @@
                                     required />
                                 </div>
                               </div>
-                              <!-- Social Link input end here  -->
+                              <!-- Social Link input end here  --
                             </div>
                             <!-- Sociall Link area end here  -->
 
-                            <!-- image  -->
+                        <!-- image  --
                             {{-- <div
                                       class="row form-group g-3 align-items-center mt-3">
-                                      <!-- upload banner input area start here  -->
+                                      <!-- upload banner input area start here  --
                                       <div class="col-12">
                                         <div
                                           class="form-group mb-20 upload-input">
@@ -352,7 +373,7 @@
                                               class="img-fluid rounded-4"
                                               width="30%"
                                               alt="upload image" />
-                                            <!-- close button start here  -->
+                                            <!-- close button start here  --
                                             <button
                                               type="button"
                                               data-bs-dismiss="modal"
@@ -361,11 +382,11 @@
                                           </label>
                                         </div>
                                       </div>
-                                      <!-- upload banner input area end here  -->
+                                      <!-- upload banner input area end here  --
                                     </div> --}}
 
 
-                            <!-- Blog Content -->
+                            <!-- Blog Content --
                             <div class="row form-group">
                               <div class="col-12 col-md-3">
                                 <label for="metaTags" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Enter Metas (JSON Format)</label>
@@ -381,15 +402,21 @@
                                 <label for="html_content" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Service Content</label>
                               </div>
                               <div class="col-12 col-md-8 mt-0">
-                                <textarea class="form-control ckeditor" id="html_content" name="html_content" rows="10">
+                                <textarea class="form-control ckeditor" id="html_content_{{ $service->id }}" name="html_content" rows="10">
                                 {{ old('html_content', $service->html_content ?? '') }}
                                 </textarea>
                               </div>
                             </div>
 
+                            <script>
+                              CKEDITOR.replace('html_content_{{ $service->id }}', {
+                                allowedContent: true,
+                              });
+                            </script>
 
 
-                            <!-- Image Upload -->
+
+                            <!-- Image Upload --
                             {{-- <div class="row form-group">
     <div class="col-12 col-md-3">
       <label for="inputBlogFile" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Upload Banner Image</label>
@@ -399,7 +426,7 @@
         <label for="blogImg" class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4">
           <div class="d-flex flex-column align-items-center gap-3">
             <span>
-              <!-- SVG Icon or placeholder icon goes here -->
+              <!-- SVG Icon or placeholder icon goes here 
             </span>
             <p class="mb-0">Upload Image</p>
           </div>
@@ -407,7 +434,7 @@
         <input type="file" name="image" class="form-control form-control-lg d-none" id="blogImg" onchange="previewImage(event)" />
       </div>
 
-      <!-- Image Preview Area -->
+      <!-- Image Preview Area 
       <div id="imagePreview" class="mt-3">
       <img id="previewImg" src="{{ isset($service) ? asset('http://localhost/spark_technology/storage/app/public/images/' . $service->image) : '' }}"
                             alt="Image Preview" style="display: {{ isset($service) ? 'block' : 'none' }}; width: 100%; max-width: 200px; border-radius: 8px;" />
@@ -419,7 +446,7 @@
 
 
 
-                      <!-- cancel and submit button  -->
+                      <!-- cancel and submit button  
                       <div class="my-3">
                         <button
                           type="button"
@@ -442,115 +469,195 @@
 
     <!-- Edit modal end here  -->
 
-    <!-- delete button start here  -->
-    <a
-      href="#"
-      role="button"
-      class="btn text-decoration-none table_del bg-danger-subtle"
-      data-bs-toggle="modal"
-      data-bs-target="#deleteModal-{{ $service->id }}"
-      title="delete">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        height="12"
-        viewBox="0 -960 960 960"
-        width="12"
-        fill="#f70808">
-        <path
-          d="M312-144q-29.7 0-50.85-21.15Q240-186.3 240-216v-480h-48v-72h192v-48h192v48h192v72h-48v479.57Q720-186 698.85-165T648-144H312Zm336-552H312v480h336v-480ZM384-288h72v-336h-72v336Zm120 0h72v-336h-72v336ZM312-696v480-480Z" />
-      </svg>
-    </a>
-    <!-- delete button end here  -->
 
-    <!-- delete modal start here  -->
-    <div
-      class="modal fade"
-      id="deleteModal-{{ $service->id }}"
-      tabindex="-1"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true">
-      <div
-        class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <!-- close button start here  -->
-          <a
-            href="#"
-            role="button"
-            data-bs-dismiss="modal"
-            class="position-absolute end-0 p-2"
-            arial-label="close">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="24"
-              viewBox="0 -960 960 960"
-              width="24"
-              fill="#5d6d7e">
-              <path
-                d="m291-240-51-51 189-189-189-189 51-51 189 189 189-189 51 51-189 189 189 189-51 51-189-189-189 189Z" />
-            </svg>
-          </a>
-          <!-- close button end here  -->
 
-          <div class="modal-body my-3">
-            <span class="m-4">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="30"
-                viewBox="0 -960 960 960"
-                width="30"
-                fill="#dc3545">
-                <path
-                  d="M312-144q-29.7 0-50.85-21.15Q240-186.3 240-216v-480h-48v-72h192v-48h192v48h192v72h-48v479.57Q720-186 698.85-165T648-144H312Zm336-552H312v480h336v-480ZM384-288h72v-336h-72v336Zm120 0h72v-336h-72v336ZM312-696v480-480Z" />
-              </svg>
-            </span>
-            <h1
-              class="modal-title mt-2"
-              id="exampleModalLabel">
-              Delete Service
-            </h1>
-            <p class="pb-4">
-              Are you sure you want to delete
-              this Service?
-            </p>
+                        <!-- Edit Modal start here -->
+                        <div class="modal fade" id="editModal-{{ $service->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-lg modal-dialog-centered">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h1 class="modal-title fs-5 text-start" id="exampleModalLabel">Edit Blog-{{$service->id}}</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
 
-            <!-- delete and cancel button start here  -->
-            <div>
-             <form action="{{ route('service.delete', $service->id) }}" method="POST">
-                    @csrf
-                    @method('DELETE') <!-- This is important to use the DELETE HTTP method -->
-                    <button type="button" class="btn btn-secondary cancel_modal" data-bs-dismiss="modal">
-                        Cancel
-                    </button>
+                              <div class="modal-body">
+                                <div class="container">
+                                  <form class="upload-form" action="{{ route('admin.serviceUpdate' , $service->id) }}" method="POST">
+                                    @csrf
+                                    <div class="row form-group g-3">
+                                      <!-- Service Name -->
+                                      <div class="col-md-4">
+                                        <label for="inputName" class="col-form-label form-label text-start d-block ">Service Name</label>
+                                        <input type="text" id="inputName" name="name" class="form-control form-input" placeholder="Enter Name..." value="{{ old('name', $service->name ?? '') }}" required>
+                                      </div>
 
-                    <button type="submit" class="btn btn-danger del_modal">
-                        Delete
-                    </button>
-                </form>
+                                      <!-- Service Title -->
+                                      <div class="col-md-4">
+                                        <label for="inputTitle" class="col-form-label form-label text-start d-block">Service Title</label>
+                                        <input type="text" id="inputTitle" name="title" class="form-control form-input" placeholder="Enter Title..." value="{{ old('title', $service->title ?? '') }}" required>
+                                      </div>
+
+                                      <!-- Button Link -->
+                                      <div class="col-md-4">
+                                        <label for="btnLink" class="col-form-label form-label text-start d-block ">Button Link</label>
+                                        <input type="text" id="btnLink" name="link" class="form-control form-input" placeholder="Enter Button Link..." value="{{ old('link', $service->link ?? '') }}" required>
+                                      </div>
+
+                                      <!-- Enter Metas (Full Width) -->
+                                      <div class="col-12">
+                                        <label for="metaTags" class="col-form-label form-label text-start d-block ">Enter Metas (JSON Format)</label>
+                                        <textarea name="meta_tags" id="metaTags" class="form-control form-textbox" rows="4" placeholder="Enter JSON formatted metas..." required>{{ old('meta_tags', $service->meta_tags ?? '') }}</textarea>
+                                      </div>
+
+                                      <!-- Service Content (Full Width) -->
+                                      <div class="col-12">
+                                        <label for="html_content" class="col-form-label form-label text-start d-block">Service Content</label>
+                                        <textarea class="form-control ckeditor" id="html_content_{{$service->id}}" name="html_content" rows="6">{{ old('html_content', $service->html_content ?? '') }}</textarea>
+                                      </div>
+                                    </div>
+
+                                    <script>
+                                      CKEDITOR.replace('html_content_{{ $service->id }}', {
+                                        allowedContent: true,
+                                      });
+                                    </script>
+
+                                    <!-- Buttons -->
+                                    <div class="row">
+                                      <div class="col-4 col-md-3"></div>
+                                      <div class="col-12 col-md-9 form-button">
+                                        <button type="button" class="btn btn-secondary cancel_modal my-3" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn form-btn my-0">Update</button>
+                                      </div>
+                                    </div>
+                                  </form>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Edit Modal End Here -->
+
+
+
+
+
+
+
+
+
+
+
+
+                        <!-- delete button start here  -->
+                        <a
+                          href="#"
+                          role="button"
+                          class="btn text-decoration-none table_del bg-danger-subtle"
+                          data-bs-toggle="modal"
+                          data-bs-target="#deleteModal-{{ $service->id }}"
+                          title="delete">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            height="12"
+                            viewBox="0 -960 960 960"
+                            width="12"
+                            fill="#f70808">
+                            <path
+                              d="M312-144q-29.7 0-50.85-21.15Q240-186.3 240-216v-480h-48v-72h192v-48h192v48h192v72h-48v479.57Q720-186 698.85-165T648-144H312Zm336-552H312v480h336v-480ZM384-288h72v-336h-72v336Zm120 0h72v-336h-72v336ZM312-696v480-480Z" />
+                          </svg>
+                        </a>
+                        <!-- delete button end here  -->
+
+                        <!-- delete modal start here  -->
+                        <div
+                          class="modal fade"
+                          id="deleteModal-{{ $service->id }}"
+                          tabindex="-1"
+                          aria-labelledby="exampleModalLabel"
+                          aria-hidden="true">
+                          <div
+                            class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                              <!-- close button start here  -->
+                              <a
+                                href="#"
+                                role="button"
+                                data-bs-dismiss="modal"
+                                class="position-absolute end-0 p-2"
+                                arial-label="close">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  height="24"
+                                  viewBox="0 -960 960 960"
+                                  width="24"
+                                  fill="#5d6d7e">
+                                  <path
+                                    d="m291-240-51-51 189-189-189-189 51-51 189 189 189-189 51 51-189 189 189 189-51 51-189-189-189 189Z" />
+                                </svg>
+                              </a>
+                              <!-- close button end here  -->
+
+                              <div class="modal-body my-3">
+                                <span class="m-4">
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    height="30"
+                                    viewBox="0 -960 960 960"
+                                    width="30"
+                                    fill="#dc3545">
+                                    <path
+                                      d="M312-144q-29.7 0-50.85-21.15Q240-186.3 240-216v-480h-48v-72h192v-48h192v48h192v72h-48v479.57Q720-186 698.85-165T648-144H312Zm336-552H312v480h336v-480ZM384-288h72v-336h-72v336Zm120 0h72v-336h-72v336ZM312-696v480-480Z" />
+                                  </svg>
+                                </span>
+                                <h1
+                                  class="modal-title mt-2"
+                                  id="exampleModalLabel">
+                                  Delete Service
+                                </h1>
+                                <p class="pb-4">
+                                  Are you sure you want to delete
+                                  this Service?
+                                </p>
+
+                                <!-- delete and cancel button start here  -->
+                                <div>
+                                  <form action="{{ route('admin.serviceDelete', $service->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE') <!-- This is important to use the DELETE HTTP method -->
+                                    <button type="button" class="btn btn-secondary cancel_modal" data-bs-dismiss="modal">
+                                      Cancel
+                                    </button>
+
+                                    <button type="submit" class="btn btn-danger del_modal">
+                                      Delete
+                                    </button>
+                                  </form>
+                                </div>
+                                <!-- delete and cancel button end here  -->
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- delete modal end here  -->
+                      </div>
+                    </td>
+                    <!-- Service-1 edit and delete icon end here  -->
+                  </tr>
+                  @endforeach
+                  <!-- service-1 end here  -->
+
+
+                  <!-- service-3 end here  -->
+                </tbody>
+              </table>
             </div>
-            <!-- delete and cancel button end here  -->
+            <!-- table content end here  -->
           </div>
-        </div>
-      </div>
-    </div>
-    <!-- delete modal end here  -->
-  </div>
-  </td>
-  <!-- Service-1 edit and delete icon end here  -->
-  </tr>
-  @endforeach
-  <!-- service-1 end here  -->
+          <!-- card body end here  -->
 
-
-  <!-- service-3 end here  -->
-  </tbody>
-  </table>
-</div>
-<!-- table content end here  -->
-</div>
-<!-- card body end here  -->
-
-<!-- card footer start here  -->
-<div class="card-footer">
+          <!-- card footer start here  -->
+          <!-- <div class="card-footer">
   <p>Showing 1 to 10 of xyz entries</p>
 
   <div class="pagination-div">
@@ -567,13 +674,13 @@
         <li class="page-item">
           <a class="page-link" href="#">1</a>
         </li>
-        <li class="page-item">
+         <li class="page-item">
           <a class="page-link" href="#">2</a>
         </li>
         <li class="page-item">
           <a class="page-link" href="#">3</a>
-        </li>
-        <li class="page-item">
+        </li> -->
+          <!-- <li class="page-item">
           <a class="page-link" href="#" aria-label="Next">
             <span aria-hidden="true">&raquo;</span>
           </a>
@@ -581,22 +688,63 @@
       </ul>
     </nav>
   </div>
-</div>
-<!-- card footer end here  -->
-</div>
-<!-- card end here  -->
-</div>
-</div>
-</div>
-<!-- main data end here  -->
+</div>  -->
+
+
+
+          <div class="card-footer">
+            <!-- Pagination -->
+            <p>Showing {{ $services->firstItem() }} to {{ $services->lastItem() }} of {{ $services->total() }} entries</p>
+            <div class="pagination-div">
+              <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <!-- Check if the pagination has previous and next links -->
+                  @if ($services->onFirstPage())
+                  <li class="page-item disabled">
+                    <span class="page-link">Previous</span>
+                  </li>
+                  @else
+                  <li class="page-item">
+                    <a class="page-link" href="{{ $services->previousPageUrl() }}">Previous</a>
+                  </li>
+                  @endif
+
+                  <!-- Loop through page numbers -->
+                  @foreach ($services->getUrlRange(1, $services->lastPage()) as $page => $url)
+                  <li class="page-item {{ $services->currentPage() == $page ? 'active' : '' }}">
+                    <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                  </li>
+                  @endforeach
+
+                  <!-- Check if the pagination has a next link -->
+                  @if ($services->hasMorePages())
+                  <li class="page-item">
+                    <a class="page-link" href="{{ $services->nextPageUrl() }}">Next</a>
+                  </li>
+                  @else
+                  <li class="page-item disabled">
+                    <span class="page-link">Next</span>
+                  </li>
+                  @endif
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <!-- card footer end here  -->
+        </div>
+        <!-- card end here  -->
+      </div>
+    </div>
+  </div>
+  <!-- main data end here  -->
 </div>
 <script>
-  // CKEditor initialization for the edit form
-  CKEDITOR.replace('html_content', {
-    enterMode: CKEDITOR.ENTER_DIV, // Use <div> for line breaks
-    shiftEnterMode: CKEDITOR.ENTER_BR, // Use <br> on shift + enter
-    // Other configurations if needed
-  });
+  function updatePagination() {
+    const perPage = document.getElementById('perPage').value;
+    window.location.href = `?perPage=${perPage}`;
+  }
 </script>
+
+
 
 @endsection

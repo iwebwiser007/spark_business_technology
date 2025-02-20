@@ -16,13 +16,13 @@
     <!-- All css links start here... -->
     <link
       rel="stylesheet"
-      href="../node_modules/bootstrap/dist/css/bootstrap.min.css"
+      href="../public/node_modules/bootstrap/dist/css/bootstrap.min.css"
     />
-    <link rel="stylesheet" href="../assets/scss/main.css" />
+    <link rel="stylesheet" href="../public/assets/scss/main.css" />
     <!-- All css links end here... -->
 
     <!-- favicon icon start here -->
-    <link rel="icon" type="image/x-icon" href="../assets/icons/Logo.svg" />
+    <link rel="icon" type="image/x-icon" href="../public/assets/icons/Logo.svg" />
     <!-- favicon icon end here -->
   </head>
   <!-- Head tag end here... -->
@@ -50,7 +50,7 @@
                           <!-- card image start here  -->
                           <div class="col-md-4 d-none d-md-flex">
                             <img
-                              src="../assets/img/forgot-1.png"
+                              src="../public/assets/img/forgot-1.png"
                               alt="Forgot Password"
                               class="w-100"
                             />
@@ -67,7 +67,7 @@
                                 role="button"
                               >
                                 <img
-                                  src="../assets/icons/Logo.svg"
+                                  src="../public/assets/icons/Logo.svg"
                                   alt="logo"
                                 />
                               </a>
@@ -116,7 +116,7 @@
                                       class="col-12 d-flex justify-content-start"
                                     >
                                       <a
-                                        href="new_pass.html"
+                                        href="{{route('newPassword')}}"
                                         role="button"
                                         class="btn btn-signin btn-block"
                                         >Reset Password</a
@@ -150,8 +150,8 @@
     <!-- main container end here  -->
 
     <!-- All js scripts start here... -->
-    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/main.js"></script>
+    <script src="../public/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../public/assets/js/main.js"></script>
     <!-- All js scripts end here... -->
   </body>
   <!-- body tag end here... -->

@@ -10,19 +10,32 @@ use Intervention\Image\Facades\Image;
 
 class BannerController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $banners = Banner::get();
-        return view('admin.banner.banner_list', compact('banners'));
+        $perPage = $request->get('perPage', 10);
+        $search = $request->get('search', '');
+
+        $banners = Banner::query()
+        ->when($search, function ($query) use ($search) {
+            $query->where('title', 'like', '%' . $search . '%');
+        })->orderby('id' , 'desc')
+        ->paginate($perPage);
+        return view('admin.banner.banner_list', compact('banners'  , 'perPage'));
     }
 
-    public function addEditBanner()
+    public function add()
     {
-        return view('admin.banner.add_edit_banner');
+        return view('admin.banner.add_banner');
     }
 
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'link' => 'unique:banners,link',  
+            // 'banner_image' => 'mimes:jpeg,jpg,png',
+            'banner_image' => 'mimes:jpeg,jpg,png,gif,webp',  
+
+        ]);
 
         if ($request->hasFile('banner_image')) {
             $banner = $request->file('banner_image');
@@ -47,11 +60,17 @@ class BannerController extends Controller
 
         ]);
 
-        return redirect()->route('banner-list')->with('success_message', 'Banner created successfully!');
+        return redirect()->route('admin.bannerList')->with('success_message', 'Banner created successfully!');
     }
 
     public function update(Request $request, $id)
     {
+
+        $validated = $request->validate([
+            'link' => 'unique:banners,link,' . $id,  
+            'banner_image' => 'mimes:jpeg,jpg,png,gif,webp',  
+        ]);
+        
 
         $banner = Banner::find($id);
 
@@ -84,7 +103,7 @@ class BannerController extends Controller
         $banner->link = $request->link;
         $banner->save();
 
-        return redirect()->route('banner-list')->with('success_message', 'Banner Updated Successfully!');
+        return redirect()->route('admin.bannerList')->with('success_message', 'Banner Updated Successfully!');
     }
 
 
@@ -94,7 +113,7 @@ class BannerController extends Controller
         $banner = Banner::find($id);
         $banner->delete();
 
-        return redirect()->route('banner-list')->with('success_message', 'Banner Deleted Successfully!');
+        return redirect()->route('admin.bannerList')->with('success_message', 'Banner Deleted Successfully!');
     }
 
     public function updateStatus(Request $request, $id)
@@ -107,7 +126,7 @@ class BannerController extends Controller
         }
         $banner->save();
     
-        return redirect()->route('banner-list')->with('success_message', 'Status updated successfully');
+        return redirect()->route('admin.bannerList')->with('success_message', 'Status updated successfully');
     }
     
 }

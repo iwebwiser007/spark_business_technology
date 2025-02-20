@@ -16,4 +16,8 @@ class CaseController extends Controller
     {
         return view('admin.case.add_edit_case');
     }
+
+    public function show(){
+        return view('admin.case.show_case');
+    }
 }

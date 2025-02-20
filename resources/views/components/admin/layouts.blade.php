@@ -16,14 +16,16 @@
 
   <!-- All css links start here... -->
   <!-- <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" /> -->
-  <link rel="stylesheet" href="{{ asset('node_modules/bootstrap/dist/css/bootstrap.min.css') }}" />
+  <link rel="stylesheet" href="{{ asset('public/node_modules/bootstrap/dist/css/bootstrap.min.css') }}" />
   <!-- <link rel="stylesheet" href="../assets/scss/main.css" /> -->
-  <link rel="stylesheet" href="{{ asset('assets/scss/main.css') }}" />
+  <link rel="stylesheet" href="{{ asset('public/assets/scss/main.css') }}" />
   <!-- All css links end here... -->
 
   <!-- favicon icon start here -->
   <!-- <link rel="icon" type="image/x-icon" href="../assets/icons/Logo.svg" /> -->
-  <link rel="icon" type="image/x-icon" href="{{ asset('assets/icons/Logo.svg') }}" />
+  <link rel="icon" type="image/x-icon" href="{{ asset('public/assets/icons/Logo.svg') }}" />
+
+  
   <!-- favicon icon end here -->
 </head>
 
@@ -51,9 +53,9 @@
   
 
   <!-- <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script> -->
-  <script src="{{ asset('node_modules/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ asset('public/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
   <!-- <script src="../assets/js/main.js"></script> -->
-  <script src="{{ asset('assets/js/main.js') }}"></script>
+  <script src="{{ asset('public/assets/js/main.js') }}"></script>
 </body>
 
 </html>

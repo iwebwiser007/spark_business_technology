@@ -11,14 +11,14 @@
       <div class="dash-head">
         <div class="dash_title">
           <!-- dashboard banner title start here  -->
-          <h2 class="main-title">Banners List</h2>
+          <h2 class="main-title">Banner List</h2>
           <!-- dashboard banner title end here  -->
         </div>
 
         <!-- add banner breadcrumb start here  -->
         <ol class="breadcrumb text-nowrap">
           <li class="breadcrumb-item">
-            <a href="#">Dashboard</a>
+            <a href="{{route('dashboard')}}">Dashboard</a>
           </li>
           <li class="breadcrumb-item active" aria-current="page">
             Banner List
@@ -50,6 +50,22 @@
       </div>
       @endif
 
+      @if ($errors->any())
+      <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex flex-column">
+            <!-- <strong class="me-2">Error:</strong> -->
+            <ul class="mb-0 ps-3">
+              @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      </div>
+      @endif
+
       <div class="container-fluid">
         <!-- card start here  -->
         <div class="card">
@@ -58,34 +74,39 @@
             <div
               class="card-title d-flex justify-content-between align-items-center">
               <h2>Banner List</h2>
-              <a href="{{route('add-edit-banner')}}" class="btn sub_btn">ADD</a>
+              <a href="{{route('admin.bannerAdd')}}" class="btn sub_btn">ADD</a>
             </div>
           </div>
           <!-- card header end here  -->
 
           <!-- card body start here  -->
           <div class="card-body">
-            <!-- form start here  -->
-            <form class="data-form">
-              <div class="form-group">
-                <select name="cars" id="cars">
-                  <option value="volvo">Show 10</option>
-                  <option value="saab">Show 20</option>
-                  <option value="mercedes">shop 50</option>
+
+            <form method="GET" action="{{ route('admin.bannerList') }}" class="data-form">
+              <div class="form-group d-flex align-items-center">
+                <select name="perPage" id="perPage" onchange="updatePagination()">
+                  <option value="10" {{ $perPage == 10 ? 'selected' : '' }}>Show 10</option>
+                  <option value="20" {{ $perPage == 20 ? 'selected' : '' }}>Show 20</option>
+                  <option value="50" {{ $perPage == 50 ? 'selected' : '' }}>Show 50</option>
+                  <option value="100" {{ $perPage == 100 ? 'selected' : '' }}>Show 100</option>
                 </select>
                 <span>
                   <input
                     type="search"
-                    placeholder="search..."
-                    class="d-none d-sm-block" />
+                    name="search"
+                    id="searchInput"
+                    class="form-control form-control-sm me-3"
+                    placeholder="Search by title..."
+                    value="{{ request()->query('search') }}" />
                 </span>
+                <button type="submit" class="btn sub_btn mb-2">Search</button>
               </div>
             </form>
-            <!-- form end here  -->
+
 
             <!-- table content start here  -->
             <div class="table-content table-responsive">
-              <table class="table table-hover">
+              <table class="table ">
                 <thead>
                   <tr>
                     <th scope="col">Image</th>
@@ -103,7 +124,7 @@
                     <td class="list_img">
                       <div class="table_img">
                         <img
-                          src="{{ asset('http://localhost/spark_technology/storage/app/public/images/banner_images/' . $banner->banner_image) }}"
+                          src="{{ asset('storage/app/public/images/banner_images/' . $banner->banner_image) }}"
                           alt="banner-1"
                           class="img-fluid" />
                       </div>
@@ -223,7 +244,7 @@
                               <div class="modal-body">
                                 <span>
                                   <img
-                                    src="{{ asset('http://localhost/spark_technology/storage/app/public/images/banner_images/' . $banner->banner_image) }}"
+                                    src="{{ asset('storage/app/public/images/banner_images/' . $banner->banner_image) }}"
                                     alt="image"
                                     class="img-fluid" />
 
@@ -266,218 +287,70 @@
                         </a>
                         <!-- banner edit button end here  -->
 
-                        <!-- Edit Modal start here  -->
-                        <div
-                          class="modal fade"
-                          id="editModal-{{$banner->id}}"
-                          tabindex="-1"
-                          aria-labelledby="exampleModalLabel"
-                          aria-hidden="true">
-                          <div
-                            class="modal-dialog modal-dialog-centered">
+                        <div class="modal fade" id="editModal-{{$banner->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-lg modal-dialog-centered">
                             <div class="modal-content">
                               <div class="modal-header">
-                                <h1
-                                  class="modal-title"
-                                  id="exampleModalLabel">
-                                  Edit Banner-{{$banner->id}}
-                                </h1>
-                                <button
-                                  type="button"
-                                  class="btn-close"
-                                  data-bs-dismiss="modal"
-                                  aria-label="Close"></button>
+                                <h1 class="modal-title fs-5 fw-bold text-start" id="exampleModalLabel">Edit Banner-{{$banner->id}}</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                               </div>
 
                               <div class="modal-body">
                                 <div class="container">
-                                  <form class="upload-form" action="{{ isset($banner) ? route('banner.update', $banner->id) : route('banner.store') }}"
-                                    method="POST"
-                                    enctype="multipart/form-data">
-
+                                  <form class="upload-form" action="{{ route('admin.bannerUpdate', $banner->id) }}" method="POST" enctype="multipart/form-data">
                                     @csrf
-                                    @if(isset($blog))
-                                    @method('POST') <!-- for update -->
-                                    @endif
-                                    <!-- title  -->
-                                    <div
-                                      class="row form-group g-3 align-items-center">
-                                      <!-- title label start here  -->
-                                      <div class="col-3">
-                                        <label
-                                          for="inputTitle"
-                                          class="col-form-label form-label">Banner Title
-                                        </label>
-                                      </div>
-                                      <!-- title label end here  -->
 
-                                      <!-- title input start here  -->
-                                      <div class="col-9">
-                                        <div class="mb-3 mt-3">
-                                          <input
-                                            type="text"
-                                            id="inputTitle"
-                                            name="title"
-                                            class="form-control form-control-lg form-input"
-                                            placeholder="Enter Title..."
-                                            value="{{ old('title', $banner->title ?? '') }}" required />
-                                        </div>
+                                    <!-- Title and Button Link in one row -->
+                                    <div class="row form-group g-4">
+                                      <!-- Banner Title -->
+                                      <div class="col-md-6">
+                                        <label for="inputTitle" class=" form-label text-start d-block">Banner Title</label>
+                                        <input type="text" id="inputTitle" name="title"  class="form-control form-input" placeholder="Enter Title..." value="{{ old('title', $banner->title ?? '') }}" required />
                                       </div>
-                                      <!-- title input end here  -->
+
+                                   
+
+                                      <!-- Button Link -->
+                                      <div class="col-md-6">
+                                        <label for="btnLink" class="form-label text-start d-block">Button Link</label>
+                                        <input type="text" id="btnLink" name="link" class="form-control form-input" placeholder="Enter Button Link..." value="{{ old('link', $banner->link ?? '') }}" required />
+                                      </div>
                                     </div>
 
-                                    <div
-                                      class="row form-group g-3 align-items-center">
-                                      <!-- banner description label start here  -->
-                                      <div
-                                        class="col-3 d-flex justify-content-center">
-                                        <label
-                                          for="inputDescription"
-                                          class="col-form-label form-label text-break">Description</label>
-                                      </div>
-                                      <!-- banner description label end here  -->
+                                    
 
-                                      <!-- banner description textarea box start here  -->
-                                      <div class="col-9">
-                                        <textarea
-                                          class="form-control form-control-lg form-textbox"
-                                          id="inputDescription"
-                                          name="description"
-                                          rows="4"
-                                          cols="30"
-                                          placeholder="write your description here..."
-                                          required>{{ old('description', $banner->description ?? '') }}</textarea>
+                                    <!-- Description and Image in one row -->
+                                    <div class="row form-group g-4 mt-3">
+                                      <!-- Description -->
+                                      <div class="col-md-6">
+                                        <label for="inputDescription" class="form-label text-start d-block">Description</label>
+                                        <textarea class="form-control form-textbox" id="inputDescription" name="description" rows="4" placeholder="Write your description here..." required>{{ old('description', $banner->description ?? '') }}</textarea>
                                       </div>
 
-                                      <!-- banner description textarea box end here  -->
-                                    </div>
-
-                                    <div
-                                      class="row form-group g-3 align-items-center mt-3">
-                                      <!-- button link label start here  -->
-                                      <div
-                                        class="col-3 d-flex justify-content-center align-items-center">
-                                        <label
-                                          for="btnLink"
-                                          class="col-form-label form-label">Button Link
-                                        </label>
-                                      </div>
-                                      <!-- button link label end here  -->
-
-                                      <!-- button link input start here  -->
-                                      <div class="col-9">
-                                        <input
-                                          type="text"
-                                          id="inputTitle"
-                                          name="link"
-                                          class="form-control form-control-lg form-input"
-                                          placeholder="Enter Button Link..."
-                                          value="{{ old('link', $banner->link ?? '') }}"
-                                          required />
-                                      </div>
-                                      <!-- button link input end here  -->
-                                    </div>
-
-                                    <!-- image  -->
-                                    {{-- <div
-                                      class="row form-group g-3 align-items-center mt-3">
-                                      <!-- upload banner input area start here  -->
-                                      <div class="col-12">
-                                        <div
-                                          class="form-group mb-20 upload-input">
-                                          <label
-                                            for="cateImg"
-                                            class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4">
-                                            <div
-                                              class="d-flex flex-column align-items-center gap-3">
-                                              <span>
-                                                <svg
-                                                  xmlns="http://www.w3.org/2000/svg"
-                                                  version="1.1"
-                                                  xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                  width="40"
-                                                  height="40"
-                                                  x="0"
-                                                  y="0"
-                                                  viewBox="0 0 512.056 512.056"
-                                                  style="
-                                                                enable-background: new
-                                                                  0 0 512 512;
-                                                              "
-                                                  xml:space="preserve"
-                                                  class="">
-                                                  <g>
-                                                    <path
-                                                      d="M426.635 188.224C402.969 93.946 307.358 36.704 213.08 60.37 139.404 78.865 85.907 142.542 80.395 218.303 28.082 226.93-7.333 276.331 1.294 328.644c7.669 46.507 47.967 80.566 95.101 80.379h80v-32h-80c-35.346 0-64-28.654-64-64 0-35.346 28.654-64 64-64 8.837 0 16-7.163 16-16-.08-79.529 64.327-144.065 143.856-144.144 68.844-.069 128.107 48.601 141.424 116.144a16 16 0 0 0 13.6 12.8c43.742 6.229 74.151 46.738 67.923 90.479-5.593 39.278-39.129 68.523-78.803 68.721h-64v32h64c61.856-.187 111.848-50.483 111.66-112.339-.156-51.49-35.4-96.241-85.42-108.46z"
-                                                      fill="#818898"
-                                                      opacity="1"
-                                                      data-original="#818898"
-                                                      class=""></path>
-                                                    <path
-                                                      d="m245.035 253.664-64 64 22.56 22.56 36.8-36.64v153.44h32v-153.44l36.64 36.64 22.56-22.56-64-64c-6.241-6.204-16.319-6.204-22.56 0z"
-                                                      fill="#818898"
-                                                      opacity="1"
-                                                      data-original="#818898"
-                                                      class=""></path>
-                                                  </g>
-                                                </svg>
-                                              </span>
-                                              <p class="mb-0">
-                                                Upload Image / Icon
-                                              </p>
-                                            </div>
-                                            <div
-                                              class="upload-img d-none">
-                                              <img
-                                                src="../assets/img/login-left.jpg"
-                                                class="rounded-4"
-                                                alt="upload-img" />
-                                            </div>
-                                          </label>
-                                          <input
-                                            type="file"
-                                            class="form-control form-control-lg d-none"
-                                            id="cateImg"
-                                            placeholder="Enter Category" />
-                                        </div>
-                                      </div>
-                                      <!-- upload banner input area end here  -->
-                                    </div> --}}
-
-                                    <div class="row form-group">
-                                      <div class="col-12 col-md-3">
-                                        <label for="inputBannerImage" class="col-form-label form-label d-flex justify-content-left justify-content-md-center">Upload Banner Image</label>
-                                      </div>
-                                      <div class="col-12 col-md-8 mt-0">
-                                        <div class="form-group mb-20 upload-input">
-                                          <label for="bannerImg" class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4">
+                                      <!-- Banner Image -->
+                                      <div class="col-md-6">
+                                        <label for="bannerImg-{{$banner->id}}" class="form-label text-start d-block">Banner Image</label>
+                                        <div class="">
+                                          <label for="bannerImg-{{$banner->id}}" class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4 border">
                                             <div class="d-flex flex-column align-items-center gap-3">
-                                              <span>
-                                                <!-- Optionally, an SVG icon or placeholder icon can go here -->
-                                              </span>
-                                              <p id="bannerText" class="mb-0">Upload Banner</p>
+                                              <span></span>
+                                              <p id="bannerText-{{$banner->id}}" class="mb-0" style="display: none;">Upload Image</p>
+                                            </div>
+                                            <div id="bannerPreview-{{$banner->id}}" class="">
+                                              <img id="previewBannerImg-{{$banner->id}}" src="{{ isset($banner) ? asset('storage/app/public/images/banner_images/' . $banner->banner_image) : '' }}" alt="Banner Image Preview" style="max-width: 370px; height: 250px; border-radius: 8px;" />
                                             </div>
                                           </label>
-                                          <input type="file" name="banner_image" class="form-control form-control-lg " id="bannerImg" onchange="previewBannerImage(event)" />
-                                        </div>
-
-                                        <!-- Banner Image Preview -->
-                                        <div id="bannerPreview" class="mt-3">
-                                          <img id="previewBannerImg" src="{{  asset('http://localhost/spark_technology/storage/app/public/images/banner_images/' . $banner->banner_image) }}" alt="Banner Image Preview" style="display: {{ isset($banner) ? 'block' : 'none' }}; width: 100%; max-width: 200px; border-radius: 8px;" />
+                                          <input type="file" name="banner_image" class="form-control form-control-lg d-none" id="bannerImg-{{$banner->id}}" onchange="previewBannerImage(event , {{$banner->id}})" />
                                         </div>
                                       </div>
                                     </div>
 
-
-
-                                    <div class="my-3">
-                                      <button
-                                        type="button"
-                                        class="btn btn-secondary cancel_modal"
-                                        data-bs-dismiss="modal">
-                                        Close
-                                      </button>
-                                      <button type="submit" class="btn form-btn my-0">Update</button>
+                                    <div class="row">
+                                      <div class="col-4 col-md-3"></div>
+                                      <div class="col-12 col-md-9 form-button">
+                                        <button type="button" class="btn btn-secondary cancel_modal my-3" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn form-btn my-0">Update</button>
+                                      </div>
                                     </div>
                                   </form>
                                 </div>
@@ -485,9 +358,7 @@
                             </div>
                           </div>
                         </div>
-                        <!-- Edit modal end here  -->
 
-                        <!-- banner delete button start here  -->
                         <a
                           href="#"
                           role="button"
@@ -505,9 +376,8 @@
                               d="M312-144q-29.7 0-50.85-21.15Q240-186.3 240-216v-480h-48v-72h192v-48h192v48h192v72h-48v479.57Q720-186 698.85-165T648-144H312Zm336-552H312v480h336v-480ZM384-288h72v-336h-72v336Zm120 0h72v-336h-72v336ZM312-696v480-480Z" />
                           </svg>
                         </a>
-                        <!-- banner delete button end here  -->
 
-                        <!-- delete modal start here  -->
+
                         <div
                           class="modal fade"
                           id="deleteModal-{{$banner->id}}"
@@ -560,7 +430,7 @@
 
                                 <!-- delete and cancel button start here  -->
                                 <div>
-                                  <form action="{{ route('banner.delete' , $banner->id) }}" method="POST">
+                                  <form action="{{ route('admin.bannerDelete' , $banner->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE') <!-- This is important to use the DELETE HTTP method -->
                                     <button type="button" class="btn btn-secondary cancel_modal" data-bs-dismiss="modal">
@@ -572,6 +442,8 @@
                                     </button>
                                   </form>
                                 </div>
+
+
                                 <!-- delete and cancel button end here  -->
                               </div>
                             </div>
@@ -588,37 +460,42 @@
             </div>
             <!-- table content end here  -->
           </div>
-          <!-- card body end here  -->
+         
 
-          <!-- card footer start here  -->
           <div class="card-footer">
-            <p>Showing 1 to 10 of xyz entries</p>
-
+            <!-- Pagination -->
+            <p>Showing {{ $banners->firstItem() }} to {{ $banners->lastItem() }} of {{ $banners->total() }} entries</p>
             <div class="pagination-div">
               <nav aria-label="Page navigation example">
                 <ul class="pagination">
-                  <li class="page-item">
-                    <a
-                      class="page-link"
-                      href="#"
-                      aria-label="Previous">
-                      <span aria-hidden="true">&laquo;</span>
-                    </a>
+                  <!-- Check if the pagination has previous and next links -->
+                  @if ($banners->onFirstPage())
+                  <li class="page-item disabled">
+                    <span class="page-link">Previous</span>
                   </li>
+                  @else
                   <li class="page-item">
-                    <a class="page-link" href="#">1</a>
+                    <a class="page-link" href="{{ $banners->previousPageUrl() }}">Previous</a>
                   </li>
+                  @endif
+
+                  <!-- Loop through page numbers -->
+                  @foreach ($banners->getUrlRange(1, $banners->lastPage()) as $page => $url)
+                  <li class="page-item {{ $banners->currentPage() == $page ? 'active' : '' }}">
+                    <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                  </li>
+                  @endforeach
+
+                  <!-- Check if the pagination has a next link -->
+                  @if ($banners->hasMorePages())
                   <li class="page-item">
-                    <a class="page-link" href="#">2</a>
+                    <a class="page-link" href="{{ $banners->nextPageUrl() }}">Next</a>
                   </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">3</a>
+                  @else
+                  <li class="page-item disabled">
+                    <span class="page-link">Next</span>
                   </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                      <span aria-hidden="true">&raquo;</span>
-                    </a>
-                  </li>
+                  @endif
                 </ul>
               </nav>
             </div>
@@ -633,8 +510,8 @@
 </div>
 
 <script>
-  function previewBannerImage(event) {
-    const preview = document.getElementById('previewBannerImg');
+  function previewBannerImage(event, bannerId) {
+    const preview = document.getElementById('previewBannerImg-' + bannerId);
     const file = event.target.files[0];
     const reader = new FileReader();
 
@@ -642,7 +519,7 @@
       preview.src = reader.result;
       preview.style.display = 'block';
 
-      document.getElementById('bannerText').style.display = 'none';
+      document.getElementById('bannerText-' + bannerId).style.display = 'none';
     };
     reader.readAsDataURL(file);
   }
@@ -653,11 +530,18 @@
       var currentStatus = $(this).data('status');
       $('#statusModal').data('banner-id', bannerId);
       $('#statusModal').data('current-status', currentStatus);
-      var formAction = "/spark_technology/public/admin/update-banner-status/" + bannerId;
+      var formAction = "/spark_technology/admin/update-banner-status/" + bannerId;
       $('#statusChangeForm').attr('action', formAction);
       var statusModal = new bootstrap.Modal(document.getElementById('statusModal'));
       statusModal.show();
     });
   });
+</script>
+
+<script>
+  function updatePagination() {
+    const perPage = document.getElementById('perPage').value;
+    window.location.href = `?perPage=${perPage}`;
+  }
 </script>
 @endsection

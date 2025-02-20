@@ -13,7 +13,7 @@ $admin = \App\Models\Admin::get()->first();
                         class="btn border-0 p-0 header_logo"
                         role="button"
                       >
-                        <img src="../assets/icons/Logo.svg" alt="logo" />
+                        <img src="../public/assets/icons/Logo.svg" alt="logo" />
                       </a>
                     </li>
                   </ul>
@@ -352,7 +352,7 @@ $admin = \App\Models\Admin::get()->first();
                           <div class="d-flex align-items-center">
                             <div class="me-sm-2 me-0 admin_img">
                               <img
-                                src="../assets/img/image.jpg"
+                                src="../public/assets/img/default.jpg"
                                 alt="img"
                                 width="30"
                                 height="30"
@@ -368,7 +368,7 @@ $admin = \App\Models\Admin::get()->first();
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                           <li>
-                            <a class="dropdown-item" href="profile.html">
+                            <a class="dropdown-item" href="{{route('admin.profile')}}">
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 height="20"

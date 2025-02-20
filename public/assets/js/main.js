@@ -245,6 +245,19 @@ document
     isRotated14 = !isRotated14;
   });
 
+  const setting = document.getElementById("direction-setting");
+let isRotated15 = false;
+document
+  .getElementById("has-dropdown-setting")
+  .addEventListener("click", function () {
+    if (isRotated15) {
+      setting.style.transform = "rotate(0deg)";
+    } else {
+      setting.style.transform = "rotate(180deg) ";
+    }
+    isRotated15 = !isRotated15;
+  });
+
 // Initialize Edit tooltips
 var tooltipTriggerList = [].slice.call(
   document.querySelectorAll('[data-bs-toggle="edit"]')
@@ -607,3 +620,15 @@ document
       .getElementById("main-right-container")
       .classList.toggle("main-right-container-active");
   });
+
+
+
+
+
+
+
+
+
+
+
+  

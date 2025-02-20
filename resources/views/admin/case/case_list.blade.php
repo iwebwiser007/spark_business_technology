@@ -15,7 +15,7 @@
                     <!-- add banner breadcrumb start here  -->
                     <ol class="breadcrumb">
                       <li class="breadcrumb-item">
-                        <a href="#">Dashboard</a>
+                        <a href="{{route('dashboard')}}">Dashboard</a>
                       </li>
                       <li class="breadcrumb-item active" aria-current="page">
                         Case List
@@ -34,7 +34,7 @@
                           class="card-title d-flex justify-content-between align-items-center"
                         >
                           <h2>Case List</h2>
-                          <a href="add_case.html" class="btn sub_btn">ADD</a>
+                          <a href="{{route('add-edit-case-study')}}" class="btn sub_btn">ADD</a>
                         </div>
                       </div>
                       <!-- card header end here  -->
@@ -61,9 +61,9 @@
                         <!-- form end here  -->
 
                         <!-- table content start here  -->
-                        <div class="table-content table-responsive">
-                          <table class="table table-hover">
-                            <thead>
+                        <div class="table-content table-responsive ">
+                          <table class="table   table-bordered align-middle ">
+                            <thead class="table-light">
                               <tr>
                                 <th scope="col">Image</th>
                                 <th scope="col">Title</th>
@@ -79,7 +79,7 @@
                                 <td class="list_img">
                                   <div class="table_img">
                                     <img
-                                      src="../assets/img/health_care.jpg"
+                                      src="../public/assets/img/health_care.jpg"
                                       alt="banner-1"
                                       class="img-fluid"
                                     />
@@ -122,7 +122,7 @@
                                     <!-- case-1 View button start here  -->
                                     <a
                                       role="button"
-                                      href="case_study_preview.html"
+                                      href="{{route('admin.case-study.show')}}"
                                       class="btn text-decoration-none table_edit bg-primary-subtle"
                                       title="View"
                                       ><svg
@@ -142,7 +142,7 @@
                                     <!-- case-1 edit button start here  -->
                                     <a
                                       role="button"
-                                      href="add_case.html"
+                                      href="{{ route('add-edit-case-study') }}"
                                       class="btn text-decoration-none table_edit bg-info-subtle"
                                       data-bs-toggle="edit"
                                       title="Edit"
@@ -272,7 +272,7 @@
                               <!-- case-1 end here  -->
 
                               <!-- case-2 start here  -->
-                              <tr>
+                              {{--  <tr>
                                 <!-- case-2 image start here -->
                                 <td class="list_img">
                                   <div class="table_img">
@@ -489,7 +489,7 @@
                                   </div>
                                 </td>
                                 <!-- view, edit and delete button end here  -->
-                              </tr>
+                              </tr> --}}
                               <!-- case-3 end here  -->
                             </tbody>
                           </table>
@@ -500,7 +500,7 @@
 
                       <!-- card footer start here  -->
                       <div class="card-footer">
-                        <p>Showing 1 to 10 of xyz entries</p>
+                        <p>Showing 1 - 5 of 5 entries</p>
 
                         <div class="pagination-div">
                           <nav aria-label="Page navigation example">
@@ -517,18 +517,20 @@
                               <li class="page-item">
                                 <a class="page-link" href="#">1</a>
                               </li>
-                              <li class="page-item">
+                              <!-- <li class="page-item">
                                 <a class="page-link" href="#">2</a>
                               </li>
                               <li class="page-item">
                                 <a class="page-link" href="#">3</a>
-                              </li>
+                              </li> -->
                               <li class="page-item">
                                 <a class="page-link" href="#" aria-label="Next">
                                   <span aria-hidden="true">&raquo;</span>
                                 </a>
                               </li>
-                            </ul>
+                            </ul> 
+
+
                           </nav>
                         </div>
                       </div>

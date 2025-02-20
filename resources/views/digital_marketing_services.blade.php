@@ -24,13 +24,7 @@
           </div>
         </div>
       </section>
-      <!-- ============================= -->
-      <!-- Main Hero Banner end here... -->
-      <!-- ============================= -->
 
-      <!-- ============================= -->
-      <!-- Service Detail content start here... -->
-      <!-- ============================= -->
       <section class="service-detail-content">
         <div class="container-fluid">
           <div class="max-content-width">

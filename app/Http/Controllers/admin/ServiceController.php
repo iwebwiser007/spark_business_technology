@@ -8,19 +8,26 @@ use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $services = Service::all();
-        return view('admin.service.service_list', compact('services'));
+        $perPage = $request->get('perPage', 10);
+        $search = $request->get('search' , '');
+        $services = Service::query() ->when($search, function ($query) use ($search) {
+            $query->where('title', 'like', '%' . $search . '%');
+        })->orderby('id' , 'desc')->paginate($perPage);
+        return view('admin.service.service_list', compact('services' , 'perPage'));
     }
 
-    public function addEditService()
+    public function add()
     {
-        return view('admin.service.add_edit_service');
+        return view('admin.service.add_service');
     }
 
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'link' => 'unique:services,link',  
+        ]);
 
         $metaTags = json_decode($request->meta_tags, true);
 
@@ -34,12 +41,16 @@ class ServiceController extends Controller
         ]);
 
         // Step 3: Redirect to the blog list page with a success message
-        return redirect()->route('service-list')->with('success_message', 'Service created successfully!');
+        return redirect()->route('admin.serviceList')->with('success_message', 'Service created successfully!');
     }
 
 
     public function update(Request $request, $id)
     {
+        $validated = $request->validate([
+            'link' => 'unique:services,link,' . $id,  
+        ]);
+
         $service = Service::find($id);
         $metaTags = json_decode($request->meta_tags, true);
 
@@ -50,7 +61,7 @@ class ServiceController extends Controller
         $service->meta_tags = json_encode($metaTags);
 
         $service->save();
-        return redirect()->route('service-list')->with('success_message', 'Service Updated successfully!');
+        return redirect()->route('admin.serviceList')->with('success_message', 'Service Updated successfully!');
     }
 
 
@@ -59,7 +70,7 @@ class ServiceController extends Controller
         $service = Service::find($id);
         $service->delete();
     
-        return redirect()->route('service-list')->with('success_message' , 'Service Deleted Successfully!');
+        return redirect()->route('admin.serviceList')->with('success_message' , 'Service Deleted Successfully!');
     
     }
 }
