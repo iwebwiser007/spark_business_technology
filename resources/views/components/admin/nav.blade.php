@@ -8,7 +8,7 @@ $adminLogo = $logo->admin_logo;
         <div class="sidebar-logo">
             <a href="{{ route('dashboard') }}" class="logo_link">
                 <span style="">
-                    <img src="{{asset('storage/app/public/logos/' . $adminLogo)}}" alt="" style="height: 60px; width: 137px; margin-left:23px;">
+                    <img  src="{{ asset('storage/app/public/logos/' . ($adminLogo ?? 'default_admin_logo.jpg')) }}" alt="Admin Logo" style="height: 60px; width: 137px; margin-left:23px;">
                 </span>
 
              

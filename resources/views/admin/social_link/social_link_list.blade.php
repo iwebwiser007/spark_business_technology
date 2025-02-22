@@ -410,8 +410,11 @@
                                   Show Social
                                 </h1>
                                 <p class="pb-4">
-                                  Are you sure you want to show this
-                                  social link to users?
+                                  @if($socialLink->status == 1)
+                                  Are you sure you want to hide this social link from users?
+                                  @elseif($socialLink->status == 0)
+                                  Are you sure you want to show this social link to users?
+                                  @endif
                                 </p>
 
 
