@@ -1,15 +1,12 @@
 @extends('components.admin.layouts')
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery first -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/parsleyjs@2.9.2/dist/parsley.css">
 <script src="https://cdn.jsdelivr.net/npm/parsleyjs@2.9.2/dist/parsley.min.js"></script>
 @section('content')
 <div class="main-right-container" id="main-right-container">
-  <!-- main data start here  -->
   <div class="main-data">
     <div class="container-fluid">
-      <!-- dashboard-head start here... -->
       <div class="dash-head">
-        <!-- dashboard title start here  -->
         <div class="dash_title">
           <a href="{{url()->previous()}}"
             role="button"
@@ -26,9 +23,6 @@
           </a>
           <h2 class="main-title text-wrap">Add Banner</h2>
         </div>
-        <!-- dashboard title end here  -->
-
-        <!-- breadcrumb start here  -->
         <ol class="breadcrumb text-nowrap">
           <li class="breadcrumb-item">
             <a href="{{route('dashboard')}}">Dashboard</a>
@@ -37,11 +31,9 @@
             Add Banner
           </li>
         </ol>
-        <!-- add breadcrumb end here  -->
       </div>
 
       @if (Session::has('error_message'))
-      <!-- Check vendorRegister() method in Front/VendorController.php -->
       <div class="alert alert-danger alert-dismissible fade show mt-3 d-flex justify-content-between align-items-center"
         role="alert">
         <div>
@@ -55,7 +47,6 @@
       <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
         <div class="d-flex justify-content-between align-items-center">
           <div class="d-flex flex-column">
-            <!-- <strong class="me-2">Error:</strong> -->
             <ul class="mb-0 ps-3">
               @foreach ($errors->all() as $error)
               <li>{{ $error }}</li>
@@ -67,34 +58,25 @@
       </div>
       @endif
 
-      <!-- dashboard-head end here  -->
-
       <div class="container-fluid">
-        <!-- card start here  -->
         <div class="card">
-          <!-- card header start here  -->
           <div class="card-header">
             <div
               class="card-title d-flex justify-content-between align-items-center">
               <h2>Add Banner</h2>
             </div>
           </div>
-          <!-- card header end here  -->
 
-          <!-- card body start here  -->
           <div class="card-body">
-            <!-- form start here  -->
             <form class="upload-form" action="{{ url('admin/banner-store') }}" method="POST" enctype="multipart/form-data" data-parsley-validate>
               @csrf
-              <!-- title area start here  -->
               <div class="row">
-                <!-- banner title start here  -->
                 <div class="col-12 col-md-6 ">
                   <div class="form-group">
                     <label
                       for="inputBannerTitle"
                       class="col-form-label form-label">Banner Title
-                    </label>
+                      <span class="text-danger">*</span></label>
                     <input
                       type="text"
                       id="inputBannerTitle"
@@ -109,7 +91,7 @@
                     <label
                       for="btnLink"
                       class="col-form-label form-label">Button Link
-                    </label>
+                      <span class="text-danger">*</span></label>
                     <input
                       type="text"
                       id="btnLink"
@@ -123,7 +105,7 @@
                   <div class="form-group">
                     <label
                       for="inputBannerDescription"
-                      class="col-form-label form-label">Banner Description</label>
+                      class="col-form-label form-label">Banner Description <span class="text-danger">*</span></label>
                     <textarea
                       class="form-control form-textbox "
                       id="inputBannerDescription"
@@ -136,7 +118,7 @@
                 </div>
                 <div class="col-12 col-md-6 ">
                   <div class="form-group">
-                    <label for="inputBannerImage" class="form-label">Banner Image</label>
+                    <label for="inputBannerImage" class="form-label">Banner Image <span class="text-danger">*</span></label>
                     <div class="form-group mb-20 upload-input">
                       <label for="bannerImg" class="col-form-label form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4">
                         <div class="d-flex flex-column align-items-center gap-3">
@@ -180,9 +162,6 @@
                   </div>
                 </div>
               </div>
-              
-
-
 
               <div class="row">
                 <div class="col-12 col-md-12 form-button">

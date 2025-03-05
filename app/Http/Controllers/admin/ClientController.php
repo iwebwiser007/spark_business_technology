@@ -16,7 +16,7 @@ class ClientController extends Controller
         $search = $request->get('search', '');
         $clients = Client::query()->when($search, function ($query) use ($search) {
             $query->where('title', 'like', '%' . $search . '%');
-        })->orderby('id' , 'desc')->paginate($perPage);
+        })->orderby('id', 'desc')->paginate($perPage);
         return view('admin.clients.clients_list', compact('clients', 'perPage'));
     }
 

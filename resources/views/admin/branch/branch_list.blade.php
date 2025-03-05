@@ -1,35 +1,22 @@
 @extends('components.admin.layouts')
 @section('content')
 <div class="main-right-container" id="main-right-container">
-  <!-- main data start here  -->
   <div class="main-data">
     <div class="container-fluid">
-      <!-- dashboard-head start here... -->
       <div class="dash-head d-flex justify-content-between">
         <div class="dash_title">
-          <!-- dashboard banner title start here  -->
           <h2 class="main-title">Branch List</h2>
-          <!-- dashboard banner title end here  -->
         </div>
-
-        <!-- add banner breadcrumb start here  -->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
             <a href="{{route('dashboard')}}">Dashboard</a>
           </li>
-          <!-- <li class="breadcrumb-item">
-                        <a href="#">Branch</a>
-                      </li> -->
           <li class="breadcrumb-item active" aria-current="page">
             Branch List
           </li>
         </ol>
-        <!-- add banner breadcrumb end here  -->
       </div>
-      <!-- dashboard-head end here... -->
-
       @if (Session::has('success_message'))
-      <!-- Check vendorRegister() method in Front/VendorController.php -->
       <div class="alert alert-success alert-dismissible fade show mt-3 d-flex justify-content-between align-items-center"
         role="alert">
         <div>
@@ -40,9 +27,7 @@
       @endif
 
       <div class="container-fluid">
-        <!-- card start here  -->
         <div class="card">
-          <!-- card header start here  -->
           <div class="card-header">
             <div
               class="card-title d-flex justify-content-between align-items-center">
@@ -50,11 +35,7 @@
               <a href="{{route('admin.branchAdd')}}" class="btn sub_btn">ADD</a>
             </div>
           </div>
-          <!-- card header end here  -->
-
-          <!-- card body start here  -->
           <div class="card-body">
-            <!-- form start here  -->
             <form method="GET" action="{{ route('admin.branchList') }}" class="data-form">
               <div class="form-group d-flex align-items-center">
                 <select name="perPage" id="perPage" onchange="updatePagination()">
@@ -75,9 +56,6 @@
                 <button type="submit" class="btn sub_btn mb-2">Search</button>
               </div>
             </form>
-            <!-- form end here  -->
-
-            <!-- table content start here  -->
             <div class="table-content table-responsive">
               <table class="table table-hover">
                 <thead>
@@ -94,23 +72,15 @@
                 </thead>
                 <tbody>
                   @foreach ($branches as $branch)
-                  <!-- branch-1 start here  -->
                   <tr>
-                    <!-- branch-1 title start here  -->
                     <td>
                       <p class="text-nowrap">{{$branch->title}}</p>
                     </td>
-                    <!-- branch-1 title end here  -->
-
-                    <!-- Adress area start here  -->
                     <td>
                       <p class="text-truncate">
                         {{$branch->address}}
                       </p>
                     </td>
-                    <!-- Adress area end here  -->
-
-                    <!-- City area start here  -->
                     <td>
                       <p>{{$branch->city}}</p>
                     </td>

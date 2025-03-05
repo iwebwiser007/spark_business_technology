@@ -75,7 +75,7 @@
                 <!-- Service Name -->
                 <div class="col-md-6">
                 <div class="form-group">
-                  <label for="inputServiceName" class="col-form-label form-label">Service Name</label>
+                  <label for="inputServiceName" class="col-form-label form-label">Service Name <span class="text-danger">*</span></label>
                   <input type="text" id="inputServiceName" name="name" class="form-control form-input" placeholder="Enter Service Name..." required />
                 </div>
                 </div>
@@ -84,7 +84,7 @@
                 <!-- Service Title -->
                 <div class="col-md-6">
                 <div class="form-group">
-                  <label for="inputServiceTitle" class="col-form-label form-label">Service Title</label>
+                  <label for="inputServiceTitle" class="col-form-label form-label">Service Title <span class="text-danger">*</span></label>
                   <input type="text" id="inputServiceTitle" name="title" class="form-control form-input" placeholder="Enter Service Title..." required />
                 </div>
                 </div>
@@ -92,7 +92,7 @@
                 <!-- Button Link -->
                 <div class="col-md-6">
                 <div class="form-group">
-                  <label for="serviceLink" class="col-form-label form-label">Button Link</label>
+                  <label for="serviceLink" class="col-form-label form-label">Button Link <span class="text-danger">*</span></label>
                   <input type="text" id="serviceLink" name="link" class="form-control form-input" placeholder="Enter Button Link..." required />
                 </div>
                 </div>
@@ -100,7 +100,7 @@
                 <!-- Metas -->
                 <div class="col-md-6">
                 <div class="form-group">
-                  <label for="metaTags" class="col-form-label form-label">Metas</label>
+                  <label for="metaTags" class="col-form-label form-label">Metas <span class="text-danger">*</span></label>
                   <textarea name="meta_tags" id="metaTags" class="form-control  form-textbox" placeholder="Enter JSON formatted metas..." rows="4" required></textarea>
                 </div>
                 </div>

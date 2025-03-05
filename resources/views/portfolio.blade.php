@@ -1,12 +1,81 @@
 @extends('layout.layouts')
 
-@section('title', 'portfolio |Spark Business Technology | App & Software development company')
+
+
+ @section('title', 'portfolio |Spark Business Technology | App & Software development company')
 
 @section('keywords', 'Keywords for portfolio Page')
 
 @section('description', 'spark business technology | best software and app development company in australia with experts to provide excellent solution to your problem"')
 
 @section('content') 
+  <section class="main-banner portfolio-banner">
+    <div class="container-fluid">
+      <div class="max-content-width">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-10 col-lg-7">
+            <div class="banner-content">
+              <h4 class="title">
+                We align our success with our client’s success
+              </h4>
+              <p class="description">
+                Integrated Systems Streamline your business, Improve your
+                business operations, reduce errors and improve efficiency.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ============================= -->
+  <!-- Portfolio projects start here... -->
+  <!-- ============================= -->
+  <section class="portfolio-projects">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="all-porjects row justify-content-between">
+          @foreach($portfolios as $index => $item)
+            <div class="col-12 col-md-6 col-lg-5">
+              <div class="row">
+                <div class="col-12">
+                  <div class="project-card">
+                    @if ($index % 2 == 0)
+                      <!-- For even index: image first, then title and description -->
+                      <div class="project-img">
+                        <img loading="lazy" src="{{ asset('storage/app/public/portfolio/' . $item['image']) }}" alt="client-success" />
+                      </div>
+                      <div class="card-content">
+                        <h4 class="title">
+                          <a href="{{ route('admin.portfolioDetail' , $item['slug']) }}" class="stretched-link">{{ $item['title'] }}</a>
+                        </h4>
+                        <p class="description">{{ $item['description'] }}</p>
+                      </div>
+                    @else
+                      <!-- For odd index: title and description first, then image -->
+                      <div class="card-content">
+                        <h4 class="title">
+                          <a href="{{ route('admin.portfolioDetail' , $item['slug']) }}" class="stretched-link">{{ $item['title'] }}</a>
+                        </h4>
+                        <p class="description">{{ $item['description'] }}</p>
+                      </div>
+                      <div class="project-img">
+                        <img loading="lazy" src="{{ asset('storage/app/public/portfolio/' . $item['image']) }}" alt="client-success" />
+                      </div>
+                    @endif
+                  </div>
+                </div>
+              </div>
+            </div>
+          @endforeach
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+{{--
       <section class="main-banner portfolio-banner">
         <div class="container-fluid">
           <div class="max-content-width">
@@ -198,5 +267,7 @@
             </div>
           </div>
         </div>
-      </section>
+      </section> --}}
   @endsection  
+
+

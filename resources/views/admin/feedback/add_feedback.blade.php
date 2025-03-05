@@ -66,7 +66,7 @@
                   <label
                     for="inputFeedbackTitle"
                     class="col-form-label form-label">Feedback Title
-                  </label>
+                    <span class="text-danger">*</span></label>
                   <input
                     type="text"
                     id="inputFeedbackTitle"
@@ -81,7 +81,7 @@
                   <div class="form-group">
                   <label for="btnFeedbackLink" class="col-form-label form-label">
                     Page Select
-                  </label>
+                    <span class="text-danger">*</span></label>
                   <select name="pageSelect" class="form-control form-input" id="pageSelect" data-parsley-required="true">
                     <option value="" disabled selected>Select Page</option> <!-- Placeholder option -->
                     @foreach ($headers as $header)
@@ -97,7 +97,7 @@
                   <div class="form-group">
                   <label
                     for="inputFeedbackDescription"
-                    class="col-form-label form-label ">Feedback Description</label>
+                    class="col-form-label form-label ">Feedback Description <span class="text-danger">*</span></label>
                     <textarea
                     class="form-control form-textbox"
                     id="inputFeedbackDescription"
@@ -113,7 +113,7 @@
 
               <div class="col-12 col-md-6">
                   <div class="form-group">
-                  <label for="inputIcon" class="col-form-label form-label">Upload Feekback</label>
+                  <label for="inputIcon" class="col-form-label form-label">Upload Feekback <span class="text-danger">*</span></label>
                   <div class="form-group mb-20 upload-input">
                     <label for="iconImg" class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4">
                       <div class="d-flex flex-column align-items-center gap-3">

@@ -60,7 +60,7 @@
             @csrf
             <div class="row form-group mt-1 mt-md-2 align-items-start">
               <div class="col-12 col-md-2">
-                <label for="inputHeaderTitle" class="col-form-label form-label d-flex justify-content-start justify-content-md-center mb-0 mb-md-3">Header Title / Link</label>
+                <label for="inputHeaderTitle" class="col-form-label form-label d-flex justify-content-start justify-content-md-center mb-0 mb-md-3">Header Title / Link  <span style="margin-left: 3px;" class="text-danger">*</span></label>
               </div>
 
               <div class="col-12 col-md-10 mt-0">
