@@ -61,7 +61,9 @@ $services = \App\Models\Service::all();
               <!--SVG dropdown icon-->
             </a>
             <ul class="dropdown-nav">
-           
+            <!-- <li class="nav-item">
+                <a class="nav-link {{ request()->is('spark_business') ? 'active' : '' }}" href="{{url('spark_business')}}">All Services</a>
+              </li> -->
               @foreach ($services as $service)
               <li class="nav-item">
               <a class="nav-link {{ request()->is($service->link) ? 'active' : '' }}" href="{{ route('service.show', $service->link) }}">{{$service->name}}</a>

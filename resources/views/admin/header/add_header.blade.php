@@ -2,6 +2,13 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/parsleyjs@2.9.2/dist/parsley.css">
 <script src="https://cdn.jsdelivr.net/npm/parsleyjs@2.9.2/dist/parsley.min.js"></script>
+<script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+@section('styles')
+<style>
+  .cke_notification_warning {
+    display: none !important;
+  }
+</style>
 @section('content')
 <div class="main-right-container" id="main-right-container">
   <div class="main-data">
@@ -56,7 +63,7 @@
                 <label for="inputHeaderTitle" class="col-form-label form-label d-flex justify-content-start justify-content-md-center mb-0 mb-md-3">Header Title / Link</label>
               </div>
 
-              <div class="col-12 col-md-9 mt-0">
+              <div class="col-12 col-md-10 mt-0">
                 <div class="input-group mb-3 pb-4 position-relative gap-2">
                   <div class="col-5">
                     <input type="text" class="form-control" id="header-link" name="title" placeholder="Enter Header title..." aria-label="title" data-parsley-required="true" />
@@ -68,9 +75,19 @@
               </div>
             </div>
 
-            <div class="row">
+            {{--  <div class="row">
+              <div class="col-12 col-md-2">
+                <label for="html_content" class="col-form-label form-label d-flex justify-content-start justify-content-md-center mb-0 mb-md-3">Content</label>
+              </div>
+              <div class="col-12 col-md-9 mt-0">
+                <textarea class="form-control ckeditor form-textbox" id="html_content" name="html_content" rows="6"></textarea>
+              </div>
+            </div> --}}
+
+           
+            <div class="row ">
               <div class="col-4 col-md-3"></div>
-              <div class="col-12 col-md-9 form-button">
+              <div class="col-12 col-md-9 form-button mt-3">
                 <a href="" role="button" class="btn form-cancel my-0">cancel</a>
                 <button type="submit" class="btn form-btn my-0">save</button>
               </div>

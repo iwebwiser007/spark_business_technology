@@ -82,7 +82,11 @@
                                                 </span>
                                                 <p id="adminText" class="mb-0">Upload Logo</p>
                                             </div>
-                                            <img id="adminLogoPreview" src="{{ asset('storage/app/public/logos/' . $logo->admin_logo) }}" alt="Admin Logo Preview" />
+                                            <img id="adminLogoPreview"
+                                                src="{{ asset('storage/app/public/logos/' . ($logo->admin_logo ?? 'default_admin_logo.jpg')) }}"
+                                                alt="Admin Logo Preview" />
+
+
                                         </label>
                                         <input type="hidden" name="existing_admin_logo" value="{{ $logo->admin_logo }}">
 
@@ -107,7 +111,10 @@
                                                 </span>
                                                 <p id="frontText" class="mb-0">Upload Logo</p>
                                             </div>
-                                            <img id="frontLogoPreview" src="{{ asset('storage/app/public/logos/' . $logo->front_logo) }}" alt="Front Logo Preview" />
+                                            <!-- <img id="frontLogoPreview" src="{{ asset('storage/app/public/logos/' . $logo->front_logo) }}" alt="Front Logo Preview" /> -->
+                                            <img id="frontLogoPreview"
+                                                src="{{ asset('storage/app/public/logos/' . ($logo->front_logo ?? 'default_admin_logo.jpg')) }}"
+                                                alt="Front Logo Preview" />
                                         </label>
                                         <input type="hidden" name="existing_front_logo" value="{{ $logo->front_logo }}">
 
@@ -121,7 +128,10 @@
                             <div class="row">
                                 <div class="col-4 col-md-3"></div>
                                 <div class="col-12 col-md-9 form-button">
-                                    <button type="button" class="btn btn-secondary cancel_modal my-3" data-bs-dismiss="modal">Cancel</button>
+                                    <a
+                                        href=""
+                                        role="button"
+                                        class="btn form-cancel my-0">cancel</a>
                                     <button type="submit" class="btn form-btn my-0">Update</button>
                                 </div>
                             </div>

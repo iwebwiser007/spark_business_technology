@@ -1,4 +1,12 @@
 @extends('components.admin.layouts')
+<script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+@section('styles')
+<style>
+  .cke_notification_warning {
+    display: none !important;
+  }
+</style>
+
 @section('content')
 
 <div class="main-right-container" id="main-right-container">
@@ -161,6 +169,20 @@
                                           placeholder="Enter Header Link..." value="{{ old('link', $header->link ?? '') }}" required />
                                       </div>
                                     </div>
+
+                                    {{--  <div class="row form-group  mt-3">
+                                      <div class="col-11">
+                                        <label for="html_content" class="form-label  text-start d-block">Content</label>
+                                        <textarea class="form-control ckeditor form-textbox" id="html_content_{{$header->id}}" name="html_content" rows="6">{{ old('html_content', $header->html_content ?? '') }}</textarea>
+                                      </div>
+                                    </div>
+
+                                    <script>
+                                      CKEDITOR.replace('html_content_{{ $header->id }}', {
+                                        allowedContent: true,
+                                      });
+                                    </script> --}}
+
 
                                     <div class="row">
                                       <div class="col-4 col-md-3"></div>

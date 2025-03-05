@@ -10,7 +10,7 @@
     <!-- Meta tags end here... -->
 
     <!-- title start here... -->
-    <title>iWebWiser</title>
+    <title>Spark Busniness Technology</title>
     <!-- title end here... -->
 
     <!-- All css links start here... -->
@@ -22,7 +22,9 @@
     <!-- All css links end here... -->
 
     <!-- favicon icon start here -->
-    <link rel="icon" type="image/x-icon" href="../public/assets/icons/Logo.svg" />
+    <!-- <link rel="icon" type="image/x-icon" href="../public/assets/icons/Logo.svg" /> -->
+    <link rel="icon" type="image/x-icon" href="{{ asset('public/web/img/favicon.ico')}}" />
+
     <!-- favicon icon end here -->
   </head>
   <!-- Head tag end here... -->

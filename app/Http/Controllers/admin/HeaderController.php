@@ -38,6 +38,7 @@ class HeaderController extends Controller
         $header = Header::create([
             'title' => $request->title,
             'link' => $request->link,
+            // 'html_content' => $request->html_content,
         ]);
     
         return redirect()->route('admin.headerList')->with('success_message', 'Header saved successfully!');
@@ -60,6 +61,8 @@ class HeaderController extends Controller
         $header = Header::find($id);
         $header->title = $request->title;
         $header->link = $request->link;
+        // $header->html_content = $request->html_content;
+
         $header->save();
 
         return redirect()->route('admin.headerList')->with('success_message' , 'Header Updated Successfully!');
