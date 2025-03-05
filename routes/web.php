@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Basecontroller;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ServiceController;
 
 //use App\Http\Controllers\Admin\LoginController;
@@ -25,7 +26,7 @@ Route::get('/', [Basecontroller::class, 'index']);
 Route::get('home', [Basecontroller::class, 'index']);
 Route::get('about', [Basecontroller::class, 'about']);
 Route::get('service', [Basecontroller::class, 'service']);
-Route::get('portfolio', [Basecontroller::class, 'portfolio']);
+Route::get('portfolio', [PortfolioController::class, 'portfolio']);
 Route::get('spark_business', [Basecontroller::class, 'spark_business_technology_service']);
 // Route::get('graphic_design_service',[Basecontroller::class,'graphic_design']);
 // Route::get('digital_marketing_services',[Basecontroller::class,'digital_marketing']);
@@ -42,6 +43,8 @@ Route::post('newsletter_subscribe', [Basecontroller::class, 'newsletter_subscrib
 Route::get('blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('{link}', [ServiceController::class, 'show'])->name('service.show');
 Route::get('blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
+Route::get('portfolio/{slug}',[PortfolioController::class, 'detail'])->name('admin.portfolioDetail');
+
 
 Route::match(['get', 'post'], '/admin/registration', [AdminController::class, 'registration']);
 Route::match(['get', 'post'], '/admin/login', [AdminController::class, 'login'])->name('login');
@@ -60,6 +63,8 @@ Route::middleware(['admin.auth'])->prefix('admin')->namespace('App\Http\Controll
     Route::match(['get', 'post'], 'header-store', 'HeaderController@store')->name('admin.headerStore');
     Route::match(['get', 'post'], '/header-update/{id}', 'HeaderController@update')->name('admin.headerUpdate');
     Route::delete('/header-delete/{id}', 'HeaderController@delete')->name('admin.headerDelete');
+    Route::get('header-search', 'HeaderController@search')->name('admin.headerSearch');
+
 
     Route::get('banner-list', 'BannerController@index')->name('admin.bannerList');
     Route::match(['get', 'post'], 'add-banner', 'BannerController@add')->name('admin.bannerAdd');
@@ -94,6 +99,16 @@ Route::middleware(['admin.auth'])->prefix('admin')->namespace('App\Http\Controll
     Route::match(['get', 'post'], '/blog-update/{id}', 'BlogController@update')->name('admin.blogUpdate');
     Route::delete('/blog-delete/{id}', 'BlogController@delete')->name('admin.blogDelete');
 
+    Route::get('portfolio-list', 'PortfolioController@index')->name('admin.portfolioList');
+    Route::match(['get', 'post'], 'add-portfolio', 'PortfolioController@add')->name('admin.portfolioAdd');
+    Route::match(['get', 'post'], 'portfolio-store', 'PortfolioController@store')->name('admin.portfolioStore');
+    Route::match(['get', 'post'], '/portfolio-update/{id}', 'PortfolioController@update')->name('admin.portfolioUpdate');
+    Route::delete('/portfolio-delete/{id}', 'PortfolioController@delete')->name('admin.portfolioDelete');
+    Route::match(['get', 'post'], '/update-portfolio-status/{id}', 'PortfolioController@updateStatus')->name('admin.portfolioUpdateStatus');
+
+
+
+
     Route::get('technology-list', 'TechnologyController@index')->name('admin.technologyList');
     Route::match(['get', 'post'], 'add-technology', 'TechnologyController@add')->name('admin.technologyAdd');
     Route::match(['get', 'post'], 'technology-store', 'TechnologyController@store')->name('admin.technologyStore');
@@ -111,6 +126,8 @@ Route::middleware(['admin.auth'])->prefix('admin')->namespace('App\Http\Controll
     Route::match(['get', 'post'], 'service-store', 'ServiceController@store')->name('admin.serviceStore');
     Route::match(['get', 'post'], '/service-update/{id}', 'ServiceController@update')->name('admin.serviceUpdate');
     Route::delete('/service-delete/{id}', 'ServiceController@delete')->name('admin.serviceDelete');
+    Route::get('search-service', 'ServiceController@search')->name('admin.searchService');
+
 
     Route::get('industry-list', 'IndustryController@index')->name('admin.industryList');
     Route::match(['get', 'post'], 'add-industry', 'IndustryController@add')->name('admin.industryAdd');
@@ -130,5 +147,9 @@ Route::middleware(['admin.auth'])->prefix('admin')->namespace('App\Http\Controll
 
     Route::match(['get', 'post'], 'logo', 'AdminController@logo')->name('admin.logo');
     Route::match(['get', 'post'], 'update-logo', 'AdminController@updateLogo')->name('admin.updateLogo');
+    
 
 });
+
+
+

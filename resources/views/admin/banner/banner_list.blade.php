@@ -1,21 +1,14 @@
 @extends('components.admin.layouts')
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 @section('content')
 <div class="main-right-container" id="main-right-container">
-  <!-- main data start here  -->
   <div class="main-data">
     <div class="container-fluid">
-      <!-- dashboard head start here... -->
       <div class="dash-head">
         <div class="dash_title">
-          <!-- dashboard banner title start here  -->
           <h2 class="main-title">Banner List</h2>
-          <!-- dashboard banner title end here  -->
         </div>
 
-        <!-- add banner breadcrumb start here  -->
         <ol class="breadcrumb text-nowrap">
           <li class="breadcrumb-item">
             <a href="{{route('dashboard')}}">Dashboard</a>
@@ -24,12 +17,9 @@
             Banner List
           </li>
         </ol>
-        <!-- add banner breadcrumb end here  -->
       </div>
-      <!-- dashboard-head end here... -->
 
       @if (Session::has('success_message'))
-      <!-- Check vendorRegister() method in Front/VendorController.php -->
       <div class="alert alert-success alert-dismissible fade show mt-3 d-flex justify-content-between align-items-center"
         role="alert">
         <div>
@@ -40,7 +30,6 @@
       @endif
 
       @if (Session::has('error_message'))
-      <!-- Check vendorRegister() method in Front/VendorController.php -->
       <div class="alert alert-danger alert-dismissible fade show mt-3 d-flex justify-content-between align-items-center"
         role="alert">
         <div>
@@ -54,7 +43,6 @@
       <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
         <div class="d-flex justify-content-between align-items-center">
           <div class="d-flex flex-column">
-            <!-- <strong class="me-2">Error:</strong> -->
             <ul class="mb-0 ps-3">
               @foreach ($errors->all() as $error)
               <li>{{ $error }}</li>
@@ -67,9 +55,7 @@
       @endif
 
       <div class="container-fluid">
-        <!-- card start here  -->
         <div class="card">
-          <!-- card header start here  -->
           <div class="card-header">
             <div
               class="card-title d-flex justify-content-between align-items-center">
@@ -77,11 +63,8 @@
               <a href="{{route('admin.bannerAdd')}}" class="btn sub_btn">ADD</a>
             </div>
           </div>
-          <!-- card header end here  -->
 
-          <!-- card body start here  -->
           <div class="card-body">
-
             <form method="GET" action="{{ route('admin.bannerList') }}" class="data-form">
               <div class="form-group d-flex align-items-center">
                 <select name="perPage" id="perPage" onchange="updatePagination()">
@@ -103,8 +86,6 @@
               </div>
             </form>
 
-
-            <!-- table content start here  -->
             <div class="table-content table-responsive">
               <table class="table ">
                 <thead>
@@ -120,7 +101,6 @@
                 <tbody>
                   @foreach($banners as $banner)
                   <tr>
-                    <!-- banner-1 image start here -->
                     <td class="list_img">
                       <div class="table_img">
                         <img
@@ -129,30 +109,19 @@
                           class="img-fluid" />
                       </div>
                     </td>
-                    <!-- banner-1 image end here  -->
-
-                    <!-- banner-1 title start here  -->
                     <td>
                       <p class="text-truncate">{{ $banner->title }}</p>
                     </td>
-                    <!-- banner-1 title end here  -->
-
-                    <!-- banner-1 Description start here  -->
                     <td>
                       <p class="desc text-truncate px-1">
                         {{ $banner->description }}
                       </p>
                     </td>
-                    <!-- banner-1 Description end here -->
-
-                    <!-- banner button link start here -->
                     <td>
                       <p class="text-truncate">
                         {{ $banner->link }}
                       </p>
                     </td>
-                    <!-- banner button link end here  -->
-
                     <td class="table_status">
                       @if($banner->status == 1)
                       <span class="badge table_badge bg-success-subtle text-success rounded-pill" data-banner-id="{{ $banner->id }}" data-status="1">
@@ -164,8 +133,6 @@
                       </span>
                       @endif
                     </td>
-
-                    <!-- Modal for status confirmation -->
                     <div class="modal fade" id="statusModal" tabindex="-1" aria-labelledby="statusModalLabel" aria-hidden="true">
                       <div class="modal-dialog">
                         <div class="modal-content">
@@ -177,7 +144,6 @@
                             Are you sure you want to change the status of this banner?
                           </div>
                           <div class="modal-footer">
-                            <!-- Form dynamically updates action URL -->
                             <form id="statusChangeForm" method="POST">
                               @csrf
                               @method('POST')
@@ -188,17 +154,9 @@
                         </div>
                       </div>
                     </div>
-
-
-
-
-                    <!-- banner status end here  -->
-
-                    <!-- banner-3 view, edit and delete button start here  -->
                     <td class="table_action">
                       <div
                         class="d-inline-flex justify-content-center align-items-center gap-3">
-                        <!-- banner View button start here  -->
                         <a
                           role="button"
                           href="#"
@@ -215,9 +173,6 @@
                               d="M480-312q70 0 119-49t49-119q0-70-49-119t-119-49q-70 0-119 49t-49 119q0 70 49 119t119 49Zm0-72q-40 0-68-28t-28-68q0-40 28-68t68-28q40 0 68 28t28 68q0 40-28 68t-68 28Zm0 192q-142.6 0-259.8-78.5Q103-349 48-480q55-131 172.2-209.5Q337.4-768 480-768q142.6 0 259.8 78.5Q857-611 912-480q-55 131-172.2 209.5Q622.6-192 480-192Zm0-288Zm0 216q112 0 207-58t146-158q-51-100-146-158t-207-58q-112 0-207 58T127-480q51 100 146 158t207 58Z" />
                           </svg>
                         </a>
-                        <!-- banner View button end here  -->
-
-                        <!-- banner view start here  -->
                         <div
                           class="modal fade"
                           id="viewModal-{{$banner->id}}"
@@ -239,8 +194,6 @@
                                   data-bs-dismiss="modal"
                                   aria-label="Close"></button>
                               </div>
-
-                              <!-- modal body start here  -->
                               <div class="modal-body">
                                 <span>
                                   <img
@@ -262,13 +215,9 @@
                                   Close
                                 </button>
                               </div>
-                              <!-- modal body end here  -->
                             </div>
                           </div>
                         </div>
-                        <!-- banner view end here  -->
-
-                        <!-- banner edit button start here  -->
                         <a
                           role="button"
                           href="#"
@@ -285,8 +234,6 @@
                               d="M80 0v-160h800V0H80Zm160-320h56l312-311-29-29-28-28-311 312v56Zm-80 80v-170l448-447q11-11 25.5-17t30.5-6q16 0 31 6t27 18l55 56q12 11 17.5 26t5.5 31q0 15-5.5 29.5T777-687L330-240H160Zm560-504-56-56 56 56ZM608-631l-29-29-28-28 57 57Z" />
                           </svg>
                         </a>
-                        <!-- banner edit button end here  -->
-
                         <div class="modal fade" id="editModal-{{$banner->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog modal-lg modal-dialog-centered">
                             <div class="modal-content">
@@ -299,35 +246,21 @@
                                 <div class="container">
                                   <form class="upload-form" action="{{ route('admin.bannerUpdate', $banner->id) }}" method="POST" enctype="multipart/form-data">
                                     @csrf
-
-                                    <!-- Title and Button Link in one row -->
                                     <div class="row form-group g-4">
-                                      <!-- Banner Title -->
                                       <div class="col-md-6">
                                         <label for="inputTitle" class=" form-label text-start d-block">Banner Title</label>
                                         <input type="text" id="inputTitle" name="title"  class="form-control form-input" placeholder="Enter Title..." value="{{ old('title', $banner->title ?? '') }}" required />
                                       </div>
-
-                                   
-
-                                      <!-- Button Link -->
                                       <div class="col-md-6">
                                         <label for="btnLink" class="form-label text-start d-block">Button Link</label>
                                         <input type="text" id="btnLink" name="link" class="form-control form-input" placeholder="Enter Button Link..." value="{{ old('link', $banner->link ?? '') }}" required />
                                       </div>
                                     </div>
-
-                                    
-
-                                    <!-- Description and Image in one row -->
                                     <div class="row form-group g-4 mt-3">
-                                      <!-- Description -->
                                       <div class="col-md-6">
                                         <label for="inputDescription" class="form-label text-start d-block">Description</label>
                                         <textarea class="form-control form-textbox" id="inputDescription" name="description" rows="4" placeholder="Write your description here..." required>{{ old('description', $banner->description ?? '') }}</textarea>
                                       </div>
-
-                                      <!-- Banner Image -->
                                       <div class="col-md-6">
                                         <label for="bannerImg-{{$banner->id}}" class="form-label text-start d-block">Banner Image</label>
                                         <div class="">
@@ -344,7 +277,6 @@
                                         </div>
                                       </div>
                                     </div>
-
                                     <div class="row">
                                       <div class="col-4 col-md-3"></div>
                                       <div class="col-12 col-md-9 form-button">
@@ -387,7 +319,6 @@
                           <div
                             class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
-                              <!-- close button start here  -->
                               <a
                                 href="#"
                                 role="button"
@@ -404,8 +335,6 @@
                                     d="m291-240-51-51 189-189-189-189 51-51 189 189 189-189 51 51-189 189 189 189-51 51-189-189-189 189Z" />
                                 </svg>
                               </a>
-                              <!-- close button end here  -->
-
                               <div class="modal-body my-3">
                                 <span class="m-4">
                                   <svg
@@ -427,48 +356,35 @@
                                   Are you sure you want to delete
                                   this Banner?
                                 </p>
-
-                                <!-- delete and cancel button start here  -->
                                 <div>
                                   <form action="{{ route('admin.bannerDelete' , $banner->id) }}" method="POST">
                                     @csrf
-                                    @method('DELETE') <!-- This is important to use the DELETE HTTP method -->
+                                    @method('DELETE') 
                                     <button type="button" class="btn btn-secondary cancel_modal" data-bs-dismiss="modal">
                                       Cancel
                                     </button>
-
                                     <button type="submit" class="btn btn-danger del_modal">
                                       Delete
                                     </button>
                                   </form>
                                 </div>
-
-
-                                <!-- delete and cancel button end here  -->
                               </div>
                             </div>
                           </div>
                         </div>
-                        <!-- delete modal end here  -->
                       </div>
                     </td>
-                    <!-- banner-3 view, edit and delete button end here  -->
                   </tr>
                   @endforeach
                 </tbody>
               </table>
             </div>
-            <!-- table content end here  -->
           </div>
-         
-
           <div class="card-footer">
-            <!-- Pagination -->
             <p>Showing {{ $banners->firstItem() }} to {{ $banners->lastItem() }} of {{ $banners->total() }} entries</p>
             <div class="pagination-div">
               <nav aria-label="Page navigation example">
                 <ul class="pagination">
-                  <!-- Check if the pagination has previous and next links -->
                   @if ($banners->onFirstPage())
                   <li class="page-item disabled">
                     <span class="page-link">Previous</span>
@@ -478,15 +394,11 @@
                     <a class="page-link" href="{{ $banners->previousPageUrl() }}">Previous</a>
                   </li>
                   @endif
-
-                  <!-- Loop through page numbers -->
                   @foreach ($banners->getUrlRange(1, $banners->lastPage()) as $page => $url)
                   <li class="page-item {{ $banners->currentPage() == $page ? 'active' : '' }}">
                     <a class="page-link" href="{{ $url }}">{{ $page }}</a>
                   </li>
                   @endforeach
-
-                  <!-- Check if the pagination has a next link -->
                   @if ($banners->hasMorePages())
                   <li class="page-item">
                     <a class="page-link" href="{{ $banners->nextPageUrl() }}">Next</a>
@@ -500,13 +412,10 @@
               </nav>
             </div>
           </div>
-          <!-- card footer end here  -->
         </div>
-        <!-- card end here  -->
       </div>
     </div>
   </div>
-  <!-- main data end here  -->
 </div>
 
 <script>
@@ -514,31 +423,25 @@
     const preview = document.getElementById('previewBannerImg-' + bannerId);
     const file = event.target.files[0];
     const reader = new FileReader();
-
     reader.onload = function() {
       preview.src = reader.result;
       preview.style.display = 'block';
-
       document.getElementById('bannerText-' + bannerId).style.display = 'none';
     };
     reader.readAsDataURL(file);
   }
-
   $(document).ready(function() {
-    $('.badge').on('click', function() {
-      var bannerId = $(this).data('banner-id');
-      var currentStatus = $(this).data('status');
-      $('#statusModal').data('banner-id', bannerId);
-      $('#statusModal').data('current-status', currentStatus);
-      var formAction = "/spark_technology/admin/update-banner-status/" + bannerId;
-      $('#statusChangeForm').attr('action', formAction);
-      var statusModal = new bootstrap.Modal(document.getElementById('statusModal'));
-      statusModal.show();
-    });
+  $('.badge').on('click', function() {
+    var bannerId = $(this).data('banner-id');
+    var currentStatus = $(this).data('status');
+    $('#statusModal').data('banner-id', bannerId);
+    $('#statusModal').data('current-status', currentStatus);
+    var url = "update-banner-status/" + bannerId;
+    $('#statusChangeForm').attr('action', url);
+    var statusModal = new bootstrap.Modal(document.getElementById('statusModal'));
+    statusModal.show();
   });
-</script>
-
-<script>
+});
   function updatePagination() {
     const perPage = document.getElementById('perPage').value;
     window.location.href = `?perPage=${perPage}`;

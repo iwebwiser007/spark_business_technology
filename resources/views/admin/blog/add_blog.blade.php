@@ -3,7 +3,6 @@
 <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/parsleyjs@2.9.2/dist/parsley.css">
 <script src="https://cdn.jsdelivr.net/npm/parsleyjs@2.9.2/dist/parsley.min.js"></script>
-
 @section('styles')
 <style>
   .cke_notification_warning {
@@ -12,12 +11,9 @@
 </style>
 @section('content')
 <div class="main-right-container" id="main-right-container">
-  <!-- main data start here  -->
   <div class="main-data">
     <div class="container-fluid">
-      <!-- dashboard-head start here... -->
       <div class="dash-head d-flex justify-content-between">
-        <!-- dashboard title start here  -->
         <div class="dash_title">
           <a
             href="{{url()->previous()}}"
@@ -33,12 +29,8 @@
                 d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z" />
             </svg>
           </a>
-
           <h2 class="main-title">Add Blog</h2>
         </div>
-        <!-- dashboard title end here  -->
-
-        <!-- add banner breadcrumb start here  -->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
             <a href="{{route('dashboard')}}">Dashboard</a>
@@ -47,12 +39,9 @@
             Add Blog
           </li>
         </ol>
-        <!-- add banner breadcrumb end here  -->
       </div>
 
-
       @if (Session::has('error_message'))
-      <!-- Check vendorRegister() method in Front/VendorController.php -->
       <div class="alert alert-danger alert-dismissible fade show mt-3 d-flex justify-content-between align-items-center"
         role="alert">
         <div>
@@ -61,28 +50,23 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
       @endif
-
       @if ($errors->any())
-  <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
-    <div class="d-flex justify-content-between align-items-center">
-      <div class="d-flex flex-column">
-        <!-- <strong class="me-2">Error:</strong> -->
-        <ul class="mb-0 ps-3">
-          @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-          @endforeach
-        </ul>
+      <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex flex-column">
+            <ul class="mb-0 ps-3">
+              @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
       </div>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-  </div>
-@endif
+      @endif
 
-      <!-- dashboard-head end here... -->
       <div class="container-fluid">
-        <!-- card start here  -->
         <div class="card">
-          <!-- card header start here  -->
           <div class="card-header">
             <div
               class="card-title d-flex justify-content-between align-items-center">
@@ -92,72 +76,35 @@
           <div class="card-body">
             <form class="upload-form" action="{{ url('admin/blog-store') }}" method="POST" enctype="multipart/form-data" data-parsley-validate>
               @csrf
-
-              <!-- Title & Slug in One Row -->
               <div class="row form-group g-3">
                 <div class="col-md-6">
-                  <label for="inputBlogTitle" class="form-label fw-semibold">Title</label>
+                  <label for="inputBlogTitle" class="form-label fw-semibold">Title <span class="text-danger">*</span></label>
                   <input type="text" name="title" id="inputBlogTitle" class="form-control form-input" placeholder="Enter Blog Title..." data-parsley-required="true">
                 </div>
                 <div class="col-md-6">
-                  <label for="inputBlogLink" class="form-label fw-semibold">Slug</label>
+                  <label for="inputBlogLink" class="form-label fw-semibold">Slug <span class="text-danger">*</span></label>
                   <input type="text" name="link" id="inputBlogLink" class="form-control form-input" placeholder="Enter Slug..." data-parsley-required="true">
                 </div>
               </div>
-              
-
-              <!-- Description & Metas in One Row -->
               <div class="row form-group g-3 mt-3">
                 <div class="col-md-6">
-                  <label for="inputBlogDescription" class="form-label fw-semibold">Description</label>
+                  <label for="inputBlogDescription" class="form-label fw-semibold">Description <span class="text-danger">*</span></label>
                   <textarea class="form-control form-textbox" name="description" id="inputBlogDescription" rows="3" placeholder="Write your blog description here..." data-parsley-required="true"></textarea>
                 </div>
                 <div class="col-md-6">
-                  <label for="metaTags" class="form-label fw-semibold">Metas</label>
+                  <label for="metaTags" class="form-label fw-semibold">Metas <span class="text-danger">*</span></label>
                   <textarea name="meta_tags" id="metaTags" class="form-control form-textbox" placeholder="Enter JSON formatted metas..." rows="3" data-parsley-required="true"></textarea>
                 </div>
               </div>
-
-              <!-- Content -->
               <div class="row form-group g-3 mt-3">
                 <div class="col-12">
-                  <label for="html_content" class="form-label fw-semibold">Content</label>
+                  <label for="html_content" class="form-label fw-semibold">Content </label>
                   <textarea class="form-control ckeditor" id="html_content" name="html_content" rows="6"></textarea>
                 </div>
               </div>
-
-              <!-- Thumbnail & Banner Image in One Row -->
-              {{-- <div class="row form-group g-3 mt-3">
-                <div class="col-md-6">
-                  <label for="thumbnailImg" class="form-label fw-semibold">Thumbnail Image</label>
-                  <div class="form-group upload-input text-center border p-4 rounded">
-                    <label for="thumbnailImg" class="w-100 cursor-pointer">
-                      <div class="d-flex flex-column align-items-center">
-                        <i class="bi bi-upload"></i>
-                        <p>Click to Upload Thumbnail</p>
-                      </div>
-                    </label>
-                    <input type="file" name="thumbnail_image" class="d-none" id="thumbnailImg">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <label for="bannerImg" class="form-label fw-semibold">Banner Image</label>
-                  <div class="form-group upload-input text-center border p-4 rounded">
-                    <label for="bannerImg" class="w-100 cursor-pointer">
-                      <div class="d-flex flex-column align-items-center">
-                        <i class="bi bi-upload"></i>
-                        <p>Click to Upload Banner</p>
-                      </div>
-                    </label>
-                    <input type="file" name="banner_image" class="d-none" id="bannerImg">
-                  </div>
-                </div>
-              </div> --}}
-
               <div class="row form-group">
-                <!-- Thumbnail Image -->
                 <div class="col-12 col-md-6 mt-0">
-                  <label for="inputBlogTitle" class="form-label text-start d-block">Upload Thumbnail Image</label>
+                  <label for="inputBlogTitle" class="form-label text-start d-block">Upload Thumbnail Image <span class="text-danger">*</span></label>
                   <div class="form-group mb-20 upload-input">
                     <label for="thumbnailImg" class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4">
                       <div class="d-flex flex-column align-items-center gap-3">
@@ -178,9 +125,8 @@
                   <div id="thumbnailImg-error"></div>
                 </div>
 
-                <!-- Banner Image -->
                 <div class="col-12 col-md-6 mt-0">
-                  <label for="inputBlogTitle" class="form-label text-start d-block">Upload Banner Image</label>
+                  <label for="inputBlogTitle" class="form-label text-start d-block">Upload Banner Image <span class="text-danger">*</span></label>
                   <div class="form-group mb-20 upload-input">
                     <label for="bannerImg" class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4">
                       <div class="d-flex flex-column align-items-center gap-3">
@@ -200,11 +146,9 @@
                   </div>
                   <div id="bannerImg-error"></div>
                 </div>
-
                 <div class="col-1 d-none d-sm-block"></div>
               </div>
 
-              <!-- Save Button -->
               <div class="row">
                 <div class="col-4 col-md-3"></div>
                 <div class="col-12 col-md-9 form-button">
@@ -214,33 +158,25 @@
               </div>
             </form>
           </div>
-
-
         </div>
       </div>
     </div>
   </div>
 </div>
-
 <script>
-  // Function to preview thumbnail image
   function previewThumbnailImage(event) {
     const preview = document.getElementById('previewThumbnailImg');
     const file = event.target.files[0];
     const reader = new FileReader();
-
     reader.onload = function() {
       preview.src = reader.result;
       preview.style.display = 'block';
-
-      // Hide the placeholder text and icon, and display the image
       document.getElementById('thumbnailText').style.display = 'none';
       document.getElementById('thumbnailIcon').style.display = 'none';
     };
     reader.readAsDataURL(file);
   }
 
-  // Function to preview banner image
   function previewBannerImage(event) {
     const preview = document.getElementById('previewBannerImg');
     const file = event.target.files[0];
@@ -249,18 +185,11 @@
     reader.onload = function() {
       preview.src = reader.result;
       preview.style.display = 'block';
-
-      // Hide the placeholder text and icon, and display the image
       document.getElementById('bannerText').style.display = 'none';
       document.getElementById('bannerIcon').style.display = 'none';
     };
     reader.readAsDataURL(file);
   }
-
-
-
-
-
   $('#thumbnailImg').parsley({
     errorsContainer: function(ParsleyField) {
       return $('#thumbnailImg-error');
@@ -273,5 +202,4 @@
     }
   });
 </script>
-
 @endsection

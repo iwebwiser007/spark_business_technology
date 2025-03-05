@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Portfolio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
@@ -27,9 +28,7 @@ class Basecontroller extends Controller
         return view('service');
     }
 
-    public function portfolio(){
-        return view('portfolio');
-    }
+  
     public function spark_business_technology_service(){
         return view('spark_business');
 

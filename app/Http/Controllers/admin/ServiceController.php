@@ -18,6 +18,8 @@ class ServiceController extends Controller
         return view('admin.service.service_list', compact('services' , 'perPage'));
     }
 
+  
+
     public function add()
     {
         return view('admin.service.add_service');

@@ -10,7 +10,16 @@
 @continue
 @elseif (is_array($value)) <!-- Handling nested meta tags (like og, twitter) -->
 @foreach ($value as $subKey => $subValue)
-<meta property="{{ $key . ':' . $subKey }}" content="{{ $subValue }}">
+{{--<meta property="{{ $key . ':' . $subKey }}" content="{{ $subValue }}">--}}
+
+@if (is_array($subValue))
+@foreach ($subValue as $item)
+<meta property="{{ $key . ':' . $subKey }}" content="{{ htmlspecialchars($item) }}">
+@endforeach
+@else
+<meta property="{{ $key . ':' . $subKey }}" content="{{ htmlspecialchars($subValue) }}">
+@endif
+
 @endforeach
 @else
 <meta name="{{ $key }}" content="{{ $value }}">
@@ -24,3 +33,5 @@
  @endsection    
 
 
+
+ 

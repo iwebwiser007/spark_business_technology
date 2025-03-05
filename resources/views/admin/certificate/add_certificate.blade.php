@@ -73,7 +73,7 @@
             <div class="row">
               <div class="col-12 col-md-6">
                  <div class="form-group">
-                <label for="certificateTitle" class="col-form-label form-label ">Certificate Title</label>
+                <label for="certificateTitle" class="col-form-label form-label ">Certificate Title <span class="text-danger">*</span></label>
                 <input type="text" id="certificateTitle" name="title" class="form-control form-input" placeholder="Enter Certificate Title..." data-parsley-required="true" />
               </div>
             </div>
@@ -81,7 +81,7 @@
             <!-- Upload Image -->
             <div class="col-12 col-md-6">
                 <div class="form-group">
-                <label for="inputIcon" class="col-form-label form-label">Upload Image</label>
+                <label for="inputIcon" class="col-form-label form-label">Upload Image <span class="text-danger">*</span></label>
                 <div class="form-group mb-20 upload-input">
                   <label for="iconImg" class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4">
                     <div class="d-flex flex-column align-items-center gap-3">

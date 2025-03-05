@@ -83,7 +83,7 @@
                     <label
                       for="inputTitle"
                       class="col-form-label form-label">Technology Title
-                    </label>
+                      <span class="text-danger">*</span></label>
                     <input
                       type="text"
                       id="inputTitle"
@@ -97,7 +97,7 @@
 
                 <div class="col-12 col-md-6">
                   <div class="form-group">
-                    <label for="inputIcon" class="col-form-label form-label">Upload Image</label>
+                    <label for="inputIcon" class="col-form-label form-label">Upload Image <span class="text-danger">*</span></label>
                     <div class="form-group mb-20 upload-input">
                       <label for="iconImg" class="form-label form-img-uploader rounded-4 d-flex align-items-center justify-content-center w-100 py-4">
                         <div class="d-flex flex-column align-items-center gap-3">

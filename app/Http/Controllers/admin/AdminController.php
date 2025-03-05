@@ -13,7 +13,6 @@ use App\Models\Service;
 use App\Models\Technology;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
-
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
 

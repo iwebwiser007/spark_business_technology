@@ -22,7 +22,6 @@
     <!-- All css links end here... -->
 
     <!-- favicon icon start here -->
-    <!-- <link rel="icon" type="image/x-icon" href="../public/assets/icons/Logo.svg" /> -->
     <link rel="icon" type="image/x-icon" href="{{ asset('public/web/img/favicon.ico')}}" />
 
     <!-- favicon icon end here -->

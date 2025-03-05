@@ -380,6 +380,79 @@ $adminLogo = $logo->admin_logo;
                     </ul>
                 </li>
 
+                <li class="sidebar-item" id="has-dropdown-portfolio">
+                    <a
+                        href="#"
+                        class="sidebar-link collapsed has-dropdown {{ request()->routeIs('admin.portfolioAdd') || request()->routeIs('admin.portfolioList') ? 'active' : '' }}"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#portfolio"
+                        aria-expanded="{{ request()->routeIs('admin.portfolioAdd') || request()->routeIs('admin.portfolioList') ? 'true' : 'false' }}"
+                        aria-controls="portfolio">
+                        <span><svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                height="20"
+                                viewBox="0 -960 960 960"
+                                width="20"
+                                fill="#5f6368">
+                                <path
+                                    d="M192-396v-72h288v72H192Zm0-150v-72h432v72H192Zm0-150v-72h432v72H192Zm336 504v-113l210-209q7.26-7.41 16.13-10.71Q763-528 771.76-528q9.55 0 18.31 3.5Q798.83-521 806-514l44 45q6.59 7.26 10.29 16.13Q864-444 864-435.24t-3.29 17.92q-3.3 9.15-10.71 16.32L641-192H528Zm288-243-45-45 45 45ZM576-240h45l115-115-22-23-22-22-116 115v45Zm138-138-22-22 44 45-22-23Z" />
+                            </svg>
+                        </span>
+                        Portfolio
+
+                        <!-- caret down svg start here  -->
+                        <span class="arrow"><svg
+                                id="direction-portfolio"
+                                xmlns="http://www.w3.org/2000/svg"
+                                height="20"
+                                viewBox="0 -960 960 960"
+                                width="20"
+                                fill="#5f6368">
+                                <path
+                                    d="M480-345 240-585l56-56 184 183 184-183 56 56-240 240Z" />
+                            </svg>
+                        </span>
+                        <!-- caret down svg end here  -->
+                    </a>
+                    <ul
+                        id="portfolio"
+                        class="sidebar-dropdown list-unstyled collapse {{ request()->routeIs('admin.portfolioAdd') || request()->routeIs('admin.portfolioList') ? 'show' : '' }}"
+                        data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="{{ route('admin.portfolioAdd') }}" class="sidebar-link {{ request()->routeIs('admin.portfolioAdd') ? 'active' : '' }}">
+                                <span>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        height="8"
+                                        viewBox="0 -960 960 960"
+                                        width="8"
+                                        fill="#5f6368">
+                                        <path
+                                            d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
+                                    </svg>
+                                </span>
+                                Add Portfolio
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="{{ route('admin.portfolioList') }}" class="sidebar-link {{ request()->routeIs('admin.portfolioList') ? 'active' : '' }}">
+                                <span>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        height="8"
+                                        viewBox="0 -960 960 960"
+                                        width="8"
+                                        fill="#5f6368">
+                                        <path
+                                            d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
+                                    </svg>
+                                </span>
+                                Portfolio List
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
 
                 <!-- Stack and Technology area start here  -->
                 <li class="sidebar-item" id="has-dropdown-stack">
